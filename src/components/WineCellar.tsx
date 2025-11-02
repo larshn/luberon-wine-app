@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import type { Wine } from '../types/wine';
+import type { Wine, Vintage } from '../types/wine';
 import {
   loadCellar,
   removeFromCellar,
@@ -11,6 +11,7 @@ import { getStorageLabel } from '../utils/wine';
 
 type CellarWineWithDetails = {
   wine: Wine;
+  vintage: Vintage;
   quantity: number;
   location?: string;
   notes?: string;
@@ -38,8 +39,12 @@ export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarPr
         const wineDetails = wines.find(w => w.id === cellarWine.wineId);
         if (!wineDetails) return null;
 
+        const vintage = wineDetails.vintages.find(v => v.year === cellarWine.year);
+        if (!vintage) return null;
+
         const result: CellarWineWithDetails = {
           wine: wineDetails,
+          vintage,
           quantity: cellarWine.quantity,
           ...(cellarWine.location && { location: cellarWine.location }),
           ...(cellarWine.notes && { notes: cellarWine.notes })
@@ -55,28 +60,27 @@ export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarPr
     loadCellarWines();
   }, [wines]);
 
-  const handleRemoveOne = (wineId: string) => {
-    removeFromCellar(wineId, 1);
+  const handleRemoveOne = (wineId: string, year: number) => {
+    removeFromCellar(wineId, year, 1);
     loadCellarWines();
     onUpdate();
   };
 
-  const handleRemoveAll = (wineId: string) => {
-    const cellarWine = cellarWines.find(cw => cw.wine.id === wineId);
-    if (cellarWine && confirm(`Fjerne alle ${cellarWine.quantity} flasker av ${cellarWine.wine.name}?`)) {
-      removeFromCellar(wineId, cellarWine.quantity);
+  const handleRemoveAll = (wineId: string, year: number, wineName: string, quantity: number) => {
+    if (confirm(`Fjerne alle ${quantity} flasker av ${wineName} (${year})?`)) {
+      removeFromCellar(wineId, year, quantity);
       loadCellarWines();
       onUpdate();
     }
   };
 
-  const handleUpdateNotes = (wineId: string, notes: string) => {
-    updateCellarWine(wineId, { notes });
+  const handleUpdateNotes = (wineId: string, year: number, notes: string) => {
+    updateCellarWine(wineId, year, { notes });
     loadCellarWines();
   };
 
-  const handleUpdateLocation = (wineId: string, location: string) => {
-    updateCellarWine(wineId, { location });
+  const handleUpdateLocation = (wineId: string, year: number, location: string) => {
+    updateCellarWine(wineId, year, { location });
     loadCellarWines();
   };
 
@@ -108,7 +112,7 @@ export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarPr
   };
 
   const totalBottles = cellarWines.reduce((sum, cw) => sum + cw.quantity, 0);
-  const totalValue = cellarWines.reduce((sum, cw) => sum + (cw.wine.price || 0) * cw.quantity, 0);
+  const totalValue = cellarWines.reduce((sum, cw) => sum + (cw.vintage.price || 0) * cw.quantity, 0);
 
   return (
     <div>
@@ -142,8 +146,8 @@ export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarPr
         </div>
       ) : (
         <div style={{display: 'flex', flexDirection: 'column', gap: '1.5rem'}}>
-          {cellarWines.map(({ wine, quantity, location, notes }) => (
-            <div key={wine.id} className="card cellar-card">
+          {cellarWines.map(({ wine, vintage, quantity, location, notes }) => (
+            <div key={`${wine.id}-${vintage.year}`} className="card cellar-card">
               <div className={`wine-color-bar ${wine.color}`} />
 
               <div className="cellar-grid">
@@ -153,9 +157,9 @@ export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarPr
                       <h3>{wine.name}</h3>
                       <p style={{color: '#666', fontSize: '1.1rem', marginBottom: '0.5rem'}}>{wine.producer}</p>
                       <div style={{display: 'flex', alignItems: 'center', gap: '1rem', marginTop: '0.5rem'}}>
-                        <span className="wine-year">{wine.year}</span>
-                        <span className={`tag-storage ${getStorageClass(wine.storageRecommendation)}`}>
-                          {getStorageLabel(wine.storageRecommendation)}
+                        <span className="wine-year">{vintage.year}</span>
+                        <span className={`tag-storage ${getStorageClass(vintage.storageRecommendation)}`}>
+                          {getStorageLabel(vintage.storageRecommendation)}
                         </span>
                       </div>
                     </div>
@@ -180,7 +184,7 @@ export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarPr
                     <input
                       type="text"
                       value={location || ''}
-                      onChange={(e) => handleUpdateLocation(wine.id, e.target.value)}
+                      onChange={(e) => handleUpdateLocation(wine.id, vintage.year, e.target.value)}
                       placeholder="F.eks. Hylle 2, Rad 3"
                       className="input"
                     />
@@ -192,7 +196,7 @@ export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarPr
                     </label>
                     <textarea
                       value={notes || ''}
-                      onChange={(e) => handleUpdateNotes(wine.id, e.target.value)}
+                      onChange={(e) => handleUpdateNotes(wine.id, vintage.year, e.target.value)}
                       placeholder="Dine notater om denne vinen..."
                       rows={2}
                       className="input-area"
@@ -204,11 +208,11 @@ export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarPr
                   <button onClick={() => onViewWine(wine)} className="btn btn-primary">
                     Se detaljer
                   </button>
-                  <button onClick={() => handleRemoveOne(wine.id)} className="btn btn-secondary">
+                  <button onClick={() => handleRemoveOne(wine.id, vintage.year)} className="btn btn-secondary">
                     - Fjern 1 flaske
                   </button>
                   <button
-                    onClick={() => handleRemoveAll(wine.id)}
+                    onClick={() => handleRemoveAll(wine.id, vintage.year, wine.name, quantity)}
                     style={{
                       background: '#fee2e2',
                       color: '#991b1b',
@@ -218,7 +222,7 @@ export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarPr
                   >
                     🗑️ Fjern alle
                   </button>
-                  {wine.price && (
+                  {vintage.price && (
                     <div style={{
                       marginTop: '1rem',
                       padding: '1rem',
@@ -228,7 +232,7 @@ export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarPr
                     }}>
                       <p style={{fontSize: '0.8rem', color: '#999', marginBottom: '0.25rem'}}>Verdi</p>
                       <p style={{fontSize: '1.3rem', fontWeight: 700, color: '#2d2d2d'}}>
-                        €{(wine.price * quantity).toFixed(2)}
+                        €{(vintage.price * quantity).toFixed(2)}
                       </p>
                     </div>
                   )}

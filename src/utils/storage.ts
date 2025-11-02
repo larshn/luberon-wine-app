@@ -22,15 +22,16 @@ export const saveCellar = (cellar: WineCellar): void => {
   }
 };
 
-export const addToCellar = (wineId: string, quantity: number = 1): void => {
+export const addToCellar = (wineId: string, year: number, quantity: number = 1): void => {
   const cellar = loadCellar();
-  const existing = cellar.wines.find(w => w.wineId === wineId);
+  const existing = cellar.wines.find(w => w.wineId === wineId && w.year === year);
 
   if (existing) {
     existing.quantity += quantity;
   } else {
     cellar.wines.push({
       wineId,
+      year,
       quantity,
       purchaseDate: new Date().toISOString().split('T')[0]
     });
@@ -39,23 +40,23 @@ export const addToCellar = (wineId: string, quantity: number = 1): void => {
   saveCellar(cellar);
 };
 
-export const removeFromCellar = (wineId: string, quantity: number = 1): void => {
+export const removeFromCellar = (wineId: string, year: number, quantity: number = 1): void => {
   const cellar = loadCellar();
-  const existing = cellar.wines.find(w => w.wineId === wineId);
+  const existing = cellar.wines.find(w => w.wineId === wineId && w.year === year);
 
   if (existing) {
     existing.quantity -= quantity;
     if (existing.quantity <= 0) {
-      cellar.wines = cellar.wines.filter(w => w.wineId !== wineId);
+      cellar.wines = cellar.wines.filter(w => !(w.wineId === wineId && w.year === year));
     }
   }
 
   saveCellar(cellar);
 };
 
-export const updateCellarWine = (wineId: string, updates: Partial<CellarWine>): void => {
+export const updateCellarWine = (wineId: string, year: number, updates: Partial<CellarWine>): void => {
   const cellar = loadCellar();
-  const wine = cellar.wines.find(w => w.wineId === wineId);
+  const wine = cellar.wines.find(w => w.wineId === wineId && w.year === year);
 
   if (wine) {
     Object.assign(wine, updates);

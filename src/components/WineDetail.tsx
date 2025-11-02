@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import type { Wine } from '../types/wine';
+import type { Wine, Vintage } from '../types/wine';
 import {
   getStorageLabel,
   getCurrentAge,
@@ -16,19 +16,25 @@ interface WineDetailProps {
 const getStorageClass = (rec: string) => rec.replace(/-/g, '-');
 
 export default function WineDetail({ wine, onBack, onCellarUpdate }: WineDetailProps) {
+  // Select the latest vintage by default
+  const [selectedVintage, setSelectedVintage] = useState<Vintage>(
+    wine.vintages[0] || wine.vintages.reduce((latest, current) =>
+      current.year > latest.year ? current : latest
+    )
+  );
   const [quantityInCellar, setQuantityInCellar] = useState(0);
   const [showAddedMessage, setShowAddedMessage] = useState(false);
 
   useEffect(() => {
     const cellar = loadCellar();
-    const cellarWine = cellar.wines.find(w => w.wineId === wine.id);
+    const cellarWine = cellar.wines.find(w => w.wineId === wine.id && w.year === selectedVintage.year);
     setQuantityInCellar(cellarWine?.quantity || 0);
-  }, [wine.id]);
+  }, [wine.id, selectedVintage.year]);
 
   const handleAddToCellar = () => {
-    addToCellar(wine.id);
+    addToCellar(wine.id, selectedVintage.year);
     const cellar = loadCellar();
-    const cellarWine = cellar.wines.find(w => w.wineId === wine.id);
+    const cellarWine = cellar.wines.find(w => w.wineId === wine.id && w.year === selectedVintage.year);
     setQuantityInCellar(cellarWine?.quantity || 0);
     onCellarUpdate();
 
@@ -36,8 +42,11 @@ export default function WineDetail({ wine, onBack, onCellarUpdate }: WineDetailP
     setTimeout(() => setShowAddedMessage(false), 2000);
   };
 
-  const currentAge = getCurrentAge(wine.year);
-  const drinkingStatus = getDrinkingWindowStatus(wine);
+  const currentAge = getCurrentAge(selectedVintage.year);
+  const drinkingStatus = getDrinkingWindowStatus({
+    year: selectedVintage.year,
+    optimalDrinkingWindow: selectedVintage.optimalDrinkingWindow
+  } as any);
 
   const getStatusBadge = () => {
     if (drinkingStatus === 'ready') {
@@ -49,7 +58,7 @@ export default function WineDetail({ wine, onBack, onCellarUpdate }: WineDetailP
     } else if (drinkingStatus === 'too-young') {
       return (
         <span className="status-badge too-young">
-          ⏱ For ung - lagre {wine.optimalDrinkingWindow.start - currentAge} år til
+          ⏱ For ung - lagre {selectedVintage.optimalDrinkingWindow.start - currentAge} år til
         </span>
       );
     } else {
@@ -60,6 +69,9 @@ export default function WineDetail({ wine, onBack, onCellarUpdate }: WineDetailP
       );
     }
   };
+
+  // Sort vintages by year (newest first)
+  const sortedVintages = [...wine.vintages].sort((a, b) => b.year - a.year);
 
   return (
     <div>
@@ -75,20 +87,70 @@ export default function WineDetail({ wine, onBack, onCellarUpdate }: WineDetailP
             <h1>{wine.name}</h1>
             <p className="detail-producer">{wine.producer}</p>
           </div>
-          {wine.price && (
+          {selectedVintage.price && (
             <div className="detail-price">
-              <p className="detail-price-value">€{wine.price}</p>
+              <p className="detail-price-value">€{selectedVintage.price}</p>
             </div>
           )}
         </div>
 
+        {/* Vintage Selector */}
+        {wine.vintages.length > 1 && (
+          <div style={{
+            marginBottom: '2rem',
+            padding: '1.5rem',
+            background: '#fff5ed',
+            borderRadius: '8px',
+            border: '2px solid #ffe4d6'
+          }}>
+            <h3 style={{ fontSize: '1.1rem', color: '#722f37', marginBottom: '1rem' }}>
+              📅 Tilgjengelige årganger ({wine.vintages.length})
+            </h3>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
+              {sortedVintages.map(vintage => (
+                <button
+                  key={vintage.year}
+                  onClick={() => setSelectedVintage(vintage)}
+                  style={{
+                    padding: '0.75rem 1.5rem',
+                    background: selectedVintage.year === vintage.year ? '#722f37' : 'white',
+                    color: selectedVintage.year === vintage.year ? 'white' : '#722f37',
+                    border: `2px solid ${selectedVintage.year === vintage.year ? '#722f37' : '#d4af37'}`,
+                    borderRadius: '8px',
+                    fontSize: '1.1rem',
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                    transition: 'all 0.2s ease',
+                    boxShadow: selectedVintage.year === vintage.year ? '0 4px 12px rgba(114, 47, 55, 0.3)' : 'none'
+                  }}
+                  onMouseEnter={(e) => {
+                    if (selectedVintage.year !== vintage.year) {
+                      e.currentTarget.style.background = '#f5f5f5';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (selectedVintage.year !== vintage.year) {
+                      e.currentTarget.style.background = 'white';
+                    }
+                  }}
+                >
+                  {vintage.year}
+                </button>
+              ))}
+            </div>
+            <p style={{ marginTop: '0.75rem', fontSize: '0.85rem', color: '#666' }}>
+              Klikk på en årgang for å se detaljer
+            </p>
+          </div>
+        )}
+
         <div className="tag-list mb-lg">
-          <span className="wine-year" style={{fontSize: '1.5rem'}}>{wine.year}</span>
+          <span className="wine-year" style={{fontSize: '1.5rem'}}>{selectedVintage.year}</span>
           <span className="tag" style={{background: '#f5f5f5', border: '1px solid #ddd'}}>
             {wine.appellation}
           </span>
           <span className="tag" style={{background: '#f5f5f5', border: '1px solid #ddd'}}>
-            {wine.alcoholContent}% alkohol
+            {selectedVintage.alcoholContent}% alkohol
           </span>
           <span className="tag" style={{background: '#f5f5f5', border: '1px solid #ddd', textTransform: 'capitalize'}}>
             {wine.color}
@@ -114,9 +176,9 @@ export default function WineDetail({ wine, onBack, onCellarUpdate }: WineDetailP
             </div>
 
             <div className="detail-section">
-              <h2>👃 Smaksnotater</h2>
+              <h2>👃 Smaksnotater ({selectedVintage.year})</h2>
               <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem'}}>
-                {wine.tastingNotes.map((note, index) => (
+                {selectedVintage.tastingNotes.map((note, index) => (
                   <div
                     key={index}
                     style={{
@@ -137,21 +199,21 @@ export default function WineDetail({ wine, onBack, onCellarUpdate }: WineDetailP
 
           <div>
             <div className="detail-section">
-              <h2>📦 Lagringsinfo</h2>
+              <h2>📦 Lagringsinfo ({selectedVintage.year})</h2>
               <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
                 <div>
                   <p style={{fontSize: '0.9rem', color: '#666', marginBottom: '0.5rem'}}>Anbefaling:</p>
-                  <span className={`tag-storage ${getStorageClass(wine.storageRecommendation)}`}>
-                    {getStorageLabel(wine.storageRecommendation)}
+                  <span className={`tag-storage ${getStorageClass(selectedVintage.storageRecommendation)}`}>
+                    {getStorageLabel(selectedVintage.storageRecommendation)}
                   </span>
                 </div>
                 <div>
                   <p style={{fontSize: '0.9rem', color: '#666', marginBottom: '0.5rem'}}>Optimalt drikkvindu:</p>
                   <p style={{fontSize: '1.2rem', fontWeight: 700, color: '#722f37'}}>
-                    {wine.year + wine.optimalDrinkingWindow.start} - {wine.year + wine.optimalDrinkingWindow.end}
+                    {selectedVintage.year + selectedVintage.optimalDrinkingWindow.start} - {selectedVintage.year + selectedVintage.optimalDrinkingWindow.end}
                   </p>
                   <p style={{fontSize: '0.85rem', color: '#999'}}>
-                    ({wine.optimalDrinkingWindow.start}-{wine.optimalDrinkingWindow.end} år fra årgang)
+                    ({selectedVintage.optimalDrinkingWindow.start}-{selectedVintage.optimalDrinkingWindow.end} år fra årgang)
                   </p>
                 </div>
                 <div>
@@ -181,14 +243,16 @@ export default function WineDetail({ wine, onBack, onCellarUpdate }: WineDetailP
         <div style={{borderTop: '2px solid #e0e0e0', paddingTop: '2rem', marginTop: '2rem'}}>
           <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem'}}>
             <div>
-              <h2 style={{fontSize: '1.3rem', color: '#722f37', marginBottom: '0.5rem'}}>Min Vinkjeller</h2>
+              <h2 style={{fontSize: '1.3rem', color: '#722f37', marginBottom: '0.5rem'}}>
+                Min Vinkjeller ({selectedVintage.year})
+              </h2>
               {quantityInCellar > 0 ? (
                 <p style={{color: '#666'}}>
                   Du har <span style={{fontWeight: 600, color: '#d4af37'}}>{quantityInCellar}</span> flaske
-                  {quantityInCellar > 1 ? 'r' : ''} i kjelleren
+                  {quantityInCellar > 1 ? 'r' : ''} av {selectedVintage.year} i kjelleren
                 </p>
               ) : (
-                <p style={{color: '#666'}}>Ikke i din kjeller ennå</p>
+                <p style={{color: '#666'}}>Ingen flasker av {selectedVintage.year} i kjelleren ennå</p>
               )}
             </div>
             <div style={{display: 'flex', alignItems: 'center', gap: '1rem'}}>
@@ -196,7 +260,7 @@ export default function WineDetail({ wine, onBack, onCellarUpdate }: WineDetailP
                 <span style={{color: '#065f46', fontWeight: 600}}>Lagt til!</span>
               )}
               <button onClick={handleAddToCellar} className="btn btn-primary">
-                + Legg til i kjeller
+                + Legg til {selectedVintage.year} i kjeller
               </button>
             </div>
           </div>

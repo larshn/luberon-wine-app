@@ -5,8 +5,9 @@ import { loadCellar } from './utils/storage';
 import WineCatalog from './components/WineCatalog';
 import WineCellar from './components/WineCellar';
 import WineDetail from './components/WineDetail';
+import FoodPairing from './components/FoodPairing';
 
-type View = 'catalog' | 'cellar';
+type View = 'catalog' | 'cellar' | 'food-pairing';
 
 function App() {
   const [currentView, setCurrentView] = useState<View>('catalog');
@@ -57,6 +58,15 @@ function App() {
           </button>
           <button
             onClick={() => {
+              setCurrentView('food-pairing');
+              setSelectedWine(null);
+            }}
+            className={`nav-button ${currentView === 'food-pairing' && !selectedWine ? 'active' : ''}`}
+          >
+            🍽️ Mat til Vin
+          </button>
+          <button
+            onClick={() => {
               setCurrentView('cellar');
               setSelectedWine(null);
             }}
@@ -80,6 +90,8 @@ function App() {
             />
           ) : currentView === 'catalog' ? (
             <WineCatalog wines={seedWines} onViewWine={handleViewWine} />
+          ) : currentView === 'food-pairing' ? (
+            <FoodPairing wines={seedWines} onViewWine={handleViewWine} />
           ) : (
             <WineCellar
               wines={seedWines}

@@ -836,7 +836,7 @@ body {
 
 .vintage-tooltip {
   position: fixed;
-  background: var(--wine-burgundy);
+  background: #2d2d2d;
   color: white;
   padding: var(--spacing-sm) var(--spacing-md);
   border-radius: var(--radius-sm);
@@ -845,7 +845,7 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   pointer-events: none;
   transform: translateY(-50%);
-  margin-left: 50px;
+  margin-left: 12px;
   opacity: 0;
   animation: tooltipSlideIn 0.15s ease forwards;
 }
@@ -857,7 +857,7 @@ body {
   right: 100%;
   transform: translateY(-50%);
   border: 6px solid transparent;
-  border-right-color: var(--wine-burgundy);
+  border-right-color: #2d2d2d;
 }
 
 @keyframes tooltipSlideIn {

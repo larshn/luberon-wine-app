@@ -1,0 +1,884 @@
+import type { Wine } from '../types/wine';
+
+export const wines: Wine[] = [
+  {
+    id: '1',
+    name: 'La Canorgue Rouge',
+    producer: 'Château La Canorgue',
+    year: 2021,
+    color: 'red',
+    appellation: 'Luberon AOP',
+    grapes: ['Syrah', 'Grenache', 'Mourvèdre'],
+    alcoholContent: 13.5,
+    description: 'Økologisk vin fra biodynamisk vingård, kjent fra filmen "A Good Year". En elegant og balansert rødvin med provencalsk karakter.',
+    tastingNotes: ['Røde bær', 'Krydder', 'Lavendel', 'Silkemyke tanniner'],
+    storageRecommendation: 'short-term',
+    optimalDrinkingWindow: { start: 0, end: 5 },
+    foodPairings: [
+      { dish: 'Daube Provençale', description: 'Provencalsk oksegryte med oliven' },
+      { dish: 'Grillet lam med timian', description: 'Perfekt til retter med urter de Provence' },
+      { dish: 'Ratatouille', description: 'Klassisk grønnsaksgrytte fra Provence' }
+    ],
+    price: 18
+  },
+  {
+    id: '2',
+    name: 'La Canorgue Blanc',
+    producer: 'Château La Canorgue',
+    year: 2022,
+    color: 'white',
+    appellation: 'Luberon AOP',
+    grapes: ['Roussanne', 'Vermentino', 'Clairette'],
+    alcoholContent: 13,
+    description: 'Frisk og aromatisk hvitvin med stor kompleksitet. Biodynamisk dyrket på kalksteinsjord.',
+    tastingNotes: ['Hvite blomster', 'Sitrus', 'Fersken', 'Mineralsk finish'],
+    storageRecommendation: 'drink-soon',
+    optimalDrinkingWindow: { start: 0, end: 3 },
+    foodPairings: [
+      { dish: 'Bouillabaisse', description: 'Provencalsk fiskesuppe' },
+      { dish: 'Geitost med honning', description: 'Lokal ost fra Luberon' },
+      { dish: 'Grillet havabbor', description: 'Med fennikel og sitron' }
+    ],
+    price: 16
+  },
+  {
+    id: '3',
+    name: 'Les Griottes',
+    producer: 'Château Val Joanis',
+    year: 2020,
+    color: 'red',
+    appellation: 'Luberon AOP',
+    grapes: ['Syrah', 'Grenache'],
+    alcoholContent: 14,
+    description: 'Deres toppvin fra utvalgte parceller. Modnet 12 måneder på eikefat. Kraftig og konsentrert.',
+    tastingNotes: ['Mørke kirsebær', 'Pepper', 'Vanilje', 'Lakrits'],
+    storageRecommendation: 'medium-term',
+    optimalDrinkingWindow: { start: 2, end: 10 },
+    foodPairings: [
+      { dish: 'Stekt andebryst', description: 'Med kirsebærsaus' },
+      { dish: 'Oksekjøtt bourguignon', description: 'Langkokt i rødvin' },
+      { dish: 'Modne oster', description: 'Comté eller gammel Gouda' }
+    ],
+    price: 28
+  },
+  {
+    id: '4',
+    name: 'Tradition Blanc',
+    producer: 'Château Val Joanis',
+    year: 2022,
+    color: 'white',
+    appellation: 'Luberon AOP',
+    grapes: ['Grenache Blanc', 'Roussanne', 'Bourboulenc'],
+    alcoholContent: 12.5,
+    description: 'Klassisk hvitvin fra Luberon med friskhet og eleganse. Perfekt som aperitiff.',
+    tastingNotes: ['Grønne epler', 'Pære', 'Mandel', 'Frisk syre'],
+    storageRecommendation: 'drink-now',
+    optimalDrinkingWindow: { start: 0, end: 2 },
+    foodPairings: [
+      { dish: 'Tapenader', description: 'Provencalske olivenpaster' },
+      { dish: 'Grillet kylling', description: 'Med sitron og timian' },
+      { dish: 'Salat Niçoise', description: 'Med tuna og ansjos' }
+    ],
+    price: 14
+  },
+  {
+    id: '5',
+    name: 'Les Bastides Rosé',
+    producer: 'Château Val Joanis',
+    year: 2023,
+    color: 'rosé',
+    appellation: 'Luberon AOP',
+    grapes: ['Grenache', 'Cinsault', 'Syrah'],
+    alcoholContent: 12.5,
+    description: 'Lys og delikat rosé i Provence-stil. Produsert ved direkte pressing for maksimal friskhet.',
+    tastingNotes: ['Jordbær', 'Sitrus', 'Hvite blomster', 'Mineralsk'],
+    storageRecommendation: 'drink-now',
+    optimalDrinkingWindow: { start: 0, end: 2 },
+    foodPairings: [
+      { dish: 'Grillet fisk', description: 'Enkel og frisk tilberedning' },
+      { dish: 'Sommerlig salat', description: 'Med geiteost og tomater' },
+      { dish: 'Grønnsaksquiche', description: 'Med provencalske urter' }
+    ],
+    price: 13
+  },
+  {
+    id: '6',
+    name: 'Cuvée Prestige',
+    producer: 'Domaine de Fontenille',
+    year: 2019,
+    color: 'red',
+    appellation: 'Luberon AOP',
+    grapes: ['Syrah', 'Grenache', 'Mourvèdre', 'Carignan'],
+    alcoholContent: 14.5,
+    description: 'Toppvin fra historisk domene med 800 år gammel vinhistorie. Kraftig og konsentrert.',
+    tastingNotes: ['Solmodne bær', 'Krydder', 'Tobakk', 'Eik'],
+    storageRecommendation: 'medium-term',
+    optimalDrinkingWindow: { start: 3, end: 12 },
+    foodPairings: [
+      { dish: 'Lammestek', description: 'Med urter de Provence' },
+      { dish: 'Vilt', description: 'Hjort eller villsvin' },
+      { dish: 'Cassoulet', description: 'Tradisjonell bønnegrytte' }
+    ],
+    price: 35
+  },
+  {
+    id: '7',
+    name: 'Blanc de Fontenille',
+    producer: 'Domaine de Fontenille',
+    year: 2022,
+    color: 'white',
+    appellation: 'Luberon AOP',
+    grapes: ['Roussanne', 'Grenache Blanc', 'Clairette'],
+    alcoholContent: 13,
+    description: 'Rik og fyldig hvitvin med god lagringspotensial. Modnet delvis på eikefat.',
+    tastingNotes: ['Aprikos', 'Honning', 'Hasselnøtt', 'Smør'],
+    storageRecommendation: 'short-term',
+    optimalDrinkingWindow: { start: 0, end: 5 },
+    foodPairings: [
+      { dish: 'Kylling i kremsaus', description: 'Med sopp' },
+      { dish: 'Hummer', description: 'Med smørsaus' },
+      { dish: 'Modne hvite oster', description: 'Brie eller Camembert' }
+    ],
+    price: 22
+  },
+  {
+    id: '8',
+    name: 'Le Pas du Moine',
+    producer: 'Château de Mille',
+    year: 2021,
+    color: 'red',
+    appellation: 'Luberon AOP',
+    grapes: ['Syrah', 'Grenache'],
+    alcoholContent: 13.5,
+    description: 'Fra Luberon\'s eldste vingård. Elegant og finessefull med stor dybde.',
+    tastingNotes: ['Mørke frukter', 'Violette', 'Sort pepper', 'Myk'],
+    storageRecommendation: 'short-term',
+    optimalDrinkingWindow: { start: 1, end: 7 },
+    foodPairings: [
+      { dish: 'Pigeon rôti', description: 'Stekt due med bacon' },
+      { dish: 'Entrecôte', description: 'Grillet biff med urtesmør' },
+      { dish: 'Pâté', description: 'Grovt pâté med cornichons' }
+    ],
+    price: 19
+  },
+  {
+    id: '9',
+    name: 'Les Dauphinés Rosé',
+    producer: 'Château La Verrerie',
+    year: 2023,
+    color: 'rosé',
+    appellation: 'Luberon AOP',
+    grapes: ['Grenache', 'Syrah'],
+    alcoholContent: 13,
+    description: 'Fruktig og frisk rosé med vakker lakserosa farge. Økologisk dyrket.',
+    tastingNotes: ['Bringebær', 'Rosenblader', 'Grapefrukt', 'Sprø'],
+    storageRecommendation: 'drink-now',
+    optimalDrinkingWindow: { start: 0, end: 1 },
+    foodPairings: [
+      { dish: 'Provencalsk fiskesuppe', description: 'Lett og aromatisk' },
+      { dish: 'Grillede grønnsaker', description: 'Med pestodressing' },
+      { dish: 'Tomatbaserte retter', description: 'Pasta eller pizza' }
+    ],
+    price: 12
+  },
+  {
+    id: '10',
+    name: 'Vieilles Vignes',
+    producer: 'Marrenon',
+    year: 2020,
+    color: 'red',
+    appellation: 'Luberon AOP',
+    grapes: ['Syrah', 'Grenache'],
+    alcoholContent: 14,
+    description: 'Fra gamle vinstokker over 50 år. Kooperativets prestisjevin med stor karakter.',
+    tastingNotes: ['Modne plommer', 'Urter', 'Lakris', 'Velvet struktur'],
+    storageRecommendation: 'short-term',
+    optimalDrinkingWindow: { start: 1, end: 8 },
+    foodPairings: [
+      { dish: 'Lam Provençale', description: 'Med hvitløk og rosmarin' },
+      { dish: 'Grillmat', description: 'BBQ med urter' },
+      { dish: 'Chorizo', description: 'Grillet med paprika' }
+    ],
+    price: 16
+  },
+  {
+    id: '11',
+    name: 'Expression Blanc',
+    producer: 'Domaine de Mayol',
+    year: 2022,
+    color: 'white',
+    appellation: 'Luberon AOP',
+    grapes: ['Roussanne', 'Marsanne', 'Vermentino'],
+    alcoholContent: 13,
+    description: 'Moderne og uttrykksful hvitvin fra familiedomene. Biodynamisk produsert.',
+    tastingNotes: ['Sitronverbena', 'Nektarin', 'Mandler', 'Frisk'],
+    storageRecommendation: 'drink-soon',
+    optimalDrinkingWindow: { start: 0, end: 3 },
+    foodPairings: [
+      { dish: 'Fritert calamari', description: 'Med aioli' },
+      { dish: 'Risotto', description: 'Med asparges' },
+      { dish: 'Sjømat', description: 'Grillet blekksprut' }
+    ],
+    price: 15
+  },
+  {
+    id: '12',
+    name: 'Cuvée Spéciale Rouge',
+    producer: 'Château Constantin-Chevalier',
+    year: 2019,
+    color: 'red',
+    appellation: 'Luberon AOP',
+    grapes: ['Syrah', 'Grenache', 'Mourvèdre'],
+    alcoholContent: 14,
+    description: 'Kompleks og kraftig rødvin med god lagringspotensial. Modnet 18 måneder på franske eikefat.',
+    tastingNotes: ['Mørk frukt', 'Sjokolade', 'Vanilje', 'Lær'],
+    storageRecommendation: 'medium-term',
+    optimalDrinkingWindow: { start: 2, end: 10 },
+    foodPairings: [
+      { dish: 'Rødt kjøtt', description: 'Biff eller lam' },
+      { dish: 'Viltgrytte', description: 'Med røtter og sopp' },
+      { dish: 'Modne oster', description: 'Reblochon eller Époisses' }
+    ],
+    price: 24
+  },
+  {
+    id: '13',
+    name: 'Secrets de Pigoudet Rosé',
+    producer: 'Château Pigoudet',
+    year: 2023,
+    color: 'rosé',
+    appellation: 'Luberon AOP',
+    grapes: ['Grenache', 'Cinsault'],
+    alcoholContent: 12.5,
+    description: 'Premium rosé med elegant stil. Direkte pressing og temperaturkontrollert gjæring.',
+    tastingNotes: ['Eple', 'Hvit fersken', 'Roser', 'Delikat'],
+    storageRecommendation: 'drink-now',
+    optimalDrinkingWindow: { start: 0, end: 2 },
+    foodPairings: [
+      { dish: 'Sushi', description: 'Eller sashimi' },
+      { dish: 'Sommersalater', description: 'Med friske urter' },
+      { dish: 'Geiteost', description: 'Frisk chèvre med urter' }
+    ],
+    price: 17
+  },
+  {
+    id: '14',
+    name: 'Grande Réserve',
+    producer: 'Bastide du Claux',
+    year: 2018,
+    color: 'red',
+    appellation: 'Luberon AOP',
+    grapes: ['Syrah', 'Grenache', 'Carignan'],
+    alcoholContent: 14.5,
+    description: 'Moden og kompleks vin som har utviklet flott tertiær aromaer. Toppårgangen 2018.',
+    tastingNotes: ['Spekeskinke', 'Lær', 'Tørket frukt', 'Trøffel'],
+    storageRecommendation: 'medium-term',
+    optimalDrinkingWindow: { start: 5, end: 15 },
+    foodPairings: [
+      { dish: 'Boeuf en croûte', description: 'Oksemørbrad i deig' },
+      { dish: 'Trøffel-retter', description: 'Risotto eller pasta' },
+      { dish: 'Gammel ost', description: 'Pecorino eller Manchego' }
+    ],
+    price: 32
+  },
+  {
+    id: '15',
+    name: 'Tradition Rosé',
+    producer: 'Château La Canorgue',
+    year: 2023,
+    color: 'rosé',
+    appellation: 'Luberon AOP',
+    grapes: ['Grenache', 'Syrah'],
+    alcoholContent: 12.5,
+    description: 'Klassisk Provence-rosé fra den kjente biodynamiske vingården. Frisk og sommerlig.',
+    tastingNotes: ['Jordbær', 'Melon', 'Hvite blomster', 'Mineralsk'],
+    storageRecommendation: 'drink-now',
+    optimalDrinkingWindow: { start: 0, end: 1 },
+    foodPairings: [
+      { dish: 'Socca', description: 'Provencalsk kikertpannekake' },
+      { dish: 'Pan bagnat', description: 'Niçoise sandwich' },
+      { dish: 'Reker', description: 'Med sitron og aioli' }
+    ],
+    price: 15
+  },
+  {
+    id: '16',
+    name: '1603 Rouge',
+    producer: 'Château de Sannes',
+    year: 2021,
+    color: 'red',
+    appellation: 'Luberon AOP',
+    grapes: ['Grenache', 'Syrah'],
+    alcoholContent: 13.5,
+    description: 'Navngitt etter châteauets grunnleggelsesår. Økologisk og biodynamisk dyrket vin med røde frukter og krydderaromaer.',
+    tastingNotes: ['Modne røde bær', 'Krydder', 'Lakrits', 'Silkemyke tanniner'],
+    storageRecommendation: 'short-term',
+    optimalDrinkingWindow: { start: 0, end: 5 },
+    foodPairings: [
+      { dish: 'Grillet lam', description: 'Med provencalske urter' },
+      { dish: 'Ratatouille', description: 'Tradisjonell grønnsaksgrytte' },
+      { dish: 'Middels modne oster', description: 'Tomme eller Cantal' }
+    ],
+    price: 16
+  },
+  {
+    id: '17',
+    name: '1603 Blanc',
+    producer: 'Château de Sannes',
+    year: 2022,
+    color: 'white',
+    appellation: 'Luberon AOP',
+    grapes: ['Vermentino', 'Ugni Blanc'],
+    alcoholContent: 12.5,
+    description: 'Blomstrete og delikat hvitvin med noter av sitrus og hvite frukter. Livlig og mineralsk i smaken.',
+    tastingNotes: ['Sitrus', 'Hvite blomster', 'Hvite frukter', 'Mineralsk'],
+    storageRecommendation: 'drink-soon',
+    optimalDrinkingWindow: { start: 0, end: 3 },
+    foodPairings: [
+      { dish: 'Skalldyr', description: 'Østers eller kamskjell' },
+      { dish: 'Salater', description: 'Med sitrusdressing' },
+      { dish: 'Frisk geiteost', description: 'Med urter' }
+    ],
+    price: 15
+  },
+  {
+    id: '18',
+    name: '1603 Rosé',
+    producer: 'Château de Sannes',
+    year: 2023,
+    color: 'rosé',
+    appellation: 'Luberon AOP',
+    grapes: ['Grenache', 'Syrah'],
+    alcoholContent: 12.5,
+    description: 'Vakker lys rosé fra biodynamisk vingård. 92 poeng fra Wine Enthusiast. Frisk og elegant.',
+    tastingNotes: ['Jordbær', 'Rips', 'Rosenblader', 'Sprø finish'],
+    storageRecommendation: 'drink-now',
+    optimalDrinkingWindow: { start: 0, end: 2 },
+    foodPairings: [
+      { dish: 'Grillet fisk', description: 'Med urter' },
+      { dish: 'Tomatbaserte retter', description: 'Pasta eller pizza' },
+      { dish: 'Antipasti', description: 'Provencalske foretter' }
+    ],
+    price: 16
+  },
+  {
+    id: '19',
+    name: 'Grand Blanc de Sannes',
+    producer: 'Château de Sannes',
+    year: 2021,
+    color: 'white',
+    appellation: 'Luberon AOP',
+    grapes: ['Vermentino', 'Roussanne'],
+    alcoholContent: 13.5,
+    description: 'Prestisjehvitvin modnet på fat. Utvikler noter av ristet brød og nøtter med god lagringspotensial.',
+    tastingNotes: ['Ristet brød', 'Hasselnøtt', 'Aprikos', 'Smøraktig'],
+    storageRecommendation: 'short-term',
+    optimalDrinkingWindow: { start: 1, end: 6 },
+    foodPairings: [
+      { dish: 'Hummer', description: 'Med smørsaus' },
+      { dish: 'Steinbit', description: 'Med kremsaus' },
+      { dish: 'Modne hvite oster', description: 'Brie eller Camembert' }
+    ],
+    price: 28
+  },
+  {
+    id: '20',
+    name: 'Terre de Sannes Rouge',
+    producer: 'Château de Sannes',
+    year: 2020,
+    color: 'red',
+    appellation: 'Luberon AOP',
+    grapes: ['Syrah', 'Grenache', 'Mourvèdre'],
+    alcoholContent: 14,
+    description: 'Intens rødvin med aromaer av jammy svarte frukter og lett eikepåvirkning. Fra utvalgte parceller.',
+    tastingNotes: ['Svarte bær', 'Mørk frukt', 'Eik', 'Pepper'],
+    storageRecommendation: 'medium-term',
+    optimalDrinkingWindow: { start: 2, end: 8 },
+    foodPairings: [
+      { dish: 'Grillede ribs', description: 'BBQ-stil' },
+      { dish: 'Lam tajine', description: 'Med tørket frukt' },
+      { dish: 'Modne oster', description: 'Comté eller Manchego' }
+    ],
+    price: 24
+  },
+  {
+    id: '21',
+    name: 'Grand Deffand Rouge',
+    producer: 'Château La Verrerie',
+    year: 2020,
+    color: 'red',
+    appellation: 'Luberon AOP',
+    grapes: ['Syrah', 'Grenache', 'Mourvèdre'],
+    alcoholContent: 14,
+    description: 'Ikonisk cuvée fra Château La Verrerie. Økologisk sertifisert siden 2013. Full av aromatisk kraft og struktur fra Syrah.',
+    tastingNotes: ['Mørke frukter', 'Sort pepper', 'Vanilje', 'Silkemyk'],
+    storageRecommendation: 'medium-term',
+    optimalDrinkingWindow: { start: 2, end: 10 },
+    foodPairings: [
+      { dish: 'Oksekjøtt', description: 'Grillet eller stekt' },
+      { dish: 'Lam med rosmarin', description: 'Sakte stekt' },
+      { dish: 'Kraftige oster', description: 'Roquefort eller Stilton' }
+    ],
+    price: 26
+  },
+  {
+    id: '22',
+    name: 'Hautes Collines Rouge',
+    producer: 'Château La Verrerie',
+    year: 2021,
+    color: 'red',
+    appellation: 'Luberon AOP',
+    grapes: ['Grenache', 'Syrah', 'Cinsault'],
+    alcoholContent: 13.5,
+    description: 'Myk og deilig fruktig rødvin fra økologisk vingård. Lett og tilgjengelig stil.',
+    tastingNotes: ['Røde bær', 'Kirsebær', 'Krydder', 'Smidig'],
+    storageRecommendation: 'drink-soon',
+    optimalDrinkingWindow: { start: 0, end: 4 },
+    foodPairings: [
+      { dish: 'Grillet kylling', description: 'Med urter' },
+      { dish: 'Pizza', description: 'Med italiensk pølse' },
+      { dish: 'Pasta med kjøttsaus', description: 'Bolognese' }
+    ],
+    price: 18
+  },
+  {
+    id: '23',
+    name: 'Luberon Rosé',
+    producer: 'Château La Verrerie',
+    year: 2023,
+    color: 'rosé',
+    appellation: 'Luberon AOP',
+    grapes: ['Grenache', 'Cinsault', 'Mourvèdre'],
+    alcoholContent: 12.5,
+    description: 'Produsert ved saignée-metoden. Lagret på gjær i 3-6 måneder for ekstra tekstur. Provencalsk stil med blek farge.',
+    tastingNotes: ['Parfymert', 'Røde bær', 'Frisk syre', 'Duftende finish'],
+    storageRecommendation: 'drink-now',
+    optimalDrinkingWindow: { start: 0, end: 2 },
+    foodPairings: [
+      { dish: 'Bouillabaisse', description: 'Provencalsk fiskesuppe' },
+      { dish: 'Grillede grønnsaker', description: 'Med fetaost' },
+      { dish: 'Sommerretter', description: 'Lette salater' }
+    ],
+    price: 14
+  },
+  {
+    id: '24',
+    name: 'Luberon Blanc',
+    producer: 'Château La Verrerie',
+    year: 2022,
+    color: 'white',
+    appellation: 'Luberon AOP',
+    grapes: ['Grenache Blanc', 'Roussanne', 'Clairette', 'Bourboulenc'],
+    alcoholContent: 13,
+    description: 'Kompleks blend av fire druevarianter fra økologisk vingård. Balansert og aromatisk.',
+    tastingNotes: ['Hvite blomster', 'Sitrus', 'Fersken', 'Mineralsk'],
+    storageRecommendation: 'drink-soon',
+    optimalDrinkingWindow: { start: 0, end: 3 },
+    foodPairings: [
+      { dish: 'Blekksprut', description: 'Grillet med sitron' },
+      { dish: 'Kylling', description: 'Med kremsaus' },
+      { dish: 'Friske oster', description: 'Chèvre med honning' }
+    ],
+    price: 16
+  },
+  {
+    id: '25',
+    name: 'Les Artemis',
+    producer: 'Domaine de la Citadelle',
+    year: 2020,
+    color: 'red',
+    appellation: 'Luberon AOP',
+    grapes: ['Syrah', 'Grenache', 'Mourvèdre'],
+    alcoholContent: 14,
+    description: 'En av de virkelige stjernene fra domenet. Økologisk produsert vin med stor dybde og kompleksitet.',
+    tastingNotes: ['Mørke kirsebær', 'Trøffel', 'Lær', 'Underskog'],
+    storageRecommendation: 'medium-term',
+    optimalDrinkingWindow: { start: 2, end: 10 },
+    foodPairings: [
+      { dish: 'Vilt', description: 'Hjort eller villsvin' },
+      { dish: 'Oksehale', description: 'Langkokt i rødvin' },
+      { dish: 'Trøffel-retter', description: 'Pasta eller risotto' }
+    ],
+    price: 29
+  },
+  {
+    id: '26',
+    name: 'Le Gouverneur Saint-Auban',
+    producer: 'Domaine de la Citadelle',
+    year: 2019,
+    color: 'red',
+    appellation: 'Luberon AOP',
+    grapes: ['Syrah', 'Grenache', 'Mourvèdre'],
+    alcoholContent: 14.5,
+    description: 'Toppvin fra domenet. Imponerende tett og elegant blend. HVE-sertifisert og økologisk siden 2016.',
+    tastingNotes: ['Konsentrert frukt', 'Vanilje', 'Tobakk', 'Velvet tanniner'],
+    storageRecommendation: 'long-term',
+    optimalDrinkingWindow: { start: 3, end: 15 },
+    foodPairings: [
+      { dish: 'Boeuf Wellington', description: 'Oksemørbrad i deig' },
+      { dish: 'Lammesadel', description: 'Med urter og hvitløk' },
+      { dish: 'Gammel ost', description: 'Pecorino eller Parmigiano' }
+    ],
+    price: 38
+  },
+  {
+    id: '27',
+    name: 'Tradition Rouge',
+    producer: 'Château Val Joanis',
+    year: 2021,
+    color: 'red',
+    appellation: 'Luberon AOP',
+    grapes: ['Grenache', 'Syrah'],
+    alcoholContent: 13.5,
+    description: 'Klassisk Luberon-rødvin fra historisk domene med vakker hage. God verdi for pengene.',
+    tastingNotes: ['Røde bær', 'Provence-urter', 'Pepper', 'Myk'],
+    storageRecommendation: 'drink-soon',
+    optimalDrinkingWindow: { start: 0, end: 4 },
+    foodPairings: [
+      { dish: 'Grillmat', description: 'BBQ og pølser' },
+      { dish: 'Tapas', description: 'Spanske småretter' },
+      { dish: 'Pasta', description: 'Med tomatsaus' }
+    ],
+    price: 14
+  },
+  {
+    id: '28',
+    name: 'Tradition Rosé',
+    producer: 'Château Val Joanis',
+    year: 2023,
+    color: 'rosé',
+    appellation: 'Luberon AOP',
+    grapes: ['Grenache', 'Syrah', 'Cinsault'],
+    alcoholContent: 12.5,
+    description: 'Klassisk Provence-rosé fra eldgammelt domene. Frisk og lett med blek farge.',
+    tastingNotes: ['Jordbær', 'Sitrus', 'Hvite blomster', 'Sprø'],
+    storageRecommendation: 'drink-now',
+    optimalDrinkingWindow: { start: 0, end: 2 },
+    foodPairings: [
+      { dish: 'Grillede reker', description: 'Med sitron' },
+      { dish: 'Niçoise salat', description: 'Med tuna' },
+      { dish: 'Antipasti', description: 'Lett italiensk' }
+    ],
+    price: 13
+  },
+  {
+    id: '29',
+    name: 'Joséphine Rosé',
+    producer: 'Château Val Joanis',
+    year: 2023,
+    color: 'rosé',
+    appellation: 'Luberon AOP',
+    grapes: ['Grenache', 'Cinsault'],
+    alcoholContent: 12.5,
+    description: 'Premium rosé-cuvée oppkalt etter gårdens kvinnelige arving. Elegant og raffinert stil.',
+    tastingNotes: ['Hvit fersken', 'Sitrus', 'Rosenblader', 'Mineralsk'],
+    storageRecommendation: 'drink-now',
+    optimalDrinkingWindow: { start: 0, end: 2 },
+    foodPairings: [
+      { dish: 'Sushi', description: 'Eller sashimi' },
+      { dish: 'Kveite', description: 'Grillet med urter' },
+      { dish: 'Sommerlige salater', description: 'Med sitrusdressing' }
+    ],
+    price: 17
+  },
+  {
+    id: '30',
+    name: 'Réserve Les Agasses',
+    producer: 'Château Val Joanis',
+    year: 2022,
+    color: 'white',
+    appellation: 'IGP Vaucluse',
+    grapes: ['Viognier'],
+    alcoholContent: 13,
+    description: '100% Viognier fra Val Joanis. Aromatisk og fyldig hvitvin med tropiske fruktnoter.',
+    tastingNotes: ['Aprikos', 'Fersken', 'Honningblomst', 'Fyldig'],
+    storageRecommendation: 'drink-soon',
+    optimalDrinkingWindow: { start: 0, end: 3 },
+    foodPairings: [
+      { dish: 'Thai-retter', description: 'Med kokosmelk' },
+      { dish: 'Kylling', description: 'Med fruktysaus' },
+      { dish: 'Krydrete retter', description: 'Indiske curryer' }
+    ],
+    price: 16
+  },
+  {
+    id: '31',
+    name: 'Luberon Rouge Bio',
+    producer: 'Château Fontvert',
+    year: 2021,
+    color: 'red',
+    appellation: 'Luberon AOP',
+    grapes: ['Syrah', 'Grenache', 'Mourvèdre'],
+    alcoholContent: 13.5,
+    description: 'Økologisk og biodynamisk sertifisert (Demeter). Vinner av internasjonale priser. Nær Lourmarin landsby.',
+    tastingNotes: ['Modne bær', 'Provence-urter', 'Krydder', 'Balansert'],
+    storageRecommendation: 'short-term',
+    optimalDrinkingWindow: { start: 0, end: 5 },
+    foodPairings: [
+      { dish: 'Grillet lam', description: 'Med timian og rosmarin' },
+      { dish: 'Ratatouille', description: 'Grønnsaksgrytte' },
+      { dish: 'Charcuteri', description: 'Provencalsk pølse' }
+    ],
+    price: 15
+  },
+  {
+    id: '32',
+    name: 'Fontvert Blanc Bio',
+    producer: 'Château Fontvert',
+    year: 2022,
+    color: 'white',
+    appellation: 'Luberon AOP',
+    grapes: ['Vermentino', 'Grenache Blanc'],
+    alcoholContent: 12.5,
+    description: 'Biodynamisk hvitvin fra 20 hektar vingård. Frisk og aromatisk med god mineralitet.',
+    tastingNotes: ['Sitrus', 'Hvite blomster', 'Mineralsk', 'Sprø'],
+    storageRecommendation: 'drink-now',
+    optimalDrinkingWindow: { start: 0, end: 2 },
+    foodPairings: [
+      { dish: 'Grillet fisk', description: 'Med fennikel' },
+      { dish: 'Salater', description: 'Med sitrusdressing' },
+      { dish: 'Geiteost', description: 'Frisk chèvre' }
+    ],
+    price: 13
+  },
+  {
+    id: '33',
+    name: 'Mas des Infirmières Rouge',
+    producer: 'Mas des Infirmières',
+    year: 2020,
+    color: 'red',
+    appellation: 'Luberon AOP',
+    grapes: ['Syrah', 'Grenache'],
+    alcoholContent: 13.5,
+    description: 'Fra Ridley Scotts økologiske vingård. Bee Friendly og HVE-sertifisert. 11 hektar med moderne teknikker.',
+    tastingNotes: ['Røde frukter', 'Krydder', 'Provence-urter', 'Elegant'],
+    storageRecommendation: 'short-term',
+    optimalDrinkingWindow: { start: 0, end: 6 },
+    foodPairings: [
+      { dish: 'Grillet kjøtt', description: 'Entrecôte eller lam' },
+      { dish: 'Provencalsk grytte', description: 'Med oliven' },
+      { dish: 'Modne oster', description: 'Tomme de Provence' }
+    ],
+    price: 22
+  },
+  {
+    id: '34',
+    name: 'Fontenille Rouge',
+    producer: 'Domaine de Fontenille',
+    year: 2021,
+    color: 'red',
+    appellation: 'Luberon AOP',
+    grapes: ['Grenache', 'Syrah'],
+    alcoholContent: 13.5,
+    description: 'Klassisk rødvin fra historisk domene med 800 års vinhistorie. Økologisk sertifisert. 70% Grenache, 30% Syrah.',
+    tastingNotes: ['Røde bær', 'Krydder', 'Provence-urter', 'Balansert'],
+    storageRecommendation: 'short-term',
+    optimalDrinkingWindow: { start: 0, end: 5 },
+    foodPairings: [
+      { dish: 'Grillet lam', description: 'Med rosmarin' },
+      { dish: 'Provencalsk grytte', description: 'Med oliven' },
+      { dish: 'Charcuteri', description: 'Lufttørket skinke' }
+    ],
+    price: 18
+  },
+  {
+    id: '35',
+    name: 'Alphonse Rouge',
+    producer: 'Domaine de Fontenille',
+    year: 2020,
+    color: 'red',
+    appellation: 'Luberon AOP',
+    grapes: ['Syrah', 'Grenache', 'Mourvèdre'],
+    alcoholContent: 14,
+    description: 'Premium cuvée oppkalt etter familiens forfader. Kompleks og elegant med moderne minimalistisk vinifikasjon.',
+    tastingNotes: ['Mørke frukter', 'Vanilje', 'Pepper', 'Silkemyke tanniner'],
+    storageRecommendation: 'medium-term',
+    optimalDrinkingWindow: { start: 2, end: 10 },
+    foodPairings: [
+      { dish: 'Andebryst', description: 'Med kirsebærsaus' },
+      { dish: 'Lammestek', description: 'Med urter de Provence' },
+      { dish: 'Kraftige oster', description: 'Comté eller Manchego' }
+    ],
+    price: 32
+  },
+  {
+    id: '36',
+    name: 'Alphonse Blanc',
+    producer: 'Domaine de Fontenille',
+    year: 2022,
+    color: 'white',
+    appellation: 'Luberon AOP',
+    grapes: ['Grenache Blanc', 'Roussanne', 'Vermentino'],
+    alcoholContent: 13,
+    description: 'Premium hvitvin fra økologisk vingård. Kombinerer historiske teknikker med moderne minimal intervensjon.',
+    tastingNotes: ['Hvite blomster', 'Aprikos', 'Mandel', 'Mineralsk finish'],
+    storageRecommendation: 'short-term',
+    optimalDrinkingWindow: { start: 0, end: 5 },
+    foodPairings: [
+      { dish: 'Sjømat', description: 'Kamskjell eller hummer' },
+      { dish: 'Kylling', description: 'Med kremsaus' },
+      { dish: 'Hvite oster', description: 'Brie eller chèvre' }
+    ],
+    price: 24
+  },
+  {
+    id: '37',
+    name: 'Fontenille Rosé',
+    producer: 'Domaine de Fontenille',
+    year: 2023,
+    color: 'rosé',
+    appellation: 'Luberon AOP',
+    grapes: ['Grenache', 'Syrah', 'Cinsault'],
+    alcoholContent: 12.5,
+    description: 'Elegant rosé fra 39 hektar økologisk vingård. Frisk og aromatisk med vakker lakserosa farge.',
+    tastingNotes: ['Jordbær', 'Sitrus', 'Hvite blomster', 'Frisk'],
+    storageRecommendation: 'drink-now',
+    optimalDrinkingWindow: { start: 0, end: 2 },
+    foodPairings: [
+      { dish: 'Grillede reker', description: 'Med aioli' },
+      { dish: 'Salat Niçoise', description: 'Med tuna' },
+      { dish: 'Provencalsk antipasti', description: 'Tapenader og oliven' }
+    ],
+    price: 17
+  },
+  {
+    id: '38',
+    name: 'Celestine Rouge',
+    producer: 'Château de Mille',
+    year: 2021,
+    color: 'red',
+    appellation: 'Luberon AOP',
+    grapes: ['Grenache', 'Syrah', 'Carignan'],
+    alcoholContent: 13.5,
+    description: 'Elegant og balansert rødvin fra 28 hektar økologisk vingård. Perfekt balanse mellom fruktfriskhet og smeltende tanniner.',
+    tastingNotes: ['Røde bær', 'Kirsebær', 'Provence-urter', 'Elegant'],
+    storageRecommendation: 'short-term',
+    optimalDrinkingWindow: { start: 0, end: 6 },
+    foodPairings: [
+      { dish: 'Grillet kylling', description: 'Med urter' },
+      { dish: 'Pasta', description: 'Med tomatsaus' },
+      { dish: 'Pizza', description: 'Med italiensk pølse' }
+    ],
+    price: 16
+  },
+  {
+    id: '39',
+    name: 'Celestine Blanc',
+    producer: 'Château de Mille',
+    year: 2022,
+    color: 'white',
+    appellation: 'Luberon AOP',
+    grapes: ['Roussanne', 'Clairette', 'Ugni Blanc'],
+    alcoholContent: 12.5,
+    description: 'Sjarmerende og balansert hvitvin. Kombinerer aromatisk rikdom med livlig friskhet.',
+    tastingNotes: ['Hvite blomster', 'Sitrus', 'Pære', 'Frisk syre'],
+    storageRecommendation: 'drink-soon',
+    optimalDrinkingWindow: { start: 0, end: 3 },
+    foodPairings: [
+      { dish: 'Fisk', description: 'Grillet eller dampet' },
+      { dish: 'Salater', description: 'Med sitrusdressing' },
+      { dish: 'Geiteost', description: 'Frisk chèvre' }
+    ],
+    price: 15
+  },
+  {
+    id: '40',
+    name: 'Château de Mille Rosé',
+    producer: 'Château de Mille',
+    year: 2023,
+    color: 'rosé',
+    appellation: 'Luberon AOP',
+    grapes: ['Grenache', 'Cinsault', 'Syrah'],
+    alcoholContent: 12.5,
+    description: 'Klassisk Provence-rosé fra Luberons eldste vingård. Produsert fra både røde og hvite druer for ekstra kompleksitet.',
+    tastingNotes: ['Røde bær', 'Sitrus', 'Rosenblader', 'Mineralsk'],
+    storageRecommendation: 'drink-now',
+    optimalDrinkingWindow: { start: 0, end: 2 },
+    foodPairings: [
+      { dish: 'Grillet fisk', description: 'Med fennikel' },
+      { dish: 'Sommerlige salater', description: 'Med fetaost' },
+      { dish: 'Antipasti', description: 'Lette foretter' }
+    ],
+    price: 14
+  },
+  {
+    id: '41',
+    name: 'Château de Mille Blanc',
+    producer: 'Château de Mille',
+    year: 2022,
+    color: 'white',
+    appellation: 'Luberon AOP',
+    grapes: ['Grenache Blanc', 'Bourboulenc', 'Marsanne'],
+    alcoholContent: 13,
+    description: 'Hvitvin fra utvidet utvalg av druevarianter. Sertifisert økologisk av Ecocert siden 2022.',
+    tastingNotes: ['Fersken', 'Hvite blomster', 'Mandel', 'Balansert'],
+    storageRecommendation: 'drink-soon',
+    optimalDrinkingWindow: { start: 0, end: 3 },
+    foodPairings: [
+      { dish: 'Blekksprut', description: 'Grillet med sitron' },
+      { dish: 'Risotto', description: 'Med asparges' },
+      { dish: 'Friske oster', description: 'Mozzarella eller chèvre' }
+    ],
+    price: 16
+  },
+  {
+    id: '42',
+    name: 'Bastide de Rhodares Rouge',
+    producer: 'Cave Louérion - Terres d\'Alliance',
+    year: 2021,
+    color: 'red',
+    appellation: 'Luberon AOP',
+    grapes: ['Grenache', 'Syrah'],
+    alcoholContent: 13.5,
+    description: 'Fra steinete terroir mellom Lourmarin og Cadenet hvor druene når full modenhet. Populær kooperativ-vin.',
+    tastingNotes: ['Modne røde frukter', 'Krydder', 'Pepper', 'Smidig'],
+    storageRecommendation: 'drink-soon',
+    optimalDrinkingWindow: { start: 0, end: 4 },
+    foodPairings: [
+      { dish: 'Grillmat', description: 'BBQ og pølser' },
+      { dish: 'Provencalsk grytte', description: 'Med oliven' },
+      { dish: 'Oster', description: 'Middels modne' }
+    ],
+    price: 12
+  },
+  {
+    id: '43',
+    name: 'Bastide de Rhodares Rosé',
+    producer: 'Cave Louérion - Terres d\'Alliance',
+    year: 2023,
+    color: 'rosé',
+    appellation: 'Luberon AOP',
+    grapes: ['Grenache', 'Cinsault'],
+    alcoholContent: 12.5,
+    description: 'Frisk og lett rosé fra kooperativet i Lourmarin. Utmerket verdi for pengene.',
+    tastingNotes: ['Jordbær', 'Melon', 'Sitrus', 'Sprø'],
+    storageRecommendation: 'drink-now',
+    optimalDrinkingWindow: { start: 0, end: 1 },
+    foodPairings: [
+      { dish: 'Grillede grønnsaker', description: 'Med fetaost' },
+      { dish: 'Salater', description: 'Sommerlige' },
+      { dish: 'Lette forretter', description: 'Tapas' }
+    ],
+    price: 11
+  },
+  {
+    id: '44',
+    name: 'Bastide de Rhodares Blanc',
+    producer: 'Cave Louérion - Terres d\'Alliance',
+    year: 2022,
+    color: 'white',
+    appellation: 'Luberon AOP',
+    grapes: ['Grenache Blanc', 'Vermentino', 'Ugni Blanc'],
+    alcoholContent: 12.5,
+    description: 'Frisk hvitvin fra steinete terroir. God daglig drikkevin fra lokalt kooperativ.',
+    tastingNotes: ['Sitrus', 'Hvite blomster', 'Grønne epler', 'Frisk'],
+    storageRecommendation: 'drink-now',
+    optimalDrinkingWindow: { start: 0, end: 2 },
+    foodPairings: [
+      { dish: 'Skalldyr', description: 'Reker eller blåskjell' },
+      { dish: 'Salater', description: 'Med sitrusdressing' },
+      { dish: 'Frisk geiteost', description: 'Med urter' }
+    ],
+    price: 11
+  }
+];

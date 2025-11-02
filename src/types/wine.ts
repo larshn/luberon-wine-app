@@ -12,29 +12,35 @@ export interface FoodPairing {
   description?: string;
 }
 
-export interface Wine {
-  id: string;
-  name: string;
-  producer: string;
+export interface Vintage {
   year: number;
-  color: WineColor;
-  appellation: string;
-  grapes: string[];
   alcoholContent: number;
-  description: string;
   tastingNotes: string[];
   storageRecommendation: StorageRecommendation;
   optimalDrinkingWindow: {
     start: number; // years from vintage
     end: number;
   };
-  foodPairings: FoodPairing[];
   price?: number; // in EUR
+  notes?: string; // Specific notes for this vintage
+}
+
+export interface Wine {
+  id: string;
+  name: string;
+  producer: string;
+  color: WineColor;
+  appellation: string;
+  grapes: string[];
+  description: string; // General description of the wine
+  foodPairings: FoodPairing[];
+  vintages: Vintage[]; // Available vintages
   imageUrl?: string;
 }
 
 export interface CellarWine {
   wineId: string;
+  year: number; // Specific vintage year
   quantity: number;
   purchaseDate?: string;
   location?: string;

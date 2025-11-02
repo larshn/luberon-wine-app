@@ -152,6 +152,15 @@ export default function VintageChart() {
           med perfekt balanse mellom varme, nedbør og modning.
         </p>
       </div>
+
+      {/* Disclaimer */}
+      <div style={{ marginTop: '1.5rem', padding: '1rem', background: '#f5f5f5', borderRadius: '6px', borderLeft: '4px solid #d4af37' }}>
+        <p style={{ fontSize: '0.85rem', color: '#666', lineHeight: '1.6' }}>
+          💡 <strong>Merk:</strong> Disse vurderingene representerer regionale trender i Luberon.
+          Individuelle produsenter kan variere betydelig, og moderne vinifikasjonsteknologi har gjort det mulig
+          å produsere utmerkede viner selv i utfordrende år. Årganger fra 2022 og senere er preliminære vurderinger.
+        </p>
+      </div>
     </div>
   );
 }
