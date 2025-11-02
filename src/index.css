@@ -791,10 +791,11 @@ body {
   justify-content: space-between;
   height: 300px;
   padding: var(--spacing-md);
-  background: linear-gradient(to top, var(--wine-cream) 0%, transparent 100%);
+  background: linear-gradient(to top, #f5f0e8 0%, #fafaf8 100%);
   border-radius: var(--radius-md);
   gap: 4px;
   overflow-x: auto;
+  border: 1px solid var(--border-color);
 }
 
 .vintage-bar-container {
@@ -821,11 +822,14 @@ body {
   border-radius: var(--radius-sm) var(--radius-sm) 0 0;
   transition: all 0.3s ease;
   position: relative;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  min-height: 20px;
 }
 
 .vintage-bar:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  border-color: rgba(0, 0, 0, 0.2);
 }
 
 .vintage-tooltip {

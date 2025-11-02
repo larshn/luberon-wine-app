@@ -1,5 +1,17 @@
 import { useState } from 'react';
-import { vintageRatings, getRatingColor, getRatingLabel } from '../data/vintages';
+import { vintageRatings, getRatingLabel } from '../data/vintages';
+
+// Definere sterkere, mer synlige farger
+const getVisibleRatingColor = (rating: number): string => {
+  switch (rating) {
+    case 5: return '#d4af37'; // Sterk gull
+    case 4: return '#722f37'; // Burgundy
+    case 3: return '#8b4049'; // Middels vinrød
+    case 2: return '#a67c89'; // Lys vinrød
+    case 1: return '#c9b5bb'; // Veldig lys
+    default: return '#e0e0e0';
+  }
+};
 
 export default function VintageChart() {
   const [hoveredYear, setHoveredYear] = useState<number | null>(null);
@@ -14,26 +26,26 @@ export default function VintageChart() {
           🍇 Luberon Årgangskvalitet
         </h2>
         <p style={{ color: '#666', fontSize: '1rem' }}>
-          Vurdering av årgangskulitet siden 2000. Høyere søyle = bedre årgang.
+          Vurdering av årgangskvalitet siden 2000. Høyere søyle = bedre årgang.
         </p>
       </div>
 
       {/* Legend */}
       <div className="vintage-legend">
         <div className="vintage-legend-item">
-          <div className="vintage-legend-color" style={{ background: getRatingColor(5) }}></div>
+          <div className="vintage-legend-color" style={{ background: getVisibleRatingColor(5) }}></div>
           <span>Eksepsjonelt (5★)</span>
         </div>
         <div className="vintage-legend-item">
-          <div className="vintage-legend-color" style={{ background: getRatingColor(4) }}></div>
+          <div className="vintage-legend-color" style={{ background: getVisibleRatingColor(4) }}></div>
           <span>Utmerket (4★)</span>
         </div>
         <div className="vintage-legend-item">
-          <div className="vintage-legend-color" style={{ background: getRatingColor(3) }}></div>
+          <div className="vintage-legend-color" style={{ background: getVisibleRatingColor(3) }}></div>
           <span>God (3★)</span>
         </div>
         <div className="vintage-legend-item">
-          <div className="vintage-legend-color" style={{ background: getRatingColor(2) }}></div>
+          <div className="vintage-legend-color" style={{ background: getVisibleRatingColor(2) }}></div>
           <span>Gjennomsnittlig (2★)</span>
         </div>
       </div>
@@ -42,7 +54,7 @@ export default function VintageChart() {
       <div className="vintage-chart">
         {recentVintages.map((vintage) => {
           const isHovered = hoveredYear === vintage.year;
-          const barHeight = (vintage.rating / 5) * 100;
+          const barHeight = Math.max((vintage.rating / 5) * 100, 5); // Minimum 5% høyde for synlighet
 
           return (
             <div
@@ -56,9 +68,10 @@ export default function VintageChart() {
                   className="vintage-bar"
                   style={{
                     height: `${barHeight}%`,
-                    backgroundColor: getRatingColor(vintage.rating),
-                    opacity: isHovered ? 1 : 0.85,
-                    transform: isHovered ? 'scaleY(1.05)' : 'scaleY(1)'
+                    backgroundColor: getVisibleRatingColor(vintage.rating),
+                    opacity: isHovered ? 1 : 0.95,
+                    transform: isHovered ? 'scaleY(1.05)' : 'scaleY(1)',
+                    minHeight: '20px' // Sikre minimum synlighet
                   }}
                 >
                   {isHovered && (
@@ -76,7 +89,7 @@ export default function VintageChart() {
                   )}
                 </div>
               </div>
-              <div className="vintage-year" style={{ opacity: isHovered ? 1 : 0.7 }}>
+              <div className="vintage-year" style={{ opacity: isHovered ? 1 : 0.8, fontWeight: isHovered ? 700 : 500 }}>
                 {vintage.year}
               </div>
             </div>
@@ -87,7 +100,7 @@ export default function VintageChart() {
       {/* Notable Vintages */}
       <div style={{ marginTop: '2rem', padding: '1.5rem', background: '#fff5ed', borderRadius: '8px', border: '2px solid #ffe4d6' }}>
         <h3 style={{ color: '#722f37', fontSize: '1.2rem', marginBottom: '1rem' }}>
-          ⭐ Eksepsjonelle årganger
+          ⭐ Eksepsjonelle årganger (5★)
         </h3>
         <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
           {vintageRatings.filter(v => v.rating === 5).map(vintage => (
@@ -97,9 +110,11 @@ export default function VintageChart() {
                 padding: '0.75rem 1.5rem',
                 background: 'white',
                 borderRadius: '8px',
-                border: '2px solid #d4af37',
+                border: '3px solid #d4af37',
                 fontWeight: 700,
-                color: '#722f37'
+                fontSize: '1.2rem',
+                color: '#722f37',
+                boxShadow: '0 2px 8px rgba(212, 175, 55, 0.3)'
               }}
             >
               {vintage.year}
