@@ -141,6 +141,36 @@ export const wines: Wine[] = [
       { dish: 'Oksekjøtt bourguignon', description: 'Langkokt i rødvin' },
       { dish: 'Modne oster', description: 'Comté eller gammel Gouda' }
     ],
+    purchaseLocations: [
+      {
+        type: 'chateau',
+        name: 'Château Val Joanis',
+        address: 'Route de Cavaillon',
+        city: 'Pertuis',
+        postalCode: '84120',
+        phone: '+33 4 90 79 88 40',
+        email: 'magasin@val-joanis.com',
+        website: 'https://www.val-joanis.com',
+        coordinates: {
+          lat: 43.711316,
+          lng: 5.468788
+        },
+        openingHours: {
+          monday: '10:00-13:00, 15:00-19:00',
+          tuesday: '10:00-13:00, 15:00-19:00',
+          wednesday: '10:00-13:00, 15:00-19:00',
+          thursday: '10:00-13:00, 15:00-19:00',
+          friday: '10:00-13:00, 15:00-19:00',
+          saturday: '10:00-13:00, 15:00-19:00',
+          sunday: 'Stengt',
+          notes: 'Høysesong (april-september): Man-Lør 10:00-13:00, 15:00-19:00. Lavsesong (januar-mars): Man-Fre'
+        },
+        priceRange: '€12-35',
+        notes: 'Vakker hage, Jardins Remarquables. Vinsmaking tilgjengelig.',
+        bookingRequired: false,
+        tastingAvailable: true
+      }
+    ],
     vintages: [
       {
         year: 2020,
