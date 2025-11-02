@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Wine } from './types/wine';
+import type { Wine } from './types/wine';
 import { wines as seedWines } from './data/wines';
 import { loadCellar } from './utils/storage';
 import WineCatalog from './components/WineCatalog';

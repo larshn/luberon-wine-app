@@ -1,4 +1,4 @@
-import { StorageRecommendation, Wine } from '../types/wine';
+import type { StorageRecommendation, Wine } from '../types/wine';
 
 export const getStorageLabel = (recommendation: StorageRecommendation): string => {
   const labels: Record<StorageRecommendation, string> = {

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Wine } from '../types/wine';
+import type { Wine } from '../types/wine';
 import {
   loadCellar,
   removeFromCellar,
@@ -9,6 +9,13 @@ import {
 } from '../utils/storage';
 import { getWineColorClass, getStorageLabel, getStorageColor } from '../utils/wine';
 
+type CellarWineWithDetails = {
+  wine: Wine;
+  quantity: number;
+  location?: string;
+  notes?: string;
+};
+
 interface WineCellarProps {
   wines: Wine[];
   onViewWine: (wine: Wine) => void;
@@ -16,7 +23,7 @@ interface WineCellarProps {
 }
 
 export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarProps) {
-  const [cellarWines, setCellarWines] = useState<Array<{ wine: Wine; quantity: number; location?: string; notes?: string }>>([]);
+  const [cellarWines, setCellarWines] = useState<CellarWineWithDetails[]>([]);
   const [showExportModal, setShowExportModal] = useState(false);
   const [showImportModal, setShowImportModal] = useState(false);
   const [importData, setImportData] = useState('');
@@ -24,19 +31,20 @@ export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarPr
 
   const loadCellarWines = () => {
     const cellar = loadCellar();
-    const winesWithDetails = cellar.wines
+    const winesWithDetails: CellarWineWithDetails[] = cellar.wines
       .map(cellarWine => {
         const wineDetails = wines.find(w => w.id === cellarWine.wineId);
-        return wineDetails
-          ? {
-              wine: wineDetails,
-              quantity: cellarWine.quantity,
-              location: cellarWine.location,
-              notes: cellarWine.notes
-            }
-          : null;
+        if (!wineDetails) return null;
+
+        const result: CellarWineWithDetails = {
+          wine: wineDetails,
+          quantity: cellarWine.quantity,
+          ...(cellarWine.location && { location: cellarWine.location }),
+          ...(cellarWine.notes && { notes: cellarWine.notes })
+        };
+        return result;
       })
-      .filter((w): w is { wine: Wine; quantity: number; location?: string; notes?: string } => w !== null);
+      .filter((w): w is CellarWineWithDetails => w !== null);
 
     setCellarWines(winesWithDetails);
   };

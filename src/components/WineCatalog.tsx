@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { Wine, WineColor } from '../types/wine';
+import type { Wine, WineColor } from '../types/wine';
 import { getStorageLabel, getStorageColor, getWineColorClass } from '../utils/wine';
 
 interface WineCatalogProps {

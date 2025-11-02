@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Wine } from '../types/wine';
+import type { Wine } from '../types/wine';
 import {
   getStorageLabel,
   getStorageColor,

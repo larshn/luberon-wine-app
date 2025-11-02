@@ -1,4 +1,4 @@
-import { WineCellar, CellarWine } from '../types/wine';
+import type { WineCellar, CellarWine } from '../types/wine';
 
 const STORAGE_KEY = 'luberon-wine-cellar';
 
