@@ -1,4 +1,4 @@
-# 🍷 Luberon Vinkatalog
+# 🍷 Luberon på Glass
 
 En omfattende webapp for å utforske og administrere viner fra Luberon-regionen i Provence, Frankrike.
 

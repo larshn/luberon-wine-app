@@ -40,7 +40,7 @@ function App() {
       <header className="header">
         <div className="container header-content">
           <div>
-            <h1>🍷 Luberon Vinkatalog</h1>
+            <h1>🍷 Luberon på Glass</h1>
             <p>Découvrez les vins du Luberon</p>
           </div>
         </div>
