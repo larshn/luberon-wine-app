@@ -286,6 +286,35 @@ export const purchaseLocations: Record<string, PurchaseLocation> = {
     notes: 'Vinkooperativ mellom Lourmarin, Cadenet og Cucuron. Bastide de Rhodares-serien kommer herfra.',
     bookingRequired: false,
     tastingAvailable: true
+  },
+
+  'cave-sylla': {
+    type: 'wine-shop',
+    name: 'Cave de Sylla',
+    address: '406, avenue de Lançon',
+    city: 'Apt',
+    postalCode: '84400',
+    phone: '+33 4 90 04 60 37',
+    email: 'chezsyllaapt@sylla.fr',
+    website: 'https://www.sylla.fr',
+    coordinates: {
+      lat: 43.883788,
+      lng: 5.38039
+    },
+    openingHours: {
+      monday: '09:00-12:30, 14:30-19:00',
+      tuesday: '09:00-12:30, 14:30-19:00',
+      wednesday: '09:00-12:30, 14:30-19:00',
+      thursday: '09:00-12:30, 14:30-19:00',
+      friday: '09:00-12:30, 14:30-19:00',
+      saturday: '09:00-12:30, 14:30-19:00',
+      sunday: 'Stengt',
+      notes: 'Sommertid (juli-august): Også åpen søndager 09:30-13:00. Stengt 25. desember.'
+    },
+    priceRange: '€8-20',
+    notes: 'Vinkooperativ med 113 vinprodusenter og 1000 hektar vinmarker. Etablert 1925. Restaurant med vin- og ostesmakinger.',
+    bookingRequired: false,
+    tastingAvailable: true
   }
 };
 

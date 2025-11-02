@@ -1775,5 +1775,132 @@ export const wines: Wine[] = [
         price: 22
       }
     ]
+  },
+
+  // Cave de Sylla - Apt
+  {
+    id: 'sylla-pensines-blanc',
+    name: 'Les Pensines Blanc',
+    producer: 'Cave de Sylla',
+    color: 'white',
+    appellation: 'Luberon AOP',
+    grapes: ['Clairette', 'Roussanne', 'Grenache Blanc'],
+    description: 'Lett og balansert hvitvin med vakre fruktuttrykk. Fra vinkooperativ med 113 produsenter i Apt.',
+    foodPairings: [
+      { dish: 'Aperitif', description: 'Perfekt som aperitif' },
+      { dish: 'Sjømatgrateng', description: 'Passer godt til sjømatretter' },
+      { dish: 'Sitronfromage', description: 'God til desserter med sitrus' }
+    ],
+    purchaseLocations: [purchaseLocations['cave-sylla']],
+    vintages: [
+      {
+        year: 2024,
+        alcoholContent: 13,
+        tastingNotes: ['Hvite blomster', 'Fersken', 'Sitrus', 'Frisk', 'Mineralsk'],
+        storageRecommendation: 'drink-now',
+        optimalDrinkingWindow: { start: 0, end: 2 },
+        price: 5.45
+      }
+    ]
+  },
+  {
+    id: 'sylla-pensines-rose',
+    name: 'Les Pensines Rosé',
+    producer: 'Cave de Sylla',
+    color: 'rosé',
+    appellation: 'Luberon AOP',
+    grapes: ['Cinsault', 'Grenache', 'Roussanne', 'Syrah'],
+    description: 'Lett og frisk rosévin, perfekt for sommergrilling. Delikat med små røde frukter og sitrus.',
+    foodPairings: [
+      { dish: 'Aperitif', description: 'Utmerket som aperitif' },
+      { dish: 'Grillmat', description: 'Perfekt til sommer-BBQ' },
+      { dish: 'Fruktsalat', description: 'God til lette desserter' }
+    ],
+    purchaseLocations: [purchaseLocations['cave-sylla']],
+    vintages: [
+      {
+        year: 2024,
+        alcoholContent: 13,
+        tastingNotes: ['Jordbær', 'Sitron', 'Blomster', 'Frisk', 'Rund'],
+        storageRecommendation: 'drink-now',
+        optimalDrinkingWindow: { start: 0, end: 2 },
+        price: 5.45
+      }
+    ]
+  },
+  {
+    id: 'sylla-pensines-rouge',
+    name: 'Les Pensines Rouge',
+    producer: 'Cave de Sylla',
+    color: 'red',
+    appellation: 'Luberon AOP',
+    grapes: ['Grenache'],
+    description: 'Lett og balansert rødvin for hverdagsglede. Silkemyk og fruktig.',
+    foodPairings: [
+      { dish: 'Grillet kjøtt', description: 'Passer til enklere grillretter' },
+      { dish: 'Pizza', description: 'God til italiensk mat' },
+      { dish: 'Pastaretter', description: 'Allsidig til hverdagsmat' }
+    ],
+    purchaseLocations: [purchaseLocations['cave-sylla']],
+    vintages: [
+      {
+        year: 2023,
+        alcoholContent: 13,
+        tastingNotes: ['Jordbær', 'Kirsebær', 'Krydder', 'Silkemyk', 'Lett'],
+        storageRecommendation: 'drink-now',
+        optimalDrinkingWindow: { start: 0, end: 3 },
+        price: 5.45
+      }
+    ]
+  },
+  {
+    id: 'sylla-grand-marrenon',
+    name: 'Grand Marrenon',
+    producer: 'Cave de Sylla',
+    color: 'red',
+    appellation: 'Luberon AOP',
+    grapes: ['Syrah', 'Grenache'],
+    description: 'Premium rødvin fra Les Parcellaires-serien. Streng utvalg av gamle vinstokker og terroir med lav avling. Rik og silkemyk med integrerte tanniner.',
+    foodPairings: [
+      { dish: 'Oksekotelett', description: 'Perfekt til rødt kjøtt' },
+      { dish: 'Vilt', description: 'Utmerket til viltgryter' },
+      { dish: 'Moden ost', description: 'God til kraftige oster' }
+    ],
+    purchaseLocations: [purchaseLocations['cave-sylla']],
+    vintages: [
+      {
+        year: 2023,
+        alcoholContent: 14.5,
+        tastingNotes: ['Modne frukter', 'Konfiturerte bær', 'Tobakk', 'Lær', 'Svarte oliven', 'Silkemyk'],
+        storageRecommendation: 'medium-term',
+        optimalDrinkingWindow: { start: 1, end: 10 },
+        price: 11.90
+      }
+    ]
+  },
+  {
+    id: 'sylla-gardarem',
+    name: 'GARDAREM',
+    producer: 'Cave de Sylla',
+    color: 'red',
+    appellation: 'Luberon AOP',
+    grapes: ['Syrah', 'Grenache'],
+    description: 'Eksklusiv og konsentrert rødvin fra høytliggende vingårder (400-470m) i Nord-Luberon. Modnet i nye franske eikefat fra Tronçais. Begrenset produksjon med stort lagringspotensi al.',
+    foodPairings: [
+      { dish: 'Vilt', description: 'Perfekt til storviltsretter' },
+      { dish: 'Confierte gryte', description: 'Rik til langtidsstekte retter' },
+      { dish: 'Kraftige kjøttretter', description: 'Kompleks vin til komplekse retter' }
+    ],
+    purchaseLocations: [purchaseLocations['cave-sylla']],
+    vintages: [
+      {
+        year: 2021,
+        alcoholContent: 15,
+        tastingNotes: ['Konsentrasjon', 'Mineralitet', 'Fylde', 'Fløyelsmyk', 'Kompleks', 'Eikefat'],
+        storageRecommendation: 'long-term',
+        optimalDrinkingWindow: { start: 3, end: 15 },
+        price: 42.20
+      }
+    ]
   }
 ];
