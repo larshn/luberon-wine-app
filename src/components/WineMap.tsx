@@ -7,6 +7,7 @@ import type { PurchaseLocation } from '../types/wine';
 interface WineMapProps {
   wines: Wine[];
   onViewWine?: (wine: Wine) => void;
+  onViewProducer?: (producerName: string) => void;
 }
 
 interface LocationWithWines {
@@ -27,7 +28,7 @@ const wineIcon = new Icon({
   popupAnchor: [0, -32]
 });
 
-export default function WineMap({ wines, onViewWine }: WineMapProps) {
+export default function WineMap({ wines, onViewWine, onViewProducer }: WineMapProps) {
   // Extract unique locations with their associated wines
   const locationsMap = new Map<string, LocationWithWines>();
 
@@ -131,46 +132,26 @@ export default function WineMap({ wines, onViewWine }: WineMapProps) {
                       </p>
                     )}
 
-                    <div style={{
-                      marginTop: '1rem',
-                      paddingTop: '1rem',
-                      borderTop: '1px solid #ffe4d6'
-                    }}>
+                    {locationWines.length > 0 && (
                       <div style={{
-                        fontSize: '0.9rem',
-                        fontWeight: 600,
-                        color: '#722f37',
-                        marginBottom: '0.5rem'
+                        marginTop: '1rem',
+                        paddingTop: '1rem',
+                        borderTop: '1px solid #ffe4d6'
                       }}>
-                        🍷 Viner fra denne vingården ({locationWines.length}):
+                        <p
+                          style={{
+                            fontSize: '0.9rem',
+                            color: onViewProducer ? '#722f37' : '#666',
+                            cursor: onViewProducer ? 'pointer' : 'default',
+                            textDecoration: onViewProducer ? 'underline' : 'none',
+                            fontWeight: onViewProducer ? 600 : 400
+                          }}
+                          onClick={() => onViewProducer && onViewProducer(location.name)}
+                        >
+                          🍷 {locationWines.length} {locationWines.length === 1 ? 'vin' : 'viner'} fra denne vingården
+                        </p>
                       </div>
-
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                        {locationWines.map(wine => (
-                          <div
-                            key={wine.id}
-                            style={{
-                              padding: '0.5rem',
-                              background: '#f5f5f5',
-                              borderRadius: '6px',
-                              cursor: onViewWine ? 'pointer' : 'default'
-                            }}
-                            onClick={() => onViewWine && onViewWine(wine)}
-                          >
-                            <div style={{ fontWeight: 600, fontSize: '0.9rem', color: '#722f37' }}>
-                              {wine.name}
-                            </div>
-                            <div style={{ fontSize: '0.8rem', color: '#666' }}>
-                              {wine.color === 'red' && '🍷 Rødvin'}
-                              {wine.color === 'white' && '🥂 Hvitvin'}
-                              {wine.color === 'rosé' && '🌸 Rosévin'}
-                              {' • '}
-                              {wine.grapes.join(', ')}
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
+                    )}
 
                     {location.openingHours && (
                       <div style={{

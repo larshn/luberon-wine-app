@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import type { Wine, WineColor } from '../types/wine';
 import { getStorageLabel } from '../utils/wine';
 import VintageChart from './VintageChart';
@@ -6,13 +6,14 @@ import VintageChart from './VintageChart';
 interface WineCatalogProps {
   wines: Wine[];
   onViewWine: (wine: Wine) => void;
+  initialProducer?: string | null;
 }
 
 const getStorageClass = (rec: string) => {
   return rec.replace(/-/g, '-');
 };
 
-export default function WineCatalog({ wines, onViewWine }: WineCatalogProps) {
+export default function WineCatalog({ wines, onViewWine, initialProducer }: WineCatalogProps) {
   const [searchTerm, setSearchTerm] = useState('');
   const [filterColor, setFilterColor] = useState<WineColor | 'all'>('all');
   const [filterProducer, setFilterProducer] = useState<string>('all');
@@ -22,6 +23,13 @@ export default function WineCatalog({ wines, onViewWine }: WineCatalogProps) {
     const unique = new Set(wines.map(w => w.producer));
     return Array.from(unique).sort();
   }, [wines]);
+
+  // Set filter when initialProducer is provided
+  useEffect(() => {
+    if (initialProducer) {
+      setFilterProducer(initialProducer);
+    }
+  }, [initialProducer]);
 
   // Helper to get latest vintage from a wine
   const getLatestVintage = (wine: Wine) => {

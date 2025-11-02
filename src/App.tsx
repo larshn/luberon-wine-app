@@ -14,6 +14,7 @@ type View = 'catalog' | 'cellar' | 'food-pairing' | 'chips-pairing' | 'map';
 function App() {
   const [currentView, setCurrentView] = useState<View>('catalog');
   const [selectedWine, setSelectedWine] = useState<Wine | null>(null);
+  const [selectedProducer, setSelectedProducer] = useState<string | null>(null);
   const [cellarCount, setCellarCount] = useState(0);
 
   useEffect(() => {
@@ -28,6 +29,12 @@ function App() {
 
   const handleBackToCatalog = () => {
     setSelectedWine(null);
+  };
+
+  const handleViewProducer = (producerName: string) => {
+    setSelectedProducer(producerName);
+    setSelectedWine(null);
+    setCurrentView('catalog');
   };
 
   const handleCellarUpdate = () => {
@@ -56,43 +63,47 @@ function App() {
             }}
             className={`nav-button ${currentView === 'catalog' && !selectedWine ? 'active' : ''}`}
           >
-            📖 Vinkatalog
+            📖 <span className="nav-button-text">Vinkatalog</span>
           </button>
           <button
             onClick={() => {
               setCurrentView('food-pairing');
               setSelectedWine(null);
+              setSelectedProducer(null);
             }}
             className={`nav-button ${currentView === 'food-pairing' && !selectedWine ? 'active' : ''}`}
           >
-            🍽️ Mat til Vin
+            🍽️ <span className="nav-button-text">Mat til Vin</span>
           </button>
           <button
             onClick={() => {
               setCurrentView('chips-pairing');
               setSelectedWine(null);
+              setSelectedProducer(null);
             }}
             className={`nav-button ${currentView === 'chips-pairing' && !selectedWine ? 'active' : ''}`}
           >
-            🥔 Vin & Potetgull
+            🥔 <span className="nav-button-text">Vin & Potetgull</span>
           </button>
           <button
             onClick={() => {
               setCurrentView('map');
               setSelectedWine(null);
+              setSelectedProducer(null);
             }}
             className={`nav-button ${currentView === 'map' && !selectedWine ? 'active' : ''}`}
           >
-            🗺️ Vinkart
+            🗺️ <span className="nav-button-text">Vinkart</span>
           </button>
           <button
             onClick={() => {
               setCurrentView('cellar');
               setSelectedWine(null);
+              setSelectedProducer(null);
             }}
             className={`nav-button ${currentView === 'cellar' && !selectedWine ? 'active' : ''}`}
           >
-            🏺 Min Vinkjeller
+            🏺 <span className="nav-button-text">Min Vinkjeller</span>
             {cellarCount > 0 && (
               <span className="nav-badge">{cellarCount}</span>
             )}
@@ -109,13 +120,13 @@ function App() {
               onCellarUpdate={handleCellarUpdate}
             />
           ) : currentView === 'catalog' ? (
-            <WineCatalog wines={seedWines} onViewWine={handleViewWine} />
+            <WineCatalog wines={seedWines} onViewWine={handleViewWine} initialProducer={selectedProducer} />
           ) : currentView === 'food-pairing' ? (
             <FoodPairing wines={seedWines} onViewWine={handleViewWine} />
           ) : currentView === 'chips-pairing' ? (
             <ChipsPairing wines={seedWines} onViewWine={handleViewWine} />
           ) : currentView === 'map' ? (
-            <WineMap wines={seedWines} onViewWine={handleViewWine} />
+            <WineMap wines={seedWines} onViewWine={handleViewWine} onViewProducer={handleViewProducer} />
           ) : (
             <WineCellar
               wines={seedWines}

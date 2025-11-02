@@ -750,8 +750,19 @@ body {
   }
 
   .nav-button {
-    font-size: 0.9rem;
-    padding: var(--spacing-sm);
+    font-size: 1.5rem;
+    padding: var(--spacing-sm) var(--spacing-xs);
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .nav-button-text {
+    display: none;
+  }
+
+  .nav-badge {
+    top: 4px;
+    right: 4px;
   }
 }
 
