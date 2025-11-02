@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import type { Wine, WineColor } from '../types/wine';
 import { getStorageLabel } from '../utils/wine';
+import VintageChart from './VintageChart';
 
 interface WineCatalogProps {
   wines: Wine[];
@@ -52,6 +53,8 @@ export default function WineCatalog({ wines, onViewWine }: WineCatalogProps) {
         <h2>Vinkatalog</h2>
         <p>Utforsk {wines.length} forskjellige viner fra Luberon-regionen</p>
       </div>
+
+      <VintageChart />
 
       <div className="search-filters">
         <div className="filter-grid">
