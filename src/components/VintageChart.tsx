@@ -15,9 +15,19 @@ const getVisibleRatingColor = (rating: number): string => {
 
 export default function VintageChart() {
   const [hoveredYear, setHoveredYear] = useState<number | null>(null);
+  const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
 
   // Filter to show last 25 years for better readability
   const recentVintages = vintageRatings.slice(-25);
+
+  const handleMouseEnter = (year: number, event: React.MouseEvent) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    setTooltipPosition({
+      x: rect.right,
+      y: rect.top + rect.height / 2
+    });
+    setHoveredYear(year);
+  };
 
   return (
     <div className="card vintage-chart-container">
@@ -61,7 +71,7 @@ export default function VintageChart() {
             <div
               key={vintage.year}
               className="vintage-bar-container"
-              onMouseEnter={() => setHoveredYear(vintage.year)}
+              onMouseEnter={(e) => handleMouseEnter(vintage.year, e)}
               onMouseLeave={() => setHoveredYear(null)}
             >
               <div className="vintage-bar-wrapper">
@@ -74,19 +84,6 @@ export default function VintageChart() {
                     transform: isHovered ? 'scaleY(1.05)' : 'scaleY(1)'
                   }}
                 >
-                  {isHovered && (
-                    <div className="vintage-tooltip">
-                      <div style={{ fontWeight: 700, fontSize: '1.1rem', marginBottom: '0.25rem' }}>
-                        {vintage.year}
-                      </div>
-                      <div style={{ fontSize: '0.9rem', color: '#d4af37' }}>
-                        {'★'.repeat(vintage.rating)}{'☆'.repeat(5 - vintage.rating)}
-                      </div>
-                      <div style={{ fontSize: '0.85rem', marginTop: '0.25rem' }}>
-                        {vintage.description}
-                      </div>
-                    </div>
-                  )}
                 </div>
               </div>
               <div className="vintage-year" style={{ opacity: isHovered ? 1 : 0.8, fontWeight: isHovered ? 700 : 500 }}>
@@ -96,6 +93,35 @@ export default function VintageChart() {
           );
         })}
       </div>
+
+      {/* Tooltip rendered outside, positioned with fixed */}
+      {hoveredYear !== null && (
+        <div
+          className="vintage-tooltip"
+          style={{
+            left: `${tooltipPosition.x}px`,
+            top: `${tooltipPosition.y}px`
+          }}
+        >
+          {(() => {
+            const vintage = recentVintages.find(v => v.year === hoveredYear);
+            if (!vintage) return null;
+            return (
+              <>
+                <div style={{ fontWeight: 700, fontSize: '1.1rem', marginBottom: '0.25rem' }}>
+                  {vintage.year}
+                </div>
+                <div style={{ fontSize: '0.9rem', color: '#d4af37' }}>
+                  {'★'.repeat(vintage.rating)}{'☆'.repeat(5 - vintage.rating)}
+                </div>
+                <div style={{ fontSize: '0.85rem', marginTop: '0.25rem' }}>
+                  {vintage.description}
+                </div>
+              </>
+            );
+          })()}
+        </div>
+      )}
 
       {/* Notable Vintages */}
       <div style={{ marginTop: '2rem', padding: '1.5rem', background: '#fff5ed', borderRadius: '8px', border: '2px solid #ffe4d6' }}>
