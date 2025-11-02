@@ -1,0 +1,13 @@
+[build]
+  # Kommando for å bygge appen
+  command = "npm run build"
+
+  # Mappe med den ferdige appen
+  publish = "dist"
+
+# Redirects for Single Page Application (SPA)
+# Dette gjør at alle URLs fungerer korrekt
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
