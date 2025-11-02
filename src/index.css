@@ -843,10 +843,11 @@ body {
   white-space: nowrap;
   z-index: 1000;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  animation: tooltipFadeIn 0.2s ease;
   pointer-events: none;
   transform: translateY(-50%);
   margin-left: 50px;
+  opacity: 0;
+  animation: tooltipSlideIn 0.15s ease forwards;
 }
 
 .vintage-tooltip::after {
@@ -859,14 +860,14 @@ body {
   border-right-color: var(--wine-burgundy);
 }
 
-@keyframes tooltipFadeIn {
+@keyframes tooltipSlideIn {
   from {
     opacity: 0;
-    transform: translateX(-50%) translateY(-5px);
+    transform: translateY(-50%) translateX(-10px);
   }
   to {
     opacity: 1;
-    transform: translateX(-50%) translateY(0);
+    transform: translateY(-50%) translateX(0);
   }
 }
 
