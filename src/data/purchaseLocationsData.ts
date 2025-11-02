@@ -228,6 +228,35 @@ export const purchaseLocations: Record<string, PurchaseLocation> = {
     notes: '45 hektar vingård i Luberon Regional Nature Park. Mellom Bonnieux og Apt på D3.',
     bookingRequired: false,
     tastingAvailable: true
+  },
+
+  'chateau-sannes': {
+    type: 'chateau',
+    name: 'Château de Sannes',
+    address: '1580 Route Départementale 37',
+    city: 'Sannes',
+    postalCode: '84240',
+    phone: '+33 4 90 07 78 04',
+    email: 'oenotourisme@chateaudesannes.fr',
+    website: 'https://www.chateaudesannes.fr',
+    coordinates: {
+      lat: 43.757,
+      lng: 5.491
+    },
+    openingHours: {
+      monday: 'Sommertid: 09:30-12:30, 15:00-19:00',
+      tuesday: '09:30-12:30, 14:00-18:00',
+      wednesday: '09:30-12:30, 14:00-18:00',
+      thursday: '09:30-12:30, 14:00-18:00',
+      friday: '09:30-12:30, 14:00-18:00',
+      saturday: '09:30-12:30, 14:00-18:00',
+      sunday: 'Stengt',
+      notes: 'Sommertid (juli-august): Man-Fre 09:30-12:30, 15:00-19:00. Resten av året: Tir-Lør 09:30-12:30, 14:00-18:00'
+    },
+    priceRange: '€15-30',
+    notes: 'Historisk château i hjertet av Provence. 35 minutter fra Aix-en-Provence.',
+    bookingRequired: false,
+    tastingAvailable: true
   }
 };
 

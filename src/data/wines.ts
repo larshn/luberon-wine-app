@@ -1534,6 +1534,7 @@ export const wines: Wine[] = [
       { dish: 'Grillet sjøkreps', description: 'Premium hvitvin til premium skalldyr' },
       { dish: 'Chèvre-ost med olivenolje', description: 'Mineralsk vin til syrlig ost' }
     ],
+    purchaseLocations: [purchaseLocations['chateau-sannes']],
     vintages: [
       {
         year: 2022,
@@ -1567,6 +1568,7 @@ export const wines: Wine[] = [
       { dish: 'Entrecôte med kaffe-rub', description: 'Mørk, rik vin til kraftig biff med kaffe' },
       { dish: 'Comté-ost', description: 'Elegant og rik vin til moden ost' }
     ],
+    purchaseLocations: [purchaseLocations['chateau-sannes']],
     vintages: [
       {
         year: 2021,
