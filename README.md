@@ -1,73 +1,111 @@
-# React + TypeScript + Vite
+# 🍷 Luberon Vinkatalog
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+En omfattende webapp for å utforske og administrere viner fra Luberon-regionen i Provence, Frankrike.
 
-Currently, two official plugins are available:
+## Funksjoner
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Vinkatalog
+- **15 autentiske Luberon-viner** fra kjente produsenter som Château La Canorgue, Château Val Joanis, og flere
+- Detaljert informasjon om hver vin inkludert druetyper, smaksnotater, og årgang
+- Avansert søk og filtrering på tvers av alle felt
+- Sortering etter navn, årgang, eller pris
 
-## React Compiler
+### Lagringsanbefalinger
+- Tydelige anbefalinger for når hver vin skal drikkes vs. lagres
+- Visuell indikator for lagringstid (drikk nå, kort-/mellomlang-/langsiktig lagring)
+- Optimalt drikkvindu basert på årgang
+- Status for nåværende alder av vinen
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Matparinger
+- Provencalske matanbefalinger for hver vin
+- Detaljerte beskrivelser av rettene som passer best
+- Inspirasjoner fra det franske kjøkken
 
-## Expanding the ESLint configuration
+### Min Vinkjeller
+- Personlig oversikt over vinene du eier
+- Legg til/fjern flasker fra din samling
+- Notater og plasseringsinformasjon for hver vin
+- Estimert verdi av samlingen
+- **Eksport/import-funksjonalitet** for backup eller deling mellom enheter
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Teknisk oppsett
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **React 19** med TypeScript
+- **Vite** for rask utvikling og optimaliserte builds
+- **Tailwind CSS v4** for moderne, responsivt design
+- **Local Storage** for persistent lagring av vinsamling
+- Ingen eksterne databaser nødvendig
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Kom i gang
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Installasjon
+
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Kjør utviklingsserver
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+Appen vil åpne på `http://localhost:5173`
+
+### Bygg for produksjon
+
+```bash
+npm run build
+```
+
+### Forhåndsvis produksjons-build
+
+```bash
+npm run preview
+```
+
+## Bruk
+
+### Utforsk vinkataloget
+1. Naviger til **Vinkatalog**-fanen
+2. Bruk søkefeltet for å finne spesifikke viner, produsenter, eller druetyper
+3. Filtrer på farge (rød, hvit, rosé) eller produsent
+4. Sorter etter navn, årgang, eller pris
+5. Klikk på en vin for å se fullstendige detaljer
+
+### Administrer din vinkjeller
+1. Fra vindetaljer, klikk "Legg til i kjeller"
+2. Naviger til **Min Vinkjeller**-fanen for å se samlingen din
+3. Legg til notater eller plassering for hver vin
+4. Fjern flasker når du drikker dem
+5. Eksporter din kjeller for backup
+
+### Eksporter/importer kjeller
+- **Eksport**: Klikk "Eksporter kjeller" for å laste ned en JSON-fil med samlingen
+- **Import**: Klikk "Importer kjeller" og lim inn innholdet fra en eksportert fil
+
+## Vindata
+
+Appen inneholder 15 håndplukkede viner fra Luberon AOP, inkludert:
+- Château La Canorgue (kjent fra filmen "A Good Year")
+- Château Val Joanis
+- Domaine de Fontenille
+- Château de Mille
+- og flere...
+
+Alle viner inkluderer autentisk informasjon om druetyper, smaksprofiler, og anbefalinger.
+
+## Responsive design
+
+Appen er fullstendig responsiv og fungerer like bra på:
+- 📱 Mobil
+- 💻 Desktop
+- 📱 Tablet
+
+## Lisens
+
+Dette prosjektet er laget som et MVP-eksempel.
+
+---
+
+🍇 Laget med kjærlighet til Luberon-viner
