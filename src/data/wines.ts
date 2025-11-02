@@ -10,6 +10,7 @@ export const wines: Wine[] = [
     grapes: ['Syrah', 'Grenache', 'Mourvèdre'],
     description: 'Økologisk vin fra biodynamisk vingård, kjent fra filmen "A Good Year". En elegant og balansert rødvin med provencalsk karakter.',
     foodPairings: [
+      { dish: 'Gautes Provencalske pølser', description: 'Lavendel og provencalske urter i vinen passer perfekt til de urtekrydrede pølsene' },
       { dish: 'Daube Provençale', description: 'Provencalsk oksegryte med oliven' },
       { dish: 'Grillet lam med timian', description: 'Perfekt til retter med urter de Provence' },
       { dish: 'Ratatouille', description: 'Klassisk grønnsaksgrytte fra Provence' }
@@ -346,6 +347,7 @@ export const wines: Wine[] = [
     grapes: ['Grenache', 'Syrah'],
     description: 'Klassisk rødvin fra historisk domene med 800 års vinhistorie. Økologisk sertifisert. 70% Grenache, 30% Syrah.',
     foodPairings: [
+      { dish: 'Gautes Provencalske pølser', description: 'Provence-urter i vinen harmonerer perfekt med de urtekrydrede pølsene og ovnsbakte grønnsakene' },
       { dish: 'Grillet lam', description: 'Med rosmarin' },
       { dish: 'Provencalsk grytte', description: 'Med oliven' },
       { dish: 'Charcuteri', description: 'Lufttørket skinke' }
@@ -442,6 +444,7 @@ export const wines: Wine[] = [
     grapes: ['Grenache', 'Syrah'],
     description: 'Premium cuvée fra Château de Mille med kompleks aromatikk og lang lagringsevne. Grenache-dominert vin med elegant struktur og provencalske urter.',
     foodPairings: [
+      { dish: 'Gautes Provencalske pølser', description: 'Vinens timian, rosmarin og lavendel matcher perfekt med de provencalske urtene i pølsene og de ovnsbakte grønnsakene' },
       { dish: 'Lammestek med urter', description: 'Den medium fylde og røde bærnotene harmonerer perfekt med lam og friske urter' },
       { dish: 'Grillet entrecôte med lavendel', description: 'Vinens lavendel- og timianaromer komplementerer pepperkrydret biff' },
       { dish: 'Ratatouille', description: 'De provençalske urtene i vinen matcher perfekt med denne klassiske grønnsaksgryten' },
@@ -956,6 +959,7 @@ export const wines: Wine[] = [
     grapes: ['Grenache', 'Syrah'],
     description: 'Økologisk rødvin fra La Cavale med røde bær og elegant struktur. Ren og uttrykksrull vin som gjenspeiler biodynamisk dyrking.',
     foodPairings: [
+      { dish: 'Gautes Provencalske pølser', description: 'Økologisk vin med krydder og røde bær matcher de ovnsbakte pølsene med provencalske urter' },
       { dish: 'Lammestek med timian', description: 'Økologisk vin til naturlig oppdratt lam' },
       { dish: 'Grillede grønnsaker med fetaost', description: 'Røde bær og krydder matcher grillsmak' },
       { dish: 'Kyllinggryte med oliven', description: 'Elegant vin til provencalsk inspirert rett' },
@@ -1238,6 +1242,7 @@ export const wines: Wine[] = [
     grapes: ['Grenache', 'Syrah'],
     description: 'Elegant rosé fra biodynamisk vingård i Lourmarin. Røde bær med salt og lavendel gir en unik og kompleks smaksopplevelse.',
     foodPairings: [
+      { dish: 'Gautes Provencalske pølser', description: 'Lavendelnoter og røde bær i rosé-en passer overraskende godt til de ovnsbakte pølsene og grønnsakene' },
       { dish: 'Saltet laks', description: 'Saltnoter i vinen matcher saltet laks perfekt' },
       { dish: 'Rips-salat med geiteost', description: 'Rips-smak i vinen harmonerer med bær i salaten' },
       { dish: 'Provencalsk grønnsaksquiche', description: 'Lavendelnoter matcher urter i quichen' },
