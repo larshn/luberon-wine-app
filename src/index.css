@@ -924,7 +924,7 @@ body {
 @media (max-width: 768px) {
   .vintage-chart {
     height: 250px;
-    padding: var(--spacing-sm);
+    padding: var(--spacing-xl) var(--spacing-sm) var(--spacing-sm);
   }
 
   .vintage-bar {
