@@ -1,4 +1,5 @@
 import type { Wine } from '../types/wine';
+import { purchaseLocations } from './purchaseLocationsData';
 
 export const wines: Wine[] = [
   {
@@ -203,6 +204,7 @@ export const wines: Wine[] = [
       { dish: 'Grillet kylling', description: 'Med sitron og timian' },
       { dish: 'Salat Niçoise', description: 'Med tuna og ansjos' }
     ],
+    purchaseLocations: [purchaseLocations['chateau-val-joanis']],
     vintages: [
       {
         year: 2023,
@@ -235,6 +237,7 @@ export const wines: Wine[] = [
       { dish: 'Sommerlig salat', description: 'Med geiteost og tomater' },
       { dish: 'Grønnsaksquiche', description: 'Med provencalske urter' }
     ],
+    purchaseLocations: [purchaseLocations['chateau-val-joanis']],
     vintages: [
       {
         year: 2023,
@@ -259,6 +262,7 @@ export const wines: Wine[] = [
       { dish: 'Tapas', description: 'Spanske småretter' },
       { dish: 'Pasta', description: 'Med tomatsaus' }
     ],
+    purchaseLocations: [purchaseLocations['chateau-val-joanis']],
     vintages: [
       {
         year: 2021,
@@ -283,6 +287,7 @@ export const wines: Wine[] = [
       { dish: 'Niçoise salat', description: 'Med tuna' },
       { dish: 'Antipasti', description: 'Lett italiensk' }
     ],
+    purchaseLocations: [purchaseLocations['chateau-val-joanis']],
     vintages: [
       {
         year: 2023,
@@ -307,6 +312,7 @@ export const wines: Wine[] = [
       { dish: 'Kveite', description: 'Grillet med urter' },
       { dish: 'Sommerlige salater', description: 'Med sitrusdressing' }
     ],
+    purchaseLocations: [purchaseLocations['chateau-val-joanis']],
     vintages: [
       {
         year: 2023,
@@ -331,6 +337,7 @@ export const wines: Wine[] = [
       { dish: 'Kylling', description: 'Med fruktysaus' },
       { dish: 'Krydrete retter', description: 'Indiske curryer' }
     ],
+    purchaseLocations: [purchaseLocations['chateau-val-joanis']],
     vintages: [
       {
         year: 2022,
@@ -832,6 +839,7 @@ export const wines: Wine[] = [
       { dish: 'Oksehale i rødvin', description: 'Den langkokte, rike kjøttretten matcher vinens kompleksitet og fylde' },
       { dish: 'Elggryte med kremsaus og sopp', description: 'Villmarkssoppens jordaroma harmonerer med vinens kryddertoner' }
     ],
+    purchaseLocations: [purchaseLocations['chateau-la-verrerie']],
     vintages: [
       {
         year: 2020,
@@ -898,6 +906,7 @@ export const wines: Wine[] = [
       { dish: 'Pølser fra grillen med sennep', description: 'En allsidig vin som fungerer utmerkt til hverdagsmat' },
       { dish: 'Tapas med chorizo og manchego', description: 'Vinens krydder harmonerer med den spanske pølsen' }
     ],
+    purchaseLocations: [purchaseLocations['domaine-mayol']],
     vintages: [
       {
         year: 2021,
@@ -948,6 +957,7 @@ export const wines: Wine[] = [
       { dish: 'Grillede grønnsaker med fetaost', description: 'Vinens krydder og mineralitet matcher grillede grønnsaker' },
       { dish: 'Viltpølser med potetmos', description: 'Medium fylde og krydderaromer gjør vinen allsidig' }
     ],
+    purchaseLocations: [purchaseLocations['chateau-la-verrerie']],
     vintages: [
       {
         year: 2020,
@@ -973,6 +983,7 @@ export const wines: Wine[] = [
       { dish: 'Kamskjell med brun smør', description: 'Vinens oljeaktige tekstur og fersken-aromer matcher perfekt med søte kamskjell' },
       { dish: 'Thai-inspirert rekecurry', description: 'Viogniers naturlige søthet og blomsteraromer balanserer krydder i asiatisk mat' }
     ],
+    purchaseLocations: [purchaseLocations['domaine-mayol']],
     vintages: [
       {
         year: 2021,
@@ -998,6 +1009,7 @@ export const wines: Wine[] = [
       { dish: 'Paella med sjømat', description: 'Vinens salte mineralitet fremhever reker og safran' },
       { dish: 'Kylling med hasselnøtter og fløte', description: 'Vinens nøtteaktige karakter harmonerer perfekt med både nøtter og kremsaus' }
     ],
+    purchaseLocations: [purchaseLocations['vignobles-marrenon']],
     vintages: [
       {
         year: 2021,
@@ -1039,6 +1051,7 @@ export const wines: Wine[] = [
       { dish: 'Urtestekt kylling med sitronskall', description: 'Grenache blanc-druens sitruskarakter matcher sitron perfekt' },
       { dish: 'Asparges med hollandaise', description: 'Vinens mineralitet og syre balanserer den rike hollandaisesausen' }
     ],
+    purchaseLocations: [purchaseLocations['chateau-la-verrerie']],
     vintages: [
       {
         year: 2022,
@@ -1064,6 +1077,7 @@ export const wines: Wine[] = [
       { dish: 'Frittata med grønnsaker', description: 'Lett, elegant rosé er perfekt til eggbaserte retter' },
       { dish: 'Tapas med jamon og tomat', description: 'Provençal-stil rosé er laget for middelhavstapas' }
     ],
+    purchaseLocations: [purchaseLocations['domaine-mayol']],
     vintages: [
       {
         year: 2021,
@@ -1249,6 +1263,7 @@ export const wines: Wine[] = [
       { dish: 'Kyllingsalat', description: 'Lett vin til lette retter' },
       { dish: 'Spekemat og ost', description: 'Enkel vin til enkel mat' }
     ],
+    purchaseLocations: [purchaseLocations['domaine-citadelle']],
     vintages: [
       {
         year: 2021,
@@ -1274,6 +1289,7 @@ export const wines: Wine[] = [
       { dish: 'Hjortestek', description: 'Vinens struktur tåler kraftig vilt' },
       { dish: 'Comté-ost', description: 'Strukturert vin til moden ost' }
     ],
+    purchaseLocations: [purchaseLocations['domaine-citadelle']],
     vintages: [
       {
         year: 2021,
@@ -1450,6 +1466,7 @@ export const wines: Wine[] = [
       { dish: 'Kveite med urter', description: 'Frisk og elegant vin til edel hvit fisk' },
       { dish: 'Grønne asparges', description: 'Biodynamisk vin til ferske grønnsaker' }
     ],
+    purchaseLocations: [purchaseLocations['famille-perrin']],
     vintages: [
       {
         year: 2023,
@@ -1483,6 +1500,7 @@ export const wines: Wine[] = [
       { dish: 'Kyllingsalat med jordbær', description: 'Friske bær i vinen møter friske bær i salaten' },
       { dish: 'Sommerretter', description: 'Premium rosé fra prestisjefull produsent' }
     ],
+    purchaseLocations: [purchaseLocations['famille-perrin']],
     vintages: [
       {
         year: 2023,
@@ -1708,6 +1726,7 @@ export const wines: Wine[] = [
       { dish: 'Grillet kjøtt med eukalyptus-marinade', description: 'Eukalyptusnoter i vinen forsterkes av marinaden' },
       { dish: 'Svarte oliven med ost', description: 'Sort oliven-noter matcher perfekt' }
     ],
+    purchaseLocations: [purchaseLocations['chateau-isolette']],
     vintages: [
       {
         year: 2010,
@@ -1741,6 +1760,7 @@ export const wines: Wine[] = [
       { dish: 'Modne oster som Comté', description: 'Fyldig og rik vin til moden ost' },
       { dish: 'Viltpølser', description: 'Kraftig vin til kraftig kjøtt' }
     ],
+    purchaseLocations: [purchaseLocations['chateau-turcan']],
     vintages: [
       {
         year: 2020,
