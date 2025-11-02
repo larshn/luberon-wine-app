@@ -791,8 +791,8 @@ body {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  height: 300px;
-  padding: var(--spacing-lg) var(--spacing-md) var(--spacing-md);
+  height: 320px;
+  padding: var(--spacing-xl) var(--spacing-md) var(--spacing-md);
   background: linear-gradient(to top, #f5f0e8 0%, #fafaf8 100%);
   border-radius: var(--radius-md);
   gap: 4px;
@@ -860,6 +860,20 @@ body {
   border-right-color: #2d2d2d;
 }
 
+/* Tooltip på venstre side */
+.vintage-tooltip.tooltip-left {
+  margin-left: 0;
+  margin-right: 12px;
+  transform: translateY(-50%) translateX(-100%);
+}
+
+.vintage-tooltip.tooltip-left::after {
+  right: auto;
+  left: 100%;
+  border-right-color: transparent;
+  border-left-color: #2d2d2d;
+}
+
 @keyframes tooltipSlideIn {
   from {
     opacity: 0;
@@ -878,6 +892,32 @@ body {
   font-weight: 500;
   transition: opacity 0.2s ease;
   writing-mode: horizontal-tb;
+}
+
+/* Food pairing layout */
+.food-pairing-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.food-pairing-content {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.food-pairing-wine-info {
+  flex: 1;
+}
+
+.food-pairing-button-mobile {
+  display: none;
+}
+
+.food-pairing-button-desktop {
+  display: block;
 }
 
 /* Responsive vintage chart */
@@ -900,6 +940,20 @@ body {
 
   .vintage-legend {
     font-size: 0.85rem;
+  }
+
+  /* Food pairing mobile layout */
+  .food-pairing-content {
+    grid-template-columns: 1fr;
+  }
+
+  .food-pairing-button-mobile {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .food-pairing-button-desktop {
+    display: none;
   }
 }
 

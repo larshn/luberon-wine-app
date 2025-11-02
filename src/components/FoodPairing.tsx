@@ -226,43 +226,44 @@ export default function FoodPairing({ wines, onViewWine }: FoodPairingProps) {
             return (
               <div
                 key={`${wine.id}-${index}`}
-                className="card"
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '1rem'
-                }}
+                className="card food-pairing-card"
               >
                 <div className={`wine-color-bar ${wine.color}`} />
 
+                {/* Dish info */}
                 <div style={{
-                  display: 'grid',
-                  gridTemplateColumns: '1fr auto',
-                  gap: '1.5rem',
-                  alignItems: 'start'
+                  marginBottom: '1rem',
+                  padding: '1rem',
+                  background: '#f5f5f5',
+                  borderRadius: '8px',
+                  borderLeft: '4px solid #d4af37'
                 }}>
-                  <div>
-                    {/* Dish info */}
-                    <div style={{
-                      marginBottom: '1rem',
-                      padding: '1rem',
-                      background: '#f5f5f5',
-                      borderRadius: '8px',
-                      borderLeft: '4px solid #d4af37'
-                    }}>
-                      <div style={{
-                        fontSize: '1.2rem',
-                        fontWeight: 700,
-                        color: '#722f37',
-                        marginBottom: '0.25rem'
-                      }}>
-                        🍽️ {pairing.dish}
-                      </div>
-                      <div style={{ fontSize: '0.9rem', color: '#666' }}>
-                        {pairing.description}
-                      </div>
-                    </div>
+                  <div style={{
+                    fontSize: '1.2rem',
+                    fontWeight: 700,
+                    color: '#722f37',
+                    marginBottom: '0.25rem'
+                  }}>
+                    🍽️ {pairing.dish}
+                  </div>
+                  <div style={{ fontSize: '0.9rem', color: '#666' }}>
+                    {pairing.description}
+                  </div>
+                </div>
 
+                {/* Button - shown after dish on mobile */}
+                <div className="food-pairing-button-mobile">
+                  <button
+                    onClick={() => onViewWine(wine)}
+                    className="btn btn-primary"
+                    style={{ width: '100%' }}
+                  >
+                    Se detaljer
+                  </button>
+                </div>
+
+                <div className="food-pairing-content">
+                  <div className="food-pairing-wine-info">
                     {/* Wine info */}
                     <h3 style={{ marginBottom: '0.5rem' }}>{wine.name}</h3>
                     <p style={{ color: '#666', fontSize: '1rem', marginBottom: '0.5rem' }}>
@@ -281,35 +282,36 @@ export default function FoodPairing({ wines, onViewWine }: FoodPairingProps) {
                       )}
                     </div>
 
-                  <div className="tag-list">
-                    {wine.grapes.map((grape, idx) => (
-                      <span key={idx} className="tag tag-grape">
-                        {grape}
-                      </span>
-                    ))}
+                    <div className="tag-list">
+                      {wine.grapes.map((grape, idx) => (
+                        <span key={idx} className="tag tag-grape">
+                          {grape}
+                        </span>
+                      ))}
+                    </div>
+
+                    <p style={{
+                      marginTop: '1rem',
+                      fontSize: '0.9rem',
+                      color: '#666',
+                      fontStyle: 'italic'
+                    }}>
+                      {wine.description}
+                    </p>
                   </div>
 
-                  <p style={{
-                    marginTop: '1rem',
-                    fontSize: '0.9rem',
-                    color: '#666',
-                    fontStyle: 'italic'
-                  }}>
-                    {wine.description}
-                  </p>
-                </div>
-
-                <div>
-                  <button
-                    onClick={() => onViewWine(wine)}
-                    className="btn btn-primary"
-                    style={{ minWidth: '150px' }}
-                  >
-                    Se detaljer
-                  </button>
+                  {/* Button - shown on desktop */}
+                  <div className="food-pairing-button-desktop">
+                    <button
+                      onClick={() => onViewWine(wine)}
+                      className="btn btn-primary"
+                      style={{ minWidth: '150px' }}
+                    >
+                      Se detaljer
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
           );
           })}
         </div>

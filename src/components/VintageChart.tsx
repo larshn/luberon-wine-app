@@ -15,16 +15,22 @@ const getVisibleRatingColor = (rating: number): string => {
 
 export default function VintageChart() {
   const [hoveredYear, setHoveredYear] = useState<number | null>(null);
-  const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
+  const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0, showLeft: false });
 
   // Filter to show last 25 years for better readability
   const recentVintages = vintageRatings.slice(-25);
 
   const handleMouseEnter = (year: number, event: React.MouseEvent) => {
     const rect = event.currentTarget.getBoundingClientRect();
+    const windowWidth = window.innerWidth;
+
+    // Vis tooltip på venstre side hvis søylen er i høyre halvdel av skjermen
+    const showLeft = rect.left > windowWidth / 2;
+
     setTooltipPosition({
-      x: rect.right,
-      y: rect.top + rect.height / 2
+      x: showLeft ? rect.left : rect.right,
+      y: rect.top + rect.height / 2,
+      showLeft
     });
     setHoveredYear(year);
   };
@@ -33,7 +39,7 @@ export default function VintageChart() {
     <div className="card vintage-chart-container">
       <div style={{ marginBottom: '2rem' }}>
         <h2 style={{ fontSize: '1.8rem', color: '#722f37', marginBottom: '0.5rem' }}>
-          🍇 Luberon Årgangskvalitet
+          🍇 Beste årganger
         </h2>
         <p style={{ color: '#666', fontSize: '1rem' }}>
           Vurdering av årgangskvalitet siden 2000. Høyere søyle = bedre årgang.
@@ -97,7 +103,7 @@ export default function VintageChart() {
       {/* Tooltip rendered outside, positioned with fixed */}
       {hoveredYear !== null && (
         <div
-          className="vintage-tooltip"
+          className={`vintage-tooltip ${tooltipPosition.showLeft ? 'tooltip-left' : ''}`}
           style={{
             left: `${tooltipPosition.x}px`,
             top: `${tooltipPosition.y}px`
