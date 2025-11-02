@@ -72,14 +72,14 @@ export default function FoodPairing({ wines, onViewWine }: FoodPairingProps) {
       const matchesSearch = searchTerm === '' ||
         wine.foodPairings.some(pairing =>
           pairing.dish.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          pairing.description.toLowerCase().includes(searchTerm.toLowerCase())
+          (pairing.description && pairing.description.toLowerCase().includes(searchTerm.toLowerCase()))
         );
 
       // Check if wine matches selected category
       const matchesCategory = selectedCategory === 'all' ||
         wine.foodPairings.some(pairing => {
           const keywords = getCategoryKeywords(selectedCategory);
-          const combinedText = `${pairing.dish} ${pairing.description}`.toLowerCase();
+          const combinedText = `${pairing.dish} ${pairing.description || ''}`.toLowerCase();
           return keywords.some(keyword => combinedText.includes(keyword));
         });
 
@@ -92,11 +92,11 @@ export default function FoodPairing({ wines, onViewWine }: FoodPairingProps) {
         .filter(pairing => {
           const matchesSearch = searchTerm === '' ||
             pairing.dish.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            pairing.description.toLowerCase().includes(searchTerm.toLowerCase());
+            (pairing.description && pairing.description.toLowerCase().includes(searchTerm.toLowerCase()));
 
           const matchesCategory = selectedCategory === 'all' ||
             getCategoryKeywords(selectedCategory).some(keyword =>
-              `${pairing.dish} ${pairing.description}`.toLowerCase().includes(keyword)
+              `${pairing.dish} ${pairing.description || ''}`.toLowerCase().includes(keyword)
             );
 
           return matchesSearch && matchesCategory;

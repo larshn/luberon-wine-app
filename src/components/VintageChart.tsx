@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { vintageRatings, getRatingLabel } from '../data/vintages';
+import { vintageRatings } from '../data/vintages';
 
 // Definere sterkere, mer synlige farger
 const getVisibleRatingColor = (rating: number): string => {

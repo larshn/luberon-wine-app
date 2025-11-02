@@ -1,4 +1,4 @@
-import type { StorageRecommendation, Wine } from '../types/wine';
+import type { StorageRecommendation, Wine, Vintage } from '../types/wine';
 
 export const getStorageLabel = (recommendation: StorageRecommendation): string => {
   const labels: Record<StorageRecommendation, string> = {
@@ -35,14 +35,14 @@ export const getCurrentAge = (vintageYear: number): number => {
   return new Date().getFullYear() - vintageYear;
 };
 
-export const isInDrinkingWindow = (wine: Wine): boolean => {
-  const age = getCurrentAge(wine.year);
-  return age >= wine.optimalDrinkingWindow.start && age <= wine.optimalDrinkingWindow.end;
+export const isInDrinkingWindow = (vintage: Vintage): boolean => {
+  const age = getCurrentAge(vintage.year);
+  return age >= vintage.optimalDrinkingWindow.start && age <= vintage.optimalDrinkingWindow.end;
 };
 
-export const getDrinkingWindowStatus = (wine: Wine): 'too-young' | 'ready' | 'past-peak' => {
-  const age = getCurrentAge(wine.year);
-  if (age < wine.optimalDrinkingWindow.start) return 'too-young';
-  if (age > wine.optimalDrinkingWindow.end) return 'past-peak';
+export const getDrinkingWindowStatus = (vintage: Vintage | { year: number; optimalDrinkingWindow: { start: number; end: number } }): 'too-young' | 'ready' | 'past-peak' => {
+  const age = getCurrentAge(vintage.year);
+  if (age < vintage.optimalDrinkingWindow.start) return 'too-young';
+  if (age > vintage.optimalDrinkingWindow.end) return 'past-peak';
   return 'ready';
 };
