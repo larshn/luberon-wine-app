@@ -7,6 +7,39 @@ export type StorageRecommendation =
   | 'medium-term' // 3-7 years
   | 'long-term'; // 7+ years
 
+export type PurchaseLocationType = 'chateau' | 'wine-shop' | 'online' | 'restaurant';
+
+export interface OpeningHours {
+  monday?: string;
+  tuesday?: string;
+  wednesday?: string;
+  thursday?: string;
+  friday?: string;
+  saturday?: string;
+  sunday?: string;
+  notes?: string; // e.g., "Closed in January", "Summer hours: extended to 19:00"
+}
+
+export interface PurchaseLocation {
+  type: PurchaseLocationType;
+  name: string;
+  address?: string;
+  city?: string;
+  postalCode?: string;
+  website?: string;
+  phone?: string;
+  email?: string;
+  coordinates?: {
+    lat: number;
+    lng: number;
+  };
+  openingHours?: OpeningHours;
+  priceRange?: string;
+  notes?: string;
+  bookingRequired?: boolean;
+  tastingAvailable?: boolean;
+}
+
 export interface FoodPairing {
   dish: string;
   description?: string;
@@ -36,6 +69,7 @@ export interface Wine {
   foodPairings: FoodPairing[];
   vintages: Vintage[]; // Available vintages
   imageUrl?: string;
+  purchaseLocations?: PurchaseLocation[]; // Where to buy this wine
 }
 
 export interface CellarWine {

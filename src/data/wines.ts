@@ -15,6 +15,36 @@ export const wines: Wine[] = [
       { dish: 'Grillet lam med timian', description: 'Perfekt til retter med urter de Provence' },
       { dish: 'Ratatouille', description: 'Klassisk grønnsaksgrytte fra Provence' }
     ],
+    purchaseLocations: [
+      {
+        type: 'chateau',
+        name: 'Château La Canorgue',
+        address: '850 Rte du Pont Julien D149',
+        city: 'Bonnieux',
+        postalCode: '84480',
+        phone: '+33 4 90 75 81 01',
+        email: 'chateaucanorgue@vinsdusiecle.com',
+        website: 'https://chateaulacanorgue.com',
+        coordinates: {
+          lat: 43.832685,
+          lng: 5.315645
+        },
+        openingHours: {
+          monday: '09:00-12:00, 14:00-18:00',
+          tuesday: '09:00-12:00, 14:00-18:00',
+          wednesday: '09:00-12:00, 14:00-18:00',
+          thursday: '09:00-12:00, 14:00-18:00',
+          friday: '09:00-12:00, 14:00-18:00',
+          saturday: '09:00-12:00, 14:00-18:00',
+          sunday: 'Stengt',
+          notes: 'Sommeråpningstider (juli-august): Man-Fre 09:00-19:00, Lør 09:00-12:00 og 14:00-19:00'
+        },
+        priceRange: '€15-25',
+        notes: 'Vinkjeller åpen for kjøp. Ingen omvisning av slottet. Kontakt oss for gruppebesøk.',
+        bookingRequired: false,
+        tastingAvailable: true
+      }
+    ],
     vintages: [
       {
         year: 2021,
@@ -295,6 +325,36 @@ export const wines: Wine[] = [
       { dish: 'Vilt', description: 'Hjort eller villsvin' },
       { dish: 'Cassoulet', description: 'Tradisjonell bønnegrytte' }
     ],
+    purchaseLocations: [
+      {
+        type: 'chateau',
+        name: 'Domaine de Fontenille',
+        address: '1681 Route de Roquefraîche',
+        city: 'Lauris',
+        postalCode: '84360',
+        phone: '+33 4 13 98 00 00',
+        email: 'info@domainedefontenille.com',
+        website: 'https://www.domainedefontenille.com',
+        coordinates: {
+          lat: 43.762696,
+          lng: 5.301878
+        },
+        openingHours: {
+          monday: '09:00-18:00',
+          tuesday: '09:00-18:00',
+          wednesday: '09:00-18:00',
+          thursday: '09:00-18:00',
+          friday: '09:00-18:00',
+          saturday: '09:00-18:00',
+          sunday: '09:00-18:00',
+          notes: 'Vinsmaking daglig. Også 5-stjerners boutique-hotell og gourmetrestaurant.'
+        },
+        priceRange: '€18-45',
+        notes: 'Historisk domene med 800 år gammel vinhistorie. Vinsmaking, hotell og restaurant. Booking anbefales for guidede turer.',
+        bookingRequired: true,
+        tastingAvailable: true
+      }
+    ],
     vintages: [
       {
         year: 2019,
@@ -327,6 +387,36 @@ export const wines: Wine[] = [
       { dish: 'Hummer', description: 'Med smørsaus' },
       { dish: 'Modne hvite oster', description: 'Brie eller Camembert' }
     ],
+    purchaseLocations: [
+      {
+        type: 'chateau',
+        name: 'Domaine de Fontenille',
+        address: '1681 Route de Roquefraîche',
+        city: 'Lauris',
+        postalCode: '84360',
+        phone: '+33 4 13 98 00 00',
+        email: 'info@domainedefontenille.com',
+        website: 'https://www.domainedefontenille.com',
+        coordinates: {
+          lat: 43.762696,
+          lng: 5.301878
+        },
+        openingHours: {
+          monday: '09:00-18:00',
+          tuesday: '09:00-18:00',
+          wednesday: '09:00-18:00',
+          thursday: '09:00-18:00',
+          friday: '09:00-18:00',
+          saturday: '09:00-18:00',
+          sunday: '09:00-18:00',
+          notes: 'Vinsmaking daglig. Også 5-stjerners boutique-hotell og gourmetrestaurant.'
+        },
+        priceRange: '€18-45',
+        notes: 'Historisk domene med 800 år gammel vinhistorie. Vinsmaking, hotell og restaurant. Booking anbefales for guidede turer.',
+        bookingRequired: true,
+        tastingAvailable: true
+      }
+    ],
     vintages: [
       {
         year: 2022,
@@ -352,6 +442,36 @@ export const wines: Wine[] = [
       { dish: 'Provencalsk grytte', description: 'Med oliven' },
       { dish: 'Charcuteri', description: 'Lufttørket skinke' }
     ],
+    purchaseLocations: [
+      {
+        type: 'chateau',
+        name: 'Domaine de Fontenille',
+        address: '1681 Route de Roquefraîche',
+        city: 'Lauris',
+        postalCode: '84360',
+        phone: '+33 4 13 98 00 00',
+        email: 'info@domainedefontenille.com',
+        website: 'https://www.domainedefontenille.com',
+        coordinates: {
+          lat: 43.762696,
+          lng: 5.301878
+        },
+        openingHours: {
+          monday: '09:00-18:00',
+          tuesday: '09:00-18:00',
+          wednesday: '09:00-18:00',
+          thursday: '09:00-18:00',
+          friday: '09:00-18:00',
+          saturday: '09:00-18:00',
+          sunday: '09:00-18:00',
+          notes: 'Vinsmaking daglig. Også 5-stjerners boutique-hotell og gourmetrestaurant.'
+        },
+        priceRange: '€18-45',
+        notes: 'Historisk domene med 800 år gammel vinhistorie. Vinsmaking, hotell og restaurant. Booking anbefales for guidede turer.',
+        bookingRequired: true,
+        tastingAvailable: true
+      }
+    ],
     vintages: [
       {
         year: 2021,
@@ -375,6 +495,36 @@ export const wines: Wine[] = [
       { dish: 'Andebryst', description: 'Med kirsebærsaus' },
       { dish: 'Lammestek', description: 'Med urter de Provence' },
       { dish: 'Kraftige oster', description: 'Comté eller Manchego' }
+    ],
+    purchaseLocations: [
+      {
+        type: 'chateau',
+        name: 'Domaine de Fontenille',
+        address: '1681 Route de Roquefraîche',
+        city: 'Lauris',
+        postalCode: '84360',
+        phone: '+33 4 13 98 00 00',
+        email: 'info@domainedefontenille.com',
+        website: 'https://www.domainedefontenille.com',
+        coordinates: {
+          lat: 43.762696,
+          lng: 5.301878
+        },
+        openingHours: {
+          monday: '09:00-18:00',
+          tuesday: '09:00-18:00',
+          wednesday: '09:00-18:00',
+          thursday: '09:00-18:00',
+          friday: '09:00-18:00',
+          saturday: '09:00-18:00',
+          sunday: '09:00-18:00',
+          notes: 'Vinsmaking daglig. Også 5-stjerners boutique-hotell og gourmetrestaurant.'
+        },
+        priceRange: '€18-45',
+        notes: 'Historisk domene med 800 år gammel vinhistorie. Vinsmaking, hotell og restaurant. Booking anbefales for guidede turer.',
+        bookingRequired: true,
+        tastingAvailable: true
+      }
     ],
     vintages: [
       {
@@ -400,6 +550,36 @@ export const wines: Wine[] = [
       { dish: 'Kylling', description: 'Med kremsaus' },
       { dish: 'Hvite oster', description: 'Brie eller chèvre' }
     ],
+    purchaseLocations: [
+      {
+        type: 'chateau',
+        name: 'Domaine de Fontenille',
+        address: '1681 Route de Roquefraîche',
+        city: 'Lauris',
+        postalCode: '84360',
+        phone: '+33 4 13 98 00 00',
+        email: 'info@domainedefontenille.com',
+        website: 'https://www.domainedefontenille.com',
+        coordinates: {
+          lat: 43.762696,
+          lng: 5.301878
+        },
+        openingHours: {
+          monday: '09:00-18:00',
+          tuesday: '09:00-18:00',
+          wednesday: '09:00-18:00',
+          thursday: '09:00-18:00',
+          friday: '09:00-18:00',
+          saturday: '09:00-18:00',
+          sunday: '09:00-18:00',
+          notes: 'Vinsmaking daglig. Også 5-stjerners boutique-hotell og gourmetrestaurant.'
+        },
+        priceRange: '€18-45',
+        notes: 'Historisk domene med 800 år gammel vinhistorie. Vinsmaking, hotell og restaurant. Booking anbefales for guidede turer.',
+        bookingRequired: true,
+        tastingAvailable: true
+      }
+    ],
     vintages: [
       {
         year: 2022,
@@ -423,6 +603,36 @@ export const wines: Wine[] = [
       { dish: 'Grillede reker', description: 'Med aioli' },
       { dish: 'Salat Niçoise', description: 'Med tuna' },
       { dish: 'Provencalsk antipasti', description: 'Tapenader og oliven' }
+    ],
+    purchaseLocations: [
+      {
+        type: 'chateau',
+        name: 'Domaine de Fontenille',
+        address: '1681 Route de Roquefraîche',
+        city: 'Lauris',
+        postalCode: '84360',
+        phone: '+33 4 13 98 00 00',
+        email: 'info@domainedefontenille.com',
+        website: 'https://www.domainedefontenille.com',
+        coordinates: {
+          lat: 43.762696,
+          lng: 5.301878
+        },
+        openingHours: {
+          monday: '09:00-18:00',
+          tuesday: '09:00-18:00',
+          wednesday: '09:00-18:00',
+          thursday: '09:00-18:00',
+          friday: '09:00-18:00',
+          saturday: '09:00-18:00',
+          sunday: '09:00-18:00',
+          notes: 'Vinsmaking daglig. Også 5-stjerners boutique-hotell og gourmetrestaurant.'
+        },
+        priceRange: '€18-45',
+        notes: 'Historisk domene med 800 år gammel vinhistorie. Vinsmaking, hotell og restaurant. Booking anbefales for guidede turer.',
+        bookingRequired: true,
+        tastingAvailable: true
+      }
     ],
     vintages: [
       {
@@ -449,6 +659,36 @@ export const wines: Wine[] = [
       { dish: 'Grillet entrecôte med lavendel', description: 'Vinens lavendel- og timianaromer komplementerer pepperkrydret biff' },
       { dish: 'Ratatouille', description: 'De provençalske urtene i vinen matcher perfekt med denne klassiske grønnsaksgryten' },
       { dish: 'Fenalår', description: 'Tørrstekte norske lammespesialiteten passer utmerkt til vinens urtenote' }
+    ],
+    purchaseLocations: [
+      {
+        type: 'chateau',
+        name: 'Château de Mille',
+        address: '2650 Route de Bonnieux',
+        city: 'Apt',
+        postalCode: '84400',
+        phone: '+33 4 90 74 11 94',
+        email: 'contact@chateaudemille.fr',
+        website: 'https://www.chateaudemille.fr',
+        coordinates: {
+          lat: 43.866744,
+          lng: 5.352626
+        },
+        openingHours: {
+          monday: '10:00-12:00, 14:00-18:00',
+          tuesday: '10:00-12:00, 14:00-18:00',
+          wednesday: '10:00-12:00, 14:00-18:00',
+          thursday: '10:00-12:00, 14:00-18:00',
+          friday: '10:00-12:00, 14:00-18:00',
+          saturday: '10:00-12:00, 14:00-18:00',
+          sunday: 'Stengt',
+          notes: 'Sommeråpningstider (juli-august): Utvidet til 19:00'
+        },
+        priceRange: '€25-35',
+        notes: 'Gratis vinsmaking. Omvisning på forespørsel. Vingården ligger ved foten av Luberon-fjellet med spektakulær utsikt.',
+        bookingRequired: false,
+        tastingAvailable: true
+      }
     ],
     vintages: [
       {
@@ -490,6 +730,36 @@ export const wines: Wine[] = [
       { dish: 'Finnbiff', description: 'Reinsdyrkjøttets game smak balanseres av vinens fiolett-aromatikk og pepperkrydder' },
       { dish: 'Lammebog med svartpepperkornskorpe', description: 'Vinens markerte sorte pepper og mørke bær komplementerer kraftig lam' },
       { dish: 'Blåskimmelost', description: 'Den fylde Syrah-dominerte vinen står opp mot kraftige oster' }
+    ],
+    purchaseLocations: [
+      {
+        type: 'chateau',
+        name: 'Château de Mille',
+        address: '2650 Route de Bonnieux',
+        city: 'Apt',
+        postalCode: '84400',
+        phone: '+33 4 90 74 11 94',
+        email: 'contact@chateaudemille.fr',
+        website: 'https://www.chateaudemille.fr',
+        coordinates: {
+          lat: 43.866744,
+          lng: 5.352626
+        },
+        openingHours: {
+          monday: '10:00-12:00, 14:00-18:00',
+          tuesday: '10:00-12:00, 14:00-18:00',
+          wednesday: '10:00-12:00, 14:00-18:00',
+          thursday: '10:00-12:00, 14:00-18:00',
+          friday: '10:00-12:00, 14:00-18:00',
+          saturday: '10:00-12:00, 14:00-18:00',
+          sunday: 'Stengt',
+          notes: 'Sommeråpningstider (juli-august): Utvidet til 19:00'
+        },
+        priceRange: '€25-35',
+        notes: 'Gratis vinsmaking. Omvisning på forespørsel. Vingården ligger ved foten av Luberon-fjellet med spektakulær utsikt.',
+        bookingRequired: false,
+        tastingAvailable: true
+      }
     ],
     vintages: [
       {
@@ -789,6 +1059,36 @@ export const wines: Wine[] = [
       { dish: 'Poke bowl med laks', description: 'Lett og frisk rosé passer utmerkt til denne moderne retten' },
       { dish: 'Grillet kylling med sitron', description: 'Vinens blomsteraromer og friskhet løfter kyllingretten' }
     ],
+    purchaseLocations: [
+      {
+        type: 'chateau',
+        name: 'Château de Mille',
+        address: '2650 Route de Bonnieux',
+        city: 'Apt',
+        postalCode: '84400',
+        phone: '+33 4 90 74 11 94',
+        email: 'contact@chateaudemille.fr',
+        website: 'https://www.chateaudemille.fr',
+        coordinates: {
+          lat: 43.866744,
+          lng: 5.352626
+        },
+        openingHours: {
+          monday: '10:00-12:00, 14:00-18:00',
+          tuesday: '10:00-12:00, 14:00-18:00',
+          wednesday: '10:00-12:00, 14:00-18:00',
+          thursday: '10:00-12:00, 14:00-18:00',
+          friday: '10:00-12:00, 14:00-18:00',
+          saturday: '10:00-12:00, 14:00-18:00',
+          sunday: 'Stengt',
+          notes: 'Sommeråpningstider (juli-august): Utvidet til 19:00'
+        },
+        priceRange: '€25-35',
+        notes: 'Gratis vinsmaking. Omvisning på forespørsel. Vingården ligger ved foten av Luberon-fjellet med spektakulær utsikt.',
+        bookingRequired: false,
+        tastingAvailable: true
+      }
+    ],
     vintages: [
       {
         year: 2021,
@@ -813,6 +1113,36 @@ export const wines: Wine[] = [
       { dish: 'Steinbit i ovn med urter', description: 'Blomsternotene og fruktigheten løfter den hvite fisken' },
       { dish: 'Krabbesalat', description: 'Den friske mineraliteten komplementerer krabbens delikate søthet' },
       { dish: 'Geiteost-salat med honning', description: 'Vinens frukt balanserer geiteostens syre og honningens søthet' }
+    ],
+    purchaseLocations: [
+      {
+        type: 'chateau',
+        name: 'Château de Mille',
+        address: '2650 Route de Bonnieux',
+        city: 'Apt',
+        postalCode: '84400',
+        phone: '+33 4 90 74 11 94',
+        email: 'contact@chateaudemille.fr',
+        website: 'https://www.chateaudemille.fr',
+        coordinates: {
+          lat: 43.866744,
+          lng: 5.352626
+        },
+        openingHours: {
+          monday: '10:00-12:00, 14:00-18:00',
+          tuesday: '10:00-12:00, 14:00-18:00',
+          wednesday: '10:00-12:00, 14:00-18:00',
+          thursday: '10:00-12:00, 14:00-18:00',
+          friday: '10:00-12:00, 14:00-18:00',
+          saturday: '10:00-12:00, 14:00-18:00',
+          sunday: 'Stengt',
+          notes: 'Sommeråpningstider (juli-august): Utvidet til 19:00'
+        },
+        priceRange: '€25-35',
+        notes: 'Gratis vinsmaking. Omvisning på forespørsel. Vingården ligger ved foten av Luberon-fjellet med spektakulær utsikt.',
+        bookingRequired: false,
+        tastingAvailable: true
+      }
     ],
     vintages: [
       {

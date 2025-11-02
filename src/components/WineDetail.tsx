@@ -240,6 +240,203 @@ export default function WineDetail({ wine, onBack, onCellarUpdate }: WineDetailP
           </div>
         </div>
 
+        {/* Purchase Locations */}
+        {wine.purchaseLocations && wine.purchaseLocations.length > 0 && (
+          <div className="detail-section">
+            <h2>🛒 Hvor kan du kjøpe denne vinen?</h2>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+              {wine.purchaseLocations.map((location, index) => (
+                <div
+                  key={index}
+                  style={{
+                    padding: '1.5rem',
+                    background: '#fff5ed',
+                    borderRadius: '12px',
+                    border: '2px solid #ffe4d6'
+                  }}
+                >
+                  <div style={{ marginBottom: '1rem' }}>
+                    <h3 style={{ fontSize: '1.3rem', color: '#722f37', marginBottom: '0.5rem' }}>
+                      {location.type === 'chateau' && '🏰 '}
+                      {location.type === 'wine-shop' && '🏪 '}
+                      {location.type === 'online' && '🌐 '}
+                      {location.type === 'restaurant' && '🍽️ '}
+                      {location.name}
+                    </h3>
+                    {location.priceRange && (
+                      <span style={{
+                        display: 'inline-block',
+                        padding: '0.25rem 0.75rem',
+                        background: '#d4af37',
+                        color: 'white',
+                        borderRadius: '6px',
+                        fontSize: '0.9rem',
+                        fontWeight: 600
+                      }}>
+                        {location.priceRange}
+                      </span>
+                    )}
+                  </div>
+
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
+                    {location.address && (
+                      <div>
+                        <p style={{ fontSize: '0.85rem', color: '#666', marginBottom: '0.25rem' }}>📍 Adresse</p>
+                        <p style={{ fontSize: '0.95rem', fontWeight: 500 }}>
+                          {location.coordinates ? (
+                            <a
+                              href={`https://www.google.com/maps?q=${location.coordinates.lat},${location.coordinates.lng}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              style={{ color: '#722f37', textDecoration: 'underline' }}
+                            >
+                              {location.address}<br />
+                              {location.postalCode && location.city && `${location.postalCode} ${location.city}`}
+                            </a>
+                          ) : (
+                            <>
+                              {location.address}<br />
+                              {location.postalCode && location.city && `${location.postalCode} ${location.city}`}
+                            </>
+                          )}
+                        </p>
+                      </div>
+                    )}
+                    {location.phone && (
+                      <div>
+                        <p style={{ fontSize: '0.85rem', color: '#666', marginBottom: '0.25rem' }}>📞 Telefon</p>
+                        <p style={{ fontSize: '0.95rem', fontWeight: 500 }}>
+                          <a href={`tel:${location.phone}`} style={{ color: '#722f37', textDecoration: 'none' }}>
+                            {location.phone}
+                          </a>
+                        </p>
+                      </div>
+                    )}
+                    {location.email && (
+                      <div>
+                        <p style={{ fontSize: '0.85rem', color: '#666', marginBottom: '0.25rem' }}>✉️ E-post</p>
+                        <p style={{ fontSize: '0.95rem', fontWeight: 500 }}>
+                          <a href={`mailto:${location.email}`} style={{ color: '#722f37', textDecoration: 'none' }}>
+                            {location.email}
+                          </a>
+                        </p>
+                      </div>
+                    )}
+                    {location.website && (
+                      <div>
+                        <p style={{ fontSize: '0.85rem', color: '#666', marginBottom: '0.25rem' }}>🌐 Nettside</p>
+                        <p style={{ fontSize: '0.95rem', fontWeight: 500 }}>
+                          <a href={location.website} target="_blank" rel="noopener noreferrer" style={{ color: '#722f37', textDecoration: 'underline' }}>
+                            Besøk nettside
+                          </a>
+                        </p>
+                      </div>
+                    )}
+                  </div>
+
+                  {location.openingHours && (
+                    <div style={{ marginBottom: '1rem', padding: '1rem', background: 'white', borderRadius: '8px' }}>
+                      <p style={{ fontSize: '0.85rem', color: '#666', marginBottom: '0.75rem', fontWeight: 600 }}>🕒 Åpningstider</p>
+                      <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '0.5rem', fontSize: '0.9rem' }}>
+                        {location.openingHours.monday && (
+                          <>
+                            <span style={{ fontWeight: 500 }}>Mandag:</span>
+                            <span>{location.openingHours.monday}</span>
+                          </>
+                        )}
+                        {location.openingHours.tuesday && (
+                          <>
+                            <span style={{ fontWeight: 500 }}>Tirsdag:</span>
+                            <span>{location.openingHours.tuesday}</span>
+                          </>
+                        )}
+                        {location.openingHours.wednesday && (
+                          <>
+                            <span style={{ fontWeight: 500 }}>Onsdag:</span>
+                            <span>{location.openingHours.wednesday}</span>
+                          </>
+                        )}
+                        {location.openingHours.thursday && (
+                          <>
+                            <span style={{ fontWeight: 500 }}>Torsdag:</span>
+                            <span>{location.openingHours.thursday}</span>
+                          </>
+                        )}
+                        {location.openingHours.friday && (
+                          <>
+                            <span style={{ fontWeight: 500 }}>Fredag:</span>
+                            <span>{location.openingHours.friday}</span>
+                          </>
+                        )}
+                        {location.openingHours.saturday && (
+                          <>
+                            <span style={{ fontWeight: 500 }}>Lørdag:</span>
+                            <span>{location.openingHours.saturday}</span>
+                          </>
+                        )}
+                        {location.openingHours.sunday && (
+                          <>
+                            <span style={{ fontWeight: 500 }}>Søndag:</span>
+                            <span>{location.openingHours.sunday}</span>
+                          </>
+                        )}
+                      </div>
+                      {location.openingHours.notes && (
+                        <p style={{ marginTop: '0.75rem', fontSize: '0.85rem', color: '#666', fontStyle: 'italic' }}>
+                          💡 {location.openingHours.notes}
+                        </p>
+                      )}
+                    </div>
+                  )}
+
+                  {(location.tastingAvailable || location.bookingRequired || location.notes) && (
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '0.5rem' }}>
+                      {location.tastingAvailable && (
+                        <span style={{
+                          padding: '0.5rem 1rem',
+                          background: '#10b981',
+                          color: 'white',
+                          borderRadius: '6px',
+                          fontSize: '0.85rem',
+                          fontWeight: 600
+                        }}>
+                          🍷 Vinsmaking tilgjengelig
+                        </span>
+                      )}
+                      {location.bookingRequired && (
+                        <span style={{
+                          padding: '0.5rem 1rem',
+                          background: '#f59e0b',
+                          color: 'white',
+                          borderRadius: '6px',
+                          fontSize: '0.85rem',
+                          fontWeight: 600
+                        }}>
+                          📅 Booking påkrevd
+                        </span>
+                      )}
+                    </div>
+                  )}
+
+                  {location.notes && (
+                    <p style={{
+                      marginTop: '0.75rem',
+                      padding: '1rem',
+                      background: 'white',
+                      borderRadius: '8px',
+                      fontSize: '0.9rem',
+                      color: '#666',
+                      borderLeft: '4px solid #d4af37'
+                    }}>
+                      {location.notes}
+                    </p>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         <div style={{borderTop: '2px solid #e0e0e0', paddingTop: '2rem', marginTop: '2rem'}}>
           <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem'}}>
             <div>
