@@ -54,8 +54,8 @@ export default function VintageChart() {
       <div className="vintage-chart">
         {recentVintages.map((vintage) => {
           const isHovered = hoveredYear === vintage.year;
-          // Bruk pixelhøyde for mer presis kontroll
-          const barHeightPx = Math.max((vintage.rating / 5) * 250, 30); // Maks 250px, minimum 30px
+          // Bruk pixelhøyde for mer presis kontroll - maks 230px for å gi luft på toppen
+          const barHeightPx = Math.max((vintage.rating / 5) * 230, 30); // Maks 230px, minimum 30px
 
           return (
             <div
