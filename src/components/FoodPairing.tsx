@@ -65,49 +65,41 @@ export default function FoodPairing({ wines, onViewWine }: FoodPairingProps) {
       : wine.vintages[0];
   };
 
-  const matchingWines = useMemo(() => {
-    // Filter wines that match search term or category
-    const filtered = wines.filter(wine => {
-      // Check if any food pairing matches the search term
-      const matchesSearch = searchTerm === '' ||
-        wine.foodPairings.some(pairing =>
+  const matchingDishes = useMemo(() => {
+    // Create a map of dishes to wines
+    const dishMap = new Map<string, Array<{ wine: Wine; description?: string }>>();
+
+    wines.forEach(wine => {
+      wine.foodPairings.forEach(pairing => {
+        // Check if pairing matches search term
+        const matchesSearch = searchTerm === '' ||
           pairing.dish.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          (pairing.description && pairing.description.toLowerCase().includes(searchTerm.toLowerCase()))
-        );
+          (pairing.description && pairing.description.toLowerCase().includes(searchTerm.toLowerCase()));
 
-      // Check if wine matches selected category
-      const matchesCategory = selectedCategory === 'all' ||
-        wine.foodPairings.some(pairing => {
-          const keywords = getCategoryKeywords(selectedCategory);
-          const combinedText = `${pairing.dish} ${pairing.description || ''}`.toLowerCase();
-          return keywords.some(keyword => combinedText.includes(keyword));
-        });
+        // Check if pairing matches category
+        const matchesCategory = selectedCategory === 'all' ||
+          getCategoryKeywords(selectedCategory).some(keyword =>
+            `${pairing.dish} ${pairing.description || ''}`.toLowerCase().includes(keyword)
+          );
 
-      return matchesSearch && matchesCategory;
+        if (matchesSearch && matchesCategory) {
+          const existing = dishMap.get(pairing.dish) || [];
+          existing.push({
+            wine,
+            description: pairing.description
+          });
+          dishMap.set(pairing.dish, existing);
+        }
+      });
     });
 
-    // Create wine-pairing pairs for display
-    const winePairings = filtered.flatMap(wine =>
-      wine.foodPairings
-        .filter(pairing => {
-          const matchesSearch = searchTerm === '' ||
-            pairing.dish.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            (pairing.description && pairing.description.toLowerCase().includes(searchTerm.toLowerCase()));
-
-          const matchesCategory = selectedCategory === 'all' ||
-            getCategoryKeywords(selectedCategory).some(keyword =>
-              `${pairing.dish} ${pairing.description || ''}`.toLowerCase().includes(keyword)
-            );
-
-          return matchesSearch && matchesCategory;
-        })
-        .map(pairing => ({
-          wine,
-          pairing
-        }))
-    );
-
-    return winePairings;
+    // Convert to array and sort by number of wines (most popular first)
+    return Array.from(dishMap.entries())
+      .map(([dish, wineList]) => ({
+        dish,
+        wines: wineList
+      }))
+      .sort((a, b) => b.wines.length - a.wines.length);
   }, [wines, searchTerm, selectedCategory]);
 
   // Get unique dishes for suggestions
@@ -200,10 +192,10 @@ export default function FoodPairing({ wines, onViewWine }: FoodPairingProps) {
 
       {/* Results */}
       <div className="results-count">
-        Fant {matchingWines.length} {matchingWines.length === 1 ? 'match' : 'matcher'}
+        Fant {matchingDishes.length} {matchingDishes.length === 1 ? 'rett' : 'retter'}
       </div>
 
-      {matchingWines.length === 0 ? (
+      {matchingDishes.length === 0 ? (
         <div className="empty-state">
           <h3>Ingen treff</h3>
           <p className="mb-md">Prøv et annet søk eller velg en annen kategori</p>
@@ -218,102 +210,125 @@ export default function FoodPairing({ wines, onViewWine }: FoodPairingProps) {
           </button>
         </div>
       ) : (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-          {matchingWines.map(({ wine, pairing }, index) => {
-            const latestVintage = getLatestVintage(wine);
-            const vintageYears = wine.vintages.map(v => v.year).sort((a, b) => b - a);
-
-            return (
-              <div
-                key={`${wine.id}-${index}`}
-                className="card food-pairing-card"
-              >
-                <div className={`wine-color-bar ${wine.color}`} />
-
-                {/* Dish info */}
-                <div style={{
-                  marginBottom: '1rem',
-                  padding: '1rem',
-                  background: '#f5f5f5',
-                  borderRadius: '8px',
-                  borderLeft: '4px solid #d4af37'
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+          {matchingDishes.map(({ dish, wines: dishWines }, dishIndex) => (
+            <div key={dishIndex} style={{ marginBottom: '1rem' }}>
+              {/* Dish header */}
+              <div style={{
+                marginBottom: '1.5rem',
+                padding: '1.5rem',
+                background: '#fff5ed',
+                borderRadius: '12px',
+                border: '3px solid #d4af37',
+                boxShadow: '0 2px 8px rgba(212, 175, 55, 0.2)'
+              }}>
+                <h3 style={{
+                  fontSize: '1.5rem',
+                  fontWeight: 700,
+                  color: '#722f37',
+                  marginBottom: '0.5rem'
                 }}>
-                  <div style={{
-                    fontSize: '1.2rem',
-                    fontWeight: 700,
-                    color: '#722f37',
-                    marginBottom: '0.25rem'
-                  }}>
-                    🍽️ {pairing.dish}
-                  </div>
-                  <div style={{ fontSize: '0.9rem', color: '#666' }}>
-                    {pairing.description}
-                  </div>
-                </div>
-
-                {/* Button - shown after dish on mobile */}
-                <div className="food-pairing-button-mobile">
-                  <button
-                    onClick={() => onViewWine(wine)}
-                    className="btn btn-primary"
-                    style={{ width: '100%' }}
-                  >
-                    Se detaljer
-                  </button>
-                </div>
-
-                <div className="food-pairing-content">
-                  <div className="food-pairing-wine-info">
-                    {/* Wine info */}
-                    <h3 style={{ marginBottom: '0.5rem' }}>{wine.name}</h3>
-                    <p style={{ color: '#666', fontSize: '1rem', marginBottom: '0.5rem' }}>
-                      {wine.producer}
-                    </p>
-
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
-                      <span className="wine-year">
-                        {vintageYears.length > 1
-                          ? `${vintageYears.length} årganger`
-                          : vintageYears[0]
-                        }
-                      </span>
-                      {latestVintage.price && (
-                        <span className="wine-price">€{latestVintage.price}</span>
-                      )}
-                    </div>
-
-                    <div className="tag-list">
-                      {wine.grapes.map((grape, idx) => (
-                        <span key={idx} className="tag tag-grape">
-                          {grape}
-                        </span>
-                      ))}
-                    </div>
-
-                    <p style={{
-                      marginTop: '1rem',
-                      fontSize: '0.9rem',
-                      color: '#666',
-                      fontStyle: 'italic'
-                    }}>
-                      {wine.description}
-                    </p>
-                  </div>
-
-                  {/* Button - shown on desktop */}
-                  <div className="food-pairing-button-desktop">
-                    <button
-                      onClick={() => onViewWine(wine)}
-                      className="btn btn-primary"
-                      style={{ minWidth: '150px' }}
-                    >
-                      Se detaljer
-                    </button>
-                  </div>
-                </div>
+                  🍽️ {dish}
+                </h3>
+                <p style={{ fontSize: '0.95rem', color: '#666', marginBottom: '0.5rem' }}>
+                  {dishWines.length} {dishWines.length === 1 ? 'vin passer' : 'viner passer'} til denne retten
+                </p>
               </div>
-          );
-          })}
+
+              {/* Wines for this dish */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', paddingLeft: '1rem' }}>
+                {dishWines.map(({ wine, description }, wineIndex) => {
+                  const latestVintage = getLatestVintage(wine);
+                  const vintageYears = wine.vintages.map(v => v.year).sort((a, b) => b - a);
+
+                  return (
+                    <div
+                      key={`${wine.id}-${wineIndex}`}
+                      className="card food-pairing-card"
+                    >
+                      <div className={`wine-color-bar ${wine.color}`} />
+
+                      {/* Wine pairing description */}
+                      {description && (
+                        <div style={{
+                          marginBottom: '1rem',
+                          padding: '0.75rem 1rem',
+                          background: '#f5f5f5',
+                          borderRadius: '8px',
+                          borderLeft: '4px solid #d4af37'
+                        }}>
+                          <div style={{ fontSize: '0.9rem', color: '#666', fontStyle: 'italic' }}>
+                            💡 {description}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Button - shown after description on mobile */}
+                      <div className="food-pairing-button-mobile">
+                        <button
+                          onClick={() => onViewWine(wine)}
+                          className="btn btn-primary"
+                          style={{ width: '100%' }}
+                        >
+                          Se detaljer
+                        </button>
+                      </div>
+
+                      <div className="food-pairing-content">
+                        <div className="food-pairing-wine-info">
+                          {/* Wine info */}
+                          <h3 style={{ marginBottom: '0.5rem' }}>{wine.name}</h3>
+                          <p style={{ color: '#666', fontSize: '1rem', marginBottom: '0.5rem' }}>
+                            {wine.producer}
+                          </p>
+
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
+                            <span className="wine-year">
+                              {vintageYears.length > 1
+                                ? `${vintageYears.length} årganger`
+                                : vintageYears[0]
+                              }
+                            </span>
+                            {latestVintage.price && (
+                              <span className="wine-price">€{latestVintage.price}</span>
+                            )}
+                          </div>
+
+                          <div className="tag-list">
+                            {wine.grapes.map((grape, idx) => (
+                              <span key={idx} className="tag tag-grape">
+                                {grape}
+                              </span>
+                            ))}
+                          </div>
+
+                          <p style={{
+                            marginTop: '1rem',
+                            fontSize: '0.9rem',
+                            color: '#666',
+                            fontStyle: 'italic'
+                          }}>
+                            {wine.description}
+                          </p>
+                        </div>
+
+                        {/* Button - shown on desktop */}
+                        <div className="food-pairing-button-desktop">
+                          <button
+                            onClick={() => onViewWine(wine)}
+                            className="btn btn-primary"
+                            style={{ minWidth: '150px' }}
+                          >
+                            Se detaljer
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
         </div>
       )}
     </div>
