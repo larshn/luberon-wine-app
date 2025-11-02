@@ -7,7 +7,7 @@ import {
   exportCellar,
   importCellar
 } from '../utils/storage';
-import { getWineColorClass, getStorageLabel, getStorageColor } from '../utils/wine';
+import { getStorageLabel } from '../utils/wine';
 
 type CellarWineWithDetails = {
   wine: Wine;
@@ -21,6 +21,8 @@ interface WineCellarProps {
   onViewWine: (wine: Wine) => void;
   onUpdate: () => void;
 }
+
+const getStorageClass = (rec: string) => rec.replace(/-/g, '-');
 
 export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarProps) {
   const [cellarWines, setCellarWines] = useState<CellarWineWithDetails[]>([]);
@@ -110,139 +112,126 @@ export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarPr
 
   return (
     <div>
-      {/* Header */}
-      <div className="mb-8">
-        <h2 className="text-3xl font-bold text-gray-800 mb-2">Min Vinkjeller</h2>
-        <div className="flex gap-6 text-gray-600">
+      <div className="page-header">
+        <h2>Min Vinkjeller</h2>
+        <div style={{display: 'flex', gap: '2rem', color: '#666', marginTop: '0.5rem'}}>
           <p>
-            <span className="font-semibold text-amber-700">{totalBottles}</span> flasker
+            <span style={{fontWeight: 600, color: '#d4af37'}}>{totalBottles}</span> flasker
           </p>
           {totalValue > 0 && (
             <p>
-              Estimert verdi: <span className="font-semibold text-amber-700">€{totalValue.toFixed(2)}</span>
+              Estimert verdi: <span style={{fontWeight: 600, color: '#d4af37'}}>€{totalValue.toFixed(2)}</span>
             </p>
           )}
         </div>
       </div>
 
-      {/* Actions */}
-      <div className="mb-6 flex gap-3">
-        <button
-          onClick={() => setShowExportModal(true)}
-          className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
-        >
+      <div className="cellar-actions">
+        <button onClick={() => setShowExportModal(true)} className="btn btn-secondary">
           📤 Eksporter kjeller
         </button>
-        <button
-          onClick={() => setShowImportModal(true)}
-          className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors"
-        >
+        <button onClick={() => setShowImportModal(true)} className="btn btn-secondary">
           📥 Importer kjeller
         </button>
       </div>
 
-      {/* Wine List */}
       {cellarWines.length === 0 ? (
-        <div className="bg-white rounded-lg shadow-md p-12 text-center">
-          <p className="text-gray-500 text-lg mb-4">Din vinkjeller er tom</p>
-          <p className="text-gray-400">Legg til viner fra katalogen for å begynne å bygge din samling!</p>
+        <div className="empty-state">
+          <h3>Din vinkjeller er tom</h3>
+          <p>Legg til viner fra katalogen for å begynne å bygge din samling!</p>
         </div>
       ) : (
-        <div className="space-y-4">
+        <div style={{display: 'flex', flexDirection: 'column', gap: '1.5rem'}}>
           {cellarWines.map(({ wine, quantity, location, notes }) => (
-            <div key={wine.id} className="bg-white rounded-lg shadow-md overflow-hidden">
-              <div className={`h-2 ${getWineColorClass(wine.color)}`} />
-              <div className="p-6">
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                  {/* Wine Info */}
-                  <div className="lg:col-span-2">
-                    <div className="flex justify-between items-start mb-4">
-                      <div>
-                        <h3 className="text-2xl font-bold text-gray-800 mb-1">{wine.name}</h3>
-                        <p className="text-gray-600">{wine.producer}</p>
-                        <div className="flex items-center gap-3 mt-2">
-                          <span className="text-lg font-semibold text-amber-700">{wine.year}</span>
-                          <span className={`px-2 py-1 rounded-full text-xs font-medium border ${getStorageColor(wine.storageRecommendation)}`}>
-                            {getStorageLabel(wine.storageRecommendation)}
-                          </span>
-                        </div>
-                      </div>
-                      <div className="text-right">
-                        <p className="text-3xl font-bold text-amber-700">{quantity}</p>
-                        <p className="text-sm text-gray-500">flasker</p>
-                      </div>
-                    </div>
+            <div key={wine.id} className="card cellar-card">
+              <div className={`wine-color-bar ${wine.color}`} />
 
-                    {/* Grapes */}
-                    <div className="flex flex-wrap gap-1 mb-4">
-                      {wine.grapes.map((grape, index) => (
-                        <span
-                          key={index}
-                          className="px-2 py-1 bg-purple-100 text-purple-800 text-xs rounded-full"
-                        >
-                          {grape}
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* Location */}
-                    <div className="mb-3">
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        📍 Plassering
-                      </label>
-                      <input
-                        type="text"
-                        value={location || ''}
-                        onChange={(e) => handleUpdateLocation(wine.id, e.target.value)}
-                        placeholder="F.eks. Hylle 2, Rad 3"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent text-sm"
-                      />
-                    </div>
-
-                    {/* Notes */}
+              <div className="cellar-grid">
+                <div className="cellar-info">
+                  <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'start', marginBottom: '1.5rem'}}>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        📝 Notater
-                      </label>
-                      <textarea
-                        value={notes || ''}
-                        onChange={(e) => handleUpdateNotes(wine.id, e.target.value)}
-                        placeholder="Dine notater om denne vinen..."
-                        rows={2}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent text-sm"
-                      />
+                      <h3>{wine.name}</h3>
+                      <p style={{color: '#666', fontSize: '1.1rem', marginBottom: '0.5rem'}}>{wine.producer}</p>
+                      <div style={{display: 'flex', alignItems: 'center', gap: '1rem', marginTop: '0.5rem'}}>
+                        <span className="wine-year">{wine.year}</span>
+                        <span className={`tag-storage ${getStorageClass(wine.storageRecommendation)}`}>
+                          {getStorageLabel(wine.storageRecommendation)}
+                        </span>
+                      </div>
+                    </div>
+                    <div style={{textAlign: 'right'}}>
+                      <p className="cellar-quantity">{quantity}</p>
+                      <p style={{fontSize: '0.9rem', color: '#999'}}>flasker</p>
                     </div>
                   </div>
 
-                  {/* Actions */}
-                  <div className="flex flex-col gap-3">
-                    <button
-                      onClick={() => onViewWine(wine)}
-                      className="w-full px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white rounded-lg transition-colors"
-                    >
-                      Se detaljer
-                    </button>
-                    <button
-                      onClick={() => handleRemoveOne(wine.id)}
-                      className="w-full px-4 py-2 bg-orange-100 hover:bg-orange-200 text-orange-800 rounded-lg transition-colors"
-                    >
-                      - Fjern 1 flaske
-                    </button>
-                    <button
-                      onClick={() => handleRemoveAll(wine.id)}
-                      className="w-full px-4 py-2 bg-red-100 hover:bg-red-200 text-red-800 rounded-lg transition-colors"
-                    >
-                      🗑️ Fjern alle
-                    </button>
-                    {wine.price && (
-                      <div className="mt-2 p-3 bg-gray-50 rounded-lg text-center">
-                        <p className="text-xs text-gray-600">Verdi</p>
-                        <p className="text-lg font-bold text-gray-800">
-                          €{(wine.price * quantity).toFixed(2)}
-                        </p>
-                      </div>
-                    )}
+                  <div className="tag-list mb-md">
+                    {wine.grapes.map((grape, index) => (
+                      <span key={index} className="tag tag-grape">
+                        {grape}
+                      </span>
+                    ))}
                   </div>
+
+                  <div className="mb-md">
+                    <label style={{display: 'block', fontWeight: 500, marginBottom: '0.5rem', fontSize: '0.9rem'}}>
+                      📍 Plassering
+                    </label>
+                    <input
+                      type="text"
+                      value={location || ''}
+                      onChange={(e) => handleUpdateLocation(wine.id, e.target.value)}
+                      placeholder="F.eks. Hylle 2, Rad 3"
+                      className="input"
+                    />
+                  </div>
+
+                  <div>
+                    <label style={{display: 'block', fontWeight: 500, marginBottom: '0.5rem', fontSize: '0.9rem'}}>
+                      📝 Notater
+                    </label>
+                    <textarea
+                      value={notes || ''}
+                      onChange={(e) => handleUpdateNotes(wine.id, e.target.value)}
+                      placeholder="Dine notater om denne vinen..."
+                      rows={2}
+                      className="input-area"
+                    />
+                  </div>
+                </div>
+
+                <div className="cellar-actions-column">
+                  <button onClick={() => onViewWine(wine)} className="btn btn-primary">
+                    Se detaljer
+                  </button>
+                  <button onClick={() => handleRemoveOne(wine.id)} className="btn btn-secondary">
+                    - Fjern 1 flaske
+                  </button>
+                  <button
+                    onClick={() => handleRemoveAll(wine.id)}
+                    style={{
+                      background: '#fee2e2',
+                      color: '#991b1b',
+                      border: '2px solid #fca5a5'
+                    }}
+                    className="btn"
+                  >
+                    🗑️ Fjern alle
+                  </button>
+                  {wine.price && (
+                    <div style={{
+                      marginTop: '1rem',
+                      padding: '1rem',
+                      background: '#f5f5f5',
+                      borderRadius: '8px',
+                      textAlign: 'center'
+                    }}>
+                      <p style={{fontSize: '0.8rem', color: '#999', marginBottom: '0.25rem'}}>Verdi</p>
+                      <p style={{fontSize: '1.3rem', fontWeight: 700, color: '#2d2d2d'}}>
+                        €{(wine.price * quantity).toFixed(2)}
+                      </p>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -250,25 +239,18 @@ export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarPr
         </div>
       )}
 
-      {/* Export Modal */}
       {showExportModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-lg p-6 max-w-md w-full">
-            <h3 className="text-xl font-bold text-gray-800 mb-4">Eksporter Vinkjeller</h3>
-            <p className="text-gray-600 mb-6">
+        <div className="modal-overlay">
+          <div className="modal">
+            <h3>Eksporter Vinkjeller</h3>
+            <p style={{color: '#666', marginBottom: '2rem'}}>
               Dette vil laste ned din vinkjeller som en JSON-fil. Du kan importere den senere eller på en annen enhet.
             </p>
-            <div className="flex gap-3">
-              <button
-                onClick={handleExport}
-                className="flex-1 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
-              >
+            <div className="modal-actions">
+              <button onClick={handleExport} className="btn btn-primary">
                 Last ned
               </button>
-              <button
-                onClick={() => setShowExportModal(false)}
-                className="flex-1 px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-lg transition-colors"
-              >
+              <button onClick={() => setShowExportModal(false)} className="btn btn-secondary">
                 Avbryt
               </button>
             </div>
@@ -276,12 +258,11 @@ export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarPr
         </div>
       )}
 
-      {/* Import Modal */}
       {showImportModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-lg p-6 max-w-2xl w-full">
-            <h3 className="text-xl font-bold text-gray-800 mb-4">Importer Vinkjeller</h3>
-            <p className="text-gray-600 mb-4">
+        <div className="modal-overlay">
+          <div className="modal">
+            <h3>Importer Vinkjeller</h3>
+            <p style={{color: '#666', marginBottom: '1rem'}}>
               Lim inn innholdet fra din eksporterte JSON-fil her:
             </p>
             <textarea
@@ -289,16 +270,21 @@ export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarPr
               onChange={(e) => setImportData(e.target.value)}
               placeholder='{"wines": [...]}'
               rows={10}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent font-mono text-sm mb-4"
+              style={{
+                width: '100%',
+                padding: '1rem',
+                border: '2px solid #e0e0e0',
+                borderRadius: '6px',
+                fontFamily: 'monospace',
+                fontSize: '0.9rem',
+                marginBottom: '1rem'
+              }}
             />
             {importError && (
-              <p className="text-red-600 text-sm mb-4">{importError}</p>
+              <p style={{color: '#991b1b', fontSize: '0.9rem', marginBottom: '1rem'}}>{importError}</p>
             )}
-            <div className="flex gap-3">
-              <button
-                onClick={handleImport}
-                className="flex-1 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors"
-              >
+            <div className="modal-actions">
+              <button onClick={handleImport} className="btn btn-primary">
                 Importer
               </button>
               <button
@@ -307,7 +293,7 @@ export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarPr
                   setImportData('');
                   setImportError('');
                 }}
-                className="flex-1 px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-lg transition-colors"
+                className="btn btn-secondary"
               >
                 Avbryt
               </button>

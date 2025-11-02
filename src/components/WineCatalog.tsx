@@ -1,11 +1,15 @@
 import { useState, useMemo } from 'react';
 import type { Wine, WineColor } from '../types/wine';
-import { getStorageLabel, getStorageColor, getWineColorClass } from '../utils/wine';
+import { getStorageLabel } from '../utils/wine';
 
 interface WineCatalogProps {
   wines: Wine[];
   onViewWine: (wine: Wine) => void;
 }
+
+const getStorageClass = (rec: string) => {
+  return rec.replace(/-/g, '-');
+};
 
 export default function WineCatalog({ wines, onViewWine }: WineCatalogProps) {
   const [searchTerm, setSearchTerm] = useState('');
@@ -44,40 +48,30 @@ export default function WineCatalog({ wines, onViewWine }: WineCatalogProps) {
 
   return (
     <div>
-      {/* Header */}
-      <div className="mb-8">
-        <h2 className="text-3xl font-bold text-gray-800 mb-2">Vinkatalog</h2>
-        <p className="text-gray-600">
-          Utforsk {wines.length} forskjellige viner fra Luberon-regionen
-        </p>
+      <div className="page-header">
+        <h2>Vinkatalog</h2>
+        <p>Utforsk {wines.length} forskjellige viner fra Luberon-regionen</p>
       </div>
 
-      {/* Search and Filters */}
-      <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {/* Search */}
-          <div className="lg:col-span-2">
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              🔍 Søk
-            </label>
+      <div className="search-filters">
+        <div className="filter-grid">
+          <div className="filter-group">
+            <label>🔍 Søk</label>
             <input
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Søk etter vin, produsent, druer..."
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+              className="input"
             />
           </div>
 
-          {/* Color Filter */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              🍷 Farge
-            </label>
+          <div className="filter-group">
+            <label>🍷 Farge</label>
             <select
               value={filterColor}
               onChange={(e) => setFilterColor(e.target.value as WineColor | 'all')}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+              className="select"
             >
               <option value="all">Alle farger</option>
               <option value="red">Rød</option>
@@ -86,15 +80,12 @@ export default function WineCatalog({ wines, onViewWine }: WineCatalogProps) {
             </select>
           </div>
 
-          {/* Producer Filter */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              🏰 Produsent
-            </label>
+          <div className="filter-group">
+            <label>🏰 Produsent</label>
             <select
               value={filterProducer}
               onChange={(e) => setFilterProducer(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+              className="select"
             >
               <option value="all">Alle produsenter</option>
               {producers.map(producer => (
@@ -104,122 +95,90 @@ export default function WineCatalog({ wines, onViewWine }: WineCatalogProps) {
           </div>
         </div>
 
-        {/* Sort */}
-        <div className="mt-4 flex items-center gap-4">
-          <span className="text-sm font-medium text-gray-700">Sorter etter:</span>
-          <div className="flex gap-2">
-            <button
-              onClick={() => setSortBy('name')}
-              className={`px-3 py-1 rounded-lg text-sm ${
-                sortBy === 'name'
-                  ? 'bg-amber-600 text-white'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-              }`}
-            >
-              Navn
-            </button>
-            <button
-              onClick={() => setSortBy('year')}
-              className={`px-3 py-1 rounded-lg text-sm ${
-                sortBy === 'year'
-                  ? 'bg-amber-600 text-white'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-              }`}
-            >
-              Årgang
-            </button>
-            <button
-              onClick={() => setSortBy('price')}
-              className={`px-3 py-1 rounded-lg text-sm ${
-                sortBy === 'price'
-                  ? 'bg-amber-600 text-white'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-              }`}
-            >
-              Pris
-            </button>
-          </div>
+        <div className="sort-controls">
+          <span>Sorter etter:</span>
+          <button
+            onClick={() => setSortBy('name')}
+            className={`btn-sort ${sortBy === 'name' ? 'active' : ''}`}
+          >
+            Navn
+          </button>
+          <button
+            onClick={() => setSortBy('year')}
+            className={`btn-sort ${sortBy === 'year' ? 'active' : ''}`}
+          >
+            Årgang
+          </button>
+          <button
+            onClick={() => setSortBy('price')}
+            className={`btn-sort ${sortBy === 'price' ? 'active' : ''}`}
+          >
+            Pris
+          </button>
         </div>
       </div>
 
-      {/* Results Count */}
-      <div className="mb-4 text-gray-600">
+      <div className="results-count">
         Viser {filteredAndSortedWines.length} av {wines.length} viner
       </div>
 
-      {/* Wine Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredAndSortedWines.map(wine => (
-          <div
-            key={wine.id}
-            className="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow overflow-hidden cursor-pointer"
-            onClick={() => onViewWine(wine)}
-          >
-            {/* Wine Color Indicator */}
-            <div className={`h-2 ${getWineColorClass(wine.color)}`} />
-
-            <div className="p-6">
-              {/* Header */}
-              <div className="mb-4">
-                <h3 className="text-xl font-bold text-gray-800 mb-1">{wine.name}</h3>
-                <p className="text-sm text-gray-600">{wine.producer}</p>
-                <div className="flex items-center gap-2 mt-2">
-                  <span className="text-lg font-semibold text-amber-700">{wine.year}</span>
-                  {wine.price && (
-                    <span className="text-sm text-gray-500">• €{wine.price}</span>
-                  )}
-                </div>
-              </div>
-
-              {/* Grapes */}
-              <div className="mb-4">
-                <div className="flex flex-wrap gap-1">
-                  {wine.grapes.map((grape, index) => (
-                    <span
-                      key={index}
-                      className="px-2 py-1 bg-purple-100 text-purple-800 text-xs rounded-full"
-                    >
-                      {grape}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Description */}
-              <p className="text-sm text-gray-600 mb-4 line-clamp-3">
-                {wine.description}
-              </p>
-
-              {/* Storage Recommendation */}
-              <div className="mb-4">
-                <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium border ${getStorageColor(wine.storageRecommendation)}`}>
-                  {getStorageLabel(wine.storageRecommendation)}
-                </span>
-              </div>
-
-              {/* View Details Button */}
-              <button className="w-full bg-amber-600 hover:bg-amber-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">
-                Se detaljer
-              </button>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* No Results */}
-      {filteredAndSortedWines.length === 0 && (
-        <div className="text-center py-12">
-          <p className="text-gray-500 text-lg">Ingen viner matchet ditt søk</p>
+      {filteredAndSortedWines.length === 0 ? (
+        <div className="empty-state">
+          <h3>Ingen viner matchet ditt søk</h3>
+          <p className="mb-md">Prøv å justere søkekriteriene dine</p>
           <button
             onClick={() => {
               setSearchTerm('');
               setFilterColor('all');
               setFilterProducer('all');
             }}
-            className="mt-4 px-6 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition-colors"
+            className="btn btn-primary"
           >
             Nullstill filtre
           </button>
+        </div>
+      ) : (
+        <div className="wine-grid">
+          {filteredAndSortedWines.map(wine => (
+            <div
+              key={wine.id}
+              className="card wine-card card-clickable"
+              onClick={() => onViewWine(wine)}
+            >
+              <div className={`wine-color-bar ${wine.color}`} />
+
+              <div className="wine-card-header">
+                <h3>{wine.name}</h3>
+                <p className="wine-producer">{wine.producer}</p>
+                <div className="wine-meta">
+                  <span className="wine-year">{wine.year}</span>
+                  {wine.price && (
+                    <span className="wine-price">€{wine.price}</span>
+                  )}
+                </div>
+              </div>
+
+              <div className="tag-list">
+                {wine.grapes.map((grape, index) => (
+                  <span key={index} className="tag tag-grape">
+                    {grape}
+                  </span>
+                ))}
+              </div>
+
+              <p className="wine-description">{wine.description}</p>
+
+              <div className="mb-md">
+                <span className={`tag-storage ${getStorageClass(wine.storageRecommendation)}`}>
+                  {getStorageLabel(wine.storageRecommendation)}
+                </span>
+              </div>
+
+              <button className="btn btn-primary btn-full">
+                Se detaljer
+              </button>
+            </div>
+          ))}
         </div>
       )}
     </div>

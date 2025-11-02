@@ -1,3 +1,768 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Color Palette - Wine Theme */
+  --wine-burgundy: #722f37;
+  --wine-red: #8b4049;
+  --wine-rose: #c17b7b;
+  --wine-gold: #d4af37;
+  --wine-cream: #f5f0e8;
+  --wine-beige: #e8dfd1;
+
+  /* Neutral Colors */
+  --bg-primary: #fafaf8;
+  --bg-secondary: #ffffff;
+  --text-primary: #2d2d2d;
+  --text-secondary: #666666;
+  --border-color: #e0e0e0;
+  --shadow: rgba(0, 0, 0, 0.1);
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(135deg, var(--wine-cream) 0%, var(--wine-beige) 100%);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* Layout */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+  width: 100%;
+}
+
+/* Header */
+.header {
+  background: linear-gradient(135deg, var(--wine-burgundy) 0%, var(--wine-red) 100%);
+  color: white;
+  padding: var(--spacing-lg) 0;
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.header p {
+  color: var(--wine-rose);
+  margin-top: var(--spacing-xs);
+  font-style: italic;
+}
+
+/* Navigation */
+.nav {
+  background: var(--bg-secondary);
+  box-shadow: 0 2px 8px var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-content {
+  display: flex;
+  gap: 2px;
+}
+
+.nav-button {
+  flex: 1;
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+  border-bottom: 3px solid transparent;
+  position: relative;
+}
+
+.nav-button:hover {
+  background: var(--wine-cream);
+  color: var(--text-primary);
+}
+
+.nav-button.active {
+  color: var(--wine-burgundy);
+  border-bottom-color: var(--wine-burgundy);
+  background: var(--wine-cream);
+}
+
+.nav-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: var(--wine-red);
+  color: white;
+  border-radius: 12px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  padding: var(--spacing-xl) 0;
+}
+
+/* Page Header */
+.page-header {
+  margin-bottom: var(--spacing-lg);
+}
+
+.page-header h2 {
+  font-size: 2rem;
+  color: var(--wine-burgundy);
+  margin-bottom: var(--spacing-xs);
+}
+
+.page-header p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+/* Cards */
+.card {
+  background: var(--bg-secondary);
+  border-radius: var(--radius-md);
+  box-shadow: 0 2px 12px var(--shadow);
+  padding: var(--spacing-lg);
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-clickable {
+  cursor: pointer;
+}
+
+.card-clickable:hover {
+  transform: translateY(-2px);
+}
+
+/* Search and Filters */
+.search-filters {
+  background: var(--bg-secondary);
+  border-radius: var(--radius-md);
+  box-shadow: 0 2px 12px var(--shadow);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+}
+
+.filter-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.filter-group label {
+  display: block;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-xs);
+  font-size: 0.9rem;
+}
+
+.input,
+.select {
+  width: 100%;
+  padding: var(--spacing-sm);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.2s ease;
+}
+
+.input:focus,
+.select:focus {
+  outline: none;
+  border-color: var(--wine-burgundy);
+}
+
+/* Sort Buttons */
+.sort-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.sort-controls span {
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.btn-sort {
+  padding: var(--spacing-xs) var(--spacing-md);
+  background: var(--wine-cream);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+}
+
+.btn-sort:hover {
+  background: var(--wine-beige);
+  border-color: var(--wine-rose);
+}
+
+.btn-sort.active {
+  background: var(--wine-burgundy);
+  color: white;
+  border-color: var(--wine-burgundy);
+}
+
+/* Wine Grid */
+.wine-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+/* Wine Card */
+.wine-card {
+  overflow: hidden;
+}
+
+.wine-color-bar {
+  height: 8px;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  margin: calc(var(--spacing-lg) * -1);
+  margin-bottom: var(--spacing-md);
+}
+
+.wine-color-bar.red {
+  background: linear-gradient(90deg, #8b0000 0%, #c41e3a 100%);
+}
+
+.wine-color-bar.white {
+  background: linear-gradient(90deg, #f5e6d3 0%, #ffd700 100%);
+}
+
+.wine-color-bar.rosé {
+  background: linear-gradient(90deg, #ffb6c1 0%, #ff69b4 100%);
+}
+
+.wine-card-header {
+  margin-bottom: var(--spacing-md);
+}
+
+.wine-card-header h3 {
+  font-size: 1.5rem;
+  color: var(--wine-burgundy);
+  margin-bottom: var(--spacing-xs);
+}
+
+.wine-producer {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.wine-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.wine-year {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--wine-gold);
+}
+
+.wine-price {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+/* Tags and Badges */
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-md);
+}
+
+.tag {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.tag-grape {
+  background: #f3e8ff;
+  color: #6b21a8;
+  border: 1px solid #e9d5ff;
+}
+
+.tag-storage {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 2px solid;
+}
+
+.tag-storage.drink-now {
+  background: #fee2e2;
+  color: #991b1b;
+  border-color: #fca5a5;
+}
+
+.tag-storage.drink-soon {
+  background: #ffedd5;
+  color: #9a3412;
+  border-color: #fdba74;
+}
+
+.tag-storage.short-term {
+  background: #fef3c7;
+  color: #92400e;
+  border-color: #fcd34d;
+}
+
+.tag-storage.medium-term {
+  background: #dbeafe;
+  color: #1e40af;
+  border-color: #93c5fd;
+}
+
+.tag-storage.long-term {
+  background: #d1fae5;
+  color: #065f46;
+  border-color: #6ee7b7;
+}
+
+/* Description */
+.wine-description {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: var(--spacing-md);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Buttons */
+.btn {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+}
+
+.btn-primary {
+  background: var(--wine-burgundy);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--wine-red);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(114, 47, 55, 0.3);
+}
+
+.btn-secondary {
+  background: var(--wine-cream);
+  color: var(--wine-burgundy);
+  border: 2px solid var(--wine-rose);
+}
+
+.btn-secondary:hover {
+  background: var(--wine-beige);
+}
+
+.btn-full {
+  width: 100%;
+}
+
+.btn-icon {
+  background: transparent;
+  padding: var(--spacing-xs);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Back Button */
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  color: var(--wine-burgundy);
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: var(--spacing-lg);
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  padding: var(--spacing-xs) 0;
+  transition: color 0.2s ease;
+}
+
+.back-button:hover {
+  color: var(--wine-red);
+}
+
+/* Wine Detail */
+.wine-detail-card {
+  margin-top: var(--spacing-lg);
+}
+
+.detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-lg);
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
+
+.detail-title h1 {
+  font-size: 2.5rem;
+  color: var(--wine-burgundy);
+  margin-bottom: var(--spacing-xs);
+}
+
+.detail-producer {
+  font-size: 1.3rem;
+  color: var(--text-secondary);
+}
+
+.detail-price {
+  text-align: right;
+}
+
+.detail-price-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--wine-gold);
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+}
+
+.detail-section {
+  margin-bottom: var(--spacing-lg);
+}
+
+.detail-section h2 {
+  font-size: 1.3rem;
+  color: var(--wine-burgundy);
+  margin-bottom: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.detail-section p {
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+/* Food Pairings */
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.food-card {
+  background: linear-gradient(135deg, #fff5ed 0%, #ffe4d6 100%);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-sm);
+  border: 2px solid #ffd8bf;
+}
+
+.food-card h3 {
+  color: var(--wine-burgundy);
+  font-size: 1.1rem;
+  margin-bottom: var(--spacing-xs);
+}
+
+.food-card p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+/* Status Badge */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 2px solid;
+}
+
+.status-badge.ready {
+  background: #d1fae5;
+  color: #065f46;
+  border-color: #6ee7b7;
+}
+
+.status-badge.too-young {
+  background: #dbeafe;
+  color: #1e40af;
+  border-color: #93c5fd;
+}
+
+.status-badge.past-peak {
+  background: #ffedd5;
+  color: #9a3412;
+  border-color: #fdba74;
+}
+
+/* Cellar Management */
+.cellar-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+  flex-wrap: wrap;
+}
+
+.cellar-card {
+  margin-bottom: var(--spacing-md);
+}
+
+.cellar-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--spacing-lg);
+}
+
+.cellar-info h3 {
+  font-size: 1.8rem;
+  color: var(--wine-burgundy);
+  margin-bottom: var(--spacing-xs);
+}
+
+.cellar-quantity {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--wine-gold);
+}
+
+.cellar-actions-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.input-area {
+  width: 100%;
+  padding: var(--spacing-sm);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-size: 0.95rem;
+  resize: vertical;
+  min-height: 80px;
+}
+
+.input-area:focus {
+  outline: none;
+  border-color: var(--wine-burgundy);
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-md);
+  z-index: 1000;
+}
+
+.modal {
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal h3 {
+  font-size: 1.5rem;
+  color: var(--wine-burgundy);
+  margin-bottom: var(--spacing-md);
+}
+
+.modal-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-lg);
+}
+
+.modal-actions .btn {
+  flex: 1;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: var(--spacing-xl);
+  background: var(--bg-secondary);
+  border-radius: var(--radius-md);
+  box-shadow: 0 2px 12px var(--shadow);
+}
+
+.empty-state h3 {
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.empty-state p {
+  color: var(--text-secondary);
+  opacity: 0.7;
+}
+
+/* Footer */
+.footer {
+  background: linear-gradient(135deg, var(--wine-burgundy) 0%, var(--wine-red) 100%);
+  color: white;
+  padding: var(--spacing-xl) 0;
+  margin-top: var(--spacing-xl);
+}
+
+.footer-content {
+  text-align: center;
+}
+
+.footer p {
+  color: var(--wine-rose);
+}
+
+.footer p:last-child {
+  margin-top: var(--spacing-sm);
+  font-size: 0.9rem;
+}
+
+/* Results Count */
+.results-count {
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-md);
+  font-size: 0.95rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .filter-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .wine-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cellar-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .header h1 {
+    font-size: 1.5rem;
+  }
+
+  .detail-title h1 {
+    font-size: 1.8rem;
+  }
+
+  .food-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nav-button {
+    font-size: 0.9rem;
+    padding: var(--spacing-sm);
+  }
+}
+
+/* Utility Classes */
+.text-center {
+  text-align: center;
+}
+
+.mt-sm { margin-top: var(--spacing-sm); }
+.mt-md { margin-top: var(--spacing-md); }
+.mt-lg { margin-top: var(--spacing-lg); }
+.mb-sm { margin-bottom: var(--spacing-sm); }
+.mb-md { margin-bottom: var(--spacing-md); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
