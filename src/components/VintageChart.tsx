@@ -54,7 +54,8 @@ export default function VintageChart() {
       <div className="vintage-chart">
         {recentVintages.map((vintage) => {
           const isHovered = hoveredYear === vintage.year;
-          const barHeight = Math.max((vintage.rating / 5) * 100, 5); // Minimum 5% høyde for synlighet
+          // Bruk pixelhøyde for mer presis kontroll
+          const barHeightPx = Math.max((vintage.rating / 5) * 250, 30); // Maks 250px, minimum 30px
 
           return (
             <div
@@ -67,11 +68,10 @@ export default function VintageChart() {
                 <div
                   className="vintage-bar"
                   style={{
-                    height: `${barHeight}%`,
+                    height: `${barHeightPx}px`,
                     backgroundColor: getVisibleRatingColor(vintage.rating),
                     opacity: isHovered ? 1 : 0.95,
-                    transform: isHovered ? 'scaleY(1.05)' : 'scaleY(1)',
-                    minHeight: '20px' // Sikre minimum synlighet
+                    transform: isHovered ? 'scaleY(1.05)' : 'scaleY(1)'
                   }}
                 >
                   {isHovered && (
