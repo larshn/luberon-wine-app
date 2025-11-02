@@ -1416,6 +1416,7 @@ export const wines: Wine[] = [
       { dish: 'Grillede lammekoteletter', description: 'Fyldig vin til fyldig kjøtt fra grillen' },
       { dish: 'Pecorino-ost', description: 'Strukturert vin til hard sau' }
     ],
+    purchaseLocations: [purchaseLocations['cave-louerion']],
     vintages: [
       {
         year: 2021,
@@ -1441,6 +1442,7 @@ export const wines: Wine[] = [
       { dish: 'Tomatsalat med mozarella', description: 'Fruktig rosé til friske tomater' },
       { dish: 'Pai med grønnsaker', description: 'Allsidig sommervin' }
     ],
+    purchaseLocations: [purchaseLocations['cave-louerion']],
     vintages: [
       {
         year: 2023,

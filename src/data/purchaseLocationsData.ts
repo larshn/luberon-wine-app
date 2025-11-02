@@ -257,6 +257,35 @@ export const purchaseLocations: Record<string, PurchaseLocation> = {
     notes: 'Historisk château i hjertet av Provence. 35 minutter fra Aix-en-Provence.',
     bookingRequired: false,
     tastingAvailable: true
+  },
+
+  'cave-louerion': {
+    type: 'wine-shop',
+    name: 'Cave Louérion Terres d\'Alliance',
+    address: 'Montée du Galinier, Place H. Barthélémy',
+    city: 'Lourmarin',
+    postalCode: '84160',
+    phone: '+33 4 90 68 02 18',
+    email: 'lacavealourmarin@louerion.com',
+    website: 'http://www.louerion.fr',
+    coordinates: {
+      lat: 43.766,
+      lng: 5.367
+    },
+    openingHours: {
+      monday: '10:00-12:30, 14:30-19:00',
+      tuesday: '10:00-12:30, 14:30-19:00',
+      wednesday: '10:00-12:30, 14:30-19:00',
+      thursday: '10:00-12:30, 14:30-19:00',
+      friday: '09:00-12:30, 14:30-19:00',
+      saturday: '10:00-12:30, 14:30-19:00',
+      sunday: '09:00-13:00',
+      notes: 'Åpent hele året, stengt 1. januar og 25. desember. Også butikker i Cucuron og Cadenet.'
+    },
+    priceRange: '€8-18',
+    notes: 'Vinkooperativ mellom Lourmarin, Cadenet og Cucuron. Bastide de Rhodares-serien kommer herfra.',
+    bookingRequired: false,
+    tastingAvailable: true
   }
 };
 
