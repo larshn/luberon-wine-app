@@ -33,8 +33,9 @@ En omfattende webapp for å utforske og administrere viner fra Luberon-regionen 
 - **React 19** med TypeScript
 - **Vite** for rask utvikling og optimaliserte builds
 - **Tailwind CSS v4** for moderne, responsivt design
-- **Local Storage** for persistent lagring av vinsamling
-- Ingen eksterne databaser nødvendig
+- **Supabase** (valgfritt) for sky-basert lagring på tvers av enheter
+- **Local Storage** som fallback - fungerer helt uten database
+- Brukerautentisering med Supabase Auth
 
 ## Kom i gang
 
@@ -63,6 +64,17 @@ npm run build
 ```bash
 npm run preview
 ```
+
+### Sett opp Supabase (valgfritt)
+
+For å aktivere sky-basert lagring og synkronisering på tvers av enheter:
+
+1. Les den detaljerte guiden: **[SUPABASE_SETUP.md](./SUPABASE_SETUP.md)**
+2. Opprett en gratis Supabase-konto
+3. Kjør SQL-scriptet i `supabase/schema.sql`
+4. Legg til miljøvariabler i `.env` (se `.env.example`)
+
+**Merk:** Appen fungerer perfekt uten Supabase også! Data lagres da kun lokalt i nettleseren.
 
 ## Bruk
 
