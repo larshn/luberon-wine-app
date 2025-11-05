@@ -61,9 +61,15 @@ export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarPr
   }, [wines]);
 
   const handleRemoveOne = async (wineId: string, year: number) => {
-    await removeFromCellar(wineId, year, 1);
-    await loadCellarWines();
-    onUpdate();
+    try {
+      console.log('Removing wine:', wineId, year);
+      await removeFromCellar(wineId, year, 1);
+      await loadCellarWines();
+      onUpdate();
+      console.log('Wine removed successfully');
+    } catch (error) {
+      console.error('Error removing wine:', error);
+    }
   };
 
   const handleRemoveAll = async (wineId: string, year: number, wineName: string, quantity: number) => {
