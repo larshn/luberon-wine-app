@@ -1,5 +1,5 @@
-import Anthropic from '@anthropic-ai/sdk';
-import { createClient } from '@supabase/supabase-js';
+const Anthropic = require('@anthropic-ai/sdk');
+const { createClient } = require('@supabase/supabase-js');
 
 const anthropic = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY,
@@ -10,7 +10,7 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY // Service role key for server-side access
 );
 
-export const handler = async (event) => {
+exports.handler = async (event) => {
   // Only allow POST requests
   if (event.httpMethod !== 'POST') {
     return {

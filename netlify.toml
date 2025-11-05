@@ -5,6 +5,11 @@
   # Mappe med den ferdige appen
   publish = "dist"
 
+# Netlify Functions konfigurasjon
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
 # Redirects for Single Page Application (SPA)
 # Dette gjør at alle URLs fungerer korrekt
 [[redirects]]
