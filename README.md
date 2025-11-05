@@ -27,7 +27,7 @@ En omfattende webapp for å utforske og administrere viner fra Luberon-regionen 
 - Notater og plasseringsinformasjon for hver vin
 - Estimert verdi av samlingen
 - **Eksport/import-funksjonalitet** for backup eller deling mellom enheter
-- **AI Sommelier** - Få personlige vinråd basert på din kjeller (krever godkjenning)
+- **AI Sommelier & Kokk** - Få personlige vinråd og oppskrifter basert på din kjeller (krever godkjenning)
 
 ## Teknisk oppsett
 
@@ -108,15 +108,23 @@ AI Sommelier gir personlige anbefalinger basert på din vinkjeller. Funksjonen e
 - **Eksport**: Klikk "Eksporter kjeller" for å laste ned en JSON-fil med samlingen
 - **Import**: Klikk "Importer kjeller" og lim inn innholdet fra en eksportert fil
 
-### Bruk AI Sommelier
+### Bruk AI Sommelier & Kokk
 1. Naviger til **Min Vinkjeller**-fanen (krever at du er innlogget)
-2. Klikk på **🤖 AI Sommelier** for å åpne panelet
-3. Velg et foreslått spørsmål eller skriv ditt eget
-4. Få personlige vinråd basert på din samling
-5. Eksempler på spørsmål:
-   - "Hvilken vin bør jeg drikke først?"
-   - "Hva passer til en sommerfest?"
-   - "Anbefal en vin til biff"
+2. Klikk på **🤖 AI Sommelier & Kokk** for å åpne panelet
+3. Velg mellom **Vinråd** eller **Matlagingsråd** fanen
+4. Velg et foreslått spørsmål eller skriv ditt eget
+5. Få personlige svar basert på din vinkjeller
+
+**Vinråd - Eksempler:**
+- "Hvilken vin bør jeg drikke først?"
+- "Hva passer til en sommerfest?"
+- "Anbefal en vin til biff"
+
+**Matlagingsråd - Eksempler:**
+- "Gi meg en oppskrift på bouillabaisse"
+- "Lag en provencalsk meny med vinpairing"
+- "Oppskrift på ratatouille som passer til mine viner"
+- "Lag en treretters meny for 4 personer"
 
 **Merk:** AI-funksjonen krever at du er godkjent. Se [AI_SETUP.md](./AI_SETUP.md) for oppsett.
 

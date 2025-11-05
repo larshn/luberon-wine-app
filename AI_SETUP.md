@@ -1,10 +1,14 @@
-# AI Sommelier Oppsett
+# AI Sommelier & Kokk Oppsett
 
-Dette dokumentet forklarer hvordan du setter opp AI Sommelier-funksjonen i Luberon Wine App.
+Dette dokumentet forklarer hvordan du setter opp AI Sommelier & Kokk-funksjonen i Luberon Wine App.
 
 ## Oversikt
 
-AI Sommelier gir personlige vinråd basert på brukerens vinkjeller ved hjelp av Claude AI. Funksjonen har innebygd sikkerhet slik at bare godkjente brukere kan bruke den.
+AI Sommelier & Kokk gir personlige vinråd og matlagingsråd basert på brukerens vinkjeller ved hjelp av Claude AI. Funksjonen har innebygd sikkerhet slik at bare godkjente brukere kan bruke den.
+
+**Funksjoner:**
+- **Vinråd**: Personlige anbefalinger om hvilke viner å drikke, lagre, eller pare med mat
+- **Matlagingsråd**: Komplette oppskrifter med vinpairing fra din kjeller, fokus på provencalsk mat
 
 ## Steg 1: Sett opp autorisert bruker-tabell i Supabase
 
@@ -73,8 +77,11 @@ AI Sommelier gir personlige vinråd basert på brukerens vinkjeller ved hjelp av
 2. Logg inn med din bruker
 3. Gå til **Min Vinkjeller**
 4. Legg til noen viner hvis du ikke har gjort det allerede
-5. Klikk på **🤖 AI Sommelier** knappen
-6. Prøv å stille et spørsmål som "Hvilken vin bør jeg drikke først?"
+5. Klikk på **🤖 AI Sommelier & Kokk** knappen
+6. Test **Vinråd**-fanen:
+   - Spørsmål: "Hvilken vin bør jeg drikke først?"
+7. Test **Matlagingsråd**-fanen:
+   - Spørsmål: "Gi meg en oppskrift på ratatouille som passer til mine viner"
 
 ## Autorisere flere brukere
 

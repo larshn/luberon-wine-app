@@ -18,14 +18,26 @@ export default function AISommelier({ cellarWines }: AISommelierProps) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [showPanel, setShowPanel] = useState(false);
+  const [activeTab, setActiveTab] = useState<'wine' | 'cooking'>('wine');
 
-  const suggestedQuestions = [
+  const wineQuestions = [
     'Hvilken vin bør jeg drikke først?',
     'Hva passer til en sommerfest?',
     'Hvilke viner kan lagres lengst?',
     'Anbefal en vin til biff',
     'Hva er en god startvin for nybegynnere?',
   ];
+
+  const cookingQuestions = [
+    'Gi meg en oppskrift på bouillabaisse',
+    'Lag en provencalsk meny med vinpairing',
+    'Oppskrift på ratatouille som passer til mine viner',
+    'Hva kan jeg lage til middag i kveld?',
+    'Gi meg en oppskrift på lammegryte med urter',
+    'Lag en treretters meny for 4 personer',
+  ];
+
+  const suggestedQuestions = activeTab === 'wine' ? wineQuestions : cookingQuestions;
 
   const handleAskAI = async () => {
     if (!question.trim()) {
@@ -106,17 +118,53 @@ export default function AISommelier({ cellarWines }: AISommelierProps) {
           padding: '1rem',
         }}
       >
-        🤖 AI Sommelier {showPanel ? '▼' : '▶'}
+        🤖 AI Sommelier & Kokk {showPanel ? '▼' : '▶'}
       </button>
 
       {showPanel && (
         <div className="card" style={{ marginTop: '1rem', background: '#f9f9fb' }}>
           <h3 style={{ marginBottom: '1rem', color: '#667eea' }}>
-            Spør AI om vinråd
+            AI Sommelier & Kokk
           </h3>
 
+          {/* Tabs */}
+          <div style={{ display: 'flex', gap: '1rem', marginBottom: '1.5rem', borderBottom: '2px solid #e0e0e0' }}>
+            <button
+              onClick={() => setActiveTab('wine')}
+              style={{
+                padding: '0.75rem 1.5rem',
+                background: 'transparent',
+                border: 'none',
+                borderBottom: activeTab === 'wine' ? '3px solid #667eea' : '3px solid transparent',
+                color: activeTab === 'wine' ? '#667eea' : '#666',
+                fontWeight: activeTab === 'wine' ? 600 : 400,
+                cursor: 'pointer',
+                transition: 'all 0.2s',
+              }}
+            >
+              🍷 Vinråd
+            </button>
+            <button
+              onClick={() => setActiveTab('cooking')}
+              style={{
+                padding: '0.75rem 1.5rem',
+                background: 'transparent',
+                border: 'none',
+                borderBottom: activeTab === 'cooking' ? '3px solid #667eea' : '3px solid transparent',
+                color: activeTab === 'cooking' ? '#667eea' : '#666',
+                fontWeight: activeTab === 'cooking' ? 600 : 400,
+                cursor: 'pointer',
+                transition: 'all 0.2s',
+              }}
+            >
+              👨‍🍳 Matlagingsråd
+            </button>
+          </div>
+
           <p style={{ color: '#666', marginBottom: '1.5rem', fontSize: '0.95rem' }}>
-            Få personlige anbefalinger basert på vinene i din kjeller
+            {activeTab === 'wine'
+              ? 'Få personlige vin-anbefalinger basert på din kjeller'
+              : 'Få oppskrifter og matlagingsråd med vinpairing'}
           </p>
 
           {/* Suggested questions */}
@@ -198,7 +246,7 @@ export default function AISommelier({ cellarWines }: AISommelierProps) {
               }}
             >
               <h4 style={{ marginBottom: '1rem', color: '#667eea' }}>
-                💡 AI Sommelier anbefaler:
+                {activeTab === 'wine' ? '🍷 AI Sommelier anbefaler:' : '👨‍🍳 AI Kokk foreslår:'}
               </h4>
               <div style={{ whiteSpace: 'pre-wrap', lineHeight: '1.6', color: '#333' }}>
                 {response}

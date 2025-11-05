@@ -67,21 +67,34 @@ exports.handler = async (event) => {
     // Call Claude API
     const message = await anthropic.messages.create({
       model: 'claude-3-5-haiku-20241022',
-      max_tokens: 1024,
+      max_tokens: 2048,
       messages: [{
         role: 'user',
-        content: `Du er en ekspert sommelier med spesialkunnskap om Luberon-viner fra Provence, Frankrike.
+        content: `Du er en ekspert sommelier og provencalsk kokk med dyp kunnskap om Luberon-viner og matlagingen fra Provence, Frankrike.
 
 ${cellarContext}
 
 Brukerens spørsmål: ${question}
 
 Vennligst gi et hjelpsomt, personlig svar basert på brukerens vinkjeller og spørsmål.
-Svar på norsk, og vær konsis men informativ. Hvis relevant, gi anbefalinger om:
-- Mattilbehør
-- Lagringstid
+Svar på norsk, og vær konsis men informativ.
+
+Hvis spørsmålet handler om VIN, gi anbefalinger om:
+- Hvilke viner som passer best
+- Mattilbehør og pairing
+- Lagringstid og drikkvindu
 - Serveingstemperatur
-- Andre viner fra Luberon som kan være interessante`
+- Andre relevante viner fra Luberon
+
+Hvis spørsmålet handler om MATLAGING/OPPSKRIFTER, gi:
+- Komplette oppskrifter med ingredienser og fremgangsmåte
+- Fokus på provencalsk/fransk mat når mulig
+- Vin-pairing fra brukerens kjeller (hvis relevant)
+- Porsjoner (2-4 personer som standard)
+- Tips for tilberedning og presentasjon
+- Sesongvarianter hvis relevant
+
+Vær kreativ og personlig i svarene dine!`
       }],
     });
 
