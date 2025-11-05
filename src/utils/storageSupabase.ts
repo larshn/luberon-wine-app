@@ -169,6 +169,19 @@ export const removeFromCellar = async (wineId: string, year: number, quantity: n
     existing.quantity -= quantity;
     if (existing.quantity <= 0) {
       cellar.wines = cellar.wines.filter(w => !(w.wineId === wineId && w.year === year));
+
+      // Delete from Supabase when quantity reaches 0
+      if (supabase) {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (user) {
+          await supabase
+            .from('cellar_wines')
+            .delete()
+            .eq('user_id', user.id)
+            .eq('wine_id', wineId)
+            .eq('year', year);
+        }
+      }
     }
   }
 
