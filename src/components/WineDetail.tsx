@@ -5,7 +5,7 @@ import {
   getCurrentAge,
   getDrinkingWindowStatus
 } from '../utils/wine';
-import { addToCellar, loadCellar } from '../utils/storage';
+import { addToCellar, loadCellar } from '../utils/storageSupabase';
 
 interface WineDetailProps {
   wine: Wine;
@@ -26,14 +26,17 @@ export default function WineDetail({ wine, onBack, onCellarUpdate }: WineDetailP
   const [showAddedMessage, setShowAddedMessage] = useState(false);
 
   useEffect(() => {
-    const cellar = loadCellar();
-    const cellarWine = cellar.wines.find(w => w.wineId === wine.id && w.year === selectedVintage.year);
-    setQuantityInCellar(cellarWine?.quantity || 0);
+    const updateQuantity = async () => {
+      const cellar = await loadCellar();
+      const cellarWine = cellar.wines.find(w => w.wineId === wine.id && w.year === selectedVintage.year);
+      setQuantityInCellar(cellarWine?.quantity || 0);
+    };
+    updateQuantity();
   }, [wine.id, selectedVintage.year]);
 
-  const handleAddToCellar = () => {
-    addToCellar(wine.id, selectedVintage.year);
-    const cellar = loadCellar();
+  const handleAddToCellar = async () => {
+    await addToCellar(wine.id, selectedVintage.year);
+    const cellar = await loadCellar();
     const cellarWine = cellar.wines.find(w => w.wineId === wine.id && w.year === selectedVintage.year);
     setQuantityInCellar(cellarWine?.quantity || 0);
     onCellarUpdate();

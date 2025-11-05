@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
 import type { Wine } from './types/wine';
 import { wines as seedWines } from './data/wines';
-import { loadCellar } from './utils/storage';
+import { loadCellar } from './utils/storageSupabase';
 import WineCatalog from './components/WineCatalog';
 import WineCellar from './components/WineCellar';
 import WineDetail from './components/WineDetail';
 import FoodPairing from './components/FoodPairing';
 import ChipsPairing from './components/ChipsPairing';
 import WineMap from './components/WineMap';
+import Auth from './components/Auth';
 
 type View = 'catalog' | 'cellar' | 'food-pairing' | 'chips-pairing' | 'map';
 
@@ -18,9 +19,12 @@ function App() {
   const [cellarCount, setCellarCount] = useState(0);
 
   useEffect(() => {
-    const cellar = loadCellar();
-    const total = cellar.wines.reduce((sum, w) => sum + w.quantity, 0);
-    setCellarCount(total);
+    const updateCellarCount = async () => {
+      const cellar = await loadCellar();
+      const total = cellar.wines.reduce((sum, w) => sum + w.quantity, 0);
+      setCellarCount(total);
+    };
+    updateCellarCount();
   }, [currentView]);
 
   const handleViewWine = (wine: Wine) => {
@@ -37,8 +41,8 @@ function App() {
     setCurrentView('catalog');
   };
 
-  const handleCellarUpdate = () => {
-    const cellar = loadCellar();
+  const handleCellarUpdate = async () => {
+    const cellar = await loadCellar();
     const total = cellar.wines.reduce((sum, w) => sum + w.quantity, 0);
     setCellarCount(total);
   };
@@ -51,6 +55,7 @@ function App() {
             <h1>🍷 Luberon på Glass</h1>
             <p>Découvrez les vins du Luberon</p>
           </div>
+          <Auth onAuthChange={handleCellarUpdate} />
         </div>
       </header>
 

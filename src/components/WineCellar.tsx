@@ -6,7 +6,7 @@ import {
   updateCellarWine,
   exportCellar,
   importCellar
-} from '../utils/storage';
+} from '../utils/storageSupabase';
 import { getStorageLabel } from '../utils/wine';
 
 type CellarWineWithDetails = {
@@ -32,8 +32,8 @@ export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarPr
   const [importData, setImportData] = useState('');
   const [importError, setImportError] = useState('');
 
-  const loadCellarWines = () => {
-    const cellar = loadCellar();
+  const loadCellarWines = async () => {
+    const cellar = await loadCellar();
     const winesWithDetails: CellarWineWithDetails[] = cellar.wines
       .map(cellarWine => {
         const wineDetails = wines.find(w => w.id === cellarWine.wineId);
@@ -60,32 +60,32 @@ export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarPr
     loadCellarWines();
   }, [wines]);
 
-  const handleRemoveOne = (wineId: string, year: number) => {
-    removeFromCellar(wineId, year, 1);
-    loadCellarWines();
+  const handleRemoveOne = async (wineId: string, year: number) => {
+    await removeFromCellar(wineId, year, 1);
+    await loadCellarWines();
     onUpdate();
   };
 
-  const handleRemoveAll = (wineId: string, year: number, wineName: string, quantity: number) => {
+  const handleRemoveAll = async (wineId: string, year: number, wineName: string, quantity: number) => {
     if (confirm(`Fjerne alle ${quantity} flasker av ${wineName} (${year})?`)) {
-      removeFromCellar(wineId, year, quantity);
-      loadCellarWines();
+      await removeFromCellar(wineId, year, quantity);
+      await loadCellarWines();
       onUpdate();
     }
   };
 
-  const handleUpdateNotes = (wineId: string, year: number, notes: string) => {
-    updateCellarWine(wineId, year, { notes });
-    loadCellarWines();
+  const handleUpdateNotes = async (wineId: string, year: number, notes: string) => {
+    await updateCellarWine(wineId, year, { notes });
+    await loadCellarWines();
   };
 
-  const handleUpdateLocation = (wineId: string, year: number, location: string) => {
-    updateCellarWine(wineId, year, { location });
-    loadCellarWines();
+  const handleUpdateLocation = async (wineId: string, year: number, location: string) => {
+    await updateCellarWine(wineId, year, { location });
+    await loadCellarWines();
   };
 
-  const handleExport = () => {
-    const data = exportCellar();
+  const handleExport = async () => {
+    const data = await exportCellar();
     const blob = new Blob([data], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -98,11 +98,11 @@ export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarPr
     setShowExportModal(false);
   };
 
-  const handleImport = () => {
+  const handleImport = async () => {
     setImportError('');
-    const success = importCellar(importData);
+    const success = await importCellar(importData);
     if (success) {
-      loadCellarWines();
+      await loadCellarWines();
       onUpdate();
       setShowImportModal(false);
       setImportData('');

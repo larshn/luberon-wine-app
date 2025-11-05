@@ -88,13 +88,7 @@ const saveCellarToSupabase = async (cellar: WineCellar): Promise<boolean> => {
       return false;
     }
 
-    // Delete existing wines for this user
-    await supabase
-      .from('cellar_wines')
-      .delete()
-      .eq('user_id', user.id);
-
-    // Insert new wines
+    // Use upsert to handle updates gracefully
     if (cellar.wines.length > 0) {
       const dbWines: Omit<DbCellarWine, 'id' | 'created_at' | 'updated_at'>[] = cellar.wines.map(wine => ({
         user_id: user.id,
@@ -106,9 +100,12 @@ const saveCellarToSupabase = async (cellar: WineCellar): Promise<boolean> => {
         notes: wine.notes,
       }));
 
+      // Upsert: insert or update on conflict
       const { error } = await supabase
         .from('cellar_wines')
-        .insert(dbWines);
+        .upsert(dbWines, {
+          onConflict: 'user_id,wine_id,year'
+        });
 
       if (error) {
         console.error('Error saving to Supabase:', error);
