@@ -27,6 +27,7 @@ En omfattende webapp for å utforske og administrere viner fra Luberon-regionen 
 - Notater og plasseringsinformasjon for hver vin
 - Estimert verdi av samlingen
 - **Eksport/import-funksjonalitet** for backup eller deling mellom enheter
+- **AI Sommelier** - Få personlige vinråd basert på din kjeller (krever godkjenning)
 
 ## Teknisk oppsett
 
@@ -76,6 +77,17 @@ For å aktivere sky-basert lagring og synkronisering på tvers av enheter:
 
 **Merk:** Appen fungerer perfekt uten Supabase også! Data lagres da kun lokalt i nettleseren.
 
+### Sett opp AI Sommelier (valgfritt)
+
+For å aktivere AI-baserte vinråd:
+
+1. Les den detaljerte guiden: **[AI_SETUP.md](./AI_SETUP.md)**
+2. Opprett en Anthropic API-konto (får $5 gratis kredit)
+3. Autoriser brukere i Supabase
+4. Legg til API-nøkler i Netlify miljøvariabler
+
+AI Sommelier gir personlige anbefalinger basert på din vinkjeller. Funksjonen er sikret slik at bare godkjente brukere kan bruke den.
+
 ## Bruk
 
 ### Utforsk vinkataloget
@@ -95,6 +107,18 @@ For å aktivere sky-basert lagring og synkronisering på tvers av enheter:
 ### Eksporter/importer kjeller
 - **Eksport**: Klikk "Eksporter kjeller" for å laste ned en JSON-fil med samlingen
 - **Import**: Klikk "Importer kjeller" og lim inn innholdet fra en eksportert fil
+
+### Bruk AI Sommelier
+1. Naviger til **Min Vinkjeller**-fanen (krever at du er innlogget)
+2. Klikk på **🤖 AI Sommelier** for å åpne panelet
+3. Velg et foreslått spørsmål eller skriv ditt eget
+4. Få personlige vinråd basert på din samling
+5. Eksempler på spørsmål:
+   - "Hvilken vin bør jeg drikke først?"
+   - "Hva passer til en sommerfest?"
+   - "Anbefal en vin til biff"
+
+**Merk:** AI-funksjonen krever at du er godkjent. Se [AI_SETUP.md](./AI_SETUP.md) for oppsett.
 
 ## Vindata
 

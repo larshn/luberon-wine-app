@@ -8,6 +8,7 @@ import {
   importCellar
 } from '../utils/storageSupabase';
 import { getStorageLabel } from '../utils/wine';
+import AISommelier from './AISommelier';
 
 type CellarWineWithDetails = {
   wine: Wine;
@@ -144,6 +145,10 @@ export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarPr
           📥 Importer kjeller
         </button>
       </div>
+
+      {cellarWines.length > 0 && (
+        <AISommelier cellarWines={cellarWines} />
+      )}
 
       {cellarWines.length === 0 ? (
         <div className="empty-state">
