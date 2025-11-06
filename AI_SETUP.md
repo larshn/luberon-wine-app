@@ -7,7 +7,9 @@ Dette dokumentet forklarer hvordan du setter opp AI Sommelier & Kokk-funksjonen 
 AI Sommelier & Kokk gir personlige vinråd og matlagingsråd basert på brukerens vinkjeller ved hjelp av Claude AI. Funksjonen har innebygd sikkerhet slik at bare godkjente brukere kan bruke den.
 
 **Funksjoner:**
-- **Vinråd**: Personlige anbefalinger om hvilke viner å drikke, lagre, eller pare med mat
+- **Vinråd**:
+  - Personlige anbefalinger om hvilke viner å drikke, lagre, eller pare med mat
+  - **Konkrete kjøpsanbefalinger**: AI analyserer din kjeller og anbefaler viner fra katalogen du burde kjøpe for bedre variasjon
 - **Matlagingsråd**: Komplette oppskrifter med vinpairing fra din kjeller, fokus på provencalsk mat
 
 ## Steg 1: Sett opp autorisert bruker-tabell i Supabase

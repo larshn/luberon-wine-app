@@ -147,7 +147,7 @@ export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarPr
       </div>
 
       {cellarWines.length > 0 && (
-        <AISommelier cellarWines={cellarWines} />
+        <AISommelier cellarWines={cellarWines} allWines={wines} />
       )}
 
       {cellarWines.length === 0 ? (

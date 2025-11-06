@@ -21,7 +21,7 @@ exports.handler = async (event) => {
 
   try {
     // Parse request body
-    const { question, cellarWines, userToken } = JSON.parse(event.body);
+    const { question, cellarWines, allWines, userToken } = JSON.parse(event.body);
 
     if (!userToken) {
       return {
@@ -64,6 +64,13 @@ exports.handler = async (event) => {
         ).join('\n')}`
       : 'Brukeren har ingen viner i kjelleren ennå.';
 
+    // Build context about available wines from catalog
+    const catalogContext = allWines && allWines.length > 0
+      ? `\n\nTilgjengelige Luberon-viner i katalogen:\n${allWines.map(w =>
+          `- ${w.name} (${w.producer}): ${w.color}, ${w.grapes.join(', ')}`
+        ).join('\n')}`
+      : '';
+
     // Call Claude API
     const message = await anthropic.messages.create({
       model: 'claude-3-5-haiku-20241022',
@@ -72,7 +79,7 @@ exports.handler = async (event) => {
         role: 'user',
         content: `Du er en ekspert sommelier og provencalsk kokk med dyp kunnskap om Luberon-viner og matlagingen fra Provence, Frankrike.
 
-${cellarContext}
+${cellarContext}${catalogContext}
 
 Brukerens spørsmål: ${question}
 
@@ -80,11 +87,11 @@ Vennligst gi et hjelpsomt, personlig svar basert på brukerens vinkjeller og sp�
 Svar på norsk, og vær konsis men informativ.
 
 Hvis spørsmålet handler om VIN, gi anbefalinger om:
-- Hvilke viner som passer best
+- Hvilke viner som passer best fra brukerens kjeller
 - Mattilbehør og pairing
 - Lagringstid og drikkvindu
 - Serveingstemperatur
-- Andre relevante viner fra Luberon
+- **VIKTIG**: Hvis brukeren spør om viner å kjøpe eller mangler, anbefal KONKRETE viner fra katalogen over som de ikke har i kjelleren. Forklar hvorfor hver anbefalt vin vil være et godt tilskudd til samlingen.
 
 Hvis spørsmålet handler om MATLAGING/OPPSKRIFTER, gi:
 - Komplette oppskrifter med ingredienser og fremgangsmåte

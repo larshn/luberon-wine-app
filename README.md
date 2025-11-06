@@ -27,7 +27,12 @@ En omfattende webapp for å utforske og administrere viner fra Luberon-regionen 
 - Notater og plasseringsinformasjon for hver vin
 - Estimert verdi av samlingen
 - **Eksport/import-funksjonalitet** for backup eller deling mellom enheter
-- **AI Sommelier & Kokk** - Få personlige vinråd og oppskrifter basert på din kjeller (krever godkjenning)
+- **AI Sommelier & Kokk** - AI-drevet vinassistent som kan:
+  - Gi personlige vinråd basert på din kjeller
+  - Anbefale konkrete viner fra katalogen du burde kjøpe
+  - Lage oppskrifter med vinpairing
+  - Foreslå menyer og matparinger
+  - (krever godkjenning)
 
 ## Teknisk oppsett
 
@@ -117,6 +122,8 @@ AI Sommelier gir personlige anbefalinger basert på din vinkjeller. Funksjonen e
 
 **Vinråd - Eksempler:**
 - "Hvilken vin bør jeg drikke først?"
+- "Hvilke viner burde jeg kjøpe inn?" (AI anbefaler konkrete viner fra katalogen)
+- "Anbefal viner jeg mangler for god variasjon"
 - "Hva passer til en sommerfest?"
 - "Anbefal en vin til biff"
 

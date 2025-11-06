@@ -10,9 +10,10 @@ type CellarWineWithDetails = {
 
 interface AISommelierProps {
   cellarWines: CellarWineWithDetails[];
+  allWines: Wine[];
 }
 
-export default function AISommelier({ cellarWines }: AISommelierProps) {
+export default function AISommelier({ cellarWines, allWines }: AISommelierProps) {
   const [question, setQuestion] = useState('');
   const [response, setResponse] = useState('');
   const [loading, setLoading] = useState(false);
@@ -22,10 +23,11 @@ export default function AISommelier({ cellarWines }: AISommelierProps) {
 
   const wineQuestions = [
     'Hvilken vin bør jeg drikke først?',
+    'Hvilke viner burde jeg kjøpe inn?',
+    'Anbefal viner jeg mangler for god variasjon',
     'Hva passer til en sommerfest?',
     'Hvilke viner kan lagres lengst?',
     'Anbefal en vin til biff',
-    'Hva er en god startvin for nybegynnere?',
   ];
 
   const cookingQuestions = [
@@ -74,6 +76,7 @@ export default function AISommelier({ cellarWines }: AISommelierProps) {
         body: JSON.stringify({
           question: question.trim(),
           cellarWines,
+          allWines,
           userToken: session.access_token,
         }),
       });
