@@ -1302,6 +1302,58 @@ export const wines: Wine[] = [
     ]
   },
   {
+    id: 'citadelle-artemes-blanc',
+    name: 'Artèmes Blanc',
+    producer: 'Domaine de la Citadelle',
+    color: 'white',
+    appellation: 'Luberon AOP',
+    grapes: ['Grenache Blanc', 'Roussanne', 'Vermentino'],
+    description: 'Kompleks og mineralsk hvitvin fra Les Artèmes-serien. En ren og elegant vin med stor dybde og finesse. Økologisk dyrket på kalksteinsjord.',
+    foodPairings: [
+      { dish: 'Grillet havabbor', description: 'Mineralsk hvitvin til hvit fisk' },
+      { dish: 'Asparges med parmesan', description: 'Kompleksitet i vinen matcher aspargesen' },
+      { dish: 'Geitost med honning', description: 'Mineralitet balanserer geiteost' },
+      { dish: 'Kamskjell', description: 'Elegant vin til delikate skalldyr' }
+    ],
+    purchaseLocations: [purchaseLocations['domaine-citadelle']],
+    vintages: [
+      {
+        year: 2022,
+        alcoholContent: 13.5,
+        tastingNotes: ['Hvite blomster', 'Mineralsk', 'Sitrus', 'Kompleks'],
+        storageRecommendation: 'short-term',
+        optimalDrinkingWindow: { start: 1, end: 5 },
+        price: 13
+      }
+    ]
+  },
+  {
+    id: 'citadelle-artemes-rose',
+    name: 'Artèmes Rosé',
+    producer: 'Domaine de la Citadelle',
+    color: 'rosé',
+    appellation: 'Luberon AOP',
+    grapes: ['Grenache', 'Syrah', 'Cinsault'],
+    description: 'Elegant rosé fra premium-serien Les Artèmes. Strukturert og kompleks med røde bær og krydder. En rosé med karakter og lagringsevne.',
+    foodPairings: [
+      { dish: 'Grillet laks', description: 'Strukturert rosé til fet fisk' },
+      { dish: 'Bouillabaisse', description: 'Provencalsk rosé til provencalsk fiskesuppe' },
+      { dish: 'Sommerretter', description: 'Elegant rosé til sommerbord' },
+      { dish: 'Tapas', description: 'Allsidig vin til varierte smaker' }
+    ],
+    purchaseLocations: [purchaseLocations['domaine-citadelle']],
+    vintages: [
+      {
+        year: 2023,
+        alcoholContent: 13.5,
+        tastingNotes: ['Røde bær', 'Krydder', 'Strukturert', 'Elegant'],
+        storageRecommendation: 'short-term',
+        optimalDrinkingWindow: { start: 0, end: 3 },
+        price: 13
+      }
+    ]
+  },
+  {
     id: 'cavale-blanc',
     name: 'La Cavale Blanc',
     producer: 'La Cavale',
@@ -1900,6 +1952,81 @@ export const wines: Wine[] = [
         storageRecommendation: 'long-term',
         optimalDrinkingWindow: { start: 3, end: 15 },
         price: 42.20
+      }
+    ]
+  },
+  {
+    id: 'maslauris-rouge',
+    name: 'Les Terres de MasLauris Rouge',
+    producer: 'Domaine de MasLauris',
+    color: 'red',
+    appellation: 'Luberon AOP',
+    grapes: ['Grenache', 'Mourvèdre', 'Cinsault', 'Carignan'],
+    description: 'Økologisk rødvin fra 12 hektar vingård mellom Luberon-massivet og Durance. Drevet av Margeaux Lampley (amerikansk) og Didier Théophile (fransk). Vinifikasjonen ledes av Aurélien Le Tellier.',
+    foodPairings: [
+      { dish: 'Lammestek', description: 'Krydder og struktur matcher lam perfekt' },
+      { dish: 'Provencalsk oksegryte', description: 'Kraftig vin til kraftig gryte' },
+      { dish: 'Grillet entrecôte', description: 'Røde bær og krydder til grillet biff' },
+      { dish: 'Ost fra Provence', description: 'Lokal vin til lokal ost' }
+    ],
+    vintages: [
+      {
+        year: 2022,
+        alcoholContent: 14,
+        tastingNotes: ['Røde bær', 'Krydder', 'Jordig', 'Struktur'],
+        storageRecommendation: 'medium-term',
+        optimalDrinkingWindow: { start: 1, end: 6 },
+        price: 15
+      }
+    ]
+  },
+  {
+    id: 'maslauris-blanc',
+    name: 'Les Terres de MasLauris Blanc',
+    producer: 'Domaine de MasLauris',
+    color: 'white',
+    appellation: 'Luberon AOP',
+    grapes: ['Vermentino', 'Grenache Blanc'],
+    description: 'Økologisk hvitvin fra vingård i Lauris. Frisk og aromatisk med god mineralitet fra kalksteinsjord. En moderne provencalsk hvitvin med eleganse.',
+    foodPairings: [
+      { dish: 'Grillet fisk', description: 'Frisk hvitvin til grillet sjømat' },
+      { dish: 'Skalldyr', description: 'Mineralsk vin til mineralske skalldyr' },
+      { dish: 'Chèvre-salat', description: 'Geitost fra Provence med lokal vin' },
+      { dish: 'Asparges', description: 'Vårgrønnsaker med elegant hvitvin' }
+    ],
+    vintages: [
+      {
+        year: 2023,
+        alcoholContent: 13,
+        tastingNotes: ['Sitrus', 'Hvite blomster', 'Mineralsk', 'Frisk'],
+        storageRecommendation: 'short-term',
+        optimalDrinkingWindow: { start: 0, end: 3 },
+        price: 14
+      }
+    ]
+  },
+  {
+    id: 'maslauris-rose',
+    name: 'Les Terres de MasLauris Rosé',
+    producer: 'Domaine de MasLauris',
+    color: 'rosé',
+    appellation: 'Luberon AOP',
+    grapes: ['Grenache', 'Cinsault', 'Syrah'],
+    description: 'Økologisk rosé fra Domaine de MasLauris i Lauris. Elegant og frisk provencalsk rosé med jordbær og sitrus. Perfekt til sommer og terrasse.',
+    foodPairings: [
+      { dish: 'Grillet laks', description: 'Elegant rosé til fet fisk' },
+      { dish: 'Salade Niçoise', description: 'Provencalsk rosé til provencalsk salat' },
+      { dish: 'Tapas', description: 'Allsidig vin til små retter' },
+      { dish: 'Sommerretter', description: 'Perfekt terrasse-vin' }
+    ],
+    vintages: [
+      {
+        year: 2023,
+        alcoholContent: 13,
+        tastingNotes: ['Jordbær', 'Sitrus', 'Frisk', 'Elegant'],
+        storageRecommendation: 'drink-now',
+        optimalDrinkingWindow: { start: 0, end: 2 },
+        price: 14
       }
     ]
   }
