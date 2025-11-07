@@ -318,6 +318,8 @@ body {
   font-size: 1.2rem;
   font-weight: 700;
   color: var(--wine-gold);
+  flex-basis: 100%;
+  margin-bottom: 0.5rem;
 }
 
 .wine-price {
@@ -530,25 +532,26 @@ body {
 .food-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: var(--spacing-md);
+  gap: var(--spacing-sm);
 }
 
 .food-card {
   background: linear-gradient(135deg, #fff5ed 0%, #ffe4d6 100%);
-  padding: var(--spacing-md);
+  padding: var(--spacing-sm);
   border-radius: var(--radius-sm);
   border: 2px solid #ffd8bf;
 }
 
 .food-card h3 {
   color: var(--wine-burgundy);
-  font-size: 1.1rem;
-  margin-bottom: var(--spacing-xs);
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
 }
 
 .food-card p {
   color: var(--text-secondary);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  line-height: 1.4;
 }
 
 /* Status Badge */
@@ -731,6 +734,11 @@ body {
 
   .detail-grid {
     grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+
+  .detail-section {
+    margin-bottom: var(--spacing-md);
   }
 
   .cellar-grid {

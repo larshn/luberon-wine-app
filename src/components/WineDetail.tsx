@@ -24,6 +24,7 @@ export default function WineDetail({ wine, onBack, onCellarUpdate }: WineDetailP
   );
   const [quantityInCellar, setQuantityInCellar] = useState(0);
   const [showAddedMessage, setShowAddedMessage] = useState(false);
+  const [expandedLocations, setExpandedLocations] = useState<{ [key: number]: boolean }>({});
 
   useEffect(() => {
     const updateQuantity = async () => {
@@ -281,113 +282,190 @@ export default function WineDetail({ wine, onBack, onCellarUpdate }: WineDetailP
                     )}
                   </div>
 
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
-                    {location.address && (
-                      <div>
-                        <p style={{ fontSize: '0.85rem', color: '#666', marginBottom: '0.25rem' }}>📍 Adresse</p>
-                        <p style={{ fontSize: '0.95rem', fontWeight: 500 }}>
-                          {location.coordinates ? (
-                            <a
-                              href={`https://www.google.com/maps?q=${location.coordinates.lat},${location.coordinates.lng}`}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              style={{ color: '#722f37', textDecoration: 'underline' }}
-                            >
-                              {location.address}<br />
-                              {location.postalCode && location.city && `${location.postalCode} ${location.city}`}
-                            </a>
-                          ) : (
-                            <>
-                              {location.address}<br />
-                              {location.postalCode && location.city && `${location.postalCode} ${location.city}`}
-                            </>
-                          )}
-                        </p>
-                      </div>
-                    )}
-                    {location.phone && (
-                      <div>
-                        <p style={{ fontSize: '0.85rem', color: '#666', marginBottom: '0.25rem' }}>📞 Telefon</p>
-                        <p style={{ fontSize: '0.95rem', fontWeight: 500 }}>
-                          <a href={`tel:${location.phone}`} style={{ color: '#722f37', textDecoration: 'none' }}>
-                            {location.phone}
-                          </a>
-                        </p>
-                      </div>
-                    )}
-                    {location.email && (
-                      <div>
-                        <p style={{ fontSize: '0.85rem', color: '#666', marginBottom: '0.25rem' }}>✉️ E-post</p>
-                        <p style={{ fontSize: '0.95rem', fontWeight: 500 }}>
-                          <a href={`mailto:${location.email}`} style={{ color: '#722f37', textDecoration: 'none' }}>
-                            {location.email}
-                          </a>
-                        </p>
-                      </div>
-                    )}
-                    {location.website && (
-                      <div>
-                        <p style={{ fontSize: '0.85rem', color: '#666', marginBottom: '0.25rem' }}>🌐 Nettside</p>
-                        <p style={{ fontSize: '0.95rem', fontWeight: 500 }}>
-                          <a href={location.website} target="_blank" rel="noopener noreferrer" style={{ color: '#722f37', textDecoration: 'underline' }}>
-                            Besøk nettside
-                          </a>
-                        </p>
-                      </div>
-                    )}
-                  </div>
+                  {/* Description/Notes - Show first */}
+                  {location.notes && (
+                    <p style={{
+                      marginBottom: '1rem',
+                      padding: '1rem',
+                      background: 'white',
+                      borderRadius: '8px',
+                      fontSize: '0.9rem',
+                      color: '#666',
+                      borderLeft: '4px solid #d4af37'
+                    }}>
+                      {location.notes}
+                    </p>
+                  )}
 
-                  {location.openingHours && (
-                    <div style={{ marginBottom: '1rem', padding: '1rem', background: 'white', borderRadius: '8px' }}>
-                      <p style={{ fontSize: '0.85rem', color: '#666', marginBottom: '0.75rem', fontWeight: 600 }}>🕒 Åpningstider</p>
-                      <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '0.5rem', fontSize: '0.9rem' }}>
-                        {location.openingHours.monday && (
+                  {/* Address - Always visible */}
+                  {location.address && (
+                    <div style={{ marginBottom: '1rem' }}>
+                      <p style={{ fontSize: '0.85rem', color: '#666', marginBottom: '0.25rem' }}>📍 Adresse</p>
+                      <p style={{ fontSize: '0.95rem', fontWeight: 500, wordBreak: 'break-word' }}>
+                        {location.coordinates ? (
+                          <a
+                            href={`https://www.google.com/maps?q=${location.coordinates.lat},${location.coordinates.lng}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{ color: '#722f37', textDecoration: 'underline' }}
+                          >
+                            {location.address}<br />
+                            {location.postalCode && location.city && `${location.postalCode} ${location.city}`}
+                          </a>
+                        ) : (
                           <>
-                            <span style={{ fontWeight: 500 }}>Mandag:</span>
-                            <span>{location.openingHours.monday}</span>
+                            {location.address}<br />
+                            {location.postalCode && location.city && `${location.postalCode} ${location.city}`}
                           </>
                         )}
-                        {location.openingHours.tuesday && (
-                          <>
-                            <span style={{ fontWeight: 500 }}>Tirsdag:</span>
-                            <span>{location.openingHours.tuesday}</span>
-                          </>
-                        )}
-                        {location.openingHours.wednesday && (
-                          <>
-                            <span style={{ fontWeight: 500 }}>Onsdag:</span>
-                            <span>{location.openingHours.wednesday}</span>
-                          </>
-                        )}
-                        {location.openingHours.thursday && (
-                          <>
-                            <span style={{ fontWeight: 500 }}>Torsdag:</span>
-                            <span>{location.openingHours.thursday}</span>
-                          </>
-                        )}
-                        {location.openingHours.friday && (
-                          <>
-                            <span style={{ fontWeight: 500 }}>Fredag:</span>
-                            <span>{location.openingHours.friday}</span>
-                          </>
-                        )}
-                        {location.openingHours.saturday && (
-                          <>
-                            <span style={{ fontWeight: 500 }}>Lørdag:</span>
-                            <span>{location.openingHours.saturday}</span>
-                          </>
-                        )}
-                        {location.openingHours.sunday && (
-                          <>
-                            <span style={{ fontWeight: 500 }}>Søndag:</span>
-                            <span>{location.openingHours.sunday}</span>
-                          </>
-                        )}
-                      </div>
-                      {location.openingHours.notes && (
-                        <p style={{ marginTop: '0.75rem', fontSize: '0.85rem', color: '#666', fontStyle: 'italic' }}>
-                          💡 {location.openingHours.notes}
-                        </p>
+                      </p>
+                    </div>
+                  )}
+
+                  {/* Expandable Contact Info Section */}
+                  {(location.phone || location.email || location.website || location.openingHours) && (
+                    <div style={{ marginBottom: '1rem' }}>
+                      <button
+                        onClick={() => setExpandedLocations(prev => ({ ...prev, [index]: !prev[index] }))}
+                        style={{
+                          width: '100%',
+                          padding: '0.75rem',
+                          background: 'white',
+                          border: '2px solid #ffe4d6',
+                          borderRadius: '8px',
+                          cursor: 'pointer',
+                          fontSize: '0.95rem',
+                          fontWeight: 600,
+                          color: '#722f37',
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center'
+                        }}
+                      >
+                        <span>📋 Kontaktinformasjon & Åpningstider</span>
+                        <span>{expandedLocations[index] ? '▼' : '▶'}</span>
+                      </button>
+
+                      {expandedLocations[index] && (
+                        <div style={{
+                          marginTop: '0.75rem',
+                          padding: '1rem',
+                          background: 'white',
+                          borderRadius: '8px',
+                          border: '2px solid #ffe4d6'
+                        }}>
+                          {/* Contact Info Grid - Responsive */}
+                          <div style={{
+                            display: 'grid',
+                            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                            gap: '1rem',
+                            marginBottom: location.openingHours ? '1rem' : '0'
+                          }}>
+                            {location.phone && (
+                              <div>
+                                <p style={{ fontSize: '0.85rem', color: '#666', marginBottom: '0.25rem' }}>📞 Telefon</p>
+                                <p style={{ fontSize: '0.95rem', fontWeight: 500, wordBreak: 'break-word' }}>
+                                  <a href={`tel:${location.phone}`} style={{ color: '#722f37', textDecoration: 'none' }}>
+                                    {location.phone}
+                                  </a>
+                                </p>
+                              </div>
+                            )}
+                            {location.email && (
+                              <div>
+                                <p style={{ fontSize: '0.85rem', color: '#666', marginBottom: '0.25rem' }}>✉️ E-post</p>
+                                <p style={{ fontSize: '0.95rem', fontWeight: 500, wordBreak: 'break-word' }}>
+                                  <a href={`mailto:${location.email}`} style={{ color: '#722f37', textDecoration: 'none' }}>
+                                    {location.email}
+                                  </a>
+                                </p>
+                              </div>
+                            )}
+                            {location.website && (
+                              <div>
+                                <p style={{ fontSize: '0.85rem', color: '#666', marginBottom: '0.25rem' }}>🌐 Nettside</p>
+                                <p style={{ fontSize: '0.95rem', fontWeight: 500 }}>
+                                  <a
+                                    href={location.website}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    style={{ color: '#722f37', textDecoration: 'underline', wordBreak: 'break-word' }}
+                                  >
+                                    Besøk nettside
+                                  </a>
+                                </p>
+                              </div>
+                            )}
+                          </div>
+
+                          {/* Opening Hours */}
+                          {location.openingHours && (
+                            <div style={{ paddingTop: '1rem', borderTop: '1px solid #ffe4d6' }}>
+                              <p style={{ fontSize: '0.85rem', color: '#666', marginBottom: '0.75rem', fontWeight: 600 }}>
+                                🕒 Åpningstider
+                              </p>
+                              <div style={{
+                                display: 'grid',
+                                gridTemplateColumns: 'auto 1fr',
+                                gap: '0.5rem',
+                                fontSize: '0.9rem'
+                              }}>
+                                {location.openingHours.monday && (
+                                  <>
+                                    <span style={{ fontWeight: 500 }}>Mandag:</span>
+                                    <span>{location.openingHours.monday}</span>
+                                  </>
+                                )}
+                                {location.openingHours.tuesday && (
+                                  <>
+                                    <span style={{ fontWeight: 500 }}>Tirsdag:</span>
+                                    <span>{location.openingHours.tuesday}</span>
+                                  </>
+                                )}
+                                {location.openingHours.wednesday && (
+                                  <>
+                                    <span style={{ fontWeight: 500 }}>Onsdag:</span>
+                                    <span>{location.openingHours.wednesday}</span>
+                                  </>
+                                )}
+                                {location.openingHours.thursday && (
+                                  <>
+                                    <span style={{ fontWeight: 500 }}>Torsdag:</span>
+                                    <span>{location.openingHours.thursday}</span>
+                                  </>
+                                )}
+                                {location.openingHours.friday && (
+                                  <>
+                                    <span style={{ fontWeight: 500 }}>Fredag:</span>
+                                    <span>{location.openingHours.friday}</span>
+                                  </>
+                                )}
+                                {location.openingHours.saturday && (
+                                  <>
+                                    <span style={{ fontWeight: 500 }}>Lørdag:</span>
+                                    <span>{location.openingHours.saturday}</span>
+                                  </>
+                                )}
+                                {location.openingHours.sunday && (
+                                  <>
+                                    <span style={{ fontWeight: 500 }}>Søndag:</span>
+                                    <span>{location.openingHours.sunday}</span>
+                                  </>
+                                )}
+                              </div>
+                              {location.openingHours.notes && (
+                                <p style={{
+                                  marginTop: '0.75rem',
+                                  fontSize: '0.85rem',
+                                  color: '#666',
+                                  fontStyle: 'italic'
+                                }}>
+                                  💡 {location.openingHours.notes}
+                                </p>
+                              )}
+                            </div>
+                          )}
+                        </div>
                       )}
                     </div>
                   )}
@@ -419,20 +497,6 @@ export default function WineDetail({ wine, onBack, onCellarUpdate }: WineDetailP
                         </span>
                       )}
                     </div>
-                  )}
-
-                  {location.notes && (
-                    <p style={{
-                      marginTop: '0.75rem',
-                      padding: '1rem',
-                      background: 'white',
-                      borderRadius: '8px',
-                      fontSize: '0.9rem',
-                      color: '#666',
-                      borderLeft: '4px solid #d4af37'
-                    }}>
-                      {location.notes}
-                    </p>
                   )}
                 </div>
               ))}
