@@ -30,33 +30,40 @@ exports.handler = async (event) => {
     // Build search query
     const searchQuery = wineName || producer;
 
-    // Check cache first
+    // Check cache first (skip if table doesn't exist yet)
     const cacheKey = `${producer || ''}_${wineName || ''}`.toLowerCase();
-    const { data: cachedData, error: cacheError } = await supabase
-      .from('vinmonopolet_cache')
-      .select('*')
-      .eq('cache_key', cacheKey)
-      .single();
+    let cachedData = null;
 
-    // Return cached data if fresh (less than 24 hours old)
-    if (cachedData && !cacheError) {
-      const cacheAge = new Date() - new Date(cachedData.cached_at);
-      const hoursOld = cacheAge / (1000 * 60 * 60);
+    try {
+      const { data, error: cacheError } = await supabase
+        .from('vinmonopolet_cache')
+        .select('*')
+        .eq('cache_key', cacheKey)
+        .single();
 
-      if (hoursOld < 24) {
-        return {
-          statusCode: 200,
-          headers: {
-            'Content-Type': 'application/json',
-            'Cache-Control': 'public, max-age=3600'
-          },
-          body: JSON.stringify({
-            products: cachedData.products,
-            cached: true,
-            cachedAt: cachedData.cached_at
-          }),
-        };
+      // Return cached data if fresh (less than 24 hours old)
+      if (data && !cacheError) {
+        const cacheAge = new Date() - new Date(data.cached_at);
+        const hoursOld = cacheAge / (1000 * 60 * 60);
+
+        if (hoursOld < 24) {
+          return {
+            statusCode: 200,
+            headers: {
+              'Content-Type': 'application/json',
+              'Cache-Control': 'public, max-age=3600'
+            },
+            body: JSON.stringify({
+              products: data.products,
+              cached: true,
+              cachedAt: data.cached_at
+            }),
+          };
+        }
       }
+    } catch (err) {
+      console.log('Cache check failed (table may not exist yet):', err.message);
+      // Continue without cache
     }
 
     // Search Vinmonopolet
@@ -104,18 +111,23 @@ exports.handler = async (event) => {
       stock: product.productAvailability?.deliveryAvailability?.infos || []
     }));
 
-    // Cache the results
-    await supabase
-      .from('vinmonopolet_cache')
-      .upsert({
-        cache_key: cacheKey,
-        producer: producer || null,
-        wine_name: wineName || null,
-        products: products,
-        cached_at: new Date().toISOString()
-      }, {
-        onConflict: 'cache_key'
-      });
+    // Cache the results (skip if table doesn't exist yet)
+    try {
+      await supabase
+        .from('vinmonopolet_cache')
+        .upsert({
+          cache_key: cacheKey,
+          producer: producer || null,
+          wine_name: wineName || null,
+          products: products,
+          cached_at: new Date().toISOString()
+        }, {
+          onConflict: 'cache_key'
+        });
+    } catch (err) {
+      console.log('Cache write failed (table may not exist yet):', err.message);
+      // Continue without caching
+    }
 
     return {
       statusCode: 200,
