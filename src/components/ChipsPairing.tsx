@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import type { Wine } from '../types/wine';
 import type { ChipsFlavor } from '../types/chips';
 import { chipsFlavors } from '../data/chips';
@@ -74,6 +74,7 @@ const calculateMatchScore = (wine: Wine, chips: ChipsFlavor): number => {
 export default function ChipsPairing({ wines, onViewWine }: ChipsPairingProps) {
   const [selectedChips, setSelectedChips] = useState<ChipsFlavor | null>(null);
   const [filterColor, setFilterColor] = useState<'all' | 'red' | 'white' | 'rosé'>('all');
+  const resultsRef = useRef<HTMLDivElement>(null);
 
   // Calculate matching wines for selected chips
   const matchingWines = useMemo(() => {
@@ -90,6 +91,18 @@ export default function ChipsPairing({ wines, onViewWine }: ChipsPairingProps) {
 
     return scored;
   }, [wines, selectedChips, filterColor]);
+
+  // Auto-scroll to results when wines are found
+  useEffect(() => {
+    if (matchingWines.length > 0 && resultsRef.current) {
+      setTimeout(() => {
+        resultsRef.current?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }, 100);
+    }
+  }, [matchingWines.length, selectedChips]);
 
   // Helper to get latest vintage
   const getLatestVintage = (wine: Wine) => {
@@ -242,7 +255,7 @@ export default function ChipsPairing({ wines, onViewWine }: ChipsPairingProps) {
           </div>
 
           {/* Results count */}
-          <div className="results-count">
+          <div ref={resultsRef} className="results-count">
             Fant {matchingWines.length} {matchingWines.length === 1 ? 'vin' : 'viner'}
           </div>
 
