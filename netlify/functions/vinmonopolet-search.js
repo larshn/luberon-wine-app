@@ -6,7 +6,7 @@ const supabase = createClient(
 );
 
 const VINMONOPOLET_API_KEY = process.env.VINMONOPOLET_API_KEY;
-const VINMONOPOLET_API_BASE = 'https://api.vinmonopolet.no';
+const VINMONOPOLET_API_BASE = 'https://apis.vinmonopolet.no';
 
 exports.handler = async (event) => {
   // Only allow GET requests
@@ -75,8 +75,8 @@ exports.handler = async (event) => {
       throw new Error('VINMONOPOLET_API_KEY er ikke satt i environment variables');
     }
 
-    // Call Vinmonopolet API
-    const apiUrl = `${VINMONOPOLET_API_BASE}/products/v0/details-normal?maxResults=20`;
+    // Call Vinmonopolet API with search query
+    const apiUrl = `${VINMONOPOLET_API_BASE}/products/v0/details-normal?productShortNameContains=${encodeURIComponent(searchQuery)}&maxResults=20`;
     const response = await fetch(apiUrl, {
       method: 'GET',
       headers: {
