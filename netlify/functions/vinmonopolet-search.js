@@ -1,10 +1,12 @@
-const vinmonopolet = require('vinmonopolet');
 const { createClient } = require('@supabase/supabase-js');
 
 const supabase = createClient(
   process.env.VITE_SUPABASE_URL,
   process.env.SUPABASE_SERVICE_ROLE_KEY
 );
+
+const VINMONOPOLET_API_KEY = process.env.VINMONOPOLET_API_KEY;
+const VINMONOPOLET_API_BASE = 'https://api.vinmonopolet.no';
 
 exports.handler = async (event) => {
   // Only allow GET requests
@@ -66,14 +68,34 @@ exports.handler = async (event) => {
       // Continue without cache
     }
 
-    // Search Vinmonopolet
+    // Search Vinmonopolet using official API
     console.log(`Searching Vinmonopolet for: "${searchQuery}"`);
-    const results = await vinmonopolet.searchProducts(searchQuery);
+
+    if (!VINMONOPOLET_API_KEY) {
+      throw new Error('VINMONOPOLET_API_KEY er ikke satt i environment variables');
+    }
+
+    // Call Vinmonopolet API
+    const apiUrl = `${VINMONOPOLET_API_BASE}/products/v0/details-normal?maxResults=20`;
+    const response = await fetch(apiUrl, {
+      method: 'GET',
+      headers: {
+        'Ocp-Apim-Subscription-Key': VINMONOPOLET_API_KEY,
+        'Accept': 'application/json'
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error(`Vinmonopolet API feilet: ${response.status} ${response.statusText}`);
+    }
+
+    const apiData = await response.json();
+    const results = Array.isArray(apiData) ? apiData : (apiData.products || []);
 
     // Filter results for better matches
     const filteredResults = results.filter(product => {
-      const productName = product.name.toLowerCase();
-      const productProducer = (product.productSelection?.productType || '').toLowerCase();
+      const productName = (product.productName || product.name || '').toLowerCase();
+      const productProducer = (product.distributorName || product.producer || '').toLowerCase();
 
       // Match producer if provided
       if (producer) {
@@ -88,27 +110,31 @@ exports.handler = async (event) => {
         if (!hasWineName) return false;
       }
 
-      // Only include wines (exclude spirits, beer, etc)
-      const isWine = product.category?.categoryName?.toLowerCase().includes('vin') ||
-                     product.category?.mainCategory?.categoryName?.toLowerCase().includes('vin');
+      // Only include wines (mainCategory should be "Rød", "Hvit", "Rosé", etc.)
+      const category = (product.mainCategory || product.productType || '').toLowerCase();
+      const isWine = category.includes('rød') ||
+                     category.includes('hvit') ||
+                     category.includes('rosé') ||
+                     category.includes('musserende') ||
+                     category.includes('vin');
 
       return isWine;
     });
 
     // Map to simpler structure
     const products = filteredResults.slice(0, 5).map(product => ({
-      code: product.code,
-      name: product.name,
-      price: product.price?.formattedValue || null,
-      pricePerLiter: product.pricePerLiter?.formattedValue || null,
-      url: `https://www.vinmonopolet.no/p/${product.code}`,
-      images: product.images || [],
-      volume: product.volume?.value || null,
-      alcohol: product.alcohol?.value || null,
-      country: product.geography?.mainCountry?.countryName || null,
-      region: product.geography?.mainRegion?.regionName || null,
-      productAvailability: product.productAvailability?.deliveryAvailability?.availableForPurchase || false,
-      stock: product.productAvailability?.deliveryAvailability?.infos || []
+      code: product.productId || product.code,
+      name: product.productName || product.name,
+      price: product.price ? `kr ${product.price}` : null,
+      pricePerLiter: product.pricePerLiter ? `kr ${product.pricePerLiter}` : null,
+      url: `https://www.vinmonopolet.no/p/${product.productId || product.code}`,
+      images: product.images ? [{ url: product.images[0] }] : [],
+      volume: product.volume || null,
+      alcohol: product.alcoholContent || product.alcohol || null,
+      country: product.country || null,
+      region: product.district || product.region || null,
+      productAvailability: product.buyable || false,
+      stock: []
     }));
 
     // Cache the results (skip if table doesn't exist yet)
