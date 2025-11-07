@@ -6,6 +6,7 @@ import {
   getDrinkingWindowStatus
 } from '../utils/wine';
 import { addToCellar, loadCellar } from '../utils/storageSupabase';
+import VinmonopoletInfo from './VinmonopoletInfo';
 
 interface WineDetailProps {
   wine: Wine;
@@ -243,6 +244,8 @@ export default function WineDetail({ wine, onBack, onCellarUpdate }: WineDetailP
             ))}
           </div>
         </div>
+
+        <VinmonopoletInfo wine={wine} />
 
         {/* Purchase Locations */}
         {wine.purchaseLocations && wine.purchaseLocations.length > 0 && (
