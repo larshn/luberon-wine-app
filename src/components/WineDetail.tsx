@@ -7,7 +7,6 @@ import {
 } from '../utils/wine';
 import { addToCellar, loadCellar } from '../utils/storageSupabase';
 import VinmonopoletInfo from './VinmonopoletInfo';
-import VivinoRating from './VivinoRating';
 
 interface WineDetailProps {
   wine: Wine;
@@ -245,8 +244,6 @@ export default function WineDetail({ wine, onBack, onCellarUpdate }: WineDetailP
             ))}
           </div>
         </div>
-
-        <VivinoRating wine={wine} vintage={selectedVintage.year} />
 
         <VinmonopoletInfo wine={wine} />
 

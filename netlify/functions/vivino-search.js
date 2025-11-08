@@ -63,28 +63,34 @@ exports.handler = async (event) => {
       console.log('Cache check failed:', err.message);
     }
 
-    // Search Vivino
+    // Search Vivino using search endpoint
     console.log(`Searching Vivino for: "${searchQuery}"`);
 
-    const vivinoUrl = 'https://www.vivino.com/api/explore/explore';
+    const vivinoUrl = 'https://www.vivino.com/api/wines/search';
     const params = new URLSearchParams({
       q: searchQuery,
-      per_page: '5'
+      limit: '5'
     });
 
     const response = await fetch(`${vivinoUrl}?${params}`, {
       headers: {
-        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
-        'Accept': 'application/json'
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Accept': 'application/json',
+        'Accept-Language': 'en-US,en;q=0.9',
+        'Referer': 'https://www.vivino.com/',
+        'Origin': 'https://www.vivino.com'
       }
     });
 
     if (!response.ok) {
+      console.error(`Vivino API error: ${response.status} ${response.statusText}`);
+      const errorText = await response.text();
+      console.error(`Response body: ${errorText}`);
       throw new Error(`Vivino API feilet: ${response.status}`);
     }
 
     const data = await response.json();
-    const matches = data.explore_vintage?.records || [];
+    const matches = data.wines || [];
 
     if (matches.length === 0) {
       return {
@@ -96,22 +102,23 @@ exports.handler = async (event) => {
 
     // Take the best match (first result)
     const topMatch = matches[0];
-    const wine = topMatch.vintage?.wine || topMatch.wine;
-    const vintageData = topMatch.vintage;
+
+    // Handle different API response structures
+    const wine = topMatch.wine || topMatch;
 
     const result = {
       id: wine.id,
       name: wine.name,
       producer: wine.winery?.name || null,
-      vintage: vintageData?.year || vintage || null,
-      rating: wine.statistics?.ratings_average || null,
-      ratingsCount: wine.statistics?.ratings_count || 0,
-      price: vintageData?.price?.amount || null,
-      currency: vintageData?.price?.currency || null,
-      image: wine.image?.location || vintageData?.image?.location || null,
+      vintage: wine.vintage || vintage || null,
+      rating: wine.statistics?.ratings_average || wine.rating?.average || null,
+      ratingsCount: wine.statistics?.ratings_count || wine.rating?.count || 0,
+      price: wine.price?.amount || null,
+      currency: wine.price?.currency || null,
+      image: wine.image?.location || wine.image?.thumb_url || wine.image?.url || null,
       url: `https://www.vivino.com/w/${wine.id}`,
       region: wine.region?.name || null,
-      country: wine.region?.country?.name || null
+      country: wine.region?.country?.name || wine.country || null
     };
 
     // Cache the result
