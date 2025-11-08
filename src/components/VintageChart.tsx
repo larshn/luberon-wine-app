@@ -162,6 +162,28 @@ export default function VintageChart() {
         </div>
       </div>
 
+      {/* Mobile tooltip - directly under chart */}
+      {isMobile && hoveredVintage && (
+        <div style={{
+          marginBottom: '1rem',
+          padding: '16px',
+          background: '#1a1a1a',
+          color: 'white',
+          borderRadius: '12px',
+          boxShadow: '0 8px 24px rgba(0,0,0,0.3)'
+        }}>
+          <div style={{ fontWeight: 700, marginBottom: '6px', fontSize: '1.3rem' }}>
+            {hoveredVintage.year}
+          </div>
+          <div style={{ color: '#d4af37', fontSize: '1.1rem', marginBottom: '6px' }}>
+            {'★'.repeat(hoveredVintage.rating)}{'☆'.repeat(5 - hoveredVintage.rating)}
+          </div>
+          <div style={{ fontSize: '0.95rem', opacity: 0.95, lineHeight: '1.4' }}>
+            {hoveredVintage.description}
+          </div>
+        </div>
+      )}
+
       {/* Legend */}
       <div style={{
         display: 'flex',
@@ -190,28 +212,6 @@ export default function VintageChart() {
           </div>
         ))}
       </div>
-
-      {/* Mobile tooltip - pushes content down */}
-      {isMobile && hoveredVintage && (
-        <div style={{
-          marginTop: '1.5rem',
-          padding: '16px',
-          background: '#1a1a1a',
-          color: 'white',
-          borderRadius: '12px',
-          boxShadow: '0 8px 24px rgba(0,0,0,0.3)'
-        }}>
-          <div style={{ fontWeight: 700, marginBottom: '6px', fontSize: '1.3rem' }}>
-            {hoveredVintage.year}
-          </div>
-          <div style={{ color: '#d4af37', fontSize: '1.1rem', marginBottom: '6px' }}>
-            {'★'.repeat(hoveredVintage.rating)}{'☆'.repeat(5 - hoveredVintage.rating)}
-          </div>
-          <div style={{ fontSize: '0.95rem', opacity: 0.95, lineHeight: '1.4' }}>
-            {hoveredVintage.description}
-          </div>
-        </div>
-      )}
 
       {/* Notable vintages */}
       <div style={{
