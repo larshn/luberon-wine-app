@@ -874,15 +874,16 @@ body {
 /* Select Dropdown */
 .select {
   width: 100%;
-  padding: 10px 12px;
+  padding: 14px 16px;
   border: 2px solid var(--border);
   border-radius: var(--radius-sm);
-  font-size: 14px;
+  font-size: 15px;
   font-family: inherit;
   background: var(--card-bg);
   color: var(--text-primary);
   cursor: pointer;
   transition: all 0.2s ease;
+  min-height: 48px;
 }
 
 .select:hover {
