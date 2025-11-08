@@ -1308,3 +1308,54 @@ body {
   color: #991b1b;
   border-color: #fca5a5;
 }
+
+/* Food Pairing Page */
+.food-pairing-card {
+  position: relative;
+  padding-left: calc(var(--spacing-lg) + 4px); /* Extra space for color bar */
+}
+
+.food-pairing-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+@media (min-width: 768px) {
+  .food-pairing-content {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+}
+
+.food-pairing-wine-info {
+  flex: 1;
+}
+
+.wine-price {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* Responsive button visibility */
+.food-pairing-button-mobile {
+  display: block;
+  margin-top: var(--spacing-md);
+}
+
+.food-pairing-button-desktop {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .food-pairing-button-mobile {
+    display: none;
+  }
+
+  .food-pairing-button-desktop {
+    display: flex;
+    align-items: flex-start;
+  }
+}
