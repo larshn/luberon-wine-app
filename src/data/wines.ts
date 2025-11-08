@@ -693,7 +693,7 @@ export const wines: Wine[] = [
     producer: 'Château de Mille',
     color: 'red',
     appellation: 'Luberon AOP',
-    imageUrl: 'https://provence-wein.com/wp-content/uploads/2021/10/celestine-ohne-jahrgang-390x390.jpg',
+    imageUrl: '/images/wines/celestine-rouge.jpg',
     grapes: ['Grenache', 'Syrah'],
     description: 'Premium cuvée fra Château de Mille med kompleks aromatikk og lang lagringsevne. Grenache-dominert vin med elegant struktur og provencalske urter.',
     foodPairings: [
@@ -766,7 +766,7 @@ export const wines: Wine[] = [
     producer: 'Château de Mille',
     color: 'red',
     appellation: 'Luberon AOP',
-    imageUrl: 'https://provence-wein.com/wp-content/uploads/2020/10/Saint-Lucide-390x390.jpg',
+    imageUrl: '/images/wines/saint-lucide-rouge.jpg',
     grapes: ['Syrah', 'Grenache'],
     description: 'Syrah-dominert toppvin fra Château de Mille med intens frukt og komplekse krydderaromer. En kraftig og konsentrert vin med fremragende lagringsevne.',
     foodPairings: [
@@ -1102,6 +1102,7 @@ export const wines: Wine[] = [
     producer: 'Château de Mille',
     color: 'rosé',
     appellation: 'Luberon AOP',
+    imageUrl: '/images/wines/clefs-de-mille-rose.jpg',
     grapes: ['Grenache', 'Syrah'],
     description: 'Elegant rosé fra Château de Mille med friske fruktaromer. Perfekt sommervin med fin balanse mellom fruktighet og friskhet.',
     foodPairings: [
@@ -1155,7 +1156,7 @@ export const wines: Wine[] = [
     id: 'mille-blanc',
     name: 'Château de Mille Blanc',
     producer: 'Château de Mille',
-    imageUrl: 'https://provence-wein.com/wp-content/uploads/2023/03/Ch%C3%A2teau-de-Mille-Wei%C3%9F-2023-390x390.jpg',
+    imageUrl: '/images/wines/mille-blanc.jpg',
     color: 'white',
     appellation: 'Luberon AOP',
     grapes: ['Grenache Blanc', 'Roussanne', 'Rolle'],
@@ -1213,7 +1214,7 @@ export const wines: Wine[] = [
     producer: 'Château de Mille',
     color: 'white',
     appellation: 'Luberon AOP',
-    imageUrl: 'https://provence-wein.com/wp-content/uploads/2024/03/Clefs-de-Mille-Wei%C3%9F_600x600-390x390.jpg',
+    imageUrl: '/images/wines/clefs-de-mille-blanc.jpg',
     grapes: ['Grenache Blanc', 'Roussanne', 'Vermentino'],
     description: 'Basis hvitvin fra Château de Mille med frisk og lett profil. Perfekt hverdagsvin med god mineralitet og blomsteraromer.',
     foodPairings: [
@@ -1269,7 +1270,7 @@ export const wines: Wine[] = [
     producer: 'Château de Mille',
     color: 'white',
     appellation: 'Luberon AOP',
-    imageUrl: 'https://provence-wein.com/wp-content/uploads/2024/03/C%C3%A9lestine-Wei%C3%9F_600x600-390x390.jpg',
+    imageUrl: '/images/wines/celestine-blanc.jpg',
     grapes: ['Grenache Blanc', 'Roussanne', 'Vermentino'],
     description: 'Premium hvitvin fra Château de Mille med kompleks aromatikk og god lagringspotensial. Elegant og fyldig med fin mineralitet.',
     foodPairings: [
@@ -1325,7 +1326,7 @@ export const wines: Wine[] = [
     producer: 'Château de Mille',
     color: 'white',
     appellation: 'Luberon AOP',
-    imageUrl: 'https://provence-wein.com/wp-content/uploads/2024/03/Saint-Lucide-Wei%C3%9F_600x600-390x390.jpg',
+    imageUrl: '/images/wines/saint-lucide-blanc.jpg',
     grapes: ['Roussanne', 'Grenache Blanc', 'Vermentino'],
     description: 'Toppvin blant hvitvinene fra Château de Mille. Roussanne-dominert med stor kompleksitet, rik tekstur og fremragende lagringsevne.',
     foodPairings: [
@@ -1381,7 +1382,7 @@ export const wines: Wine[] = [
     producer: 'Château de Mille',
     color: 'rosé',
     appellation: 'Luberon AOP',
-    imageUrl: 'https://provence-wein.com/wp-content/uploads/2024/03/Ch%C3%A2teau-de-Mille-Ros%C3%A9-2024-390x390.jpg',
+    imageUrl: '/images/wines/mille-rose.jpg',
     grapes: ['Grenache', 'Syrah', 'Cinsault'],
     description: 'Elegant og frisk rosé fra Château de Mille. Klassisk provencalsk stil med delikate røde bær og blomsteraromer. Perfekt sommervin.',
     foodPairings: [
