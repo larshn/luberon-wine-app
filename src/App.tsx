@@ -22,10 +22,7 @@ function App() {
   useEffect(() => {
     const updateCellarCount = async () => {
       const cellar = await loadCellar();
-      // Only count bottles that are actually in the cellar (not wishlist or tasted)
-      const total = cellar.wines
-        .filter(w => w.status === 'in_cellar')
-        .reduce((sum, w) => sum + w.quantity, 0);
+      const total = cellar.wines.reduce((sum, w) => sum + w.quantity, 0);
       setCellarCount(total);
     };
     updateCellarCount();
@@ -47,10 +44,7 @@ function App() {
 
   const handleCellarUpdate = async () => {
     const cellar = await loadCellar();
-    // Only count bottles that are actually in the cellar (not wishlist or tasted)
-    const total = cellar.wines
-      .filter(w => w.status === 'in_cellar')
-      .reduce((sum, w) => sum + w.quantity, 0);
+    const total = cellar.wines.reduce((sum, w) => sum + w.quantity, 0);
     setCellarCount(total);
   };
 

@@ -9,7 +9,6 @@ import {
 } from '../utils/storageSupabase';
 import { getStorageLabel } from '../utils/wine';
 import AISommelier from './AISommelier';
-import CollectionStats from './CollectionStats';
 
 type CellarWineWithDetails = {
   wine: Wine;
@@ -32,11 +31,8 @@ interface WineCellarProps {
 
 const getStorageClass = (rec: string) => rec.replace(/-/g, '-');
 
-type FilterType = 'all' | 'in_cellar' | 'tasted' | 'wishlist' | 'favorites';
-
 export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarProps) {
   const [cellarWines, setCellarWines] = useState<CellarWineWithDetails[]>([]);
-  const [statusFilter, setStatusFilter] = useState<FilterType>('all');
   const [showExportModal, setShowExportModal] = useState(false);
   const [showImportModal, setShowImportModal] = useState(false);
   const [importData, setImportData] = useState('');
@@ -106,30 +102,6 @@ export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarPr
     await loadCellarWines();
   };
 
-  const handleStatusChange = async (wineId: string, year: number, status: WineStatus) => {
-    await updateCellarWine(wineId, year, {
-      status,
-      ...(status === 'tasted' && { tasted_date: new Date().toISOString().split('T')[0] })
-    });
-    await loadCellarWines();
-  };
-
-  // Calculate stats
-  const stats = useMemo(() => {
-    const inCellar = cellarWines.filter(w => w.status === 'in_cellar').length;
-    const tasted = cellarWines.filter(w => w.status === 'tasted').length;
-    const wishlist = cellarWines.filter(w => w.status === 'wishlist').length;
-    const favorites = cellarWines.filter(w => w.is_favorite).length;
-
-    return { inCellar, tasted, wishlist, favorites };
-  }, [cellarWines]);
-
-  // Filter wines based on selected filter
-  const filteredWines = useMemo(() => {
-    if (statusFilter === 'all') return cellarWines;
-    if (statusFilter === 'favorites') return cellarWines.filter(w => w.is_favorite);
-    return cellarWines.filter(w => w.status === statusFilter);
-  }, [cellarWines, statusFilter]);
 
   const handleExport = async () => {
     const data = await exportCellar();
@@ -168,50 +140,6 @@ export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarPr
         <p>Organiser og spor din vinsamling</p>
       </div>
 
-      {cellarWines.length > 0 && (
-        <>
-          <CollectionStats
-            inCellarCount={stats.inCellar}
-            tastedCount={stats.tasted}
-            wishlistCount={stats.wishlist}
-          />
-
-          <div className="filter-chips">
-            <button
-              className={`filter-chip ${statusFilter === 'all' ? 'active' : ''}`}
-              onClick={() => setStatusFilter('all')}
-            >
-              Alle ({cellarWines.length})
-            </button>
-            <button
-              className={`filter-chip ${statusFilter === 'in_cellar' ? 'active' : ''}`}
-              onClick={() => setStatusFilter('in_cellar')}
-            >
-              Lagret ({stats.inCellar})
-            </button>
-            <button
-              className={`filter-chip ${statusFilter === 'tasted' ? 'active' : ''}`}
-              onClick={() => setStatusFilter('tasted')}
-            >
-              Prøvd ({stats.tasted})
-            </button>
-            <button
-              className={`filter-chip ${statusFilter === 'wishlist' ? 'active' : ''}`}
-              onClick={() => setStatusFilter('wishlist')}
-            >
-              Ønskeliste ({stats.wishlist})
-            </button>
-            {stats.favorites > 0 && (
-              <button
-                className={`filter-chip ${statusFilter === 'favorites' ? 'active' : ''}`}
-                onClick={() => setStatusFilter('favorites')}
-              >
-                ❤️ Favoritter ({stats.favorites})
-              </button>
-            )}
-          </div>
-        </>
-      )}
 
       <div className="cellar-actions">
         <button onClick={() => setShowExportModal(true)} className="btn btn-secondary">
@@ -241,14 +169,9 @@ export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarPr
           <h3>Din vinsamling er tom</h3>
           <p>Legg til viner fra katalogen for å begynne å bygge din samling!</p>
         </div>
-      ) : filteredWines.length === 0 ? (
-        <div className="empty-state">
-          <h3>Ingen viner i denne kategorien</h3>
-          <p>Prøv å velge en annen filter</p>
-        </div>
       ) : (
         <div style={{display: 'flex', flexDirection: 'column', gap: '1.5rem'}}>
-          {filteredWines.map(({ wine, vintage, quantity, location, notes, status, is_favorite }) => (
+          {cellarWines.map(({ wine, vintage, quantity, location, notes }) => (
             <div key={`${wine.id}-${vintage.year}`} className="card cellar-card">
               <div className={`wine-color-bar ${wine.color}`} />
 
@@ -256,10 +179,7 @@ export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarPr
                 <div className="cellar-info">
                   <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'start', marginBottom: '1.5rem'}}>
                     <div>
-                      <h3>
-                        {wine.name}
-                        {is_favorite && <span style={{marginLeft: '8px'}}>❤️</span>}
-                      </h3>
+                      <h3>{wine.name}</h3>
                       <p style={{color: '#666', fontSize: '1.1rem', marginBottom: '0.5rem'}}>{wine.producer}</p>
                       <div style={{display: 'flex', alignItems: 'center', gap: '1rem', marginTop: '0.5rem'}}>
                         <span className="wine-year">{vintage.year}</span>
@@ -280,30 +200,6 @@ export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarPr
                         {grape}
                       </span>
                     ))}
-                  </div>
-
-                  <div className="mb-md">
-                    <label style={{display: 'block', fontWeight: 600, marginBottom: '0.75rem', fontSize: '1rem', color: '#1a1a1a'}}>
-                      📊 Status
-                    </label>
-                    <select
-                      value={status || 'in_cellar'}
-                      onChange={(e) => handleStatusChange(wine.id, vintage.year, e.target.value as WineStatus)}
-                      className="select"
-                      style={{
-                        fontSize: '1rem',
-                        fontWeight: 600,
-                        padding: '12px 14px',
-                        background: status === 'tasted' ? '#dbeafe' : status === 'wishlist' ? '#fef3c7' : '#f0fdf4',
-                        color: status === 'tasted' ? '#1e40af' : status === 'wishlist' ? '#92400e' : '#065f46',
-                        borderColor: status === 'tasted' ? '#60a5fa' : status === 'wishlist' ? '#fbbf24' : '#10b981',
-                        borderWidth: '2px'
-                      }}
-                    >
-                      <option value="in_cellar">🍷 I kjelleren</option>
-                      <option value="tasted">✓ Prøvd</option>
-                      <option value="wishlist">⭐ Ønskeliste</option>
-                    </select>
                   </div>
 
                   <div className="mb-md">
