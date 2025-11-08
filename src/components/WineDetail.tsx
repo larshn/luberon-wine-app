@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
-import type { Wine, Vintage, WineStatus } from '../types/wine';
+import type { Wine, Vintage } from '../types/wine';
 import {
   getStorageLabel,
   getCurrentAge,
   getDrinkingWindowStatus
 } from '../utils/wine';
-import { addToCellar, loadCellar, updateCellarWine } from '../utils/storageSupabase';
+import { addToCellar, loadCellar } from '../utils/storageSupabase';
 import VinmonopoletInfo from './VinmonopoletInfo';
 
 interface WineDetailProps {

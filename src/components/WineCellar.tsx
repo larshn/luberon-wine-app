@@ -1,5 +1,5 @@
-import { useState, useEffect, useMemo } from 'react';
-import type { Wine, Vintage, WineStatus } from '../types/wine';
+import { useState, useEffect } from 'react';
+import type { Wine, Vintage } from '../types/wine';
 import {
   loadCellar,
   removeFromCellar,
@@ -16,11 +16,6 @@ type CellarWineWithDetails = {
   quantity: number;
   location?: string;
   notes?: string;
-  status?: WineStatus;
-  rating?: number;
-  is_favorite?: boolean;
-  tasting_notes?: string;
-  tasted_date?: string;
 };
 
 interface WineCellarProps {
@@ -54,12 +49,6 @@ export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarPr
           quantity: cellarWine.quantity,
           ...(cellarWine.location && { location: cellarWine.location }),
           ...(cellarWine.notes && { notes: cellarWine.notes }),
-          // Collection features
-          status: cellarWine.status || 'in_cellar',
-          ...(cellarWine.rating && { rating: cellarWine.rating }),
-          ...(cellarWine.is_favorite !== undefined && { is_favorite: cellarWine.is_favorite }),
-          ...(cellarWine.tasting_notes && { tasting_notes: cellarWine.tasting_notes }),
-          ...(cellarWine.tasted_date && { tasted_date: cellarWine.tasted_date }),
         };
         return result;
       })
