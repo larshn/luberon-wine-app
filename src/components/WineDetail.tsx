@@ -36,12 +36,52 @@ export default function WineDetail({ wine, onBack, onCellarUpdate }: WineDetailP
     updateQuantity();
   }, [wine.id, selectedVintage.year]);
 
-  const handleAddWithStatus = async (status: WineStatus) => {
+  const handleAddBottle = async () => {
     await addToCellar(wine.id, selectedVintage.year);
-    // Immediately update the status
+
+    const cellar = await loadCellar();
+    const cellarWine = cellar.wines.find(w => w.wineId === wine.id && w.year === selectedVintage.year);
+    setQuantityInCellar(cellarWine?.quantity || 0);
+    onCellarUpdate();
+
+    setShowAddedMessage(true);
+    setTimeout(() => setShowAddedMessage(false), 1500);
+  };
+
+  const handleRemoveBottle = async () => {
+    if (quantityInCellar > 0) {
+      const { removeFromCellar } = await import('../utils/storageSupabase');
+      await removeFromCellar(wine.id, selectedVintage.year, 1);
+
+      const cellar = await loadCellar();
+      const cellarWine = cellar.wines.find(w => w.wineId === wine.id && w.year === selectedVintage.year);
+      setQuantityInCellar(cellarWine?.quantity || 0);
+      onCellarUpdate();
+    }
+  };
+
+  const handleAddToWishlist = async () => {
+    if (quantityInCellar === 0) {
+      await addToCellar(wine.id, selectedVintage.year);
+    }
+    await updateCellarWine(wine.id, selectedVintage.year, { status: 'wishlist' });
+
+    const cellar = await loadCellar();
+    const cellarWine = cellar.wines.find(w => w.wineId === wine.id && w.year === selectedVintage.year);
+    setQuantityInCellar(cellarWine?.quantity || 0);
+    onCellarUpdate();
+
+    setShowAddedMessage(true);
+    setTimeout(() => setShowAddedMessage(false), 1500);
+  };
+
+  const handleMarkAsTasted = async () => {
+    if (quantityInCellar === 0) {
+      await addToCellar(wine.id, selectedVintage.year);
+    }
     await updateCellarWine(wine.id, selectedVintage.year, {
-      status,
-      ...(status === 'tasted' && { tasted_date: new Date().toISOString().split('T')[0] })
+      status: 'tasted',
+      tasted_date: new Date().toISOString().split('T')[0]
     });
 
     const cellar = await loadCellar();
@@ -50,12 +90,8 @@ export default function WineDetail({ wine, onBack, onCellarUpdate }: WineDetailP
     onCellarUpdate();
 
     setShowAddedMessage(true);
-    setTimeout(() => setShowAddedMessage(false), 2000);
+    setTimeout(() => setShowAddedMessage(false), 1500);
   };
-
-  const handleAddToCellar = () => handleAddWithStatus('in_cellar');
-  const handleAddToWishlist = () => handleAddWithStatus('wishlist');
-  const handleMarkAsTasted = () => handleAddWithStatus('tasted');
 
   const currentAge = getCurrentAge(selectedVintage.year);
   const drinkingStatus = getDrinkingWindowStatus({
@@ -518,52 +554,98 @@ export default function WineDetail({ wine, onBack, onCellarUpdate }: WineDetailP
         )}
 
         <div style={{borderTop: '2px solid #e0e0e0', paddingTop: '2rem', marginTop: '2rem'}}>
-          <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem'}}>
-            <div>
-              <h2 style={{fontSize: '1.3rem', color: '#722f37', marginBottom: '0.5rem'}}>
-                Min Vinkjeller ({selectedVintage.year})
-              </h2>
-              {quantityInCellar > 0 ? (
-                <p style={{color: '#666'}}>
-                  Du har <span style={{fontWeight: 600, color: '#d4af37'}}>{quantityInCellar}</span> flaske
-                  {quantityInCellar > 1 ? 'r' : ''} av {selectedVintage.year} i kjelleren
-                </p>
-              ) : (
-                <p style={{color: '#666'}}>Ingen flasker av {selectedVintage.year} i kjelleren ennå</p>
-              )}
+          {showAddedMessage && (
+            <div style={{
+              padding: '1rem',
+              background: '#d1fae5',
+              color: '#065f46',
+              borderRadius: '8px',
+              fontWeight: 600,
+              textAlign: 'center',
+              marginBottom: '1.5rem'
+            }}>
+              ✓ Oppdatert!
             </div>
-            <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
-              {showAddedMessage && (
-                <div style={{
-                  padding: '0.75rem',
-                  background: '#d1fae5',
-                  color: '#065f46',
-                  borderRadius: '8px',
-                  fontWeight: 600,
-                  textAlign: 'center'
-                }}>
-                  ✓ Lagt til i samlingen!
+          )}
+
+          {/* Cellar Bottles Section */}
+          <div style={{marginBottom: '2rem'}}>
+            <h2 style={{fontSize: '1.3rem', color: '#722f37', marginBottom: '1rem'}}>
+              🍷 Flasker i kjelleren ({selectedVintage.year})
+            </h2>
+
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '1.5rem',
+              padding: '1.5rem',
+              background: '#f5f5f5',
+              borderRadius: '12px',
+              border: '2px solid #e0e0e0'
+            }}>
+              <button
+                onClick={handleRemoveBottle}
+                disabled={quantityInCellar === 0}
+                className="btn"
+                style={{
+                  width: '48px',
+                  height: '48px',
+                  padding: '0',
+                  fontSize: '1.5rem',
+                  background: quantityInCellar === 0 ? '#e0e0e0' : 'white',
+                  color: quantityInCellar === 0 ? '#999' : '#722f37',
+                  border: `2px solid ${quantityInCellar === 0 ? '#ccc' : '#722f37'}`,
+                  cursor: quantityInCellar === 0 ? 'not-allowed' : 'pointer'
+                }}
+              >
+                −
+              </button>
+
+              <div style={{textAlign: 'center', flex: 1}}>
+                <div style={{fontSize: '2.5rem', fontWeight: 700, color: '#722f37', lineHeight: 1}}>
+                  {quantityInCellar}
                 </div>
-              )}
-              <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem'}}>
-                <button onClick={handleAddToCellar} className="btn btn-primary" style={{fontSize: '0.95rem'}}>
-                  🍷 Legg i kjelleren
-                </button>
-                <button onClick={handleAddToWishlist} className="btn" style={{
-                  background: '#fef3c7',
-                  color: '#92400e',
-                  border: '2px solid #fbbf24',
-                  fontSize: '0.95rem'
-                }}>
-                  ⭐ Ønskeliste
-                </button>
+                <div style={{fontSize: '0.9rem', color: '#666', marginTop: '0.25rem'}}>
+                  {quantityInCellar === 1 ? 'flaske' : 'flasker'}
+                </div>
               </div>
+
+              <button
+                onClick={handleAddBottle}
+                className="btn btn-primary"
+                style={{
+                  width: '48px',
+                  height: '48px',
+                  padding: '0',
+                  fontSize: '1.5rem'
+                }}
+              >
+                +
+              </button>
+            </div>
+          </div>
+
+          {/* Other Actions */}
+          <div>
+            <h3 style={{fontSize: '1.1rem', color: '#722f37', marginBottom: '0.75rem'}}>
+              Andre handlinger
+            </h3>
+            <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem'}}>
+              <button onClick={handleAddToWishlist} className="btn" style={{
+                background: '#fef3c7',
+                color: '#92400e',
+                border: '2px solid #fbbf24',
+                fontSize: '0.95rem',
+                padding: '0.75rem'
+              }}>
+                ⭐ Ønskeliste
+              </button>
               <button onClick={handleMarkAsTasted} className="btn" style={{
                 background: '#dbeafe',
                 color: '#1e40af',
                 border: '2px solid #60a5fa',
                 fontSize: '0.95rem',
-                width: '100%'
+                padding: '0.75rem'
               }}>
                 ✓ Merk som prøvd
               </button>
