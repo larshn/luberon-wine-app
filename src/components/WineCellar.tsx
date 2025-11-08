@@ -3,11 +3,9 @@ import type { Wine, Vintage } from '../types/wine';
 import {
   loadCellar,
   removeFromCellar,
-  updateCellarWine,
   exportCellar,
   importCellar
 } from '../utils/storageSupabase';
-import { getStorageLabel } from '../utils/wine';
 import AISommelier from './AISommelier';
 
 type CellarWineWithDetails = {
@@ -23,8 +21,6 @@ interface WineCellarProps {
   onViewWine: (wine: Wine) => void;
   onUpdate: () => void;
 }
-
-const getStorageClass = (rec: string) => rec.replace(/-/g, '-');
 
 export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarProps) {
   const [cellarWines, setCellarWines] = useState<CellarWineWithDetails[]>([]);
@@ -72,25 +68,6 @@ export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarPr
       console.error('Error removing wine:', error);
     }
   };
-
-  const handleRemoveAll = async (wineId: string, year: number, wineName: string, quantity: number) => {
-    if (confirm(`Fjerne alle ${quantity} flasker av ${wineName} (${year})?`)) {
-      await removeFromCellar(wineId, year, quantity);
-      await loadCellarWines();
-      onUpdate();
-    }
-  };
-
-  const handleUpdateNotes = async (wineId: string, year: number, notes: string) => {
-    await updateCellarWine(wineId, year, { notes });
-    await loadCellarWines();
-  };
-
-  const handleUpdateLocation = async (wineId: string, year: number, location: string) => {
-    await updateCellarWine(wineId, year, { location });
-    await loadCellarWines();
-  };
-
 
   const handleExport = async () => {
     const data = await exportCellar();
