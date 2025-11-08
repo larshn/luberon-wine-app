@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="de-DE" class="scheme_original">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	
+	
+	<link rel="profile" href="https://gmpg.org/xfn/11" />
+	<link rel="pingback" href="https://provence-wein.com/xmlrpc.php" />
+    
+    <link rel="icon" type="image/x-icon" href="https://provence-wein.com/wp-content/uploads/2015/12/logo.png" /><title>Seite wurde nicht gefunden. - Provence Wein</title>
+
+<!-- This site is optimized with the Yoast SEO plugin v13.5 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta name="robots" content="noindex,follow"/>
+<meta property="og:locale" content="de_DE" />
+<meta property="og:type" content="object" />
+<meta property="og:title" content="Seite wurde nicht gefunden. - Provence Wein" />
+<meta property="og:site_name" content="Provence Wein" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Seite wurde nicht gefunden. - Provence Wein" />
+<script type='application/ld+json' class='yoast-schema-graph yoast-schema-graph--main'>{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://provence-wein.com/#website","url":"https://provence-wein.com/","name":"Provence Wein","inLanguage":"de-DE","potentialAction":[{"@type":"SearchAction","target":"https://provence-wein.com/?s={search_term_string}","query-input":"required name=search_term_string"}]}]}</script>
+<!-- / Yoast SEO plugin. -->
+
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Provence Wein &raquo; Feed" href="https://provence-wein.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Provence Wein &raquo; Kommentar-Feed" href="https://provence-wein.com/comments/feed/" />
+<link rel="alternate" type="text/calendar" title="Provence Wein &raquo; iCal Feed" href="https://provence-wein.com/events/?ical=1" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/provence-wein.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.4"}};
+			/*! This file is auto-generated */
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='woocommerce-de_frontend_styles-css'  href='https://provence-wein.com/wp-content/plugins/woocommerce-german-market/css/frontend.css?ver=1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='tribe-common-skeleton-style-css'  href='https://provence-wein.com/wp-content/plugins/the-events-calendar/common/src/resources/css/common-skeleton.min.css?ver=4.11.5.1' type='text/css' media='all' />
+<link rel='stylesheet' id='tribe-tooltip-css'  href='https://provence-wein.com/wp-content/plugins/the-events-calendar/common/src/resources/css/tooltip.min.css?ver=4.11.5.1' type='text/css' media='all' />
+<link rel='stylesheet' id='wc-block-vendors-style-css'  href='https://provence-wein.com/wp-content/plugins/woocommerce/packages/woocommerce-blocks/build/vendors-style.css?ver=3.8.1' type='text/css' media='all' />
+<link rel='stylesheet' id='wc-block-style-css'  href='https://provence-wein.com/wp-content/plugins/woocommerce/packages/woocommerce-blocks/build/style.css?ver=3.8.1' type='text/css' media='all' />
+<link rel='stylesheet' id='contact-form-7-css'  href='https://provence-wein.com/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=5.1.7' type='text/css' media='all' />
+<link rel='stylesheet' id='rs-plugin-settings-css'  href='https://provence-wein.com/wp-content/plugins/revslider/public/assets/css/settings.css?ver=5.0.5' type='text/css' media='all' />
+<style id='rs-plugin-settings-inline-css' type='text/css'>
+.tp-caption a{color:#ff7302;text-shadow:none;-webkit-transition:all 0.2s ease-out;-moz-transition:all 0.2s ease-out;-o-transition:all 0.2s ease-out;-ms-transition:all 0.2s ease-out}.tp-caption a:hover{color:#ffa902}
+</style>
+<link rel='stylesheet' id='woocommerce-layout-css'  href='https://provence-wein.com/wp-content/plugins/woocommerce/assets/css/woocommerce-layout.css?ver=4.8.0' type='text/css' media='all' />
+<link rel='stylesheet' id='woocommerce-smallscreen-css'  href='https://provence-wein.com/wp-content/plugins/woocommerce/assets/css/woocommerce-smallscreen.css?ver=4.8.0' type='text/css' media='only screen and (max-width: 768px)' />
+<link rel='stylesheet' id='woocommerce-general-css'  href='https://provence-wein.com/wp-content/plugins/woocommerce/assets/css/woocommerce.css?ver=4.8.0' type='text/css' media='all' />
+<style id='woocommerce-inline-inline-css' type='text/css'>
+.woocommerce form .form-row .required { visibility: visible; }
+</style>
+<link rel='stylesheet' id='paypalplus-woocommerce-front-css'  href='https://provence-wein.com/wp-content/plugins/woo-paypalplus/public/css/front.min.css?ver=1586861177' type='text/css' media='screen' />
+<link rel='stylesheet' id='parent-style-css'  href='https://provence-wein.com/wp-content/themes/wineshop/style.css?ver=5.4' type='text/css' media='all' />
+<link rel='stylesheet' id='child-style-css'  href='https://provence-wein.com/wp-content/themes/wineshop-child/style.css?ver=5.4' type='text/css' media='all' />
+<link rel='stylesheet' id='themerex-fontello-style-css'  href='https://provence-wein.com/wp-content/themes/wineshop/css/fontello/css/fontello.css' type='text/css' media='all' />
+<link rel='stylesheet' id='themerex-main-style-css'  href='https://provence-wein.com/wp-content/themes/wineshop-child/style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='themerex-animation-style-css'  href='https://provence-wein.com/wp-content/themes/wineshop/fw/css/core.animation.css' type='text/css' media='all' />
+<link rel='stylesheet' id='themerex-shortcodes-style-css'  href='https://provence-wein.com/wp-content/themes/wineshop/shortcodes/theme.shortcodes.css' type='text/css' media='all' />
+<link rel='stylesheet' id='themerex-woo-style-css'  href='https://provence-wein.com/wp-content/themes/wineshop/css/woo-style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='tribe-style-css'  href='https://provence-wein.com/wp-content/themes/wineshop/css/tribe-style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='themerex-skin-style-css'  href='https://provence-wein.com/wp-content/themes/wineshop/skins/wineshop/skin.css' type='text/css' media='all' />
+<link rel='stylesheet' id='themerex-custom-style-css'  href='https://provence-wein.com/wp-content/themes/wineshop/fw/css/custom-style.min.css' type='text/css' media='all' />
+<style id='themerex-custom-style-inline-css' type='text/css'>
+  .contacts_wrap .logo img{height:95px}body{font-family:Laila;font-size:16px;font-weight:400;line-height:24px}h1{font-size:72px;font-weight:500;line-height:86px; margin-bottom:10px}h2{font-size:60px;font-weight:500;line-height:72px; margin-bottom:10px}h3{font-size:48px;font-weight:500;line-height:57px; margin-bottom:10px}h4{font-size:30px;font-weight:600;line-height:36px; margin-bottom:10px}h5{font-size:18px;font-weight:600;line-height:21px; margin-bottom:5px}h6{font-size:16px;font-weight:600;line-height:18px; margin-bottom:5px}a,.scheme_dark a,.scheme_light a{;	color:#7B232F}a:hover,.scheme_dark a:hover,.scheme_light a:hover{color:#2B2B2B}.accent1{color:#7B232F}.accent1_bgc{background-color:#7B232F}.accent1_bg{background:#7B232F}.accent1_border{border-color:#7B232F}a.accent1:hover{color:#2B2B2B}.post_content.ih-item.circle.effect1.colored .info,.post_content.ih-item.circle.effect2.colored .info,.post_content.ih-item.circle.effect3.colored .info,.post_content.ih-item.circle.effect4.colored .info,.post_content.ih-item.circle.effect5.colored .info .info-back,.post_content.ih-item.circle.effect6.colored .info,.post_content.ih-item.circle.effect7.colored .info,.post_content.ih-item.circle.effect8.colored .info,.post_content.ih-item.circle.effect9.colored .info,.post_content.ih-item.circle.effect10.colored .info,.post_content.ih-item.circle.effect11.colored .info,.post_content.ih-item.circle.effect12.colored .info,.post_content.ih-item.circle.effect13.colored .info,.post_content.ih-item.circle.effect14.colored .info,.post_content.ih-item.circle.effect15.colored .info,.post_content.ih-item.circle.effect16.colored .info,.post_content.ih-item.circle.effect18.colored .info .info-back,.post_content.ih-item.circle.effect19.colored .info,.post_content.ih-item.circle.effect20.colored .info .info-back,.post_content.ih-item.square.effect1.colored .info,.post_content.ih-item.square.effect2.colored .info,.post_content.ih-item.square.effect3.colored .info,.post_content.ih-item.square.effect4.colored .mask1,.post_content.ih-item.square.effect4.colored .mask2,.post_content.ih-item.square.effect5.colored .info,.post_content.ih-item.square.effect6.colored .info,.post_content.ih-item.square.effect7.colored .info,.post_content.ih-item.square.effect8.colored .info,.post_content.ih-item.square.effect9.colored .info .info-back,.post_content.ih-item.square.effect10.colored .info,.post_content.ih-item.square.effect11.colored .info,.post_content.ih-item.square.effect12.colored .info,.post_content.ih-item.square.effect13.colored .info,.post_content.ih-item.square.effect14.colored .info,.post_content.ih-item.square.effect15.colored .info,.post_content.ih-item.circle.effect20.colored .info .info-back,.post_content.ih-item.square.effect_book.colored .info{background:#7B232F}.post_content.ih-item.circle.effect1.colored .info,.post_content.ih-item.circle.effect2.colored .info,.post_content.ih-item.circle.effect5.colored .info .info-back,.post_content.ih-item.circle.effect19.colored .info,.post_content.ih-item.square.effect4.colored .mask1,.post_content.ih-item.square.effect4.colored .mask2,.post_content.ih-item.square.effect6.colored .info,.post_content.ih-item.square.effect7.colored .info,.post_content.ih-item.square.effect12.colored .info,.post_content.ih-item.square.effect13.colored .info,.post_content.ih-item.square.effect_more.colored .info,.post_content.ih-item.square.effect_fade.colored:hover .info,.post_content.ih-item.square.effect_dir.colored .info,.post_content.ih-item.square.effect_shift.colored .info{background:rgba(123,35,47,1)}.post_content.ih-item.square.effect_fade.colored .info{background:-moz-linear-gradient(top,rgba(255,255,255,0) 70%,rgba(123,35,47,0.6) 100%);	background:-webkit-gradient(linear,left top,left bottom,color-stop(70%,rgba(255,255,255,0)),color-stop(100%,rgba(123,35,47,0.6)));	background:-webkit-linear-gradient(top,rgba(255,255,255,0) 70%,rgba(123,35,47,0.6) 100%);	background:-o-linear-gradient(top,rgba(255,255,255,0) 70%,rgba(123,35,47,0.6) 100%);	background:-ms-linear-gradient(top,rgba(255,255,255,0) 70%,rgba(123,35,47,0.6) 100%);	background:linear-gradient(to bottom,rgba(255,255,255,0) 70%,rgba(123,35,47,0.6) 100%)}.post_content.ih-item.circle.effect17.colored:hover .img:before{-webkit-box-shadow:inset 0 0 0 110px rgba(123,35,47,0.6),inset 0 0 0 16px rgba(255,255,255,0.8),0 1px 2px rgba(0,0,0,0.1);	-moz-box-shadow:inset 0 0 0 110px rgba(123,35,47,0.6),inset 0 0 0 16px rgba(255,255,255,0.8),0 1px 2px rgba(0,0,0,0.1);	box-shadow:inset 0 0 0 110px rgba(123,35,47,0.6),inset 0 0 0 16px rgba(255,255,255,0.8),0 1px 2px rgba(0,0,0,0.1)}.post_content.ih-item.circle.effect1 .spinner{border-right-color:#7B232F;	border-bottom-color:#7B232F}.sc_table table tbody tr:hover{background-color:#7B232F}pre.code,#toc .toc_item.current,#toc .toc_item:hover{border-color:#7B232F}::selection,::-moz-selection{background-color:#7B232F}.woocommerce.widget_recent_reviews ul.product_list_widget li a:hover,.woocommerce ul.product_list_widget li a:hover span{color:#7B232F}input[type="text"],input[type="number"],input[type="email"],input[type="search"],input[type="password"],select,textarea{font-size:14px;line-height:20px}.top_panel_inner_style_3 .top_panel_cart_button,.top_panel_inner_style_4 .top_panel_cart_button{background-color:#7B232F}.top_panel_style_8 .top_panel_buttons .top_panel_cart_button:before{background-color:#7B232F}.top_panel_inner_style_3 .top_panel_top,.top_panel_inner_style_4 .top_panel_top,.top_panel_inner_style_5 .top_panel_top,.top_panel_inner_style_3 .top_panel_top .sidebar_cart,.top_panel_inner_style_4 .top_panel_top .sidebar_cart{background-color:#2B2B2B}.top_panel_top a:hover{color:#2B2B2B}.menu_user_nav>li>a:hover{color:#2B2B2B}.top_panel_inner_style_3 .menu_user_nav>li ul li a:hover,.top_panel_inner_style_3 .menu_user_nav>li ul li.current-menu-item>a,.top_panel_inner_style_3 .menu_user_nav>li ul li.current-menu-ancestor>a,.top_panel_inner_style_4 .menu_user_nav>li ul li a:hover,.top_panel_inner_style_4 .menu_user_nav>li ul li.current-menu-item>a,.top_panel_inner_style_4 .menu_user_nav>li ul li.current-menu-ancestor>a,.top_panel_inner_style_5 .menu_user_nav>li ul li a:hover,.top_panel_inner_style_5 .menu_user_nav>li ul li.current-menu-item>a,.top_panel_inner_style_5 .menu_user_nav>li ul li.current-menu-ancestor>a{color:#7B232F}.top_panel_middle .logo{}.logo .logo_text{font-size:2.8571em;font-weight:700;line-height:0.75em}.top_panel_middle .menu_main_wrap{margin-top:calc(inherit*0.75)}.top_panel_style_5 .top_panel_middle .logo{margin-bottom:calc(inherit*0.5)}/* Top panel (bottom area) */.top_panel_bottom{background-color:#7B232F}.top_panel_image_hover{background-color:rgba(43,43,43,0.8)}.menu_main_nav>li>a{padding:inherit 1.5em inherit;	font-size:18px;line-height:35px}.menu_main_nav>li>a:hover,.menu_main_nav>li.sfHover>a,.menu_main_nav>li#blob,.menu_main_nav>li.current-menu-item>a,.menu_main_nav>li.current-menu-parent>a,.menu_main_nav>li.current-menu-ancestor>a{color:#7B232F}.scheme_dark .menu_main_nav>li>a:hover,.scheme_dark .menu_main_nav>li.sfHover>a,.scheme_dark .menu_main_nav>li#blob,.scheme_dark .menu_main_nav>li.current-menu-item>a,.scheme_dark .menu_main_nav>li.current-menu-parent>a,.scheme_dark .menu_main_nav>li.current-menu-ancestor>a{color:#7B232F}.top_panel_inner_style_1 .menu_main_nav>li>a:hover,.top_panel_inner_style_2 .menu_main_nav>li>a:hover{background-color:#2B2B2B}.top_panel_inner_style_1 .menu_main_nav>li ul,.top_panel_inner_style_2 .menu_main_nav>li ul{border-color:#2B2B2B;	background-color:#7B232F}.top_panel_inner_style_1 .menu_main_nav>a:hover,.top_panel_inner_style_1 .menu_main_nav>li.sfHover>a,.top_panel_inner_style_1 .menu_main_nav>li#blob,.top_panel_inner_style_1 .menu_main_nav>li.current-menu-item>a,.top_panel_inner_style_1 .menu_main_nav>li.current-menu-parent>a,.top_panel_inner_style_1 .menu_main_nav>li.current-menu-ancestor>a,.top_panel_inner_style_2 .menu_main_nav>a:hover,.top_panel_inner_style_2 .menu_main_nav>li.sfHover>a,.top_panel_inner_style_2 .menu_main_nav>li#blob,.top_panel_inner_style_2 .menu_main_nav>li.current-menu-item>a,.top_panel_inner_style_2 .menu_main_nav>li.current-menu-parent>a,.top_panel_inner_style_2 .menu_main_nav>li.current-menu-ancestor>a{background-color:#2B2B2B}.menu_main_nav>li ul{font-size:16;line-height:24px}.menu_main_nav>li>ul{top:calc(inherit+inherit+35px)}.menu_main_nav>li ul li a{padding:inherit 1.5em inherit}.menu_main_nav>li ul li a:hover,.menu_main_nav>li ul li.current-menu-item>a,.menu_main_nav>li ul li.current-menu-ancestor>a{color:#2B2B2B}.top_panel_inner_style_1 .menu_main_nav>li ul li a:hover,.top_panel_inner_style_1 .menu_main_nav>li ul li.current-menu-item>a,.top_panel_inner_style_1 .menu_main_nav>li ul li.current-menu-ancestor>a,.top_panel_inner_style_2 .menu_main_nav>li ul li a:hover,.top_panel_inner_style_2 .menu_main_nav>li ul li.current-menu-item>a,.top_panel_inner_style_2 .menu_main_nav>li ul li.current-menu-ancestor>a{background-color:#2B2B2B}.menu_user_nav>li ul:not(.cart_list),.top_panel_middle .sidebar_cart:after,.menu_user_nav>li>ul:after,.search_wrap .search_results:after{background-color:#2B2B2B}.menu_main_responsive_button{margin-top:inherit;	margin-bottom:inherit}.menu_main_responsive_button:hover{color:#2B2B2B}.responsive_menu .top_panel_middle .menu_main_responsive_button{top:inherit}.responsive_menu .menu_main_responsive_button{margin-top:calc(inherit*0.8);	margin-bottom:calc(inherit*0.6)}.top_panel_inner_style_1 .menu_main_responsive,.top_panel_inner_style_2 .menu_main_responsive{background-color:#7B232F}.top_panel_inner_style_1 .menu_main_responsive a:hover,.top_panel_inner_style_2 .menu_main_responsive a:hover{background-color:#2B2B2B}.top_panel_bottom .search_wrap,.top_panel_inner_style_4 .search_wrap{padding-top:calc(inherit*0.65);	padding-bottom:calc(inherit*0.5)}.top_panel_inner_style_1 .search_form_wrap,.top_panel_inner_style_2 .search_form_wrap{background-color:rgba(43,43,43,0.2)}.top_panel_icon{margin:calc(inherit*0.7) 0 inherit 1em}.top_panel_icon.search_wrap,.top_panel_inner_style_5 .menu_main_responsive_button,.top_panel_inner_style_6 .menu_main_responsive_button,.top_panel_inner_style_7 .menu_main_responsive_button{color:#7B232F}.top_panel_inner_style_4 .top_panel_icon.menu_main_cart .contact_icon,.top_panel_inner_style_6 .top_panel_icon.menu_main_cart .contact_icon{background-color:#7B232F}.top_panel_inner_style_6 .top_panel_icon.search_wrap .search_submit{background-color:#7B232F !important}.top_panel_inner_style_4 .top_panel_icon.menu_main_cart .contact_icon:hover,.top_panel_inner_style_6 .top_panel_icon.menu_main_cart .contact_icon:hover{background-color:#2B2B2B}.top_panel_inner_style_6 .top_panel_icon.search_wrap .search_submit:hover{background-color:#2B2B2B !important}.search_results .post_more,.search_results .search_results_close{color:#7B232F}.search_results .post_more:hover,.search_results .search_results_close:hover{color:#2B2B2B}.top_panel_inner_style_1 .search_results,.top_panel_inner_style_1 .search_results:after,.top_panel_inner_style_2 .search_results,.top_panel_inner_style_2 .search_results:after,.top_panel_inner_style_3 .search_results,.top_panel_inner_style_3 .search_results:after{background-color:#7B232F; border-color:#2B2B2B}.top_panel_fixed .menu_main_wrap{padding-top:calc(inherit*0.3)}.top_panel_fixed .top_panel_wrap .logo{margin-top:calc(inherit*0.6);	margin-bottom:calc(inherit*0.6)}.top_panel_inner_style_8 .top_panel_buttons,.top_panel_inner_style_8 .menu_pushy_wrap .menu_pushy_button{padding-top:inherit;	padding-bottom:inherit}.pushy_inner a{color:#7B232F}.pushy_inner a:hover{color:#2B2B2B}.top_panel_inner_style_3 .popup_wrap a,.top_panel_inner_style_3 .popup_wrap .sc_socials.sc_socials_type_icons a:hover,.top_panel_inner_style_4 .popup_wrap a,.top_panel_inner_style_4 .popup_wrap .sc_socials.sc_socials_type_icons a:hover,.top_panel_inner_style_5 .popup_wrap a,.top_panel_inner_style_5 .popup_wrap .sc_socials.sc_socials_type_icons a:hover{color:#7B232F}.top_panel_inner_style_3 .popup_wrap a:hover,.top_panel_inner_style_4 .popup_wrap a:hover,.top_panel_inner_style_5 .popup_wrap a:hover{color:#2B2B2B}.top_panel_wrap .widget_shopping_cart ul.cart_list>li>a:hover{color:#7B232F}.menu_main_nav>li ul{background-color:#7B232F; border-color:#7B232F}.post_title .post_icon{color:#7B232F}.pagination>a{border-color:#7B232F}.post_info{font-size:14px;line-height:20px;	margin-bottom:1.5em}.post_info a:hover{color:#2B2B2B}.post_item .post_readmore:hover .post_readmore_label{color:#2B2B2B}.post_item_related .post_info a:hover,.post_item_related .post_title a:hover{color:#2B2B2B}.isotope_item_colored .post_featured .post_mark_new,.isotope_item_colored .post_featured .post_title,.isotope_item_colored .post_content.ih-item.square.colored .info{background-color:#7B232F}.isotope_item_colored .post_category a,.isotope_item_colored .post_rating .reviews_stars_bg,.isotope_item_colored .post_rating .reviews_stars_hover,.isotope_item_colored .post_rating .reviews_value{color:#7B232F}.isotope_item_colored .post_info_wrap .post_button .sc_button{color:#7B232F}.isotope_wrap .isotope_item_colored_1 .post_featured{border-color:#7B232F}.isotope_item.isotope_item_masonry .post_title a:hover{color:#7B232F}.isotope_filters a{border-color:#7B232F;	background-color:#7B232F}.isotope_filters a.active,.isotope_filters a:hover{border-color:#2B2B2B;	background-color:#2B2B2B}.pagination_single a,.pagination_slider .pager_cur,.pagination_pages>a,.pagination_pages>span{border-color:#7B232F;	background-color:#7B232F}.pagination_single>.pager_numbers{border-color:#7B232F}.pagination_single>.pager_numbers,.pagination_single a:hover,.pagination_slider .pager_cur:hover,.pagination_slider .pager_cur:focus,.pagination_pages>.active,.pagination_pages>a:hover{color:#7B232F}.pagination_wrap .pager_next,.pagination_wrap .pager_prev,.pagination_wrap .pager_last,.pagination_wrap .pager_first{color:#7B232F}.pagination_wrap .pager_next:hover,.pagination_wrap .pager_prev:hover,.pagination_wrap .pager_last:hover,.pagination_wrap .pager_first:hover{color:#2B2B2B}.pagination_viewmore>a{background-color:#7B232F}.pagination_viewmore>a:hover{background-color:#2B2B2B}.viewmore_loader,.mfp-preloader span,.sc_video_frame.sc_video_active:before{background-color:#2B2B2B}.post_featured .post_nav_item:before{background-color:#7B232F}.post_featured .post_nav_item .post_nav_info{background-color:#7B232F}.reviews_block .reviews_max_level_100 .reviews_stars_hover,.reviews_block .reviews_item .reviews_slider{background-color:#7B232F}.reviews_block .reviews_item .reviews_stars_hover{color:#7B232F}/* Summary stars in the post item (under the title) */.post_item .post_rating .reviews_stars_bg,.post_item .post_rating .reviews_stars_hover,.post_item .post_rating .reviews_value{color:#7B232F}.post_author .post_author_title a{color:#7B232F}.post_author .post_author_title a:hover{color:#2B2B2B}.comments_list_wrap .comment-respond{border-bottom-color:#7B232F}.comments_list_wrap>ul{border-bottom-color:#7B232F}.comments_list_wrap .comment_info>span.comment_author,.comments_list_wrap .comment_info>.comment_date>.comment_date_value{color:#7B232F}.post_item_404 .page_title,.post_item_404 .page_subtitle{font-family:inherit;	color:#7B232F}.sidebar_outer_menu .menu_side_nav>li>a,.sidebar_outer_menu .menu_side_responsive>li>a{font-size:18px;line-height:35px}.sidebar_outer_menu .menu_side_nav>li ul,.sidebar_outer_menu .menu_side_responsive>li ul{font-size:16;line-height:24px}.sidebar_outer_menu .menu_side_nav>li ul li a,.sidebar_outer_menu .menu_side_responsive>li ul li a{padding:inherit 1.5em inherit}.sidebar_outer_menu .sidebar_outer_menu_buttons>a:hover,.scheme_dark .sidebar_outer_menu .sidebar_outer_menu_buttons>a:hover,.scheme_light .sidebar_outer_menu .sidebar_outer_menu_buttons>a:hover{color:#7B232F}.widget_area_inner .widget_product_search .search_button:hover,.widget_area_inner .widget_search .search_button:hover{background-color:#7B232F}.widget_area .post_item .post_title a:hover{color:#7B232F}.widget_area_inner a,.widget_area_inner ul li:before,.widget_area_inner ul li a:hover,.widget_area_inner button:before{color:#7B232F}.widget_area_inner a:hover,.widget_area_inner button:hover:before{color:#2B2B2B}.widget_area_inner .widget_text a,.widget_area_inner .post_info a{color:#7B232F}.widget_area_inner .widget_text a:hover,.widget_area_inner .post_info a:hover{color:#2B2B2B}.widget_recent_comments ul li a{color:#7B232F}.widget_recent_comments ul li a.url{color:#2B2B2B}/* Widget:Calendar */.widget_area_inner .widget_calendar td.day a:hover{background-color:#7B232F}.widget_area_inner .widget_calendar .today .day_wrap{background-color:#7B232F}.widget_area .widget_calendar .month_prev a:hover,.widget_area .widget_calendar .month_next a:hover{color:#7B232F}/* Widget:Tag Cloud */.widget_area_inner .widget_product_tag_cloud a,.widget_area_inner .widget_tag_cloud a{border-color:#7B232F;	background-color:#7B232F}.widget_area_inner .widget_product_tag_cloud a:hover,.widget_area_inner .widget_tag_cloud a:hover{background-color:#2B2B2B; border-color:#2B2B2B}.contacts_wrap_inner .sc_socials.sc_socials_type_icons a{color:#7B232F}.testimonials_wrap_inner,.twitter_wrap_inner{background-color:#7B232F}.copyright_wrap_inner .menu_footer_nav li a:hover,.scheme_dark .copyright_wrap_inner .menu_footer_nav li a:hover,.scheme_light .copyright_wrap_inner .menu_footer_nav li a:hover{color:#7B232F}.copyright_wrap_inner .copyright_text a{color:#7B232F}.scroll_to_top:hover{background-color:#2B2B2B}.custom_options #co_toggle{background-color:#2B2B2B !important}.woocommerce ul.products li.product .post_featured .hover_icon .view_button,.woocommerce-page ul.products li.product .post_featured .hover_icon .view_button{background-color:#7B232F}.woocommerce .woocommerce-message:before,.woocommerce-page .woocommerce-message:before,.woocommerce a:hover h3,.woocommerce-page a:hover h3,.woocommerce .cart-collaterals .order-total strong,.woocommerce-page .cart-collaterals .order-total strong,.woocommerce .star-rating,.woocommerce-page .star-rating,.woocommerce .star-rating:before,.woocommerce-page .star-rating:before,.widget_area_inner .widgetWrap ul>li .star-rating span,.woocommerce #review_form #respond .stars a,.woocommerce-page #review_form #respond .stars a{color:#7B232F}.woocommerce .widget_price_filter .ui-slider .ui-slider-range,.woocommerce-page .widget_price_filter .ui-slider .ui-slider-range{background-color:#7B232F}.woocommerce .widget_price_filter .ui-slider .ui-slider-handle,.woocommerce-page .widget_price_filter .ui-slider .ui-slider-handle{background:#7B232F}.woocommerce .woocommerce-message,.woocommerce-page .woocommerce-message,.woocommerce a.button.alt:active,.woocommerce button.button.alt:active,.woocommerce input.button.alt:active,.woocommerce #respond input#submit.alt:active,.woocommerce #content input.button.alt:active,.woocommerce-page a.button.alt:active,.woocommerce-page button.button.alt:active,.woocommerce-page input.button.alt:active,.woocommerce-page #respond input#submit.alt:active,.woocommerce-page #content input.button.alt:active,.woocommerce a.button:active,.woocommerce button.button:active,.woocommerce input.button:active,.woocommerce #respond input#submit:active,.woocommerce #content input.button:active,.woocommerce-page a.button:active,.woocommerce-page button.button:active,.woocommerce-page input.button:active,.woocommerce-page #respond input#submit:active,.woocommerce-page #content input.button:active{border-top-color:#7B232F}.woocommerce a.button,.woocommerce button.button,.woocommerce input.button,.woocommerce #respond input#submit,.woocommerce #content input.button,.woocommerce-page a.button,.woocommerce-page button.button,.woocommerce-page input.button,.woocommerce-page #respond input#submit,.woocommerce-page #content input.button,.woocommerce a.button.alt,.woocommerce button.button.alt,.woocommerce input.button.alt,.woocommerce #respond input#submit.alt,.woocommerce #content input.button.alt,.woocommerce-page a.button.alt,.woocommerce-page button.button.alt,.woocommerce-page input.button.alt,.woocommerce-page #respond input#submit.alt,.woocommerce-page #content input.button.alt,.woocommerce-account .addresses .title .edit{background-color:#2B2B2B}.woocommerce a.button:hover,.woocommerce button.button:hover,.woocommerce input.button:hover,.woocommerce #respond input#submit:hover,.woocommerce #content input.button:hover,.woocommerce-page a.button:hover,.woocommerce-page button.button:hover,.woocommerce-page input.button:hover,.woocommerce-page #respond input#submit:hover,.woocommerce-page #content input.button:hover,.woocommerce a.button.alt:hover,.woocommerce button.button.alt:hover,.woocommerce input.button.alt:hover,.woocommerce #respond input#submit.alt:hover,.woocommerce #content input.button.alt:hover,.woocommerce-page a.button.alt:hover,.woocommerce-page button.button.alt:hover,.woocommerce-page input.button.alt:hover,.woocommerce-page #respond input#submit.alt:hover,.woocommerce-page #content input.button.alt:hover,.woocommerce-account .addresses .title .edit:hover{background-color:#7B232F}.woocommerce span.new,.woocommerce-page span.new,.woocommerce span.onsale,.woocommerce-page span.onsale{background-color:#2B2B2B}.woocommerce ul.products li.product h3 a:hover,.woocommerce-page ul.products li.product h3 a:hover,.woocommerce ul.products li.product .star-rating:before,.woocommerce ul.products li.product .star-rating span{color:#7B232F}.woocommerce ul.products li.product .add_to_cart_button,.woocommerce-page ul.products li.product .add_to_cart_button{background-color:#7B232F}.woocommerce ul.products li.product .add_to_cart_button:hover,.woocommerce-page ul.products li.product .add_to_cart_button:hover{background-color:#2B2B2B}.woocommerce nav.woocommerce-pagination ul li a,.woocommerce nav.woocommerce-pagination ul li span.current{border-color:#7B232F;	background-color:#7B232F}.woocommerce nav.woocommerce-pagination ul li a:focus,.woocommerce nav.woocommerce-pagination ul li a:hover,.woocommerce nav.woocommerce-pagination ul li span.current{color:#7B232F}.tribe-events-calendar thead th{background-color:#7B232F}a.tribe-events-read-more,.tribe-events-button,.tribe-events-nav-previous a,.tribe-events-nav-next a,.tribe-events-widget-link a,.tribe-events-viewmore a{background-color:#7B232F}a.tribe-events-read-more:hover,.tribe-events-button:hover,.tribe-events-nav-previous a:hover,.tribe-events-nav-next a:hover,.tribe-events-widget-link a:hover,.tribe-events-viewmore a:hover{background-color:#2B2B2B}#bbpress-forums div.bbp-topic-content a,#buddypress button,#buddypress a.button,#buddypress input[type="submit"],#buddypress input[type="button"],#buddypress input[type="reset"],#buddypress ul.button-nav li a,#buddypress div.generic-button a,#buddypress .comment-reply-link,a.bp-title-button,#buddypress div.item-list-tabs ul li.selected a{background:#7B232F}#bbpress-forums div.bbp-topic-content a:hover,#buddypress button:hover,#buddypress a.button:hover,#buddypress input[type="submit"]:hover,#buddypress input[type="button"]:hover,#buddypress input[type="reset"]:hover,#buddypress ul.button-nav li a:hover,#buddypress div.generic-button a:hover,#buddypress .comment-reply-link:hover,a.bp-title-button:hover,#buddypress div.item-list-tabs ul li.selected a:hover{background:#2B2B2B}#buddypress #reply-title small a span,#buddypress a.bp-primary-action span{color:#7B232F}.booking_font_custom,.booking_day_container,.booking_calendar_container_all{font-family:Laila}.booking_weekdays_custom{font-family:inherit}.booking_month_navigation_button_custom:hover{background-color:#2B2B2B !important}#learndash_next_prev_link>a{background-color:#7B232F}#learndash_next_prev_link>a:hover{background-color:#2B2B2B}.widget_area dd.course_progress div.course_progress_blue{background-color:#2B2B2B}.sc_accordion .sc_accordion_item .sc_accordion_title.ui-state-active{background-color:#7B232F}.sc_accordion .sc_accordion_item .sc_accordion_title:hover{color:#2B2B2B}.mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-current,.mejs-controls .mejs-time-rail .mejs-time-current{background:#7B232F !important}.hover_icon:before{background-color:#7B232F}input[type="submit"],input[type="reset"],input[type="button"],button,.sc_button{font-size:10px;font-weight:400;line-height:23px}input[type="submit"]:hover,input[type="reset"]:hover,input[type="button"]:hover,button:hover,.sc_button.sc_button_style_filled:hover{background-color:#7B232F !important}.sc_button.sc_button_style_border{border-color:#7B232F;	color:#7B232F}.sc_button.sc_button_style_border:hover{border-color:#2B2B2B !important}.sc_blogger.layout_date .sc_blogger_item .sc_blogger_date{background-color:#7B232F;	border-color:#7B232F}.sc_blogger.layout_polaroid .photostack nav span.current{background-color:#7B232F}.sc_blogger.layout_polaroid .photostack nav span.current.flip{background-color:#2B2B2B}.sc_call_to_action_accented{background-color:#7B232F}.sc_call_to_action_accented .sc_item_button>a{color:#7B232F}.sc_call_to_action_accented .sc_item_button>a:before{background-color:#7B232F}.sc_chat_inner a{color:#7B232F}.sc_chat_inner a:hover{color:#2B2B2B}.sc_clients_style_clients-2 .sc_client_title a:hover{color:#7B232F}.sc_clients_style_clients-2 .sc_client_description:before,.sc_clients_style_clients-2 .sc_client_position{color:#7B232F}.sc_form .sc_form_item.sc_form_button button:hover{background-color:#7B232F}.sc_form table.picker__table th{background-color:#7B232F}.sc_form .picker__day--today:before,.sc_form .picker__button--today:before,.sc_form .picker__button--clear:before,.sc_form button:focus{border-color:#7B232F}.sc_form .picker__button--close:before{color:#7B232F}.sc_form .picker--time .picker__button--clear:hover,.sc_form .picker--time .picker__button--clear:focus{background-color:#2B2B2B}.sc_countdown.sc_countdown_style_1 .sc_countdown_digits{background-color:#7B232F}.sc_countdown.sc_countdown_style_1 .sc_countdown_digits{border-color:#7B232F}.sc_countdown.sc_countdown_style_1 .sc_countdown_label{color:#7B232F}.sc_countdown.sc_countdown_style_2 .sc_countdown_separator{color:#7B232F}.sc_countdown.sc_countdown_style_2 .sc_countdown_digits span{background-color:#7B232F}.sc_countdown.sc_countdown_style_2 .sc_countdown_label{color:#7B232F}blockquote{background-color:#7B232F}blockquote.sc_quote{background-color:#2B2B2B}.sc_dropcaps.sc_dropcaps_style_1 .sc_dropcaps_item{color:#7B232F}.sc_dropcaps.sc_dropcaps_style_2 .sc_dropcaps_item{background-color:#7B232F}.sc_dropcaps.sc_dropcaps_style_3 .sc_dropcaps_item{background-color:#2B2B2B}.sc_dropcaps.sc_dropcaps_style_4 .sc_dropcaps_item{color:#7B232F}.sc_events_style_events-2 .sc_events_item_date{background-color:#7B232F}.sc_highlight_style_1{background-color:#7B232F}.sc_highlight_style_2{background-color:#2B2B2B}.sc_icon_hover:hover,a:hover .sc_icon_hover{background-color:#7B232F !important}.sc_icon_shape_round.sc_icon,.sc_icon_shape_square.sc_icon{background-color:#7B232F;	border-color:#7B232F}.sc_icon_shape_round.sc_icon:hover,.sc_icon_shape_square.sc_icon:hover,a:hover .sc_icon_shape_round.sc_icon,a:hover .sc_icon_shape_square.sc_icon{color:#7B232F}figure figcaption,.sc_image figcaption{background-color:rgba(123,35,47,0.6)}.sc_infobox.sc_infobox_style_success{background-color:#7B232F}.post_item.post_format_link .post_descr p{background-color:#2B2B2B}.post_format_status.post_item_single .post_content p,.post_format_status .post_descr p{background-color:#7B232F}.sc_list_style_iconed li:before,.sc_list_style_iconed .sc_list_icon{color:#7B232F}.sc_list_style_iconed li a:hover .sc_list_title{color:#2B2B2B}.sc_popup:before{background-color:#7B232F}.sc_price_block.sc_price_block_style_1{background-color:#7B232F}.sc_services_item .sc_services_item_readmore span{color:#7B232F}.sc_services_item .sc_services_item_readmore:hover,.sc_services_item .sc_services_item_readmore:hover span{color:#2B2B2B}.sc_item_descr a:hover{color:#7B232F}.sc_services_item .sc_services_item_readmore span{color:#7B232F}.sc_services_item .sc_services_item_readmore:hover,.sc_services_item .sc_services_item_readmore:hover span{color:#2B2B2B}.sc_services_style_services-1 .sc_icon:hover,.sc_services_style_services-2 .sc_icon{color:#7B232F;	border-color:#7B232F}.sc_services_style_services-2 .sc_icon:hover,.sc_services_style_services-2 a:hover .sc_icon{background-color:#7B232F}.sc_services_style_services-3 a:hover .sc_icon,.sc_services_style_services-3 .sc_icon:hover{color:#7B232F}.sc_services_style_services-3 a:hover .sc_services_item_title{color:#7B232F}.sc_services_style_services-4 .sc_icon{background-color:#7B232F}.sc_services_style_services-4 a:hover .sc_icon,.sc_services_style_services-4 .sc_icon:hover{background-color:#2B2B2B}.sc_services_style_services-4 a:hover .sc_services_item_title{color:#7B232F}.sc_scroll_controls_wrap a{background-color:#7B232F}.sc_scroll_controls_type_side .sc_scroll_controls_wrap a{background-color:rgba(123,35,47,0.8)}.sc_scroll_controls_wrap a:hover{background-color:#2B2B2B}.sc_scroll_bar .swiper-scrollbar-drag:before{background-color:#7B232F}.sc_skills_counter .sc_skills_item .sc_skills_icon{color:#7B232F}.sc_skills_counter .sc_skills_item:hover .sc_skills_icon{color:#2B2B2B}.sc_skills_bar .sc_skills_item .sc_skills_count{border-color:#7B232F}.sc_skills_bar .sc_skills_item .sc_skills_count,.sc_skills_counter .sc_skills_item.sc_skills_style_3 .sc_skills_count,.sc_skills_counter .sc_skills_item.sc_skills_style_4 .sc_skills_count,.sc_skills_counter .sc_skills_item.sc_skills_style_4 .sc_skills_info{background-color:#7B232F}.sc_slider_controls_wrap a:hover{color:#2B2B2B}.sc_slider_swiper .sc_slider_pagination_wrap .swiper-pagination-bullet-active,.sc_slider_swiper .sc_slider_pagination_wrap span:hover{border-color:#7B232F;	background-color:#7B232F}.sc_slider_swiper .sc_slider_info{background-color:rgba(123,35,47,0.8) !important}.sc_slider_pagination_over .sc_slider_pagination_wrap span:hover,.sc_slider_pagination_over .sc_slider_pagination_wrap .swiper-pagination-bullet-active{border-color:#7B232F;	background-color:#7B232F}.sc_socials.sc_socials_type_icons a{background-color:#2B2B2B}.sc_socials.sc_socials_type_icons a:hover{background-color:#7B232F}.sc_tabs.sc_tabs_style_1 .sc_tabs_titles li a:hover{color:#7B232F}.sc_tabs.sc_tabs_style_1 .sc_tabs_titles li.ui-state-active a:after{background-color:#7B232F}.sc_tabs.sc_tabs_style_2 .sc_tabs_titles li a:hover,.sc_tabs.sc_tabs_style_2 .sc_tabs_titles li.ui-state-active a{color:#7B232F}.sc_team_item .sc_team_item_info .sc_team_item_title a{color:#7B232F}.sc_team_style_team-1 .sc_team_item_info,.sc_team_style_team-3 .sc_team_item_info{border-color:#7B232F}.sc_team.sc_team_style_team-3 .sc_team_item_avatar .sc_team_item_hover{background-color:rgba(43,43,43,0.5)}.sc_team.sc_team_style_team-4 .sc_socials_item a:hover{color:#7B232F;	border-color:#7B232F}.sc_team_style_team-4 .sc_team_item_info .sc_team_item_title a:hover{color:#7B232F}.sc_testimonials_style_testimonials-3 .sc_testimonial_content p:first-child:before,.sc_testimonials_style_testimonials-3 .sc_testimonial_author_position{color:#7B232F}.sc_testimonials_style_testimonials-4 .sc_testimonial_content p:first-child:before,.sc_testimonials_style_testimonials-4 .sc_testimonial_author_position{color:#7B232F}.sc_title_icon{color:#7B232F}.sc_toggles .sc_toggles_item .sc_toggles_title.ui-state-active{color:#7B232F;	border-color:#7B232F}.sc_toggles .sc_toggles_item .sc_toggles_title.ui-state-active .sc_toggles_icon_opened{background-color:#7B232F}.sc_toggles .sc_toggles_item .sc_toggles_title:hover{color:#2B2B2B;	border-color:#2B2B2B}.sc_toggles .sc_toggles_item .sc_toggles_title:hover .sc_toggles_icon_opened{background-color:#2B2B2B}.sc_tooltip_parent .sc_tooltip,.sc_tooltip_parent .sc_tooltip:before{background-color:#7B232F}/* Common styles (title,subtitle and description for some shortcodes) */.sc_item_title:after{background-color:#7B232F}.sc_item_button>a:before{color:#7B232F}.sc_item_button>a:hover:before{color:#2B2B2B}
+</style>
+<link rel='stylesheet' id='themerex-responsive-style-css'  href='https://provence-wein.com/wp-content/themes/wineshop/css/responsive.css' type='text/css' media='all' />
+<link rel='stylesheet' id='themerex-responsive-addition-style-css'  href='https://provence-wein.com/wp-content/themes/wineshop/includes/css/responsive_addition.css' type='text/css' media='all' />
+<link rel='stylesheet' id='theme-skin-responsive-style-css'  href='https://provence-wein.com/wp-content/themes/wineshop/skins/wineshop/skin.responsive.css' type='text/css' media='all' />
+<link rel='stylesheet' id='mediaelement-css'  href='https://provence-wein.com/wp-includes/js/mediaelement/mediaelementplayer-legacy.min.css?ver=4.2.13-9993131' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-mediaelement-css'  href='https://provence-wein.com/wp-includes/js/mediaelement/wp-mediaelement.min.css?ver=5.4' type='text/css' media='all' />
+<script type='text/javascript' src='https://provence-wein.com/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp'></script>
+<script type='text/javascript' src='https://provence-wein.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript' src='https://provence-wein.com/wp-content/plugins/revslider/public/assets/js/jquery.themepunch.tools.min.js?ver=5.0.5'></script>
+<script type='text/javascript' src='https://provence-wein.com/wp-content/plugins/revslider/public/assets/js/jquery.themepunch.revolution.min.js?ver=5.0.5'></script>
+<script type='text/javascript' src='https://provence-wein.com/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js?ver=2.70'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var wc_add_to_cart_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%","i18n_view_cart":"Warenkorb anzeigen","cart_url":"https:\/\/provence-wein.com\/shopping-cart\/","is_cart":"","cart_redirect_after_add":"no"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://provence-wein.com/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js?ver=4.8.0'></script>
+<script type='text/javascript' src='https://provence-wein.com/wp-content/plugins/js_composer/assets/js/vendors/woocommerce-add-to-cart.js?ver=5.5.5'></script>
+<script type='text/javascript' src='https://provence-wein.com/wp-content/themes/wineshop/fw/js/photostack/modernizr.min.js'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var sepa_ajax_object = {"ajax_url":"https:\/\/provence-wein.com\/wp-admin\/admin-ajax.php","nonce":"d4ce75c3d0"};
+var woocommerce_remove_updated_totals = "0";
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://provence-wein.com/wp-content/plugins/woocommerce-german-market/js/WooCommerce-German-Market-Frontend.min.js?ver=3.5.1'></script>
+<link rel='https://api.w.org/' href='https://provence-wein.com/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://provence-wein.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://provence-wein.com/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.4" />
+<meta name="generator" content="WooCommerce 4.8.0" />
+<meta name="tec-api-version" content="v1"><meta name="tec-api-origin" content="https://provence-wein.com"><link rel="https://theeventscalendar.com/" href="https://provence-wein.com/wp-json/tribe/events/v1/" />	<noscript><style>.woocommerce-product-gallery{ opacity: 1 !important; }</style></noscript>
+	<meta name="generator" content="Powered by WPBakery Page Builder - drag and drop page builder for WordPress."/>
+<!--[if lte IE 9]><link rel="stylesheet" type="text/css" href="https://provence-wein.com/wp-content/plugins/js_composer/assets/css/vc_lte_ie9.min.css" media="screen"><![endif]--><script type="text/javascript" src="https://provence-wein.com/wp-content/plugins/si-captcha-for-wordpress/captcha/si_captcha.js?ver=1762613692"></script>
+<!-- begin SI CAPTCHA Anti-Spam - login/register form style -->
+<style type="text/css">
+.si_captcha_small { width:175px; height:45px; padding-top:10px; padding-bottom:10px; }
+.si_captcha_large { width:250px; height:60px; padding-top:10px; padding-bottom:10px; }
+img#si_image_com { border-style:none; margin:0; padding-right:5px; float:left; }
+img#si_image_reg { border-style:none; margin:0; padding-right:5px; float:left; }
+img#si_image_log { border-style:none; margin:0; padding-right:5px; float:left; }
+img#si_image_side_login { border-style:none; margin:0; padding-right:5px; float:left; }
+img#si_image_checkout { border-style:none; margin:0; padding-right:5px; float:left; }
+img#si_image_jetpack { border-style:none; margin:0; padding-right:5px; float:left; }
+img#si_image_bbpress_topic { border-style:none; margin:0; padding-right:5px; float:left; }
+.si_captcha_refresh { border-style:none; margin:0; vertical-align:bottom; }
+div#si_captcha_input { display:block; padding-top:15px; padding-bottom:5px; }
+label#si_captcha_code_label { margin:0; }
+input#si_captcha_code_input { width:65px; }
+p#si_captcha_code_p { clear: left; padding-top:10px; }
+.si-captcha-jetpack-error { color:#DC3232; }
+</style>
+<!-- end SI CAPTCHA Anti-Spam - login/register form style -->
+<meta name="generator" content="Powered by Slider Revolution 5.0.5 - responsive, Mobile-Friendly Slider Plugin for WordPress with comfortable drag and drop interface." />
+<noscript><style type="text/css"> .wpb_animate_when_almost_visible { opacity: 1; }</style></noscript>
+	<script async type="opt-in" data-type="text/javascript" data-src="https://www.googletagmanager.com/gtag/js?id=G-ZLPSBN52ST" data-name="googleAnalytics"></script>
+	<script type="opt-in" data-type="text/javascript" data-name="googleAnalytics">window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZLPSBN52ST');</script>
+</head>
+
+<body class="error404 themerex_body body_style_wide body_filled theme_skin_wineshop article_style_stretch layout_excerpt template_excerpt top_panel_show top_panel_above sidebar_hide sidebar_outer_hide theme-wineshop woocommerce-no-js tribe-no-js wpb-js-composer js-comp-ver-5.5.5 vc_responsive">
+	
+	
+	<a id="toc_home" class="sc_anchor" title="Home" data-description="&lt;i&gt;Return to Home&lt;/i&gt; - &lt;br&gt;navigate to home page of the site" data-icon="icon-home" data-url="https://provence-wein.com/" data-separator="yes"></a><a id="toc_top" class="sc_anchor" title="To Top" data-description="&lt;i&gt;Back to top&lt;/i&gt; - &lt;br&gt;scroll to top of the page" data-icon="icon-double-up" data-url="" data-separator="yes"></a>
+	
+	
+	
+	<div class="body_wrap" style="background-color: #FFFFFF;">
+
+		
+		<div class="page_wrap">
+
+					
+
+		<div class="top_panel_fixed_wrap"></div>
+
+		<header class="top_panel_wrap top_panel_style_4 scheme_original">
+			<div class="top_panel_wrap_inner top_panel_inner_style_4 top_panel_position_above">
+			
+							<div class="top_panel_top">
+					<div class="content_wrap clearfix">
+						
+<div class="search_wrap search_style_regular search_state_fixed search_ajax">
+						<div class="search_form_wrap">
+							<form method="get" class="search_form" action="https://provence-wein.com/">
+								<button type="submit" class="search_submit icon-search97" title="Suche starten"></button>
+								<input type="text" class="search_field" placeholder="Suchwort eintragen" value="" name="s"  style="padding-left: 6px; max-width: 135px; width:135px;"/>
+								<input type="hidden" name="post_type" value="product">
+							</form>
+						</div>
+						<div class="search_results widget_area scheme_original"><a class="search_results_close icon-cancel"></a><div class="search_results_content"></div></div>
+				</div><div class="top_panel_top_user_area">
+			<ul id="menu_user" class="menu_user_nav">
+					<li class="menu_user_login"><a href="/mein-konto/" class="popup_link popup_login_link icon-user">Anmelden</a><div id="popup_login" class="popup_wrap popup_login bg_tint_light">
+	<a href="#" class="popup_close"></a>
+	<div class="form_wrap">
+		<div class="form_left">
+			<form action="https://provence-wein.com/wp-login.php" method="post" name="login_form" class="popup_form login_form">
+				<input type="hidden" name="redirect_to" value="https://provence-wein.com/">
+				<div class="popup_form_field login_field iconed_field icon-user"><input type="text" id="log" name="log" value="" placeholder="Login or Email"></div>
+				<div class="popup_form_field password_field iconed_field icon-lock"><input type="password" id="password" name="pwd" value="" placeholder="Password"></div>
+				<div class="popup_form_field remember_field">
+					<a href="https://provence-wein.com/mein-konto/lost-password/" class="forgot_password">Forgot password?</a>
+					<input type="checkbox" value="forever" id="rememberme" name="rememberme">
+					<label for="rememberme">Remember me</label>
+				</div>
+				<div class="popup_form_field submit_field"><input type="submit" class="submit_button" value="Login"></div>
+			</form>
+		</div>
+		<div class="form_right">
+			<div class="login_socials_title">You can login using your social profile</div>
+			<div class="login_socials_list">
+				<div class="sc_socials sc_socials_type_icons sc_socials_shape_round sc_socials_size_tiny"><div class="sc_socials_item"><a href="#" target="_blank" class="social_icons social_facebook"><span class="icon-facebook"></span></a></div><div class="sc_socials_item"><a href="#" target="_blank" class="social_icons social_twitter"><span class="icon-twitter"></span></a></div><div class="sc_socials_item"><a href="#" target="_blank" class="social_icons social_gplus"><span class="icon-gplus"></span></a></div></div>			</div>
+			<div class="login_socials_problem"><a href="#">Problem with login?</a></div>
+			<div class="result message_block"></div>
+		</div>
+	</div>	<!-- /.login_wrap -->
+</div>		<!-- /.popup_login -->
+</li>
+			
+	</ul>
+</div>
+					</div>
+				</div>
+			
+			<div class="top_panel_middle" >
+				<div class="content_wrap">
+					<div class="columns_wrap columns_fluid"><div
+						class="column-1_4 contact_logo">
+												<div class="logo">
+						<a href="https://provence-wein.com/"><img src="https://provence-wein.com/wp-content/uploads/2015/12/logo.png" class="logo_main" alt=""><img src="https://provence-wein.com/wp-content/uploads/2015/12/logo.png" class="logo_fixed" alt=""></a>
+					</div>
+						</div><div 
+						class="column-3_4 menu_main_wrap">
+							<a href="#" class="menu_main_responsive_button">Menu</a>
+							<nav class="menu_main_nav_area">
+								<ul id="menu_main" class="menu_main_nav"><li id="menu-item-1218" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1218"><a href="https://provence-wein.com/ueber-uns/">Über uns</a></li>
+<li id="menu-item-1221" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1221"><a href="https://provence-wein.com/weingueter/">Weingüter</a>
+<ul class="sub-menu">
+	<li id="menu-item-318937" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-318937"><a href="https://provence-wein.com/weingueter/ad-fines/">AD FINES</a></li>
+	<li id="menu-item-3414" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3414"><a href="https://provence-wein.com/weingueter/aureto/">Aureto</a></li>
+	<li id="menu-item-1386" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1386"><a href="https://provence-wein.com/weingueter/bastide-du-claux/">Bastide du Claux</a></li>
+	<li id="menu-item-312632" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-312632"><a href="https://provence-wein.com/weingueter/chateau-constantin/">Château Constantin</a></li>
+	<li id="menu-item-1443" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1443"><a href="https://provence-wein.com/weingueter/chateau-de-clapier/">Château de Clapier</a></li>
+	<li id="menu-item-312913" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-312913"><a href="https://provence-wein.com/weingueter/chateau-de-mille/">Château de Mille</a></li>
+	<li id="menu-item-315389" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-315389"><a href="https://provence-wein.com/weingueter/chateau-de-sannes/">Château de Sannes</a></li>
+	<li id="menu-item-309438" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-309438"><a href="https://provence-wein.com/weingueter/chateau-destoublon/">Château d&#8217;Estoublon</a></li>
+	<li id="menu-item-3582" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3582"><a href="https://provence-wein.com/weingueter/chateau-d-ollieres/">Château d&#8217;Ollières</a></li>
+	<li id="menu-item-2764" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2764"><a href="https://provence-wein.com/weingueter/chateau-farambert/">Château Farambert</a></li>
+	<li id="menu-item-1424" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1424"><a href="https://provence-wein.com/weingueter/chateau-fontvert/">Château Fontvert</a></li>
+	<li id="menu-item-308689" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-308689"><a href="https://provence-wein.com/weingueter/chateau-la-coste/">Château La Coste</a></li>
+	<li id="menu-item-1423" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1423"><a href="https://provence-wein.com/weingueter/chateau-la-dorgonne/">Château La Dorgonne</a></li>
+	<li id="menu-item-313090" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-313090"><a href="https://provence-wein.com/weingueter/chateau-la-sable/">Château La Sable</a></li>
+	<li id="menu-item-306222" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-306222"><a href="https://provence-wein.com/weingueter/chateau-paradis/">Château Paradis</a></li>
+	<li id="menu-item-308710" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-308710"><a href="https://provence-wein.com/weingueter/chateau-roubine/">Château Roubine</a></li>
+	<li id="menu-item-1387" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1387"><a href="https://provence-wein.com/weingueter/chateau-val-joanis/">Château Val Joanis</a></li>
+	<li id="menu-item-308472" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-308472"><a href="https://provence-wein.com/weingueter/clos-sainte-magdeleine/">Clos Sainte Magdeleine</a></li>
+	<li id="menu-item-311386" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-311386"><a href="https://provence-wein.com/weingueter/domaine-berli/">Domaine Berli</a></li>
+	<li id="menu-item-2402" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2402"><a href="https://provence-wein.com/weingueter/domaine-de-fontenille/">Domaine de Fontenille</a></li>
+	<li id="menu-item-1440" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1440"><a href="https://provence-wein.com/weingueter/domaine-de-la-citadelle/">Domaine de La Citadelle</a></li>
+	<li id="menu-item-318936" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-318936"><a href="https://provence-wein.com/weingueter/domaine-de-lor-vert/">Domaine de L&#8217;Or Vert</a></li>
+	<li id="menu-item-2273" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2273"><a href="https://provence-wein.com/weingueter/domaine-de-rimauresq/">Domaine de Rimauresq</a></li>
+	<li id="menu-item-312833" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-312833"><a href="https://provence-wein.com/weingueter/domaine-du-paternel/">Domaine du Paternel</a></li>
+	<li id="menu-item-307553" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-307553"><a href="https://provence-wein.com/weingueter/figuiere/">Figuière</a></li>
+	<li id="menu-item-311775" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-311775"><a href="https://provence-wein.com/weingueter/la-durbane/">La Durbane</a></li>
+	<li id="menu-item-312747" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-312747"><a href="https://provence-wein.com/weingueter/les-beates/">Les Béates</a></li>
+	<li id="menu-item-318145" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-318145"><a href="https://provence-wein.com/weingueter/mas-des-infermieres/">Mas des Infermières</a></li>
+	<li id="menu-item-306823" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-306823"><a href="https://provence-wein.com/weingueter/mas-lauris/">Mas Lauris</a></li>
+	<li id="menu-item-308407" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-308407"><a href="https://provence-wein.com/weingueter/vignobles-mont-thabor/">Vignobles Mont-Thabor</a></li>
+</ul>
+</li>
+<li id="menu-item-1222" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1222"><a href="https://provence-wein.com/weinshop/">Weinshop</a>
+<ul class="sub-menu">
+	<li id="menu-item-1394" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1394"><a href="/produkt-kategorie/roseweine/">Roseweine</a></li>
+	<li id="menu-item-1395" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1395"><a href="/produkt-kategorie/rotweine/">Rotweine</a></li>
+	<li id="menu-item-1396" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1396"><a href="/produkt-kategorie/weissweine/">Weißweine</a></li>
+	<li id="menu-item-2288" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2288"><a href="/produkt-kategorie/angebote">Angebote</a></li>
+	<li id="menu-item-2289" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2289"><a href="/produkt-kategorie/champagner-cremant/">Champagner/ Crémant</a></li>
+	<li id="menu-item-319703" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-319703"><a href="/produkt-kategorie/ohne-alkohol/">Ohne Alkohol</a></li>
+	<li id="menu-item-3336" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3336"><a href="/produkt-kategorie/feinkost">Feinkost</a></li>
+</ul>
+</li>
+<li id="menu-item-1224" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-has-children menu-item-1224"><a href="https://provence-wein.com/news/">News</a>
+<ul class="sub-menu">
+	<li id="menu-item-1393" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1393"><a href="https://provence-wein.com/category/rezepte/">Rezepte</a></li>
+	<li id="menu-item-1392" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1392"><a href="https://provence-wein.com/category/reisetipps/">Reisetipps</a></li>
+	<li id="menu-item-1390" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1390"><a href="https://provence-wein.com/category/veranstaltungen/">Veranstaltungen</a></li>
+	<li id="menu-item-316037" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-316037"><a href="https://provence-wein.com/category/angebote/">Angebote</a></li>
+	<li id="menu-item-2097" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2097"><a href="https://provence-wein.com/category/sonstiges/">Sonstiges</a></li>
+</ul>
+</li>
+<li id="menu-item-1226" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1226"><a href="https://provence-wein.com/kontakt/">Kontakt</a></li>
+</ul>							</nav>
+															<div class="menu_main_cart top_panel_icon">
+									<a href="#" class="top_panel_cart_button" data-items="0" data-summa="0,00&euro;">
+	<span class="contact_icon icon-basket"></span>
+	<span class="contact_label contact_cart_label">Your cart:</span>
+	<span class="contact_cart_totals">
+		<span class="cart_items">0 Items</span>
+		- 
+		<span class="cart_summa">0,00&euro;</span>
+	</span>
+</a>
+<ul class="widget_area sidebar_cart sidebar"><li>
+	<div class="widget woocommerce widget_shopping_cart"><div class="hide_cart_widget_if_empty"><div class="widget_shopping_cart_content"></div></div></div></li></ul>								</div>
+														</div>
+					</div>
+				</div>
+			</div>
+
+			</div>
+		</header>
+
+						<div class="top_panel_title top_panel_style_4  title_present breadcrumbs_present scheme_original">
+					<div class="top_panel_title_inner top_panel_inner_style_4  title_present_inner breadcrumbs_present_inner" style="background: url(https://provence-wein.com/wp-content/uploads/2015/10/11-1024x683.jpg) center !important; background-size: cover !important;">
+						<div class="content_wrap">
+															<h1 class="page_title">URL not found</h1>
+																						<div class="breadcrumbs">
+																	</div>
+													</div>
+					</div>
+				</div>
+				
+			<div class="page_content_wrap page_paddings_yes">
+
+				
+<div class="content_wrap">
+<div class="content">		<article class="post_item post_item_404">
+			<div class="post_content">
+				<h1 class="page_title">404</h1>
+				<h2 class="page_subtitle">The requested page cannot be found</h2>
+				<p class="page_description">Can't find what you need? Take a moment and do a search below or start from <a href="https://provence-wein.com/">our homepage</a>.</p>
+				<div class="page_search"><div class="search_wrap search_style_regular search_state_fixed search_ajax">
+						<div class="search_form_wrap">
+							<form method="get" class="search_form" action="https://provence-wein.com/">
+								<button type="submit" class="search_submit icon-search97" title="Suche starten"></button>
+								<input type="text" class="search_field" placeholder="Suchwort eintragen" value="" name="s"  style="padding-left: 6px; max-width: 135px; width:135px;"/>
+								<input type="hidden" name="post_type" value="product">
+							</form>
+						</div>
+						<div class="search_results widget_area scheme_original"><a class="search_results_close icon-cancel"></a><div class="search_results_content"></div></div>
+				</div></div>
+			</div>
+		</article>
+		
+		</div> <!-- </div> class="content"> -->
+	</div> <!-- </div> class="content_wrap"> -->			
+			</div>		<!-- </.page_content_wrap> -->
+			
+								<footer class="contacts_wrap scheme_dark">
+						<div class="contacts_wrap_inner">
+							<div class="content_wrap">
+													<div class="logo">
+						<a href="https://provence-wein.com/"><img src="https://provence-wein.com/wp-content/themes/wineshop/skins/wineshop/images/logo_footer.png" class="logo_main" alt=""></a>
+					</div>
+								<div class="contacts_address">
+									<address class="address_right">
+										Phone: 0171 7779444<br>																			</address>
+									<address class="address_left">
+																				Reinsburgstr. 35b, 70178 Stuttgart									</address>
+								</div>
+								<div class="sc_socials sc_socials_type_icons sc_socials_shape_square sc_socials_size_medium"><div class="sc_socials_item"><a href="https://www.facebook.com/provencewein" target="_blank" class="social_icons social_facebook"><span class="icon-facebook"></span></a></div></div>							</div>	<!-- /.content_wrap -->
+						</div>	<!-- /.contacts_wrap_inner -->
+					</footer>	<!-- /.contacts_wrap -->
+					 
+				<div class="copyright_wrap copyright_style_socials  scheme_original">
+					<div class="copyright_wrap_inner">
+						<div class="content_wrap">
+							<div class="sc_socials sc_socials_type_icons sc_socials_shape_square sc_socials_size_tiny"><div class="sc_socials_item"><a href="https://www.facebook.com/provencewein" target="_blank" class="social_icons social_facebook"><span class="icon-facebook"></span></a></div></div>							<div class="sc_socials sc_socials_type_icons sc_socials_shape_square sc_socials_size_tiny" style="margin-right: 5px;"><div class="sc_socials_item"><a href="https://www.instagram.com/provencewein/" target="_blank" class="social_icons social_instagram"><span class="icon-instagram"><img src="/wp-content/themes/wineshop-child/images/instagram.png" style="margin-top: 13px;margin-left: 1px;max-height: 12px;"></span></a></div></div>						</div>
+					</div>
+				</div>
+						
+		</div>	<!-- /.page_wrap -->
+
+	</div>		<!-- /.body_wrap -->
+	
+	
+
+<a href="#" class="scroll_to_top icon-up" title="Scroll to top"></a>
+
+<div class="custom_html_section">
+</div>
+
+
+		<script>
+		( function ( body ) {
+			'use strict';
+			body.className = body.className.replace( /\btribe-no-js\b/, 'tribe-js' );
+		} )( document.body );
+		</script>
+		    <script>
+    (function () {
+      // ---------- Einstellung ----------
+      var COOKIE_NAME = 'lw_popup_seen';
+      var COOKIE_DAYS = 365; // Wie lange "gesehen" gemerkt wird
+
+      // ---------- Cookie-Helper ----------
+      function setCookie(name, value, days) {
+        var expires = "";
+        if (days) {
+          var d = new Date();
+          d.setTime(d.getTime() + (days*24*60*60*1000));
+          expires = "; expires=" + d.toUTCString();
+        }
+        document.cookie = name + "=" + encodeURIComponent(value) + expires + "; path=/";
+      }
+      function getCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+          if (c.indexOf(nameEQ) === 0) return decodeURIComponent(c.substring(nameEQ.length, c.length));
+        }
+        return null;
+      }
+
+      // Bereits gesehen? -> Abbruch
+      if (getCookie(COOKIE_NAME) === '1') return;
+
+      // ---------- Popup ----------
+      function initLagerumzugPopup() {
+        // Doppelt-Init verhindern
+        if (document.getElementById('lw-overlay')) return;
+
+        // --- Styles einfügen ---
+        var style = document.createElement('style');
+        style.id = 'lw-popup-styles';
+        style.textContent = "\
+#lw-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.45); display: flex; align-items: center; justify-content: center; z-index: 999999; padding: 20px; }\
+#lw-modal { background: #fff; color: #000; max-width: 640px; width: 100%; border-radius: 10px; box-shadow: 0 10px 40px rgba(0,0,0,.2); padding: 22px 22px 18px; position: relative; line-height: 1.45; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }\
+#lw-modal br { display: inline !important; } /* oder: block; */\
+#lw-close { position: absolute; top: 10px; right: 10px; border: none; background: transparent; font-size: 22px; cursor: pointer; line-height: 1; padding: 6px; border-radius: 8px; color: #000!important }\
+#lw-close:focus { outline: 2px solid #fff!important; outline-offset: 2px; }\
+#lw-title { font-weight: 700; font-size: 18px; margin: 0 28px 8px 0; }\
+#lw-desc { margin: 0; }";
+        document.head.appendChild(style);
+
+        // --- DOM erzeugen ---
+        var overlay = document.createElement('div');
+        overlay.id = 'lw-overlay';
+
+        var modal = document.createElement('div');
+        modal.id = 'lw-modal';
+        modal.setAttribute('role', 'dialog');
+        modal.setAttribute('aria-modal', 'true');
+        modal.setAttribute('aria-labelledby', 'lw-title');
+        modal.setAttribute('aria-describedby', 'lw-desc');
+
+        var closeBtn = document.createElement('button');
+        closeBtn.id = 'lw-close';
+        closeBtn.setAttribute('aria-label', 'Schließen');
+        closeBtn.innerText = '×';
+
+        var title = document.createElement('h2');
+        title.id = 'lw-title';
+        title.textContent = 'LAGERUMZUG';
+
+        var desc = document.createElement('p');
+        desc.id = 'lw-desc';
+        desc.innerHTML = 'Von <strong>Donnerstag, 18.09.25, 11&nbsp;Uhr</strong> bis <strong>Montag, 22.09.25, 9&nbsp;Uhr</strong> ist leider kein Versand möglich! Aber dann wird Ihr Paket sofort gepackt und verschickt!<p></p><p>Vielen Dank für Ihr Verständnis!</p>';
+
+        modal.appendChild(closeBtn);
+        modal.appendChild(title);
+        modal.appendChild(desc);
+        overlay.appendChild(modal);
+        document.body.appendChild(overlay);
+
+        // Cookie sofort setzen -> Popup erscheint pro Besucher nur 1x
+        setCookie(COOKIE_NAME, '1', COOKIE_DAYS);
+
+        // Scroll der Seite während Popup verhindern
+        var prevOverflow = document.body.style.overflow;
+        document.body.style.overflow = 'hidden';
+
+        // --- Schließen-Logik ---
+        function close() {
+          document.body.style.overflow = prevOverflow || '';
+          overlay.remove();
+          var s = document.getElementById('lw-popup-styles');
+          if (s) s.remove();
+        }
+
+        closeBtn.addEventListener('click', close);
+        overlay.addEventListener('click', function (e) {
+          if (e.target === overlay) close();
+        });
+        document.addEventListener('keydown', function onEsc(e) {
+          if (e.key === 'Escape') {
+            document.removeEventListener('keydown', onEsc);
+            close();
+          }
+        });
+
+        // Fokus auf Close-Button zur Tastaturbedienung
+        closeBtn.focus();
+      }
+
+      // DOM bereit? Dann starten (auch wenn Footer nach DOMContentLoaded geladen wird)
+      if (document.readyState === 'loading') {
+        //document.addEventListener('DOMContentLoaded', initLagerumzugPopup);
+      } else {
+        //initLagerumzugPopup();
+      }
+    })();
+    </script>
+    <script type="text/javascript">if (typeof THEMEREX_GLOBALS == 'undefined') var THEMEREX_GLOBALS = {};if (THEMEREX_GLOBALS['theme_font']=='') THEMEREX_GLOBALS['theme_font'] = 'Laila';THEMEREX_GLOBALS['theme_skin_color'] = '';THEMEREX_GLOBALS['theme_skin_bg_color'] = '';</script><script type="text/javascript">if (typeof THEMEREX_GLOBALS == 'undefined') var THEMEREX_GLOBALS = {};THEMEREX_GLOBALS["strings"] = {bookmark_add: 		"Add the bookmark",bookmark_added:		"Current page has been successfully added to the bookmarks. You can see it in the right panel on the tab &#039;Bookmarks&#039;",bookmark_del: 		"Delete this bookmark",bookmark_title:		"Enter bookmark title",bookmark_exists:		"Current page already exists in the bookmarks list",search_error:		"Error occurs in AJAX search! Please, type your query and press search icon for the traditional search way.",email_confirm:		"On the e-mail address &lt;b&gt;%s&lt;/b&gt; we sent a confirmation email.&lt;br&gt;Please, open it and click on the link.",reviews_vote:		"Thanks for your vote! New average rating is:",reviews_error:		"Error saving your vote! Please, try again later.",error_like:			"Error saving your like! Please, try again later.",error_global:		"Global error text",name_empty:			"Name darf nicht leer sein",name_long:			"Name ist zu lang",email_empty:			"Bitte Email überprüfen",email_long:			"Email ist zu lang",email_not_valid:		"Ungültige Email",subject_empty:		"Der Betreff darf nicht leer sein",subject_long:		"Betreff ist zu lang",text_empty:			"Nachricht darf nicht leer sein",text_long:			"Nachricht ist zu lang",send_complete:		"Nachricht wurde gesendet",send_error:			"Nachricht wurde nicht gesendet",login_empty:			"The Login field can&#039;t be empty",login_long:			"Too long login field",login_success:		"Login success! The page will be reloaded in 3 sec.",login_failed:		"Login failed!",password_empty:		"The password can&#039;t be empty and shorter then 4 characters",password_long:		"Too long password",password_not_equal:	"The passwords in both fields are not equal",registration_success:"Registration success! Please log in!",registration_failed:	"Registration failed!",geocode_error:		"Geocode was not successful for the following reason:",googlemap_not_avail:	"Google map API not available!",editor_save_success:	"Post content saved!",editor_save_error:	"Error saving post data!",editor_delete_post:	"You really want to delete the current post?",editor_delete_post_header:"Delete post",editor_delete_success:	"Post deleted!",editor_delete_error:		"Error deleting post!",editor_caption_cancel:	"Cancel",editor_caption_close:	"Close"};</script><script type="text/javascript">if (typeof THEMEREX_GLOBALS == 'undefined') var THEMEREX_GLOBALS = {};THEMEREX_GLOBALS['ajax_url']			 = 'https://provence-wein.com/wp-admin/admin-ajax.php';THEMEREX_GLOBALS['ajax_nonce']		 = 'ce94865c40';THEMEREX_GLOBALS['ajax_nonce_editor'] = 'f7cdca51d4';THEMEREX_GLOBALS['site_url']			= 'https://provence-wein.com';THEMEREX_GLOBALS['vc_edit_mode']		= false;THEMEREX_GLOBALS['theme_font']		= 'Laila';THEMEREX_GLOBALS['theme_skin']			= 'wineshop';THEMEREX_GLOBALS['theme_skin_color']		= '';THEMEREX_GLOBALS['theme_skin_bg_color']	= '';THEMEREX_GLOBALS['slider_height']	= 100;THEMEREX_GLOBALS['system_message']	= {message: '',status: '',header: ''};THEMEREX_GLOBALS['user_logged_in']	= false;THEMEREX_GLOBALS['toc_menu']		= 'float';THEMEREX_GLOBALS['toc_menu_home']	= true;THEMEREX_GLOBALS['toc_menu_top']	= true;THEMEREX_GLOBALS['menu_fixed']		= false;THEMEREX_GLOBALS['menu_relayout']	= 960;THEMEREX_GLOBALS['menu_responsive']	= 640;THEMEREX_GLOBALS['menu_slider']     = true;THEMEREX_GLOBALS['demo_time']		= 0;THEMEREX_GLOBALS['media_elements_enabled'] = true;THEMEREX_GLOBALS['ajax_search_enabled'] 	= true;THEMEREX_GLOBALS['ajax_search_min_length']	= 3;THEMEREX_GLOBALS['ajax_search_delay']		= 200;THEMEREX_GLOBALS['css_animation']      = true;THEMEREX_GLOBALS['menu_animation_in']  = 'slideInUp';THEMEREX_GLOBALS['menu_animation_out'] = 'slideOutDown';THEMEREX_GLOBALS['popup_engine']	= 'magnific';THEMEREX_GLOBALS['email_mask']		= '^([a-zA-Z0-9_\-]+\.)*[a-zA-Z0-9_\-]+@[a-z0-9_\-]+(\.[a-z0-9_\-]+)*\.[a-z]{2,6}$';THEMEREX_GLOBALS['contacts_maxlength']	= 1000;THEMEREX_GLOBALS['comments_maxlength']	= 1000;THEMEREX_GLOBALS['remember_visitors_settings']	= false;THEMEREX_GLOBALS['admin_mode']			= false;THEMEREX_GLOBALS['isotope_resize_delta']	= 0.3;THEMEREX_GLOBALS['error_message_box']	= null;THEMEREX_GLOBALS['viewmore_busy']		= false;THEMEREX_GLOBALS['video_resize_inited']	= false;THEMEREX_GLOBALS['top_panel_height']		= 0;</script><script> /* <![CDATA[ */var tribe_l10n_datatables = {"aria":{"sort_ascending":": aktivieren, um Spalte aufsteigend zu sortieren","sort_descending":": aktivieren, um Spalte absteigend zu sortieren"},"length_menu":"_MENU_ Eintr\u00e4ge anzeigen","empty_table":"Keine Daten verf\u00fcgbar in der Tabelle","info":"Zeige von _START_ bis _END_ von ingesamt _TOTAL_ Eintr\u00e4gen","info_empty":"Zeige 0 bis 0 von 0 Eintr\u00e4gen","info_filtered":"(gefiltert von _MAX_ Gesamt Eintr\u00e4gen)","zero_records":"Keine Zeilen gefunden","search":"Suche:","all_selected_text":"Alle Objekte auf dieser Seite wurden selektiert","select_all_link":"Alle Seiten selektieren","clear_selection":"Selektierung aufheben","pagination":{"all":"Alle","next":"N\u00e4chste","previous":"Vorherige"},"select":{"rows":{"0":"","_":": Ausgew\u00e4hlte %d Zeilen","1":": Ausgew\u00e4hlte 1 Zeile"}},"datepicker":{"dayNames":["Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag"],"dayNamesShort":["So","Mo","Di","Mi","Do","Fr","Sa"],"dayNamesMin":["S","M","D","M","D","F","S"],"monthNames":["Januar","Februar","M\u00e4rz","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"],"monthNamesShort":["Januar","Februar","M\u00e4rz","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"],"monthNamesMin":["Jan","Feb","Mrz","Apr","Mai","Jun","Jul","Aug","Sep","Okt","Nov","Dez"],"nextText":"Weiter","prevText":"Zur\u00fcck","currentText":"Heute","closeText":"Erledigt","today":"Heute","clear":"Klar"}};/* ]]> */ </script>	<script type="text/javascript">
+		(function () {
+			var c = document.body.className;
+			c = c.replace(/woocommerce-no-js/, 'woocommerce-js');
+			document.body.className = c;
+		})()
+	</script>
+	<link rel='stylesheet' id='themerex-messages-style-css'  href='https://provence-wein.com/wp-content/themes/wineshop/fw/js/core.messages/core.messages.css' type='text/css' media='all' />
+<link rel='stylesheet' id='themerex-magnific-style-css'  href='https://provence-wein.com/wp-content/themes/wineshop/fw/js/magnific/magnific-popup.min.css' type='text/css' media='all' />
+<script type='text/javascript'>
+/* <![CDATA[ */
+var wpcf7 = {"apiSettings":{"root":"https:\/\/provence-wein.com\/wp-json\/contact-form-7\/v1","namespace":"contact-form-7\/v1"}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://provence-wein.com/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=5.1.7'></script>
+<script type='text/javascript' src='https://provence-wein.com/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js?ver=2.1.4'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var woocommerce_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://provence-wein.com/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js?ver=4.8.0'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var wc_cart_fragments_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%","cart_hash_key":"wc_cart_hash_ba2d4f40ca3c2c92f3725266020c764b","fragment_name":"wc_fragments_ba2d4f40ca3c2c92f3725266020c764b","request_timeout":"5000"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://provence-wein.com/wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments.min.js?ver=4.8.0'></script>
+<script src='https://provence-wein.com/wp-content/plugins/the-events-calendar/common/src/resources/js/underscore-before.js'></script>
+<script type='text/javascript' src='https://provence-wein.com/wp-includes/js/underscore.min.js?ver=1.8.3'></script>
+<script src='https://provence-wein.com/wp-content/plugins/the-events-calendar/common/src/resources/js/underscore-after.js'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var pppFrontDataCollection = {"pageinfo":{"isCheckout":false,"isCheckoutPayPage":false},"isConflictVersion":"1"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://provence-wein.com/wp-content/plugins/woo-paypalplus/public/js/front.min.js?ver=1586861177'></script>
+<script type='text/javascript' src='https://provence-wein.com/wp-content/themes/wineshop/fw/js/superfish.min.js'></script>
+<script type='text/javascript' src='https://provence-wein.com/wp-content/themes/wineshop/fw/js/jquery.slidemenu.min.js'></script>
+<script type='text/javascript' src='https://provence-wein.com/wp-content/themes/wineshop/fw/js/core.utils.js'></script>
+<script type='text/javascript' src='https://provence-wein.com/wp-content/themes/wineshop/fw/js/core.init.js'></script>
+<script type='text/javascript' src='https://provence-wein.com/wp-content/themes/wineshop/js/theme.init.js'></script>
+<script type='text/javascript'>
+var mejsL10n = {"language":"de","strings":{"mejs.download-file":"Datei herunterladen","mejs.install-flash":"Du verwendest einen Browser, der nicht den Flash-Player aktiviert oder installiert hat. Bitte aktiviere dein Flash-Player-Plugin oder lade die neueste Version von https:\/\/get.adobe.com\/flashplayer\/ herunter.","mejs.fullscreen":"Vollbild","mejs.play":"Abspielen","mejs.pause":"Pause","mejs.time-slider":"Zeit-Schieberegler","mejs.time-help-text":"Benutze die Pfeiltasten Links\/Rechts, um 1 Sekunde vorzuspringen, und die Pfeiltasten Hoch\/Runter, um 10 Sekunden vorzuspringen.","mejs.live-broadcast":"Live-\u00dcbertragung","mejs.volume-help-text":"Pfeiltasten Hoch\/Runter benutzen, um die Lautst\u00e4rke zu regeln.","mejs.unmute":"Laut schalten","mejs.mute":"Stumm","mejs.volume-slider":"Lautst\u00e4rkeregler","mejs.video-player":"Video-Player","mejs.audio-player":"Audio-Player","mejs.captions-subtitles":"Beschriftungen\/Untertitel","mejs.captions-chapters":"Kapitel","mejs.none":"Keine","mejs.afrikaans":"Afrikaans","mejs.albanian":"Albanisch","mejs.arabic":"Arabisch","mejs.belarusian":"Wei\u00dfrussisch","mejs.bulgarian":"Bulgarisch","mejs.catalan":"Katalanisch","mejs.chinese":"Chinesisch","mejs.chinese-simplified":"Chinesisch (Vereinfacht)","mejs.chinese-traditional":"Chinesisch (Traditionell)","mejs.croatian":"Kroatisch","mejs.czech":"Tschechisch","mejs.danish":"D\u00e4nisch","mejs.dutch":"Niederl\u00e4ndisch","mejs.english":"Englisch","mejs.estonian":"Estnisch","mejs.filipino":"Filipino","mejs.finnish":"Finnisch","mejs.french":"Franz\u00f6sisch","mejs.galician":"Galicisch","mejs.german":"Deutsch","mejs.greek":"Griechisch","mejs.haitian-creole":"Haitianisches Kreolisch","mejs.hebrew":"Hebr\u00e4isch","mejs.hindi":"Hindi","mejs.hungarian":"Ungarisch","mejs.icelandic":"Isl\u00e4ndisch","mejs.indonesian":"Indonesisch","mejs.irish":"Irisch","mejs.italian":"Italienisch","mejs.japanese":"Japanisch","mejs.korean":"Koreanisch","mejs.latvian":"Lettisch","mejs.lithuanian":"Litauisch","mejs.macedonian":"Mazedonisch","mejs.malay":"Malaiisch","mejs.maltese":"Maltesisch","mejs.norwegian":"Norwegisch","mejs.persian":"Persisch","mejs.polish":"Polnisch","mejs.portuguese":"Portugiesisch","mejs.romanian":"Rum\u00e4nisch","mejs.russian":"Russisch","mejs.serbian":"Serbisch","mejs.slovak":"Slowakisch","mejs.slovenian":"Slowenisch","mejs.spanish":"Spanisch","mejs.swahili":"Suaheli","mejs.swedish":"Schwedisch","mejs.tagalog":"Tagalog","mejs.thai":"Thail\u00e4ndisch","mejs.turkish":"T\u00fcrkisch","mejs.ukrainian":"Ukrainisch","mejs.vietnamese":"Vietnamesisch","mejs.welsh":"Walisisch","mejs.yiddish":"Jiddisch"}};
+</script>
+<script type='text/javascript' src='https://provence-wein.com/wp-includes/js/mediaelement/mediaelement-and-player.min.js?ver=4.2.13-9993131'></script>
+<script type='text/javascript' src='https://provence-wein.com/wp-includes/js/mediaelement/mediaelement-migrate.min.js?ver=5.4'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var _wpmejsSettings = {"pluginPath":"\/wp-includes\/js\/mediaelement\/","classPrefix":"mejs-","stretching":"responsive"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://provence-wein.com/wp-includes/js/mediaelement/wp-mediaelement.min.js?ver=5.4'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var wpm_product_gtin = {"hide_is_empty":"no"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://provence-wein.com/wp-content/plugins/product-gtin-ean-upc-isbn-for-woocommerce/assets/js/product-gtin-wc-frontend.min.js?ver=1.1.1'></script>
+<script type='text/javascript' src='https://provence-wein.com/wp-includes/js/wp-embed.min.js?ver=5.4'></script>
+<script type='text/javascript' src='https://provence-wein.com/wp-content/themes/wineshop/shortcodes/theme.shortcodes.js'></script>
+<script type='text/javascript' src='https://provence-wein.com/wp-content/themes/wineshop/fw/js/core.messages/core.messages.js'></script>
+<script type='text/javascript' src='https://provence-wein.com/wp-content/themes/wineshop/fw/js/magnific/jquery.magnific-popup.min.js?ver=5.4'></script>
+
+
+<script type="opt-in"
+				data-type="text/javascript"
+				data-name="googleAnalytics">  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) })(window,document,'script','https://www.google-analytics.com/analytics.js','ga'); ga('create', 'UA-99065463-1', 'auto'); ga('set', 'anonymizeIp', true); ga('send', 'pageview');</script> 
+
+
+<script  src="https://provence-wein.com/wp-content/themes/wineshop-child/js/config.js"></script>
+<script  src="https://provence-wein.com/wp-content/themes/wineshop-child/js/klaro.js"></script>
+
+
+</body>
+</html>
