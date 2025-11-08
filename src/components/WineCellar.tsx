@@ -159,101 +159,95 @@ export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarPr
           <p>Legg til viner fra katalogen for å begynne å bygge din samling!</p>
         </div>
       ) : (
-        <div style={{display: 'flex', flexDirection: 'column', gap: '1.5rem'}}>
-          {cellarWines.map(({ wine, vintage, quantity, location, notes }) => (
-            <div key={`${wine.id}-${vintage.year}`} className="card cellar-card">
-              <div className={`wine-color-bar ${wine.color}`} />
+        <div className="wine-grid">
+          {cellarWines.map(({ wine, vintage, quantity, location, notes }) => {
+            const colorLabel = wine.color === 'red' ? 'Rødvin' : wine.color === 'white' ? 'Hvitvin' : 'Rosévin';
 
-              <div className="cellar-grid">
-                <div className="cellar-info">
-                  <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'start', marginBottom: '1.5rem'}}>
-                    <div>
-                      <h3>{wine.name}</h3>
-                      <p style={{color: '#666', fontSize: '1.1rem', marginBottom: '0.5rem'}}>{wine.producer}</p>
-                      <div style={{display: 'flex', alignItems: 'center', gap: '1rem', marginTop: '0.5rem'}}>
-                        <span className="wine-year">{vintage.year}</span>
-                        <span className={`tag-storage ${getStorageClass(vintage.storageRecommendation)}`}>
-                          {getStorageLabel(vintage.storageRecommendation)}
-                        </span>
-                      </div>
-                    </div>
-                    <div style={{textAlign: 'right'}}>
-                      <p className="cellar-quantity">{quantity}</p>
-                      <p style={{fontSize: '0.9rem', color: '#999'}}>flasker</p>
-                    </div>
-                  </div>
+            return (
+              <div key={`${wine.id}-${vintage.year}`} className="wine-card cellar-wine-card">
+                <div className="wine-image-wrapper" onClick={() => onViewWine(wine)} style={{cursor: 'pointer'}}>
+                  <span className="wine-badge" style={{background: '#722f37', color: 'white'}}>
+                    {quantity} stk
+                  </span>
 
-                  <div className="tag-list mb-md">
-                    {wine.grapes.map((grape, index) => (
-                      <span key={index} className="tag tag-grape">
-                        {grape}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="mb-md">
-                    <label style={{display: 'block', fontWeight: 500, marginBottom: '0.5rem', fontSize: '0.9rem'}}>
-                      📍 Plassering
-                    </label>
-                    <input
-                      type="text"
-                      value={location || ''}
-                      onChange={(e) => handleUpdateLocation(wine.id, vintage.year, e.target.value)}
-                      placeholder="F.eks. Hylle 2, Rad 3"
-                      className="input"
-                    />
-                  </div>
-
-                  <div>
-                    <label style={{display: 'block', fontWeight: 500, marginBottom: '0.5rem', fontSize: '0.9rem'}}>
-                      📝 Notater
-                    </label>
-                    <textarea
-                      value={notes || ''}
-                      onChange={(e) => handleUpdateNotes(wine.id, vintage.year, e.target.value)}
-                      placeholder="Dine notater om denne vinen..."
-                      rows={2}
-                      className="input-area"
-                    />
-                  </div>
+                  <div className="wine-bottle-icon"></div>
                 </div>
 
-                <div className="cellar-actions-column">
-                  <button onClick={() => onViewWine(wine)} className="btn btn-primary">
-                    Se detaljer
-                  </button>
-                  <button onClick={() => handleRemoveOne(wine.id, vintage.year)} className="btn btn-secondary">
-                    - Fjern 1 flaske
-                  </button>
-                  <button
-                    onClick={() => handleRemoveAll(wine.id, vintage.year, wine.name, quantity)}
-                    style={{
-                      background: '#fee2e2',
-                      color: '#991b1b',
-                      border: '2px solid #fca5a5'
-                    }}
-                    className="btn"
-                  >
-                    🗑️ Fjern alle
-                  </button>
-                  {vintage.price && (
+                <div className="wine-info">
+                  <span className="wine-type">{colorLabel}</span>
+                  <h3 className="wine-name" onClick={() => onViewWine(wine)} style={{cursor: 'pointer'}}>
+                    {wine.name}
+                  </h3>
+                  <div className="wine-details">
+                    <span className="wine-year">{vintage.year}</span>
+                    <span>•</span>
+                    <span>{wine.producer}</span>
+                  </div>
+
+                  {/* Compact cellar info */}
+                  {location && (
                     <div style={{
-                      marginTop: '1rem',
-                      padding: '1rem',
+                      marginTop: '0.5rem',
+                      padding: '0.5rem',
                       background: '#f5f5f5',
-                      borderRadius: '8px',
-                      textAlign: 'center'
+                      borderRadius: '6px',
+                      fontSize: '0.85rem',
+                      color: '#666'
                     }}>
-                      <p style={{fontSize: '0.8rem', color: '#999', marginBottom: '0.25rem'}}>Verdi</p>
-                      <p style={{fontSize: '1.3rem', fontWeight: 700, color: '#2d2d2d'}}>
-                        €{(vintage.price * quantity).toFixed(2)}
-                      </p>
+                      📍 {location}
                     </div>
                   )}
+
+                  {notes && (
+                    <div style={{
+                      marginTop: '0.5rem',
+                      padding: '0.5rem',
+                      background: '#fff5ed',
+                      borderRadius: '6px',
+                      fontSize: '0.85rem',
+                      color: '#666',
+                      fontStyle: 'italic',
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                      whiteSpace: 'nowrap'
+                    }} title={notes}>
+                      📝 {notes}
+                    </div>
+                  )}
+
+                  {/* Quick actions */}
+                  <div style={{
+                    display: 'flex',
+                    gap: '0.5rem',
+                    marginTop: '0.75rem'
+                  }}>
+                    <button
+                      onClick={() => handleRemoveOne(wine.id, vintage.year)}
+                      className="btn btn-secondary"
+                      style={{
+                        flex: 1,
+                        padding: '0.5rem',
+                        fontSize: '0.85rem'
+                      }}
+                    >
+                      − 1
+                    </button>
+                    <button
+                      onClick={() => onViewWine(wine)}
+                      className="btn btn-primary"
+                      style={{
+                        flex: 1,
+                        padding: '0.5rem',
+                        fontSize: '0.85rem'
+                      }}
+                    >
+                      Detaljer
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       )}
 
