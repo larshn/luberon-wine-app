@@ -5,6 +5,11 @@
   box-sizing: border-box;
 }
 
+html {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 :root {
   /* New Design System - From Prototype */
   --primary: #7C2D3D;
@@ -46,6 +51,7 @@ body {
   line-height: 1.6;
   min-height: 100vh;
   overflow-x: hidden;
+  width: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -57,6 +63,8 @@ body {
   min-height: 100vh;
   position: relative;
   padding-bottom: 80px; /* Space for bottom nav on mobile */
+  overflow-x: hidden;
+  width: 100%;
 }
 
 @media (min-width: 768px) {
