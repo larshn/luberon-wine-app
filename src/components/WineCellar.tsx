@@ -195,25 +195,47 @@ export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarPr
                   {/* Quick actions */}
                   <div style={{
                     display: 'flex',
+                    flexDirection: 'column',
                     gap: '0.5rem',
                     marginTop: '0.75rem'
                   }}>
-                    <button
-                      onClick={() => handleRemoveOne(wine.id, vintage.year)}
-                      className="btn btn-secondary"
-                      style={{
-                        flex: 1,
-                        padding: '0.5rem',
-                        fontSize: '0.85rem'
-                      }}
-                    >
-                      − 1
-                    </button>
+                    <div style={{
+                      display: 'flex',
+                      gap: '0.5rem'
+                    }}>
+                      <button
+                        onClick={() => handleRemoveOne(wine.id, vintage.year)}
+                        className="btn btn-secondary"
+                        style={{
+                          flex: 1,
+                          padding: '0.5rem',
+                          fontSize: '0.85rem'
+                        }}
+                      >
+                        − 1
+                      </button>
+                      <button
+                        onClick={async () => {
+                          const { addToCellar } = await import('../utils/storageSupabase');
+                          await addToCellar(wine.id, vintage.year);
+                          await loadCellarWines();
+                          onUpdate();
+                        }}
+                        className="btn btn-secondary"
+                        style={{
+                          flex: 1,
+                          padding: '0.5rem',
+                          fontSize: '0.85rem'
+                        }}
+                      >
+                        + 1
+                      </button>
+                    </div>
                     <button
                       onClick={() => onViewWine(wine)}
                       className="btn btn-primary"
                       style={{
-                        flex: 1,
+                        width: '100%',
                         padding: '0.5rem',
                         fontSize: '0.85rem'
                       }}
