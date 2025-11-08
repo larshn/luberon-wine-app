@@ -5,7 +5,7 @@ import {
   getCurrentAge,
   getDrinkingWindowStatus
 } from '../utils/wine';
-import { addToCellar, loadCellar } from '../utils/storageSupabase';
+import { addToCellar, loadCellar, updateCellarWine } from '../utils/storageSupabase';
 import VinmonopoletInfo from './VinmonopoletInfo';
 
 interface WineDetailProps {
@@ -26,12 +26,16 @@ export default function WineDetail({ wine, onBack, onCellarUpdate }: WineDetailP
   const [quantityInCellar, setQuantityInCellar] = useState(0);
   const [showAddedMessage, setShowAddedMessage] = useState(false);
   const [expandedLocations, setExpandedLocations] = useState<{ [key: number]: boolean }>({});
+  const [cellarLocation, setCellarLocation] = useState('');
+  const [cellarNotes, setCellarNotes] = useState('');
 
   useEffect(() => {
     const updateQuantity = async () => {
       const cellar = await loadCellar();
       const cellarWine = cellar.wines.find(w => w.wineId === wine.id && w.year === selectedVintage.year);
       setQuantityInCellar(cellarWine?.quantity || 0);
+      setCellarLocation(cellarWine?.location || '');
+      setCellarNotes(cellarWine?.notes || '');
     };
     updateQuantity();
   }, [wine.id, selectedVintage.year]);
@@ -59,6 +63,24 @@ export default function WineDetail({ wine, onBack, onCellarUpdate }: WineDetailP
       setQuantityInCellar(cellarWine?.quantity || 0);
 
       onCellarUpdate();
+    }
+  };
+
+  const handleUpdateLocation = async (value: string) => {
+    setCellarLocation(value);
+    if (quantityInCellar > 0) {
+      await updateCellarWine(wine.id, selectedVintage.year, { location: value });
+      setShowAddedMessage(true);
+      setTimeout(() => setShowAddedMessage(false), 1500);
+    }
+  };
+
+  const handleUpdateNotes = async (value: string) => {
+    setCellarNotes(value);
+    if (quantityInCellar > 0) {
+      await updateCellarWine(wine.id, selectedVintage.year, { notes: value });
+      setShowAddedMessage(true);
+      setTimeout(() => setShowAddedMessage(false), 1500);
     }
   };
 
@@ -593,6 +615,75 @@ export default function WineDetail({ wine, onBack, onCellarUpdate }: WineDetailP
               </button>
             </div>
           </div>
+
+          {/* Cellar Notes Section - Only show if wine is in cellar */}
+          {quantityInCellar > 0 && (
+            <div style={{marginTop: '2rem'}}>
+              <h2 style={{fontSize: '1.3rem', color: '#722f37', marginBottom: '1rem'}}>
+                📝 Notater om denne vinen
+              </h2>
+
+              <div style={{
+                padding: '1.5rem',
+                background: '#fff5ed',
+                borderRadius: '12px',
+                border: '2px solid #ffe4d6'
+              }}>
+                <div style={{marginBottom: '1.5rem'}}>
+                  <label style={{
+                    display: 'block',
+                    fontWeight: 600,
+                    marginBottom: '0.5rem',
+                    fontSize: '0.95rem',
+                    color: '#722f37'
+                  }}>
+                    📍 Plassering i kjelleren
+                  </label>
+                  <input
+                    type="text"
+                    value={cellarLocation}
+                    onChange={(e) => handleUpdateLocation(e.target.value)}
+                    placeholder="F.eks. Hylle 2, Rad 3"
+                    className="input"
+                    style={{
+                      background: 'white',
+                      border: '2px solid #ffe4d6'
+                    }}
+                  />
+                  <p style={{fontSize: '0.8rem', color: '#666', marginTop: '0.5rem'}}>
+                    Hold oversikt over hvor flaskene er lagret
+                  </p>
+                </div>
+
+                <div>
+                  <label style={{
+                    display: 'block',
+                    fontWeight: 600,
+                    marginBottom: '0.5rem',
+                    fontSize: '0.95rem',
+                    color: '#722f37'
+                  }}>
+                    📋 Mine notater
+                  </label>
+                  <textarea
+                    value={cellarNotes}
+                    onChange={(e) => handleUpdateNotes(e.target.value)}
+                    placeholder="Dine notater om denne vinen... F.eks. smaksopplevelser, anledninger, hvem du delte den med, etc."
+                    rows={4}
+                    className="input-area"
+                    style={{
+                      background: 'white',
+                      border: '2px solid #ffe4d6',
+                      resize: 'vertical'
+                    }}
+                  />
+                  <p style={{fontSize: '0.8rem', color: '#666', marginTop: '0.5rem'}}>
+                    Dine personlige notater blir automatisk lagret
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
 
         </div>
       </div>
