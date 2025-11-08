@@ -15,8 +15,10 @@ CREATE INDEX IF NOT EXISTS idx_cellar_wines_status ON cellar_wines(user_id, stat
 -- Create index for favorites
 CREATE INDEX IF NOT EXISTS idx_cellar_wines_favorites ON cellar_wines(user_id, is_favorite) WHERE is_favorite = TRUE;
 
--- Update the view to include new statistics
-CREATE OR REPLACE VIEW user_cellar_summary AS
+-- Drop the existing view if it exists, then create new one with updated statistics
+DROP VIEW IF EXISTS user_cellar_summary;
+
+CREATE VIEW user_cellar_summary AS
 SELECT
   user_id,
   COUNT(DISTINCT wine_id) as unique_wines,
