@@ -693,6 +693,7 @@ export const wines: Wine[] = [
     producer: 'Château de Mille',
     color: 'red',
     appellation: 'Luberon AOP',
+    imageUrl: 'https://provence-wein.com/wp-content/uploads/2021/10/celestine-ohne-jahrgang-390x390.jpg',
     grapes: ['Grenache', 'Syrah'],
     description: 'Premium cuvée fra Château de Mille med kompleks aromatikk og lang lagringsevne. Grenache-dominert vin med elegant struktur og provencalske urter.',
     foodPairings: [
@@ -765,6 +766,7 @@ export const wines: Wine[] = [
     producer: 'Château de Mille',
     color: 'red',
     appellation: 'Luberon AOP',
+    imageUrl: 'https://provence-wein.com/wp-content/uploads/2020/10/Saint-Lucide-390x390.jpg',
     grapes: ['Syrah', 'Grenache'],
     description: 'Syrah-dominert toppvin fra Château de Mille med intens frukt og komplekse krydderaromer. En kraftig og konsentrert vin med fremragende lagringsevne.',
     foodPairings: [
@@ -1153,6 +1155,7 @@ export const wines: Wine[] = [
     id: 'mille-blanc',
     name: 'Château de Mille Blanc',
     producer: 'Château de Mille',
+    imageUrl: 'https://provence-wein.com/wp-content/uploads/2023/03/Ch%C3%A2teau-de-Mille-Wei%C3%9F-2023-390x390.jpg',
     color: 'white',
     appellation: 'Luberon AOP',
     grapes: ['Grenache Blanc', 'Roussanne', 'Rolle'],
@@ -1201,6 +1204,62 @@ export const wines: Wine[] = [
         storageRecommendation: 'short-term',
         optimalDrinkingWindow: { start: 1, end: 4 },
         price: 14
+      }
+    ]
+  },
+  {
+    id: 'mille-clefs-blanc',
+    name: 'Les Clefs de Mille Blanc',
+    producer: 'Château de Mille',
+    color: 'white',
+    appellation: 'Luberon AOP',
+    imageUrl: 'https://provence-wein.com/wp-content/uploads/2024/03/Clefs-de-Mille-Wei%C3%9F_600x600-390x390.jpg',
+    grapes: ['Grenache Blanc', 'Roussanne', 'Vermentino'],
+    description: 'Basis hvitvin fra Château de Mille med frisk og lett profil. Perfekt hverdagsvin med god mineralitet og blomsteraromer.',
+    foodPairings: [
+      { dish: 'Reker og aioli', description: 'Frisk mineralitet matcher perfekt med reker' },
+      { dish: 'Hvit fisk', description: 'Lett og frisk til grillet eller stekt fisk' },
+      { dish: 'Salat med geitost', description: 'Vinens fruktighet balanserer geiteostens syre' },
+      { dish: 'Lette pastaretter', description: 'Perfekt til pasta primavera eller pesto' }
+    ],
+    purchaseLocations: [
+      {
+        type: 'chateau',
+        name: 'Château de Mille',
+        address: '2650 Route de Bonnieux',
+        city: 'Apt',
+        postalCode: '84400',
+        phone: '+33 4 90 74 11 94',
+        email: 'contact@chateaudemille.fr',
+        website: 'https://www.chateaudemille.fr',
+        coordinates: {
+          lat: 43.866744,
+          lng: 5.352626
+        },
+        openingHours: {
+          monday: '10:00-12:00, 14:00-18:00',
+          tuesday: '10:00-12:00, 14:00-18:00',
+          wednesday: '10:00-12:00, 14:00-18:00',
+          thursday: '10:00-12:00, 14:00-18:00',
+          friday: '10:00-12:00, 14:00-18:00',
+          saturday: '10:00-12:00, 14:00-18:00',
+          sunday: 'Stengt',
+          notes: 'Sommeråpningstider (juli-august): Utvidet til 19:00'
+        },
+        priceRange: '€12-35',
+        notes: 'Gratis vinsmaking. Omvisning på forespørsel. Vingården ligger ved foten av Luberon-fjellet med spektakulær utsikt.',
+        bookingRequired: false,
+        tastingAvailable: true
+      }
+    ],
+    vintages: [
+      {
+        year: 2024,
+        alcoholContent: 13,
+        tastingNotes: ['Sitrus', 'Hvite blomster', 'Mineralsk', 'Frisk'],
+        storageRecommendation: 'drink-now',
+        optimalDrinkingWindow: { start: 0, end: 2 },
+        price: 12
       }
     ]
   },
