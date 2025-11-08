@@ -11,14 +11,12 @@ import WineCellar from './components/WineCellar';
 import WineDetail from './components/WineDetail';
 import FoodPairing from './components/FoodPairing';
 import WineMap from './components/WineMap';
-import Auth from './components/Auth';
 
 function App() {
   const [currentView, setCurrentView] = useState<View>('catalog');
   const [selectedWine, setSelectedWine] = useState<Wine | null>(null);
   const [selectedProducer, setSelectedProducer] = useState<string | null>(null);
-  const [cellarCount, setCellarCount] = useState(0);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [, setCellarCount] = useState(0);
 
   useEffect(() => {
     const updateCellarCount = async () => {
@@ -53,10 +51,6 @@ function App() {
     setCurrentView(view);
     setSelectedWine(null);
     setSelectedProducer(null);
-  };
-
-  const handleSearch = (query: string) => {
-    setSearchQuery(query);
   };
 
   // Placeholder Learn View
@@ -127,7 +121,7 @@ function App() {
 
   return (
     <div className="app-container">
-      <Header onSearch={handleSearch} />
+      <Header />
 
       <NavigationTabs activeView={currentView} onViewChange={handleViewChange} />
 
