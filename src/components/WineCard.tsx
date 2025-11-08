@@ -64,7 +64,26 @@ export default function WineCard({ wine, onClick, badge, isBookmarked = false, o
           {bookmarked ? '❤️' : '🤍'}
         </button>
 
-        <div className="wine-bottle-icon"></div>
+        {wine.imageUrl ? (
+          <img
+            src={wine.imageUrl}
+            alt={`${wine.name} - ${wine.producer}`}
+            className="wine-image"
+            loading="lazy"
+            onError={(e) => {
+              // Fallback to bottle icon if image fails to load
+              e.currentTarget.style.display = 'none';
+              const wrapper = e.currentTarget.parentElement;
+              if (wrapper) {
+                const placeholder = document.createElement('div');
+                placeholder.className = 'wine-bottle-icon';
+                wrapper.appendChild(placeholder);
+              }
+            }}
+          />
+        ) : (
+          <div className="wine-bottle-icon"></div>
+        )}
       </div>
 
       <div className="wine-info">

@@ -147,7 +147,16 @@ export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarPr
                     {quantity} stk
                   </span>
 
-                  <div className="wine-bottle-icon"></div>
+                  {wine.imageUrl ? (
+                    <img
+                      src={wine.imageUrl}
+                      alt={`${wine.name} - ${wine.producer}`}
+                      className="wine-image"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div className="wine-bottle-icon"></div>
+                  )}
                 </div>
 
                 <div className="wine-info">

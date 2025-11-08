@@ -135,6 +135,7 @@ export const wines: Wine[] = [
     producer: 'Château Val Joanis',
     color: 'red',
     appellation: 'Luberon AOP',
+    imageUrl: 'https://provence-wein.com/wp-content/uploads/2017/01/LES-GRIOTTES-2014-390x390.jpg',
     grapes: ['Syrah', 'Grenache'],
     description: 'Deres toppvin fra utvalgte parceller. Modnet 12 måneder på eikefat. Kraftig og konsentrert.',
     foodPairings: [
@@ -197,6 +198,7 @@ export const wines: Wine[] = [
     producer: 'Château Val Joanis',
     color: 'white',
     appellation: 'Luberon AOP',
+    imageUrl: 'https://provence-wein.com/wp-content/uploads/2020/01/Chateau-val-joanis-blanc-tradition-2024-390x390.jpg',
     grapes: ['Grenache Blanc', 'Roussanne', 'Bourboulenc'],
     description: 'Klassisk hvitvin fra Luberon med friskhet og eleganse. Perfekt som aperitiff.',
     foodPairings: [
@@ -255,6 +257,7 @@ export const wines: Wine[] = [
     producer: 'Château Val Joanis',
     color: 'red',
     appellation: 'Luberon AOP',
+    imageUrl: 'https://provence-wein.com/wp-content/uploads/2017/02/VAL-JOANIS-TRADITION-LUBERON-2015-390x390.jpg',
     grapes: ['Grenache', 'Syrah'],
     description: 'Klassisk Luberon-rødvin fra historisk domene med vakker hage. God verdi for pengene.',
     foodPairings: [
@@ -526,6 +529,7 @@ export const wines: Wine[] = [
     producer: 'Domaine de Fontenille',
     color: 'red',
     appellation: 'Luberon AOP',
+    imageUrl: 'https://provence-wein.com/wp-content/uploads/2017/07/Domaine-de-Fontenille-Cuv%C3%A9e-Alphonse-Rot-2022-BIO-390x390.jpg',
     grapes: ['Syrah', 'Grenache', 'Mourvèdre'],
     description: 'Premium cuvée oppkalt etter familiens forfader. Kompleks og elegant med moderne minimalistisk vinifikasjon.',
     foodPairings: [
@@ -580,6 +584,7 @@ export const wines: Wine[] = [
     producer: 'Domaine de Fontenille',
     color: 'white',
     appellation: 'Luberon AOP',
+    imageUrl: 'https://provence-wein.com/wp-content/uploads/2017/06/Domaine-de-Fontenille-Cuv%C3%A9e-Alphonse-Wei%C3%9F-2023-390x390.jpg',
     grapes: ['Grenache Blanc', 'Roussanne', 'Vermentino'],
     description: 'Premium hvitvin fra økologisk vingård. Kombinerer historiske teknikker med moderne minimal intervensjon.',
     foodPairings: [
