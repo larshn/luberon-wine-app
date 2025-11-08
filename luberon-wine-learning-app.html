@@ -1,0 +1,1645 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luberon på Glass - Vin & Mat</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #7C2D3D;
+            --primary-light: #A84557;
+            --primary-dark: #5A1F2C;
+            --accent: #D4AF37;
+            --bg: #FAFAFA;
+            --card-bg: #FFFFFF;
+            --text-primary: #1A1A1A;
+            --text-secondary: #666666;
+            --border: #E5E5E5;
+            --shadow: rgba(0, 0, 0, 0.08);
+            --shadow-hover: rgba(0, 0, 0, 0.12);
+            --success: #4CAF50;
+            --info: #2196F3;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            max-width: 420px;
+            margin: 0 auto;
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding-bottom: 80px;
+        }
+
+        /* Header */
+        .header {
+            background: var(--primary);
+            color: white;
+            padding: 16px 20px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px var(--shadow);
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-subtitle {
+            font-size: 12px;
+            font-weight: 400;
+            opacity: 0.9;
+            margin-top: 2px;
+        }
+
+        .header-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.2s;
+            font-size: 20px;
+        }
+
+        .header-icon:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .search-bar {
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 16px 12px 44px;
+            border: none;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.95);
+            font-size: 15px;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        .search-input:focus {
+            background: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+        }
+
+        /* Navigation Tabs */
+        .nav-tabs {
+            display: flex;
+            gap: 8px;
+            padding: 16px 20px 0;
+            background: var(--bg);
+            overflow-x: auto;
+            scrollbar-width: none;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-tabs::-webkit-scrollbar {
+            display: none;
+        }
+
+        .nav-tab {
+            padding: 10px 20px;
+            border: none;
+            background: transparent;
+            color: var(--text-secondary);
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            white-space: nowrap;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .nav-tab.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        /* Filter Chips */
+        .filter-section {
+            padding: 16px 20px;
+            background: var(--card-bg);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .filter-chips {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .filter-chips::-webkit-scrollbar {
+            display: none;
+        }
+
+        .chip {
+            padding: 8px 16px;
+            border: 1.5px solid var(--border);
+            border-radius: 20px;
+            background: var(--card-bg);
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-primary);
+            white-space: nowrap;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .chip:hover {
+            border-color: var(--primary);
+            background: rgba(124, 45, 61, 0.05);
+        }
+
+        .chip.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* Content */
+        .content {
+            padding: 20px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .section-subtitle {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        /* Quick Food Pairing */
+        .quick-pairing {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 24px;
+            border-radius: 16px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 12px rgba(124, 45, 61, 0.2);
+        }
+
+        .quick-pairing-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .quick-pairing-subtitle {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 16px;
+        }
+
+        .pairing-input {
+            width: 100%;
+            padding: 14px 16px;
+            border: none;
+            border-radius: 12px;
+            font-size: 15px;
+            outline: none;
+        }
+
+        /* Wine Cards */
+        .wine-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .wine-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px var(--shadow);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .wine-card:hover {
+            box-shadow: 0 4px 16px var(--shadow-hover);
+            transform: translateY(-2px);
+        }
+
+        .wine-image-wrapper {
+            position: relative;
+            background: linear-gradient(135deg, #F5F5F5 0%, #E8E8E8 100%);
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 160px;
+        }
+
+        .wine-badge {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            background: var(--card-bg);
+            color: var(--primary);
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .bookmark-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 32px;
+            height: 32px;
+            background: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s;
+        }
+
+        .bookmark-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .bookmark-btn.saved {
+            background: var(--accent);
+        }
+
+        .wine-bottle-icon {
+            width: 40px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            border-radius: 8px 8px 20px 20px;
+            position: relative;
+        }
+
+        .wine-bottle-icon::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 15px;
+            height: 15px;
+            background: var(--primary-dark);
+            border-radius: 2px 2px 0 0;
+        }
+
+        .wine-info {
+            padding: 14px;
+        }
+
+        .wine-type {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--primary);
+            margin-bottom: 6px;
+        }
+
+        .wine-name {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            line-height: 1.3;
+        }
+
+        .wine-details {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+
+        .wine-year {
+            padding: 2px 8px;
+            background: var(--bg);
+            border-radius: 6px;
+            font-weight: 600;
+        }
+
+        .wine-pairing-tags {
+            display: flex;
+            gap: 4px;
+            margin-top: 8px;
+            padding-top: 10px;
+            border-top: 1px solid var(--border);
+            font-size: 16px;
+        }
+
+        /* Wine Detail View */
+        .detail-view {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--card-bg);
+            z-index: 200;
+            overflow-y: auto;
+        }
+
+        .detail-view.active {
+            display: block;
+        }
+
+        .detail-header {
+            position: sticky;
+            top: 0;
+            background: var(--card-bg);
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            z-index: 10;
+        }
+
+        .back-btn {
+            width: 36px;
+            height: 36px;
+            background: var(--bg);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            transition: background 0.2s;
+        }
+
+        .back-btn:hover {
+            background: var(--border);
+        }
+
+        .detail-title {
+            flex: 1;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .share-btn {
+            width: 36px;
+            height: 36px;
+            background: var(--bg);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: background 0.2s;
+        }
+
+        .detail-hero {
+            background: linear-gradient(135deg, #F5F5F5 0%, #E8E8E8 100%);
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .detail-bottle {
+            width: 80px;
+            height: 240px;
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            border-radius: 12px 12px 30px 30px;
+            margin: 0 auto 24px;
+            position: relative;
+        }
+
+        .detail-bottle::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 25px;
+            background: var(--primary-dark);
+            border-radius: 4px 4px 0 0;
+        }
+
+        .detail-vintage {
+            display: inline-flex;
+            gap: 8px;
+            padding: 6px 16px;
+            background: white;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .detail-content {
+            padding: 24px 20px;
+        }
+
+        .detail-section {
+            margin-bottom: 28px;
+        }
+
+        .detail-section-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .info-grid {
+            display: grid;
+            gap: 12px;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px;
+            background: var(--bg);
+            border-radius: 10px;
+        }
+
+        .info-label {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .info-value {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .taste-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .taste-tag {
+            padding: 8px 14px;
+            background: var(--bg);
+            border: 1.5px solid var(--border);
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .taste-tag.highlight {
+            background: rgba(124, 45, 61, 0.1);
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .pairing-card {
+            background: var(--bg);
+            padding: 16px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+        }
+
+        .pairing-card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .pairing-icon {
+            font-size: 32px;
+        }
+
+        .pairing-card-title {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .pairing-card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .learn-more {
+            background: var(--primary);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 12px;
+            transition: all 0.2s;
+        }
+
+        .learn-more:hover {
+            background: var(--primary-dark);
+        }
+
+        .action-button {
+            width: 100%;
+            padding: 16px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 14px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.2s;
+            margin-top: 8px;
+        }
+
+        .action-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(124, 45, 61, 0.3);
+        }
+
+        .action-button.secondary {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .action-button.secondary:hover {
+            background: rgba(124, 45, 61, 0.05);
+        }
+
+        /* My Collection Stats */
+        .collection-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            padding: 16px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 8px var(--shadow);
+        }
+
+        .stat-number {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        /* Learning Cards */
+        .learning-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 2px 8px var(--shadow);
+            margin-bottom: 16px;
+        }
+
+        .learning-card-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(124, 45, 61, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        .learning-card-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .learning-card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        /* Map View */
+        .map-container {
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px var(--shadow);
+        }
+
+        .map-placeholder {
+            height: 200px;
+            background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .vineyard-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .vineyard-card {
+            background: var(--card-bg);
+            padding: 16px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px var(--shadow);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .vineyard-card:hover {
+            box-shadow: 0 4px 12px var(--shadow-hover);
+        }
+
+        .vineyard-name {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .vineyard-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .vineyard-badge {
+            padding: 4px 10px;
+            background: var(--bg);
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .vineyard-badge.red {
+            background: rgba(124, 45, 61, 0.1);
+            color: var(--primary);
+        }
+
+        .vineyard-badge.white {
+            background: rgba(212, 175, 55, 0.15);
+            color: #B8900D;
+        }
+
+        .vineyard-badge.rose {
+            background: rgba(255, 182, 193, 0.3);
+            color: #C75673;
+        }
+
+        /* Food Pairing View */
+        .food-category {
+            margin-bottom: 28px;
+        }
+
+        .food-category-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .food-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .food-card {
+            background: var(--card-bg);
+            padding: 16px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px var(--shadow);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .food-card:hover {
+            box-shadow: 0 4px 12px var(--shadow-hover);
+            transform: translateY(-2px);
+        }
+
+        .food-emoji {
+            font-size: 40px;
+            margin-bottom: 8px;
+        }
+
+        .food-name {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .wine-count {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        /* Bottom Nav */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            max-width: 420px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-top: 1px solid var(--border);
+            display: flex;
+            padding: 8px;
+            box-shadow: 0 -2px 10px var(--shadow);
+        }
+
+        .nav-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            padding: 8px;
+            border: none;
+            background: transparent;
+            color: var(--text-secondary);
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: all 0.2s;
+        }
+
+        .nav-item.active {
+            color: var(--primary);
+            background: rgba(124, 45, 61, 0.08);
+        }
+
+        .nav-icon {
+            font-size: 22px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .wine-card, .learning-card, .food-card {
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        /* Responsive */
+        @media (max-width: 380px) {
+            .wine-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-top">
+            <div>
+                <div class="logo">Luberon på Glass</div>
+                <div class="logo-subtitle">Oppdag viner fra Luberon</div>
+            </div>
+            <div class="header-icon">📚</div>
+        </div>
+        <div class="search-bar">
+            <span class="search-icon">🔍</span>
+            <input type="text" class="search-input" placeholder="Søk etter vin eller matpairing...">
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs">
+        <button class="nav-tab active" onclick="showView('catalog')">Vinkatalog</button>
+        <button class="nav-tab" onclick="showView('pairing')">Vin & Mat</button>
+        <button class="nav-tab" onclick="showView('collection')">Min Samling</button>
+        <button class="nav-tab" onclick="showView('vineyards')">Vingårder</button>
+        <button class="nav-tab" onclick="showView('learn')">Lær mer</button>
+    </nav>
+
+    <!-- Catalog View -->
+    <div id="catalog-view">
+        <div class="filter-section">
+            <div class="filter-chips">
+                <button class="chip active">Alle</button>
+                <button class="chip">Rødvin</button>
+                <button class="chip">Hvitvin</button>
+                <button class="chip">Rosévin</button>
+                <button class="chip">2021</button>
+                <button class="chip">2020</button>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Viner fra Luberon</h2>
+                    <p class="section-subtitle">Utforsk regionens beste viner</p>
+                </div>
+            </div>
+
+            <div class="wine-grid">
+                <div class="wine-card" onclick="showDetail()">
+                    <div class="wine-image-wrapper">
+                        <span class="wine-badge">AOC</span>
+                        <button class="bookmark-btn">🤍</button>
+                        <div class="wine-bottle-icon"></div>
+                    </div>
+                    <div class="wine-info">
+                        <span class="wine-type">Rødvin</span>
+                        <h3 class="wine-name">1603 Rouge</h3>
+                        <div class="wine-details">
+                            <span class="wine-year">2021</span>
+                            <span>•</span>
+                            <span>Château de Sannes</span>
+                        </div>
+                        <div class="wine-pairing-tags">
+                            <span>🥩</span>
+                            <span>🧀</span>
+                            <span>🍝</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wine-card">
+                    <div class="wine-image-wrapper">
+                        <button class="bookmark-btn">🤍</button>
+                        <div class="wine-bottle-icon"></div>
+                    </div>
+                    <div class="wine-info">
+                        <span class="wine-type">Hvitvin</span>
+                        <h3 class="wine-name">1603 Blanc</h3>
+                        <div class="wine-details">
+                            <span class="wine-year">2020</span>
+                            <span>•</span>
+                            <span>Château de Sannes</span>
+                        </div>
+                        <div class="wine-pairing-tags">
+                            <span>🐟</span>
+                            <span>🦐</span>
+                            <span>🥗</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wine-card">
+                    <div class="wine-image-wrapper">
+                        <button class="bookmark-btn">🤍</button>
+                        <div class="wine-bottle-icon"></div>
+                    </div>
+                    <div class="wine-info">
+                        <span class="wine-type">Rosévin</span>
+                        <h3 class="wine-name">Alphonse Blanc</h3>
+                        <div class="wine-details">
+                            <span class="wine-year">2021</span>
+                            <span>•</span>
+                            <span>Familien Roux</span>
+                        </div>
+                        <div class="wine-pairing-tags">
+                            <span>🥗</span>
+                            <span>🍤</span>
+                            <span>🍕</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wine-card">
+                    <div class="wine-image-wrapper">
+                        <span class="wine-badge">Anbefalt</span>
+                        <button class="bookmark-btn saved">❤️</button>
+                        <div class="wine-bottle-icon"></div>
+                    </div>
+                    <div class="wine-info">
+                        <span class="wine-type">Rødvin</span>
+                        <h3 class="wine-name">Alphonse Rouge</h3>
+                        <div class="wine-details">
+                            <span class="wine-year">2020</span>
+                            <span>•</span>
+                            <span>Familien Roux</span>
+                        </div>
+                        <div class="wine-pairing-tags">
+                            <span>🥩</span>
+                            <span>🍄</span>
+                            <span>🧀</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wine-card">
+                    <div class="wine-image-wrapper">
+                        <button class="bookmark-btn">🤍</button>
+                        <div class="wine-bottle-icon"></div>
+                    </div>
+                    <div class="wine-info">
+                        <span class="wine-type">Rødvin</span>
+                        <h3 class="wine-name">Celestine Rouge</h3>
+                        <div class="wine-details">
+                            <span class="wine-year">2021</span>
+                            <span>•</span>
+                            <span>Domaine Laurent</span>
+                        </div>
+                        <div class="wine-pairing-tags">
+                            <span>🍖</span>
+                            <span>🍝</span>
+                            <span>🥘</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wine-card">
+                    <div class="wine-image-wrapper">
+                        <button class="bookmark-btn">🤍</button>
+                        <div class="wine-bottle-icon"></div>
+                    </div>
+                    <div class="wine-info">
+                        <span class="wine-type">Hvitvin</span>
+                        <h3 class="wine-name">Artemis Blanc</h3>
+                        <div class="wine-details">
+                            <span class="wine-year">2021</span>
+                            <span>•</span>
+                            <span>Château Vérignon</span>
+                        </div>
+                        <div class="wine-pairing-tags">
+                            <span>🦞</span>
+                            <span>🧀</span>
+                            <span>🥗</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Food Pairing View -->
+    <div id="pairing-view" style="display: none;">
+        <div class="content">
+            <div class="quick-pairing">
+                <div class="quick-pairing-title">🍽️ Finn perfekt vin til maten</div>
+                <div class="quick-pairing-subtitle">Hva skal du spise i kveld?</div>
+                <input type="text" class="pairing-input" placeholder="F.eks. grillet lam, pasta, fisk...">
+            </div>
+
+            <div class="food-category">
+                <h3 class="food-category-title">
+                    <span>🥩</span>
+                    Kjøtt
+                </h3>
+                <div class="food-grid">
+                    <div class="food-card">
+                        <div class="food-emoji">🥩</div>
+                        <div class="food-name">Biff</div>
+                        <div class="wine-count">8 viner</div>
+                    </div>
+                    <div class="food-card">
+                        <div class="food-emoji">🍖</div>
+                        <div class="food-name">Lam</div>
+                        <div class="wine-count">6 viner</div>
+                    </div>
+                    <div class="food-card">
+                        <div class="food-emoji">🍗</div>
+                        <div class="food-name">Kylling</div>
+                        <div class="wine-count">12 viner</div>
+                    </div>
+                    <div class="food-card">
+                        <div class="food-emoji">🦆</div>
+                        <div class="food-name">And</div>
+                        <div class="wine-count">4 viner</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="food-category">
+                <h3 class="food-category-title">
+                    <span>🐟</span>
+                    Sjømat
+                </h3>
+                <div class="food-grid">
+                    <div class="food-card">
+                        <div class="food-emoji">🐟</div>
+                        <div class="food-name">Hvit fisk</div>
+                        <div class="wine-count">10 viner</div>
+                    </div>
+                    <div class="food-card">
+                        <div class="food-emoji">🦐</div>
+                        <div class="food-name">Skalldyr</div>
+                        <div class="wine-count">8 viner</div>
+                    </div>
+                    <div class="food-card">
+                        <div class="food-emoji">🦞</div>
+                        <div class="food-emoji">🦞</div>
+                        <div class="food-name">Hummer</div>
+                        <div class="wine-count">5 viner</div>
+                    </div>
+                    <div class="food-card">
+                        <div class="food-emoji">🦑</div>
+                        <div class="food-name">Blekksprut</div>
+                        <div class="wine-count">6 viner</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="food-category">
+                <h3 class="food-category-title">
+                    <span>🍝</span>
+                    Pasta & Vegetar
+                </h3>
+                <div class="food-grid">
+                    <div class="food-card">
+                        <div class="food-emoji">🍝</div>
+                        <div class="food-name">Pasta</div>
+                        <div class="wine-count">14 viner</div>
+                    </div>
+                    <div class="food-card">
+                        <div class="food-emoji">🍕</div>
+                        <div class="food-name">Pizza</div>
+                        <div class="wine-count">9 viner</div>
+                    </div>
+                    <div class="food-card">
+                        <div class="food-emoji">🥗</div>
+                        <div class="food-name">Salat</div>
+                        <div class="wine-count">11 viner</div>
+                    </div>
+                    <div class="food-card">
+                        <div class="food-emoji">🍄</div>
+                        <div class="food-name">Sopp</div>
+                        <div class="wine-count">7 viner</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="food-category">
+                <h3 class="food-category-title">
+                    <span>🧀</span>
+                    Ost
+                </h3>
+                <div class="food-grid">
+                    <div class="food-card">
+                        <div class="food-emoji">🧀</div>
+                        <div class="food-name">Myk ost</div>
+                        <div class="wine-count">12 viner</div>
+                    </div>
+                    <div class="food-card">
+                        <div class="food-emoji">🧀</div>
+                        <div class="food-name">Hard ost</div>
+                        <div class="wine-count">8 viner</div>
+                    </div>
+                    <div class="food-card">
+                        <div class="food-emoji">🧀</div>
+                        <div class="food-name">Blåmuggost</div>
+                        <div class="wine-count">5 viner</div>
+                    </div>
+                    <div class="food-card">
+                        <div class="food-emoji">🧀</div>
+                        <div class="food-name">Geitost</div>
+                        <div class="wine-count">6 viner</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- My Collection View -->
+    <div id="collection-view" style="display: none;">
+        <div class="content">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Min Samling</h2>
+                    <p class="section-subtitle">Viner du har lagret</p>
+                </div>
+            </div>
+
+            <div class="collection-stats">
+                <div class="stat-card">
+                    <span class="stat-number">8</span>
+                    <span class="stat-label">Lagret</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">3</span>
+                    <span class="stat-label">Prøvd</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">5</span>
+                    <span class="stat-label">Ønskes</span>
+                </div>
+            </div>
+
+            <div class="filter-section" style="margin-bottom: 16px;">
+                <div class="filter-chips">
+                    <button class="chip active">Alle</button>
+                    <button class="chip">Prøvd</button>
+                    <button class="chip">Ønskeliste</button>
+                    <button class="chip">Favoritter</button>
+                </div>
+            </div>
+
+            <div class="wine-grid">
+                <div class="wine-card">
+                    <div class="wine-image-wrapper">
+                        <button class="bookmark-btn saved">❤️</button>
+                        <div class="wine-bottle-icon"></div>
+                    </div>
+                    <div class="wine-info">
+                        <span class="wine-type">Rødvin</span>
+                        <h3 class="wine-name">1603 Rouge</h3>
+                        <div class="wine-details">
+                            <span class="wine-year">2021</span>
+                            <span>•</span>
+                            <span>✓ Prøvd</span>
+                        </div>
+                        <div class="wine-pairing-tags">
+                            <span>⭐ 4.5</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wine-card">
+                    <div class="wine-image-wrapper">
+                        <button class="bookmark-btn saved">❤️</button>
+                        <div class="wine-bottle-icon"></div>
+                    </div>
+                    <div class="wine-info">
+                        <span class="wine-type">Hvitvin</span>
+                        <h3 class="wine-name">1603 Blanc</h3>
+                        <div class="wine-details">
+                            <span class="wine-year">2020</span>
+                            <span>•</span>
+                            <span>Ønskeliste</span>
+                        </div>
+                        <div class="wine-pairing-tags">
+                            <span>💭</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wine-card">
+                    <div class="wine-image-wrapper">
+                        <button class="bookmark-btn saved">❤️</button>
+                        <div class="wine-bottle-icon"></div>
+                    </div>
+                    <div class="wine-info">
+                        <span class="wine-type">Rødvin</span>
+                        <h3 class="wine-name">Alphonse Rouge</h3>
+                        <div class="wine-details">
+                            <span class="wine-year">2020</span>
+                            <span>•</span>
+                            <span>✓ Prøvd</span>
+                        </div>
+                        <div class="wine-pairing-tags">
+                            <span>⭐ 5.0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vineyards View -->
+    <div id="vineyards-view" style="display: none;">
+        <div class="content">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Luberon Vingårder</h2>
+                    <p class="section-subtitle">Utforsk regionens produsenter</p>
+                </div>
+            </div>
+
+            <div class="map-container">
+                <div class="map-placeholder">
+                    🗺️ Kart over Luberon-regionen
+                </div>
+            </div>
+
+            <div class="vineyard-list">
+                <div class="vineyard-card">
+                    <h3 class="vineyard-name">🏰 Château de Sannes</h3>
+                    <p style="font-size: 13px; color: var(--text-secondary); margin: 8px 0;">Historisk vingård grunnlagt i 1603</p>
+                    <div class="vineyard-badges">
+                        <span class="vineyard-badge red">Rødvin</span>
+                        <span class="vineyard-badge white">Hvitvin</span>
+                        <span class="vineyard-badge rose">Rosévin</span>
+                        <span class="vineyard-badge">Økologisk</span>
+                    </div>
+                </div>
+
+                <div class="vineyard-card">
+                    <h3 class="vineyard-name">🏰 Château Vérignon</h3>
+                    <p style="font-size: 13px; color: var(--text-secondary); margin: 8px 0;">Familiedrevet siden 1950-tallet</p>
+                    <div class="vineyard-badges">
+                        <span class="vineyard-badge red">Rødvin</span>
+                        <span class="vineyard-badge white">Hvitvin</span>
+                        <span class="vineyard-badge">AOC Luberon</span>
+                    </div>
+                </div>
+
+                <div class="vineyard-card">
+                    <h3 class="vineyard-name">🏰 Château d'Ansouis</h3>
+                    <p style="font-size: 13px; color: var(--text-secondary); margin: 8px 0;">Slott og vingård fra middelalderen</p>
+                    <div class="vineyard-badges">
+                        <span class="vineyard-badge red">Rødvin</span>
+                        <span class="vineyard-badge rose">Rosévin</span>
+                        <span class="vineyard-badge">Økologisk</span>
+                        <span class="vineyard-badge">Biodynamisk</span>
+                    </div>
+                </div>
+
+                <div class="vineyard-card">
+                    <h3 class="vineyard-name">🏰 Château de Mille</h3>
+                    <p style="font-size: 13px; color: var(--text-secondary); margin: 8px 0;">Moderne vinproduksjon med tradisjon</p>
+                    <div class="vineyard-badges">
+                        <span class="vineyard-badge red">Rødvin</span>
+                        <span class="vineyard-badge white">Hvitvin</span>
+                        <span class="vineyard-badge rose">Rosévin</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Learn View -->
+    <div id="learn-view" style="display: none;">
+        <div class="content">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Lær om vin</h2>
+                    <p class="section-subtitle">Bli en vinekspert</p>
+                </div>
+            </div>
+
+            <div class="learning-card">
+                <div class="learning-card-icon">🍇</div>
+                <h3 class="learning-card-title">Druevarianter i Luberon</h3>
+                <p class="learning-card-desc">Lær om de viktigste druene som dyrkes i regionen: Syrah, Grenache, Vermentino og mer.</p>
+                <button class="learn-more">Les mer</button>
+            </div>
+
+            <div class="learning-card">
+                <div class="learning-card-icon">🌡️</div>
+                <h3 class="learning-card-title">Temperatur & Servering</h3>
+                <p class="learning-card-desc">Få vinen til å smake best - lær om riktig temperatur, dekanting og glass.</p>
+                <button class="learn-more">Les mer</button>
+            </div>
+
+            <div class="learning-card">
+                <div class="learning-card-icon">📖</div>
+                <h3 class="learning-card-title">Vin & Mat Guiden</h3>
+                <p class="learning-card-desc">Grunnleggende prinsipper for å pare vin med mat - fra basisregler til avanserte kombinasjoner.</p>
+                <button class="learn-more">Les mer</button>
+            </div>
+
+            <div class="learning-card">
+                <div class="learning-card-icon">🏺</div>
+                <h3 class="learning-card-title">Vinlagring</h3>
+                <p class="learning-card-desc">Tips om hvordan du lagrer vin riktig hjemme og hvilke viner som egner seg for lagring.</p>
+                <button class="learn-more">Les mer</button>
+            </div>
+
+            <div class="learning-card">
+                <div class="learning-card-icon">🌍</div>
+                <h3 class="learning-card-title">AOC Luberon</h3>
+                <p class="learning-card-desc">Historien og betydningen av AOC-systemet og hva det betyr for Luberon-viner.</p>
+                <button class="learn-more">Les mer</button>
+            </div>
+
+            <div class="learning-card">
+                <div class="learning-card-icon">👃</div>
+                <h3 class="learning-card-title">Smakssetting & Aromaer</h3>
+                <p class="learning-card-desc">Lær å identifisere ulike aromaer og smaker i vin - en guide til vinprøving.</p>
+                <button class="learn-more">Les mer</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wine Detail View -->
+    <div class="detail-view" id="detail-view">
+        <div class="detail-header">
+            <button class="back-btn" onclick="hideDetail()">←</button>
+            <h2 class="detail-title">1603 Rouge</h2>
+            <button class="share-btn">↗</button>
+        </div>
+
+        <div class="detail-hero">
+            <div class="detail-bottle"></div>
+            <div class="detail-vintage">
+                <span>🍷 2021</span>
+                <span>•</span>
+                <span>📍 Sannes</span>
+            </div>
+        </div>
+
+        <div class="detail-content">
+            <div class="detail-section">
+                <h3 class="detail-section-title">Om vinen</h3>
+                <div style="color: var(--text-secondary); line-height: 1.7;">
+                    Denne elegante rødvinen fra Château de Sannes kombinerer tradisjonelle dyrkingsmetoder med moderne vinifisering. Med sine rike bærtoner og balanserte tanninstruktur representerer den det beste fra Luberon-regionen.
+                </div>
+            </div>
+
+            <div class="detail-section">
+                <h3 class="detail-section-title">Vininformasjon</h3>
+                <div class="info-grid">
+                    <div class="info-row">
+                        <span class="info-label">Type</span>
+                        <span class="info-value">Rødvin</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Årgang</span>
+                        <span class="info-value">2021</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Alkohol</span>
+                        <span class="info-value">14%</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Druer</span>
+                        <span class="info-value">Syrah, Grenache</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Appellasjon</span>
+                        <span class="info-value">AOC Luberon</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="detail-section">
+                <h3 class="detail-section-title">Smagsnoter</h3>
+                <div class="taste-tags">
+                    <span class="taste-tag highlight">Kirsebær</span>
+                    <span class="taste-tag highlight">Mørke bær</span>
+                    <span class="taste-tag">Lakrits</span>
+                    <span class="taste-tag">Eik</span>
+                    <span class="taste-tag">Pepper</span>
+                    <span class="taste-tag">Elegante tanniner</span>
+                </div>
+            </div>
+
+            <div class="detail-section">
+                <h3 class="detail-section-title">Matparinger</h3>
+                
+                <div class="pairing-card">
+                    <div class="pairing-card-header">
+                        <span class="pairing-icon">🥩</span>
+                        <div>
+                            <div class="pairing-card-title">Grillet kjøtt</div>
+                        </div>
+                    </div>
+                    <p class="pairing-card-desc">Perfekt til biff, lam eller grillede pølser. Vinens tanniner balanserer fettinnholdet i kjøttet.</p>
+                </div>
+
+                <div class="pairing-card">
+                    <div class="pairing-card-header">
+                        <span class="pairing-icon">🧀</span>
+                        <div>
+                            <div class="pairing-card-title">Modne oster</div>
+                        </div>
+                    </div>
+                    <p class="pairing-card-desc">Utmerket med Comté, Beaufort eller andre modne, harde oster.</p>
+                </div>
+
+                <div class="pairing-card">
+                    <div class="pairing-card-header">
+                        <span class="pairing-icon">🍝</span>
+                        <div>
+                            <div class="pairing-card-title">Tomatbaserte pastaretter</div>
+                        </div>
+                    </div>
+                    <p class="pairing-card-desc">Passer godt til ragu, bolognese eller pasta med kjøttsaus.</p>
+                </div>
+            </div>
+
+            <div class="detail-section">
+                <h3 class="detail-section-title">Servering</h3>
+                <div class="info-grid">
+                    <div class="info-row">
+                        <span class="info-label">Serveringstemperatur</span>
+                        <span class="info-value">16-18°C</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Dekanteres</span>
+                        <span class="info-value">30 minutter</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Drikkeklar</span>
+                        <span class="info-value">2022 - 2026</span>
+                    </div>
+                </div>
+            </div>
+
+            <button class="action-button" onclick="toggleBookmark()">
+                🤍 Legg til i min samling
+            </button>
+
+            <button class="action-button secondary">
+                📚 Lær mer om Château de Sannes
+            </button>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <button class="nav-item active" onclick="showView('catalog'); updateBottomNav(0)">
+            <span class="nav-icon">🍷</span>
+            Katalog
+        </button>
+        <button class="nav-item" onclick="showView('pairing'); updateBottomNav(1)">
+            <span class="nav-icon">🍽️</span>
+            Vin & Mat
+        </button>
+        <button class="nav-item" onclick="showView('collection'); updateBottomNav(2)">
+            <span class="nav-icon">❤️</span>
+            Samling
+        </button>
+        <button class="nav-item" onclick="showView('vineyards'); updateBottomNav(3)">
+            <span class="nav-icon">🏰</span>
+            Vingårder
+        </button>
+        <button class="nav-item" onclick="showView('learn'); updateBottomNav(4)">
+            <span class="nav-icon">📚</span>
+            Lær
+        </button>
+    </nav>
+
+    <script>
+        // View switching
+        function showView(view) {
+            // Hide all views
+            document.getElementById('catalog-view').style.display = 'none';
+            document.getElementById('pairing-view').style.display = 'none';
+            document.getElementById('collection-view').style.display = 'none';
+            document.getElementById('vineyards-view').style.display = 'none';
+            document.getElementById('learn-view').style.display = 'none';
+
+            // Update nav tabs
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Show selected view
+            if (view === 'catalog') {
+                document.getElementById('catalog-view').style.display = 'block';
+                document.querySelectorAll('.nav-tab')[0].classList.add('active');
+            } else if (view === 'pairing') {
+                document.getElementById('pairing-view').style.display = 'block';
+                document.querySelectorAll('.nav-tab')[1].classList.add('active');
+            } else if (view === 'collection') {
+                document.getElementById('collection-view').style.display = 'block';
+                document.querySelectorAll('.nav-tab')[2].classList.add('active');
+            } else if (view === 'vineyards') {
+                document.getElementById('vineyards-view').style.display = 'block';
+                document.querySelectorAll('.nav-tab')[3].classList.add('active');
+            } else if (view === 'learn') {
+                document.getElementById('learn-view').style.display = 'block';
+                document.querySelectorAll('.nav-tab')[4].classList.add('active');
+            }
+        }
+
+        // Update bottom navigation
+        function updateBottomNav(index) {
+            document.querySelectorAll('.bottom-nav .nav-item').forEach((item, i) => {
+                if (i === index) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+        }
+
+        // Show wine detail
+        function showDetail() {
+            document.getElementById('detail-view').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Hide wine detail
+        function hideDetail() {
+            document.getElementById('detail-view').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Toggle bookmark
+        function toggleBookmark() {
+            const btn = event.target;
+            if (btn.textContent.includes('🤍')) {
+                btn.innerHTML = '❤️ Lagt til i samlingen';
+                setTimeout(() => {
+                    btn.innerHTML = '❤️ I din samling';
+                }, 1500);
+            }
+        }
+
+        // Filter chips interaction
+        document.querySelectorAll('.chip').forEach(chip => {
+            chip.addEventListener('click', function() {
+                this.parentElement.querySelectorAll('.chip').forEach(c => {
+                    c.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+
+        // Bookmark buttons
+        document.querySelectorAll('.bookmark-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (this.textContent === '🤍') {
+                    this.textContent = '❤️';
+                    this.classList.add('saved');
+                } else {
+                    this.textContent = '🤍';
+                    this.classList.remove('saved');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

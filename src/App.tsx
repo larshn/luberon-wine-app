@@ -2,21 +2,23 @@ import { useState, useEffect } from 'react';
 import type { Wine } from './types/wine';
 import { wines as seedWines } from './data/wines';
 import { loadCellar } from './utils/storageSupabase';
+import Header from './components/Header';
+import NavigationTabs from './components/NavigationTabs';
+import BottomNav from './components/BottomNav';
+import type { View } from './components/BottomNav';
 import WineCatalog from './components/WineCatalog';
 import WineCellar from './components/WineCellar';
 import WineDetail from './components/WineDetail';
 import FoodPairing from './components/FoodPairing';
-import ChipsPairing from './components/ChipsPairing';
 import WineMap from './components/WineMap';
 import Auth from './components/Auth';
-
-type View = 'catalog' | 'cellar' | 'food-pairing' | 'chips-pairing' | 'map';
 
 function App() {
   const [currentView, setCurrentView] = useState<View>('catalog');
   const [selectedWine, setSelectedWine] = useState<Wine | null>(null);
   const [selectedProducer, setSelectedProducer] = useState<string | null>(null);
   const [cellarCount, setCellarCount] = useState(0);
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     const updateCellarCount = async () => {
@@ -47,107 +49,119 @@ function App() {
     setCellarCount(total);
   };
 
+  const handleViewChange = (view: View) => {
+    setCurrentView(view);
+    setSelectedWine(null);
+    setSelectedProducer(null);
+  };
+
+  const handleSearch = (query: string) => {
+    setSearchQuery(query);
+  };
+
+  // Placeholder Learn View
+  const LearnView = () => (
+    <div className="content">
+      <div className="section-header">
+        <div>
+          <h2 className="section-title">Lær om vin</h2>
+          <p className="section-subtitle">Bli en vinekspert</p>
+        </div>
+      </div>
+
+      <div className="learning-card">
+        <div className="learning-card-icon">🍇</div>
+        <h3 className="learning-card-title">Druevarianter i Luberon</h3>
+        <p className="learning-card-desc">
+          Lær om de viktigste druene som dyrkes i regionen: Syrah, Grenache, Vermentino og mer.
+        </p>
+        <button className="learn-more">Les mer</button>
+      </div>
+
+      <div className="learning-card">
+        <div className="learning-card-icon">🌡️</div>
+        <h3 className="learning-card-title">Temperatur & Servering</h3>
+        <p className="learning-card-desc">
+          Få vinen til å smake best - lær om riktig temperatur, dekanting og glass.
+        </p>
+        <button className="learn-more">Les mer</button>
+      </div>
+
+      <div className="learning-card">
+        <div className="learning-card-icon">📖</div>
+        <h3 className="learning-card-title">Vin & Mat Guiden</h3>
+        <p className="learning-card-desc">
+          Grunnleggende prinsipper for å pare vin med mat - fra basisregler til avanserte kombinasjoner.
+        </p>
+        <button className="learn-more">Les mer</button>
+      </div>
+
+      <div className="learning-card">
+        <div className="learning-card-icon">🏺</div>
+        <h3 className="learning-card-title">Vinlagring</h3>
+        <p className="learning-card-desc">
+          Tips om hvordan du lagrer vin riktig hjemme og hvilke viner som egner seg for lagring.
+        </p>
+        <button className="learn-more">Les mer</button>
+      </div>
+
+      <div className="learning-card">
+        <div className="learning-card-icon">🌍</div>
+        <h3 className="learning-card-title">AOC Luberon</h3>
+        <p className="learning-card-desc">
+          Historien og betydningen av AOC-systemet og hva det betyr for Luberon-viner.
+        </p>
+        <button className="learn-more">Les mer</button>
+      </div>
+
+      <div className="learning-card">
+        <div className="learning-card-icon">👃</div>
+        <h3 className="learning-card-title">Smakssetting & Aromaer</h3>
+        <p className="learning-card-desc">
+          Lær å identifisere ulike aromaer og smaker i vin - en guide til vinprøving.
+        </p>
+        <button className="learn-more">Les mer</button>
+      </div>
+    </div>
+  );
+
   return (
     <div className="app-container">
-      <header className="header">
-        <div className="container header-content">
-          <div>
-            <h1>🍷 Luberon på Glass</h1>
-            <p>Découvrez les vins du Luberon</p>
-          </div>
-          <Auth onAuthChange={handleCellarUpdate} />
-        </div>
-      </header>
+      <Header onSearch={handleSearch} />
 
-      <nav className="nav">
-        <div className="container nav-content">
-          <button
-            onClick={() => {
-              setCurrentView('catalog');
-              setSelectedWine(null);
-            }}
-            className={`nav-button ${currentView === 'catalog' && !selectedWine ? 'active' : ''}`}
-          >
-            📖 <span className="nav-button-text">Vinkatalog</span>
-          </button>
-          <button
-            onClick={() => {
-              setCurrentView('food-pairing');
-              setSelectedWine(null);
-              setSelectedProducer(null);
-            }}
-            className={`nav-button ${currentView === 'food-pairing' && !selectedWine ? 'active' : ''}`}
-          >
-            🍽️ <span className="nav-button-text">Mat til Vin</span>
-          </button>
-          <button
-            onClick={() => {
-              setCurrentView('chips-pairing');
-              setSelectedWine(null);
-              setSelectedProducer(null);
-            }}
-            className={`nav-button ${currentView === 'chips-pairing' && !selectedWine ? 'active' : ''}`}
-          >
-            🥔 <span className="nav-button-text">Vin & Potetgull</span>
-          </button>
-          <button
-            onClick={() => {
-              setCurrentView('map');
-              setSelectedWine(null);
-              setSelectedProducer(null);
-            }}
-            className={`nav-button ${currentView === 'map' && !selectedWine ? 'active' : ''}`}
-          >
-            🗺️ <span className="nav-button-text">Vinkart</span>
-          </button>
-          <button
-            onClick={() => {
-              setCurrentView('cellar');
-              setSelectedWine(null);
-              setSelectedProducer(null);
-            }}
-            className={`nav-button ${currentView === 'cellar' && !selectedWine ? 'active' : ''}`}
-          >
-            🏺 <span className="nav-button-text">Min Vinkjeller</span>
-            {cellarCount > 0 && (
-              <span className="nav-badge">{cellarCount}</span>
-            )}
-          </button>
-        </div>
-      </nav>
+      <NavigationTabs activeView={currentView} onViewChange={handleViewChange} />
 
-      <main className="main-content">
-        <div className="container">
-          {selectedWine ? (
-            <WineDetail
-              wine={selectedWine}
-              onBack={handleBackToCatalog}
-              onCellarUpdate={handleCellarUpdate}
-            />
-          ) : currentView === 'catalog' ? (
-            <WineCatalog wines={seedWines} onViewWine={handleViewWine} initialProducer={selectedProducer} />
-          ) : currentView === 'food-pairing' ? (
-            <FoodPairing wines={seedWines} onViewWine={handleViewWine} />
-          ) : currentView === 'chips-pairing' ? (
-            <ChipsPairing wines={seedWines} onViewWine={handleViewWine} />
-          ) : currentView === 'map' ? (
-            <WineMap wines={seedWines} onViewWine={handleViewWine} onViewProducer={handleViewProducer} />
-          ) : (
-            <WineCellar
-              wines={seedWines}
-              onViewWine={handleViewWine}
-              onUpdate={handleCellarUpdate}
-            />
-          )}
+      {selectedWine ? (
+        <WineDetail
+          wine={selectedWine}
+          onBack={handleBackToCatalog}
+          onCellarUpdate={handleCellarUpdate}
+        />
+      ) : currentView === 'catalog' ? (
+        <div className="content">
+          <WineCatalog wines={seedWines} onViewWine={handleViewWine} initialProducer={selectedProducer} />
         </div>
-      </main>
+      ) : currentView === 'pairing' ? (
+        <div className="content">
+          <FoodPairing wines={seedWines} onViewWine={handleViewWine} />
+        </div>
+      ) : currentView === 'collection' ? (
+        <div className="content">
+          <WineCellar
+            wines={seedWines}
+            onViewWine={handleViewWine}
+            onUpdate={handleCellarUpdate}
+          />
+        </div>
+      ) : currentView === 'vineyards' ? (
+        <div className="content">
+          <WineMap wines={seedWines} onViewWine={handleViewWine} onViewProducer={handleViewProducer} />
+        </div>
+      ) : (
+        <LearnView />
+      )}
 
-      <footer className="footer">
-        <div className="container footer-content">
-          <p>Viner fra Luberon, Provence - Frankrikes skjulte perle</p>
-          <p>Laget med kjærlighet til Luberon-viner 🍇</p>
-        </div>
-      </footer>
+      <BottomNav activeView={currentView} onViewChange={handleViewChange} />
     </div>
   );
 }
