@@ -1,17 +1,13 @@
 import { useState, useMemo, useEffect } from 'react';
 import type { Wine, WineColor } from '../types/wine';
-import { getStorageLabel } from '../utils/wine';
 import VintageChart from './VintageChart';
+import WineCard from './WineCard';
 
 interface WineCatalogProps {
   wines: Wine[];
   onViewWine: (wine: Wine) => void;
   initialProducer?: string | null;
 }
-
-const getStorageClass = (rec: string) => {
-  return rec.replace(/-/g, '-');
-};
 
 export default function WineCatalog({ wines, onViewWine, initialProducer }: WineCatalogProps) {
   const [searchTerm, setSearchTerm] = useState('');
@@ -167,56 +163,14 @@ export default function WineCatalog({ wines, onViewWine, initialProducer }: Wine
         </div>
       ) : (
         <div className="wine-grid">
-          {filteredAndSortedWines.map(wine => {
-            const latestVintage = getLatestVintage(wine);
-            const vintageYears = wine.vintages.map(v => v.year).sort((a, b) => b - a);
-
-            return (
-              <div
-                key={wine.id}
-                className="card wine-card card-clickable"
-                onClick={() => onViewWine(wine)}
-              >
-                <div className={`wine-color-bar ${wine.color}`} />
-
-                <div className="wine-card-header">
-                  <h3>{wine.name}</h3>
-                  <p className="wine-producer">{wine.producer}</p>
-                  <div className="wine-meta">
-                    <span className="wine-year">
-                      {vintageYears.length > 1
-                        ? `${vintageYears.length} årganger`
-                        : vintageYears[0]
-                      }
-                    </span>
-                    {latestVintage.price && (
-                      <span className="wine-price">€{latestVintage.price}</span>
-                    )}
-                  </div>
-                </div>
-
-                <div className="tag-list">
-                  {wine.grapes.map((grape, index) => (
-                    <span key={index} className="tag tag-grape">
-                      {grape}
-                    </span>
-                  ))}
-                </div>
-
-                <p className="wine-description">{wine.description}</p>
-
-                <div className="mb-md">
-                  <span className={`tag-storage ${getStorageClass(latestVintage.storageRecommendation)}`}>
-                    {getStorageLabel(latestVintage.storageRecommendation)}
-                  </span>
-                </div>
-
-                <button className="btn btn-primary btn-full">
-                  Se detaljer
-                </button>
-              </div>
-            );
-          })}
+          {filteredAndSortedWines.map(wine => (
+            <WineCard
+              key={wine.id}
+              wine={wine}
+              onClick={() => onViewWine(wine)}
+              badge={wine.appellation?.includes('AOC') ? 'AOC' : undefined}
+            />
+          ))}
         </div>
       )}
     </div>
