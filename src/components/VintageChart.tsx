@@ -37,7 +37,7 @@ export default function VintageChart() {
   const hoveredVintage = hoveredYear ? vintageRatings.find(v => v.year === hoveredYear) : null;
 
   return (
-    <div className="card" style={{ padding: '1.5rem', overflow: 'hidden', position: 'relative' }}>
+    <div className="card" style={{ padding: '1.5rem', overflow: 'hidden', position: 'relative', paddingBottom: isMobile ? '140px' : '1.5rem' }}>
       <div style={{ marginBottom: '1.5rem' }}>
         <h2 style={{ fontSize: '1.5rem', color: '#722f37', marginBottom: '0.5rem' }}>
           🍇 Årgangskvalitet
@@ -47,37 +47,11 @@ export default function VintageChart() {
         </p>
       </div>
 
-      {/* Mobile tooltip - shown at bottom of card */}
-      {isMobile && hoveredVintage && (
-        <div style={{
-          position: 'absolute',
-          bottom: '1.5rem',
-          left: '1.5rem',
-          right: '1.5rem',
-          background: '#1a1a1a',
-          color: 'white',
-          padding: '16px',
-          borderRadius: '12px',
-          zIndex: 100,
-          boxShadow: '0 8px 24px rgba(0,0,0,0.3)'
-        }}>
-          <div style={{ fontWeight: 700, marginBottom: '6px', fontSize: '1.3rem' }}>
-            {hoveredVintage.year}
-          </div>
-          <div style={{ color: '#d4af37', fontSize: '1.1rem', marginBottom: '6px' }}>
-            {'★'.repeat(hoveredVintage.rating)}{'☆'.repeat(5 - hoveredVintage.rating)}
-          </div>
-          <div style={{ fontSize: '0.95rem', opacity: 0.95, lineHeight: '1.4' }}>
-            {hoveredVintage.description}
-          </div>
-        </div>
-      )}
-
       {/* Horizontal scrolling chart */}
       <div style={{
         overflowX: 'auto',
         overflowY: 'visible',
-        marginBottom: isMobile ? '120px' : '1.5rem', // Extra space for mobile tooltip
+        marginBottom: '1rem',
         WebkitOverflowScrolling: 'touch',
         scrollbarWidth: 'thin',
         scrollbarColor: '#d4af37 #f5f5f5',
@@ -251,6 +225,32 @@ export default function VintageChart() {
           ))}
         </div>
       </div>
+
+      {/* Mobile tooltip - shown at bottom of card */}
+      {isMobile && hoveredVintage && (
+        <div style={{
+          position: 'absolute',
+          bottom: '1.5rem',
+          left: '1.5rem',
+          right: '1.5rem',
+          background: '#1a1a1a',
+          color: 'white',
+          padding: '16px',
+          borderRadius: '12px',
+          zIndex: 100,
+          boxShadow: '0 8px 24px rgba(0,0,0,0.3)'
+        }}>
+          <div style={{ fontWeight: 700, marginBottom: '6px', fontSize: '1.3rem' }}>
+            {hoveredVintage.year}
+          </div>
+          <div style={{ color: '#d4af37', fontSize: '1.1rem', marginBottom: '6px' }}>
+            {'★'.repeat(hoveredVintage.rating)}{'☆'.repeat(5 - hoveredVintage.rating)}
+          </div>
+          <div style={{ fontSize: '0.95rem', opacity: 0.95, lineHeight: '1.4' }}>
+            {hoveredVintage.description}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
