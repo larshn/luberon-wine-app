@@ -24,24 +24,43 @@ export default function WineDetail({ wine, onBack, onCellarUpdate }: WineDetailP
     )
   );
   const [quantityInCellar, setQuantityInCellar] = useState(0);
+  const [isOnWishlist, setIsOnWishlist] = useState(false);
+  const [isTasted, setIsTasted] = useState(false);
   const [showAddedMessage, setShowAddedMessage] = useState(false);
   const [expandedLocations, setExpandedLocations] = useState<{ [key: number]: boolean }>({});
 
   useEffect(() => {
-    const updateQuantity = async () => {
+    const updateStatus = async () => {
       const cellar = await loadCellar();
       const cellarWine = cellar.wines.find(w => w.wineId === wine.id && w.year === selectedVintage.year);
-      setQuantityInCellar(cellarWine?.quantity || 0);
+
+      // Only count bottles with status 'in_cellar'
+      if (cellarWine && cellarWine.status === 'in_cellar') {
+        setQuantityInCellar(cellarWine.quantity || 0);
+      } else {
+        setQuantityInCellar(0);
+      }
+
+      setIsOnWishlist(cellarWine?.status === 'wishlist');
+      setIsTasted(cellarWine?.status === 'tasted');
     };
-    updateQuantity();
+    updateStatus();
   }, [wine.id, selectedVintage.year]);
 
   const handleAddBottle = async () => {
     await addToCellar(wine.id, selectedVintage.year);
+    // Make sure it has status 'in_cellar'
+    await updateCellarWine(wine.id, selectedVintage.year, { status: 'in_cellar' });
 
     const cellar = await loadCellar();
     const cellarWine = cellar.wines.find(w => w.wineId === wine.id && w.year === selectedVintage.year);
-    setQuantityInCellar(cellarWine?.quantity || 0);
+
+    if (cellarWine && cellarWine.status === 'in_cellar') {
+      setQuantityInCellar(cellarWine.quantity || 0);
+    }
+    setIsOnWishlist(cellarWine?.status === 'wishlist');
+    setIsTasted(cellarWine?.status === 'tasted');
+
     onCellarUpdate();
 
     setShowAddedMessage(true);
@@ -55,40 +74,72 @@ export default function WineDetail({ wine, onBack, onCellarUpdate }: WineDetailP
 
       const cellar = await loadCellar();
       const cellarWine = cellar.wines.find(w => w.wineId === wine.id && w.year === selectedVintage.year);
-      setQuantityInCellar(cellarWine?.quantity || 0);
+
+      if (cellarWine && cellarWine.status === 'in_cellar') {
+        setQuantityInCellar(cellarWine.quantity || 0);
+      } else {
+        setQuantityInCellar(0);
+      }
+
       onCellarUpdate();
     }
   };
 
-  const handleAddToWishlist = async () => {
-    if (quantityInCellar === 0) {
-      await addToCellar(wine.id, selectedVintage.year);
-    }
-    await updateCellarWine(wine.id, selectedVintage.year, { status: 'wishlist' });
-
+  const handleToggleWishlist = async () => {
     const cellar = await loadCellar();
     const cellarWine = cellar.wines.find(w => w.wineId === wine.id && w.year === selectedVintage.year);
-    setQuantityInCellar(cellarWine?.quantity || 0);
-    onCellarUpdate();
 
+    if (isOnWishlist) {
+      // Remove from wishlist
+      if (cellarWine) {
+        const { removeFromCellar } = await import('../utils/storageSupabase');
+        await removeFromCellar(wine.id, selectedVintage.year, cellarWine.quantity);
+      }
+      setIsOnWishlist(false);
+    } else {
+      // Add to wishlist (without adding bottles)
+      if (!cellarWine) {
+        await addToCellar(wine.id, selectedVintage.year);
+        // Remove the default quantity and set status
+        const { removeFromCellar } = await import('../utils/storageSupabase');
+        await removeFromCellar(wine.id, selectedVintage.year, 1);
+      }
+      await updateCellarWine(wine.id, selectedVintage.year, { status: 'wishlist' });
+      setIsOnWishlist(true);
+    }
+
+    onCellarUpdate();
     setShowAddedMessage(true);
     setTimeout(() => setShowAddedMessage(false), 1500);
   };
 
-  const handleMarkAsTasted = async () => {
-    if (quantityInCellar === 0) {
-      await addToCellar(wine.id, selectedVintage.year);
-    }
-    await updateCellarWine(wine.id, selectedVintage.year, {
-      status: 'tasted',
-      tasted_date: new Date().toISOString().split('T')[0]
-    });
-
+  const handleToggleTasted = async () => {
     const cellar = await loadCellar();
     const cellarWine = cellar.wines.find(w => w.wineId === wine.id && w.year === selectedVintage.year);
-    setQuantityInCellar(cellarWine?.quantity || 0);
-    onCellarUpdate();
 
+    if (isTasted) {
+      // Remove from tasted
+      if (cellarWine) {
+        const { removeFromCellar } = await import('../utils/storageSupabase');
+        await removeFromCellar(wine.id, selectedVintage.year, cellarWine.quantity);
+      }
+      setIsTasted(false);
+    } else {
+      // Mark as tasted (without adding bottles)
+      if (!cellarWine) {
+        await addToCellar(wine.id, selectedVintage.year);
+        // Remove the default quantity and set status
+        const { removeFromCellar } = await import('../utils/storageSupabase');
+        await removeFromCellar(wine.id, selectedVintage.year, 1);
+      }
+      await updateCellarWine(wine.id, selectedVintage.year, {
+        status: 'tasted',
+        tasted_date: new Date().toISOString().split('T')[0]
+      });
+      setIsTasted(true);
+    }
+
+    onCellarUpdate();
     setShowAddedMessage(true);
     setTimeout(() => setShowAddedMessage(false), 1500);
   };
@@ -625,29 +676,34 @@ export default function WineDetail({ wine, onBack, onCellarUpdate }: WineDetailP
             </div>
           </div>
 
-          {/* Other Actions */}
+          {/* Tracking Actions */}
           <div>
             <h3 style={{fontSize: '1.1rem', color: '#722f37', marginBottom: '0.75rem'}}>
-              Andre handlinger
+              Sporing
             </h3>
+            <p style={{fontSize: '0.9rem', color: '#666', marginBottom: '1rem'}}>
+              Hold oversikt over viner du vil ha eller har smakt (påvirker ikke flasketelleren)
+            </p>
             <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem'}}>
-              <button onClick={handleAddToWishlist} className="btn" style={{
-                background: '#fef3c7',
-                color: '#92400e',
-                border: '2px solid #fbbf24',
+              <button onClick={handleToggleWishlist} className="btn" style={{
+                background: isOnWishlist ? '#fbbf24' : '#fef3c7',
+                color: isOnWishlist ? 'white' : '#92400e',
+                border: `2px solid ${isOnWishlist ? '#f59e0b' : '#fbbf24'}`,
                 fontSize: '0.95rem',
-                padding: '0.75rem'
+                padding: '0.75rem',
+                fontWeight: isOnWishlist ? 700 : 500
               }}>
-                ⭐ Ønskeliste
+                {isOnWishlist ? '✓ På ønskeliste' : '⭐ Legg til ønskeliste'}
               </button>
-              <button onClick={handleMarkAsTasted} className="btn" style={{
-                background: '#dbeafe',
-                color: '#1e40af',
-                border: '2px solid #60a5fa',
+              <button onClick={handleToggleTasted} className="btn" style={{
+                background: isTasted ? '#60a5fa' : '#dbeafe',
+                color: isTasted ? 'white' : '#1e40af',
+                border: `2px solid ${isTasted ? '#3b82f6' : '#60a5fa'}`,
                 fontSize: '0.95rem',
-                padding: '0.75rem'
+                padding: '0.75rem',
+                fontWeight: isTasted ? 700 : 500
               }}>
-                ✓ Merk som prøvd
+                {isTasted ? '✓ Prøvd' : '✓ Merk som prøvd'}
               </button>
             </div>
           </div>
