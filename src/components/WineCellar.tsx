@@ -283,17 +283,26 @@ export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarPr
                   </div>
 
                   <div className="mb-md">
-                    <label style={{display: 'block', fontWeight: 500, marginBottom: '0.5rem', fontSize: '0.9rem'}}>
+                    <label style={{display: 'block', fontWeight: 600, marginBottom: '0.75rem', fontSize: '1rem', color: '#1a1a1a'}}>
                       📊 Status
                     </label>
                     <select
                       value={status || 'in_cellar'}
                       onChange={(e) => handleStatusChange(wine.id, vintage.year, e.target.value as WineStatus)}
                       className="select"
+                      style={{
+                        fontSize: '1rem',
+                        fontWeight: 600,
+                        padding: '12px 14px',
+                        background: status === 'tasted' ? '#dbeafe' : status === 'wishlist' ? '#fef3c7' : '#f0fdf4',
+                        color: status === 'tasted' ? '#1e40af' : status === 'wishlist' ? '#92400e' : '#065f46',
+                        borderColor: status === 'tasted' ? '#60a5fa' : status === 'wishlist' ? '#fbbf24' : '#10b981',
+                        borderWidth: '2px'
+                      }}
                     >
-                      <option value="in_cellar">I kjelleren</option>
-                      <option value="tasted">Prøvd</option>
-                      <option value="wishlist">Ønskeliste</option>
+                      <option value="in_cellar">🍷 I kjelleren</option>
+                      <option value="tasted">✓ Prøvd</option>
+                      <option value="wishlist">⭐ Ønskeliste</option>
                     </select>
                   </div>
 

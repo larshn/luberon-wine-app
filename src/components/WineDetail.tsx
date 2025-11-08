@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
-import type { Wine, Vintage } from '../types/wine';
+import type { Wine, Vintage, WineStatus } from '../types/wine';
 import {
   getStorageLabel,
   getCurrentAge,
   getDrinkingWindowStatus
 } from '../utils/wine';
-import { addToCellar, loadCellar } from '../utils/storageSupabase';
+import { addToCellar, loadCellar, updateCellarWine } from '../utils/storageSupabase';
 import VinmonopoletInfo from './VinmonopoletInfo';
 
 interface WineDetailProps {
@@ -36,8 +36,14 @@ export default function WineDetail({ wine, onBack, onCellarUpdate }: WineDetailP
     updateQuantity();
   }, [wine.id, selectedVintage.year]);
 
-  const handleAddToCellar = async () => {
+  const handleAddWithStatus = async (status: WineStatus) => {
     await addToCellar(wine.id, selectedVintage.year);
+    // Immediately update the status
+    await updateCellarWine(wine.id, selectedVintage.year, {
+      status,
+      ...(status === 'tasted' && { tasted_date: new Date().toISOString().split('T')[0] })
+    });
+
     const cellar = await loadCellar();
     const cellarWine = cellar.wines.find(w => w.wineId === wine.id && w.year === selectedVintage.year);
     setQuantityInCellar(cellarWine?.quantity || 0);
@@ -46,6 +52,10 @@ export default function WineDetail({ wine, onBack, onCellarUpdate }: WineDetailP
     setShowAddedMessage(true);
     setTimeout(() => setShowAddedMessage(false), 2000);
   };
+
+  const handleAddToCellar = () => handleAddWithStatus('in_cellar');
+  const handleAddToWishlist = () => handleAddWithStatus('wishlist');
+  const handleMarkAsTasted = () => handleAddWithStatus('tasted');
 
   const currentAge = getCurrentAge(selectedVintage.year);
   const drinkingStatus = getDrinkingWindowStatus({
@@ -522,12 +532,40 @@ export default function WineDetail({ wine, onBack, onCellarUpdate }: WineDetailP
                 <p style={{color: '#666'}}>Ingen flasker av {selectedVintage.year} i kjelleren ennå</p>
               )}
             </div>
-            <div style={{display: 'flex', alignItems: 'center', gap: '1rem'}}>
+            <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
               {showAddedMessage && (
-                <span style={{color: '#065f46', fontWeight: 600}}>Lagt til!</span>
+                <div style={{
+                  padding: '0.75rem',
+                  background: '#d1fae5',
+                  color: '#065f46',
+                  borderRadius: '8px',
+                  fontWeight: 600,
+                  textAlign: 'center'
+                }}>
+                  ✓ Lagt til i samlingen!
+                </div>
               )}
-              <button onClick={handleAddToCellar} className="btn btn-primary">
-                + Legg til {selectedVintage.year} i kjeller
+              <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem'}}>
+                <button onClick={handleAddToCellar} className="btn btn-primary" style={{fontSize: '0.95rem'}}>
+                  🍷 Legg i kjelleren
+                </button>
+                <button onClick={handleAddToWishlist} className="btn" style={{
+                  background: '#fef3c7',
+                  color: '#92400e',
+                  border: '2px solid #fbbf24',
+                  fontSize: '0.95rem'
+                }}>
+                  ⭐ Ønskeliste
+                </button>
+              </div>
+              <button onClick={handleMarkAsTasted} className="btn" style={{
+                background: '#dbeafe',
+                color: '#1e40af',
+                border: '2px solid #60a5fa',
+                fontSize: '0.95rem',
+                width: '100%'
+              }}>
+                ✓ Merk som prøvd
               </button>
             </div>
           </div>
