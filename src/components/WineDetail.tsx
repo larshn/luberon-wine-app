@@ -5,7 +5,6 @@ import {
   getCurrentAge,
   getDrinkingWindowStatus
 } from '../utils/wine';
-import { addToCellar, loadCellar, updateCellarWine } from '../utils/storageSupabase';
 import VinmonopoletInfo from './VinmonopoletInfo';
 
 interface WineDetailProps {
@@ -31,6 +30,7 @@ export default function WineDetail({ wine, onBack, onCellarUpdate }: WineDetailP
 
   useEffect(() => {
     const updateQuantity = async () => {
+      const { loadCellar } = await import('../utils/storageSupabase');
       const cellar = await loadCellar();
       const cellarWine = cellar.wines.find(w => w.wineId === wine.id && w.year === selectedVintage.year);
       setQuantityInCellar(cellarWine?.quantity || 0);
@@ -41,6 +41,7 @@ export default function WineDetail({ wine, onBack, onCellarUpdate }: WineDetailP
   }, [wine.id, selectedVintage.year]);
 
   const handleAddBottle = async () => {
+    const { addToCellar, loadCellar } = await import('../utils/storageSupabase');
     await addToCellar(wine.id, selectedVintage.year);
 
     const cellar = await loadCellar();
@@ -55,7 +56,7 @@ export default function WineDetail({ wine, onBack, onCellarUpdate }: WineDetailP
 
   const handleRemoveBottle = async () => {
     if (quantityInCellar > 0) {
-      const { removeFromCellar } = await import('../utils/storageSupabase');
+      const { removeFromCellar, loadCellar } = await import('../utils/storageSupabase');
       await removeFromCellar(wine.id, selectedVintage.year, 1);
 
       const cellar = await loadCellar();
@@ -69,6 +70,7 @@ export default function WineDetail({ wine, onBack, onCellarUpdate }: WineDetailP
   const handleUpdateLocation = async (value: string) => {
     setCellarLocation(value);
     if (quantityInCellar > 0) {
+      const { updateCellarWine } = await import('../utils/storageSupabase');
       await updateCellarWine(wine.id, selectedVintage.year, { location: value });
       setShowAddedMessage(true);
       setTimeout(() => setShowAddedMessage(false), 1500);
@@ -78,6 +80,7 @@ export default function WineDetail({ wine, onBack, onCellarUpdate }: WineDetailP
   const handleUpdateNotes = async (value: string) => {
     setCellarNotes(value);
     if (quantityInCellar > 0) {
+      const { updateCellarWine } = await import('../utils/storageSupabase');
       await updateCellarWine(wine.id, selectedVintage.year, { notes: value });
       setShowAddedMessage(true);
       setTimeout(() => setShowAddedMessage(false), 1500);

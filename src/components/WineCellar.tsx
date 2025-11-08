@@ -1,11 +1,5 @@
 import { useState, useEffect } from 'react';
 import type { Wine, Vintage } from '../types/wine';
-import {
-  loadCellar,
-  removeFromCellar,
-  exportCellar,
-  importCellar
-} from '../utils/storageSupabase';
 import AISommelier from './AISommelier';
 
 type CellarWineWithDetails = {
@@ -30,6 +24,7 @@ export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarPr
   const [importError, setImportError] = useState('');
 
   const loadCellarWines = async () => {
+    const { loadCellar } = await import('../utils/storageSupabase');
     const cellar = await loadCellar();
     const winesWithDetails: CellarWineWithDetails[] = cellar.wines
       .map(cellarWine => {
@@ -60,6 +55,7 @@ export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarPr
   const handleRemoveOne = async (wineId: string, year: number) => {
     try {
       console.log('Removing wine:', wineId, year);
+      const { removeFromCellar } = await import('../utils/storageSupabase');
       await removeFromCellar(wineId, year, 1);
       await loadCellarWines();
       onUpdate();
@@ -70,6 +66,7 @@ export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarPr
   };
 
   const handleExport = async () => {
+    const { exportCellar } = await import('../utils/storageSupabase');
     const data = await exportCellar();
     const blob = new Blob([data], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
@@ -85,6 +82,7 @@ export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarPr
 
   const handleImport = async () => {
     setImportError('');
+    const { importCellar } = await import('../utils/storageSupabase');
     const success = await importCellar(importData);
     if (success) {
       await loadCellarWines();

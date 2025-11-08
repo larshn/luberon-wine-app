@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import type { Wine } from './types/wine';
 import { wines as seedWines } from './data/wines';
-import { loadCellar } from './utils/storageSupabase';
 import Header from './components/Header';
 import NavigationTabs from './components/NavigationTabs';
 import BottomNav from './components/BottomNav';
@@ -21,6 +20,7 @@ function App() {
 
   useEffect(() => {
     const updateCellarCount = async () => {
+      const { loadCellar } = await import('./utils/storageSupabase');
       const cellar = await loadCellar();
       const total = cellar.wines.reduce((sum, w) => sum + w.quantity, 0);
       setCellarCount(total);
@@ -43,6 +43,7 @@ function App() {
   };
 
   const handleCellarUpdate = async () => {
+    const { loadCellar } = await import('./utils/storageSupabase');
     const cellar = await loadCellar();
     const total = cellar.wines.reduce((sum, w) => sum + w.quantity, 0);
     setCellarCount(total);
