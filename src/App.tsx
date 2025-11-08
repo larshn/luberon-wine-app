@@ -11,6 +11,7 @@ import WineCellar from './components/WineCellar';
 import WineDetail from './components/WineDetail';
 import FoodPairing from './components/FoodPairing';
 import WineMap from './components/WineMap';
+import VintageChart from './components/VintageChart';
 
 function App() {
   const [currentView, setCurrentView] = useState<View>('catalog');
@@ -62,6 +63,8 @@ function App() {
           <p className="section-subtitle">Bli en vinekspert</p>
         </div>
       </div>
+
+      <VintageChart />
 
       <div className="learning-card">
         <div className="learning-card-icon">🍇</div>

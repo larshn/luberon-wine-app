@@ -1,6 +1,5 @@
 import { useState, useMemo, useEffect } from 'react';
 import type { Wine, WineColor } from '../types/wine';
-import VintageChart from './VintageChart';
 import WineCard from './WineCard';
 
 interface WineCatalogProps {
@@ -74,8 +73,6 @@ export default function WineCatalog({ wines, onViewWine, initialProducer }: Wine
         <h2>Vinkatalog</h2>
         <p>Utforsk {wines.length} forskjellige viner fra Luberon-regionen</p>
       </div>
-
-      <VintageChart />
 
       <div className="search-filters">
         <div className="filter-grid">
