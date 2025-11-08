@@ -29,6 +29,12 @@ export interface DbCellarWine {
   purchase_date?: string;
   location?: string;
   notes?: string;
+  // Collection features
+  status?: 'in_cellar' | 'tasted' | 'wishlist';
+  rating?: number;
+  is_favorite?: boolean;
+  tasting_notes?: string;
+  tasted_date?: string;
   created_at?: string;
   updated_at?: string;
 }

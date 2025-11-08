@@ -64,6 +64,12 @@ const loadCellarFromSupabase = async (): Promise<WineCellar> => {
       purchaseDate: dbWine.purchase_date,
       location: dbWine.location,
       notes: dbWine.notes,
+      // Collection features
+      status: dbWine.status,
+      rating: dbWine.rating,
+      is_favorite: dbWine.is_favorite,
+      tasting_notes: dbWine.tasting_notes,
+      tasted_date: dbWine.tasted_date,
     }));
 
     return { wines };
@@ -98,6 +104,12 @@ const saveCellarToSupabase = async (cellar: WineCellar): Promise<boolean> => {
         purchase_date: wine.purchaseDate,
         location: wine.location,
         notes: wine.notes,
+        // Collection features
+        status: wine.status,
+        rating: wine.rating,
+        is_favorite: wine.is_favorite,
+        tasting_notes: wine.tasting_notes,
+        tasted_date: wine.tasted_date,
       }));
 
       // Upsert: insert or update on conflict
@@ -154,7 +166,8 @@ export const addToCellar = async (wineId: string, year: number, quantity: number
       wineId,
       year,
       quantity,
-      purchaseDate: new Date().toISOString().split('T')[0]
+      purchaseDate: new Date().toISOString().split('T')[0],
+      status: 'in_cellar', // Default status for new wines
     });
   }
 

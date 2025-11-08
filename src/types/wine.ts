@@ -72,6 +72,8 @@ export interface Wine {
   purchaseLocations?: PurchaseLocation[]; // Where to buy this wine
 }
 
+export type WineStatus = 'in_cellar' | 'tasted' | 'wishlist';
+
 export interface CellarWine {
   wineId: string;
   year: number; // Specific vintage year
@@ -79,6 +81,12 @@ export interface CellarWine {
   purchaseDate?: string;
   location?: string;
   notes?: string;
+  // Collection features
+  status?: WineStatus;
+  rating?: number; // 1-5 stars
+  is_favorite?: boolean;
+  tasting_notes?: string;
+  tasted_date?: string;
 }
 
 export interface WineCellar {
