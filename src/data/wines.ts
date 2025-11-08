@@ -1264,6 +1264,174 @@ export const wines: Wine[] = [
     ]
   },
   {
+    id: 'mille-celestine-blanc',
+    name: 'Célestine Blanc',
+    producer: 'Château de Mille',
+    color: 'white',
+    appellation: 'Luberon AOP',
+    imageUrl: 'https://provence-wein.com/wp-content/uploads/2024/03/C%C3%A9lestine-Wei%C3%9F_600x600-390x390.jpg',
+    grapes: ['Grenache Blanc', 'Roussanne', 'Vermentino'],
+    description: 'Premium hvitvin fra Château de Mille med kompleks aromatikk og god lagringspotensial. Elegant og fyldig med fin mineralitet.',
+    foodPairings: [
+      { dish: 'Kamskjell', description: 'Vinens kompleksitet matcher rike kamskjellretter' },
+      { dish: 'Hummer med smør', description: 'Fyldig hvitvin til luksuriøs sjømat' },
+      { dish: 'Kylling i kremsaus', description: 'Vinens fylde står opp mot rik saus' },
+      { dish: 'Modne hvite oster', description: 'Brie eller Camembert med god modning' }
+    ],
+    purchaseLocations: [
+      {
+        type: 'chateau',
+        name: 'Château de Mille',
+        address: '2650 Route de Bonnieux',
+        city: 'Apt',
+        postalCode: '84400',
+        phone: '+33 4 90 74 11 94',
+        email: 'contact@chateaudemille.fr',
+        website: 'https://www.chateaudemille.fr',
+        coordinates: {
+          lat: 43.866744,
+          lng: 5.352626
+        },
+        openingHours: {
+          monday: '10:00-12:00, 14:00-18:00',
+          tuesday: '10:00-12:00, 14:00-18:00',
+          wednesday: '10:00-12:00, 14:00-18:00',
+          thursday: '10:00-12:00, 14:00-18:00',
+          friday: '10:00-12:00, 14:00-18:00',
+          saturday: '10:00-12:00, 14:00-18:00',
+          sunday: 'Stengt',
+          notes: 'Sommeråpningstider (juli-august): Utvidet til 19:00'
+        },
+        priceRange: '€12-35',
+        notes: 'Gratis vinsmaking. Omvisning på forespørsel. Vingården ligger ved foten av Luberon-fjellet med spektakulær utsikt.',
+        bookingRequired: false,
+        tastingAvailable: true
+      }
+    ],
+    vintages: [
+      {
+        year: 2024,
+        alcoholContent: 13.5,
+        tastingNotes: ['Hvite blomster', 'Honning', 'Mineralsk', 'Kompleks'],
+        storageRecommendation: 'short-term',
+        optimalDrinkingWindow: { start: 1, end: 5 },
+        price: 28
+      }
+    ]
+  },
+  {
+    id: 'mille-saint-lucide-blanc',
+    name: 'Saint-Lucide Blanc',
+    producer: 'Château de Mille',
+    color: 'white',
+    appellation: 'Luberon AOP',
+    imageUrl: 'https://provence-wein.com/wp-content/uploads/2024/03/Saint-Lucide-Wei%C3%9F_600x600-390x390.jpg',
+    grapes: ['Roussanne', 'Grenache Blanc', 'Vermentino'],
+    description: 'Toppvin blant hvitvinene fra Château de Mille. Roussanne-dominert med stor kompleksitet, rik tekstur og fremragende lagringsevne.',
+    foodPairings: [
+      { dish: 'Hummer thermidor', description: 'Vinens fylde og kompleksitet matcher denne luksuriøse retten' },
+      { dish: 'Steinbit i smørsaus', description: 'Rik hvit fisk med rik saus krever en fyldig vin' },
+      { dish: 'Risotto med sopp', description: 'Kompleks vin til kompleks rett' },
+      { dish: 'Modne oster', description: 'Comté eller gammel hvit cheddar' }
+    ],
+    purchaseLocations: [
+      {
+        type: 'chateau',
+        name: 'Château de Mille',
+        address: '2650 Route de Bonnieux',
+        city: 'Apt',
+        postalCode: '84400',
+        phone: '+33 4 90 74 11 94',
+        email: 'contact@chateaudemille.fr',
+        website: 'https://www.chateaudemille.fr',
+        coordinates: {
+          lat: 43.866744,
+          lng: 5.352626
+        },
+        openingHours: {
+          monday: '10:00-12:00, 14:00-18:00',
+          tuesday: '10:00-12:00, 14:00-18:00',
+          wednesday: '10:00-12:00, 14:00-18:00',
+          thursday: '10:00-12:00, 14:00-18:00',
+          friday: '10:00-12:00, 14:00-18:00',
+          saturday: '10:00-12:00, 14:00-18:00',
+          sunday: 'Stengt',
+          notes: 'Sommeråpningstider (juli-august): Utvidet til 19:00'
+        },
+        priceRange: '€12-35',
+        notes: 'Gratis vinsmaking. Omvisning på forespørsel. Vingården ligger ved foten av Luberon-fjellet med spektakulær utsikt.',
+        bookingRequired: false,
+        tastingAvailable: true
+      }
+    ],
+    vintages: [
+      {
+        year: 2024,
+        alcoholContent: 14,
+        tastingNotes: ['Aprikos', 'Honning', 'Vanilje', 'Mineralsk', 'Rik tekstur'],
+        storageRecommendation: 'medium-term',
+        optimalDrinkingWindow: { start: 2, end: 8 },
+        price: 32
+      }
+    ]
+  },
+  {
+    id: 'mille-rose',
+    name: 'Château de Mille Rosé',
+    producer: 'Château de Mille',
+    color: 'rosé',
+    appellation: 'Luberon AOP',
+    imageUrl: 'https://provence-wein.com/wp-content/uploads/2024/03/Ch%C3%A2teau-de-Mille-Ros%C3%A9-2024-390x390.jpg',
+    grapes: ['Grenache', 'Syrah', 'Cinsault'],
+    description: 'Elegant og frisk rosé fra Château de Mille. Klassisk provencalsk stil med delikate røde bær og blomsteraromer. Perfekt sommervin.',
+    foodPairings: [
+      { dish: 'Salade Niçoise', description: 'Klassisk provencalsk salat med tunfisk' },
+      { dish: 'Grillet laks', description: 'Frisk rosé til fet fisk' },
+      { dish: 'Reker med aioli', description: 'Perfekt aperitiff-kombinasjon' },
+      { dish: 'Tomatbaserte pastaretter', description: 'Arrabbiata eller marinara' }
+    ],
+    purchaseLocations: [
+      {
+        type: 'chateau',
+        name: 'Château de Mille',
+        address: '2650 Route de Bonnieux',
+        city: 'Apt',
+        postalCode: '84400',
+        phone: '+33 4 90 74 11 94',
+        email: 'contact@chateaudemille.fr',
+        website: 'https://www.chateaudemille.fr',
+        coordinates: {
+          lat: 43.866744,
+          lng: 5.352626
+        },
+        openingHours: {
+          monday: '10:00-12:00, 14:00-18:00',
+          tuesday: '10:00-12:00, 14:00-18:00',
+          wednesday: '10:00-12:00, 14:00-18:00',
+          thursday: '10:00-12:00, 14:00-18:00',
+          friday: '10:00-12:00, 14:00-18:00',
+          saturday: '10:00-12:00, 14:00-18:00',
+          sunday: 'Stengt',
+          notes: 'Sommeråpningstider (juli-august): Utvidet til 19:00'
+        },
+        priceRange: '€12-35',
+        notes: 'Gratis vinsmaking. Omvisning på forespørsel. Vingården ligger ved foten av Luberon-fjellet med spektakulær utsikt.',
+        bookingRequired: false,
+        tastingAvailable: true
+      }
+    ],
+    vintages: [
+      {
+        year: 2024,
+        alcoholContent: 13,
+        tastingNotes: ['Jordbær', 'Fersken', 'Blomster', 'Frisk'],
+        storageRecommendation: 'drink-now',
+        optimalDrinkingWindow: { start: 0, end: 2 },
+        price: 13
+      }
+    ]
+  },
+  {
     id: 'claux-panorama',
     name: 'Panorama Blanc',
     producer: 'Bastide du Claux',
