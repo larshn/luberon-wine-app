@@ -1204,3 +1204,107 @@ body {
 .modal-actions .btn {
   flex: 1;
 }
+
+/* Wine Detail Page */
+.wine-detail-card {
+  padding-left: calc(var(--spacing-lg) + 4px); /* Extra space for color bar */
+}
+
+.detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-lg);
+  border-bottom: 2px solid var(--border);
+}
+
+.detail-title h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+  .detail-title h1 {
+    font-size: 32px;
+  }
+}
+
+.detail-producer {
+  font-size: 18px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.detail-price {
+  text-align: right;
+}
+
+.detail-price-value {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.detail-section {
+  margin-bottom: var(--spacing-lg);
+}
+
+.detail-section h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.detail-section p {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+}
+
+@media (min-width: 768px) {
+  .detail-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Status Badges */
+.status-badge {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  border: 2px solid;
+}
+
+.status-badge.ready {
+  background: #dcfce7;
+  color: #166534;
+  border-color: #86efac;
+}
+
+.status-badge.too-young {
+  background: #fef3c7;
+  color: #92400e;
+  border-color: #fde047;
+}
+
+.status-badge.past-peak {
+  background: #fee2e2;
+  color: #991b1b;
+  border-color: #fca5a5;
+}
