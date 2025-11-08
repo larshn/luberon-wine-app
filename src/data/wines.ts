@@ -1153,6 +1153,62 @@ export const wines: Wine[] = [
     ]
   },
   {
+    id: 'mille-clefs-rouge',
+    name: 'Les Clefs de Mille Rouge',
+    producer: 'Château de Mille',
+    color: 'red',
+    appellation: 'Luberon AOP',
+    imageUrl: '/images/wines/clefs-de-mille-rouge.jpg',
+    grapes: ['Grenache', 'Syrah'],
+    description: 'Aromatisk og frisk rødvin fra Château de Mille. Elegant basis-vin med delikate røde bær og provencalske urter. Perfekt hverdagsvin.',
+    foodPairings: [
+      { dish: 'Grillet kylling', description: 'Lett rødvin til hvitt kjøtt' },
+      { dish: 'Pizza med salami', description: 'Fruktighet balanserer den salte salamien' },
+      { dish: 'Pasta med tomatsaus', description: 'Klassisk italiensk kombinasjon' },
+      { dish: 'Charcuterie', description: 'Perfekt til provencalsk pølse og terrine' }
+    ],
+    purchaseLocations: [
+      {
+        type: 'chateau',
+        name: 'Château de Mille',
+        address: '2650 Route de Bonnieux',
+        city: 'Apt',
+        postalCode: '84400',
+        phone: '+33 4 90 74 11 94',
+        email: 'contact@chateaudemille.fr',
+        website: 'https://www.chateaudemille.fr',
+        coordinates: {
+          lat: 43.866744,
+          lng: 5.352626
+        },
+        openingHours: {
+          monday: '10:00-12:00, 14:00-18:00',
+          tuesday: '10:00-12:00, 14:00-18:00',
+          wednesday: '10:00-12:00, 14:00-18:00',
+          thursday: '10:00-12:00, 14:00-18:00',
+          friday: '10:00-12:00, 14:00-18:00',
+          saturday: '10:00-12:00, 14:00-18:00',
+          sunday: 'Stengt',
+          notes: 'Sommeråpningstider (juli-august): Utvidet til 19:00'
+        },
+        priceRange: '€10-15',
+        notes: 'Gratis vinsmaking. Omvisning på forespørsel. Vingården ligger ved foten av Luberon-fjellet med spektakulær utsikt.',
+        bookingRequired: false,
+        tastingAvailable: true
+      }
+    ],
+    vintages: [
+      {
+        year: 2022,
+        alcoholContent: 13.0,
+        tastingNotes: ['Røde bær', 'Kirsebær', 'Provencalske urter', 'Pepperkrydder'],
+        storageRecommendation: 'drink-now',
+        optimalDrinkingWindow: { start: 0, end: 3 },
+        price: 12
+      }
+    ]
+  },
+  {
     id: 'mille-blanc',
     name: 'Château de Mille Blanc',
     producer: 'Château de Mille',
