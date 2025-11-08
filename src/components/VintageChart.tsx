@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { vintageRatings } from '../data/vintages';
 
 const getVisibleRatingColor = (rating: number): string => {
@@ -25,9 +25,17 @@ const getRatingLabel = (rating: number): string => {
 
 export default function VintageChart() {
   const [hoveredYear, setHoveredYear] = useState<number | null>(null);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  // Detect mobile on mount and resize
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   return (
-    <div className="card" style={{ padding: '1.5rem' }}>
+    <div className="card" style={{ padding: '1.5rem', overflow: 'hidden' }}>
       <div style={{ marginBottom: '1.5rem' }}>
         <h2 style={{ fontSize: '1.5rem', color: '#722f37', marginBottom: '0.5rem' }}>
           🍇 Årgangskvalitet
@@ -40,11 +48,12 @@ export default function VintageChart() {
       {/* Horizontal scrolling chart */}
       <div style={{
         overflowX: 'auto',
-        overflowY: 'hidden',
+        overflowY: 'visible',
         marginBottom: '1.5rem',
         WebkitOverflowScrolling: 'touch',
         scrollbarWidth: 'thin',
-        scrollbarColor: '#d4af37 #f5f5f5'
+        scrollbarColor: '#d4af37 #f5f5f5',
+        position: 'relative'
       }}>
         <div style={{
           display: 'flex',
@@ -84,42 +93,50 @@ export default function VintageChart() {
                   {/* Tooltip on hover */}
                   {isHovered && (
                     <div style={{
-                      position: 'absolute',
-                      bottom: '100%',
-                      left: '50%',
-                      transform: 'translateX(-50%)',
-                      background: '#1a1a1a',
-                      color: 'white',
-                      padding: '8px 12px',
-                      borderRadius: '8px',
-                      whiteSpace: 'nowrap',
-                      fontSize: '0.85rem',
-                      marginBottom: '8px',
-                      zIndex: 10,
-                      boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
-                      pointerEvents: 'none'
-                    }}>
-                      <div style={{ fontWeight: 700, marginBottom: '2px' }}>
-                        {vintage.year}
-                      </div>
-                      <div style={{ color: '#d4af37', fontSize: '0.8rem' }}>
-                        {'★'.repeat(vintage.rating)}{'☆'.repeat(5 - vintage.rating)}
-                      </div>
-                      <div style={{ fontSize: '0.75rem', marginTop: '4px', opacity: 0.9 }}>
-                        {vintage.description}
-                      </div>
-                      {/* Arrow */}
-                      <div style={{
-                        position: 'absolute',
-                        bottom: '-4px',
+                      position: isMobile ? 'fixed' : 'absolute',
+                      ...(isMobile ? {
+                        top: '50%',
+                        left: '50%',
+                        transform: 'translate(-50%, -50%)'
+                      } : {
+                        bottom: '100%',
                         left: '50%',
                         transform: 'translateX(-50%)',
-                        width: 0,
-                        height: 0,
-                        borderLeft: '4px solid transparent',
-                        borderRight: '4px solid transparent',
-                        borderTop: '4px solid #1a1a1a'
-                      }} />
+                        marginBottom: '8px'
+                      }),
+                      background: '#1a1a1a',
+                      color: 'white',
+                      padding: isMobile ? '16px 20px' : '8px 12px',
+                      borderRadius: '8px',
+                      whiteSpace: 'nowrap',
+                      fontSize: isMobile ? '1rem' : '0.85rem',
+                      zIndex: 1000,
+                      boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
+                      pointerEvents: 'none'
+                    }}>
+                      <div style={{ fontWeight: 700, marginBottom: '4px', fontSize: isMobile ? '1.2rem' : '1rem' }}>
+                        {vintage.year}
+                      </div>
+                      <div style={{ color: '#d4af37', fontSize: isMobile ? '1rem' : '0.8rem', marginBottom: '4px' }}>
+                        {'★'.repeat(vintage.rating)}{'☆'.repeat(5 - vintage.rating)}
+                      </div>
+                      <div style={{ fontSize: isMobile ? '0.9rem' : '0.75rem', opacity: 0.9, maxWidth: isMobile ? '280px' : 'none', whiteSpace: isMobile ? 'normal' : 'nowrap' }}>
+                        {vintage.description}
+                      </div>
+                      {/* Arrow - only show on desktop */}
+                      {!isMobile && (
+                        <div style={{
+                          position: 'absolute',
+                          bottom: '-4px',
+                          left: '50%',
+                          transform: 'translateX(-50%)',
+                          width: 0,
+                          height: 0,
+                          borderLeft: '4px solid transparent',
+                          borderRight: '4px solid transparent',
+                          borderTop: '4px solid #1a1a1a'
+                        }} />
+                      )}
                     </div>
                   )}
 
