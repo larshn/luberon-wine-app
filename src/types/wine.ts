@@ -45,6 +45,14 @@ export interface FoodPairing {
   description?: string;
 }
 
+export interface CriticReview {
+  source: string; // e.g., 'Wine Enthusiast', 'Wine Spectator'
+  score: number; // e.g., 88 (out of 100)
+  review?: string; // Professional tasting notes
+  reviewedDate?: string;
+  reviewer?: string; // Name of critic
+}
+
 export interface Vintage {
   year: number;
   alcoholContent: number;
@@ -56,6 +64,7 @@ export interface Vintage {
   };
   price?: number; // in EUR
   notes?: string; // Specific notes for this vintage
+  criticReviews?: CriticReview[]; // Professional critic reviews
 }
 
 export interface Wine {

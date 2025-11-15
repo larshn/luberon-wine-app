@@ -180,7 +180,14 @@ export const wines: Wine[] = [
         tastingNotes: ['Mørke kirsebær', 'Pepper', 'Vanilje', 'Lakrits'],
         storageRecommendation: 'medium-term',
         optimalDrinkingWindow: { start: 2, end: 10 },
-        price: 28
+        price: 28,
+        criticReviews: [
+          {
+            source: 'Wine Enthusiast',
+            score: 87,
+            review: 'With its bold, jammy blackberries and a hint of black pepper on the nose, this wine is all about delivering a flavor punch. Straightforward berry fruit is tinged with licorice in a bulky but satisfying package.'
+          }
+        ]
       },
       {
         year: 2019,
@@ -222,7 +229,14 @@ export const wines: Wine[] = [
         tastingNotes: ['Grønne epler', 'Pære', 'Mandel', 'Frisk syre'],
         storageRecommendation: 'drink-now',
         optimalDrinkingWindow: { start: 0, end: 2 },
-        price: 14
+        price: 14,
+        criticReviews: [
+          {
+            source: 'Wine Enthusiast',
+            score: 87,
+            review: 'This reliable Luberon producer has quietly turned out another good value. An understated, medium-bodied white from the Luberon, this Roussanne offers modest pear elements intertwined with attractive musky-spicy notes. Drink it over the next year or so.'
+          }
+        ]
       }
     ]
   },
@@ -273,7 +287,19 @@ export const wines: Wine[] = [
         tastingNotes: ['Røde bær', 'Provence-urter', 'Pepper', 'Myk'],
         storageRecommendation: 'drink-soon',
         optimalDrinkingWindow: { start: 0, end: 4 },
-        price: 14
+        price: 14,
+        criticReviews: [
+          {
+            source: 'Wine Enthusiast',
+            score: 85,
+            review: 'Hints of cinnamon and clove reflect a small amount of new oak aging, but the dominant flavors are of plum and dusty earth. Not a powerhouse, it\'s a balanced, food-friendly wine at a reasonable price—the kind of wine that wins friends, not ratings competitions.'
+          },
+          {
+            source: 'Wine Enthusiast',
+            score: 83,
+            review: 'Herbal, foresty aromas are followed by a palate that delivers strawberry fruit and some light oak. Not a prime-time wine due to a biting lean finish and thin mouthfeel. Lots of red fruit throughout, but also drying tannins.'
+          }
+        ]
       }
     ]
   },

@@ -240,6 +240,53 @@ export default function WineDetail({ wine, onBack, onCellarUpdate }: WineDetailP
                 ))}
               </div>
             </div>
+
+            {selectedVintage.criticReviews && selectedVintage.criticReviews.length > 0 && (
+              <div className="detail-section">
+                <h2>⭐ Kritikeranmeldelser</h2>
+                <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
+                  {selectedVintage.criticReviews.map((review, index) => (
+                    <div
+                      key={index}
+                      style={{
+                        padding: '1rem',
+                        background: 'linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)',
+                        borderRadius: '12px',
+                        border: '1px solid #fcd34d'
+                      }}
+                    >
+                      <div style={{display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.5rem'}}>
+                        <span style={{
+                          fontSize: '1.5rem',
+                          fontWeight: '700',
+                          color: '#92400e',
+                          padding: '0.25rem 0.75rem',
+                          background: 'white',
+                          borderRadius: '8px',
+                          boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+                        }}>
+                          {review.score}
+                        </span>
+                        <span style={{fontSize: '0.9rem', fontWeight: '600', color: '#78350f'}}>
+                          {review.source}
+                        </span>
+                      </div>
+                      {review.review && (
+                        <p style={{
+                          fontSize: '0.9rem',
+                          color: '#451a03',
+                          lineHeight: '1.6',
+                          fontStyle: 'italic',
+                          margin: 0
+                        }}>
+                          "{review.review}"
+                        </p>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
 
           <div>
