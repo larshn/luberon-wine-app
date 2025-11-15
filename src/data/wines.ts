@@ -61,7 +61,14 @@ export const wines: Wine[] = [
         tastingNotes: ['Modne kirsebær', 'Pepper', 'Provence-urter', 'Velvet struktur'],
         storageRecommendation: 'short-term',
         optimalDrinkingWindow: { start: 1, end: 6 },
-        price: 18
+        price: 18,
+        criticReviews: [
+          {
+            source: 'Wine Enthusiast',
+            score: 83,
+            review: 'Nice clean nose, with scents of cherries and white pepper. But what are the green, stemmy flavors doing on the palate? Modest cherry fruit, but this medium-bodied wine finishes herbal and astringent.'
+          }
+        ]
       },
       {
         year: 2019,
@@ -69,7 +76,14 @@ export const wines: Wine[] = [
         tastingNotes: ['Solmodne bær', 'Lavendel', 'Silkemyk', 'Elegant'],
         storageRecommendation: 'drink-soon',
         optimalDrinkingWindow: { start: 0, end: 4 },
-        price: 17
+        price: 17,
+        criticReviews: [
+          {
+            source: 'Wine Enthusiast',
+            score: 83,
+            review: 'Nice clean nose, with scents of cherries and white pepper. Modest cherry fruit, but this medium-bodied wine finishes herbal and astringent.'
+          }
+        ]
       }
     ]
   },
@@ -436,7 +450,14 @@ export const wines: Wine[] = [
         tastingNotes: ['Modne bær', 'Lær', 'Trøffel', 'Kompleks'],
         storageRecommendation: 'medium-term',
         optimalDrinkingWindow: { start: 4, end: 15 },
-        price: 35
+        price: 35,
+        criticReviews: [
+          {
+            source: 'Wine Enthusiast',
+            score: 90,
+            review: 'Fontenille is almost always a great value, boasting concentrated raspberry aromas that leap from the glass. The intense fruit is nicely balanced by structure, and made complex by the addition of leather and dark chocolate notes on the lengthy finish.'
+          }
+        ]
       }
     ]
   },
@@ -1066,7 +1087,14 @@ export const wines: Wine[] = [
         tastingNotes: ['Gul frukt', 'Sitron', 'Krydder', 'Kompleks'],
         storageRecommendation: 'short-term',
         optimalDrinkingWindow: { start: 1, end: 5 },
-        price: 9
+        price: 9,
+        criticReviews: [
+          {
+            source: 'Wine Enthusiast',
+            score: 87,
+            review: 'This blend of Grenache Blanc and Vermentino offers slightly floral aromas that hint at apricot or peach, then follows those up with similar flavors and just a touch of spice on the finish. Marrenon is emerging as a dependable source for value wines from the Luberon.'
+          }
+        ]
       }
     ]
   },
@@ -1851,7 +1879,14 @@ export const wines: Wine[] = [
         tastingNotes: ['Sitrus', 'Mineralitet', 'Frisk'],
         storageRecommendation: 'drink-now',
         optimalDrinkingWindow: { start: 0, end: 3 },
-        price: 14
+        price: 14,
+        criticReviews: [
+          {
+            source: 'Wine Enthusiast',
+            score: 84,
+            review: 'A medium-bodied blend of Grenache Blanc, Bourboulenc, Ugni Blanc and Roussanne, this simple white from the Perrin family of Beaucastel offers fruity notes of melon and citrus that finish crisp and clean.'
+          }
+        ]
       }
     ]
   },
