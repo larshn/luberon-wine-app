@@ -214,6 +214,39 @@ export const wines: Wine[] = [
     ]
   },
   {
+    id: 'val-joanis-chanoine-trouillet',
+    name: 'Vigne du Chanoine Trouillet',
+    producer: 'Château Val Joanis',
+    color: 'red',
+    appellation: 'Côtes du Luberon AOP',
+    grapes: ['Syrah', 'Grenache'],
+    description: 'Premium rødvin fra Château Val Joanis. Rikt eikepåvirket med dristige aromaer og supel kremaktig munnfølelse. En luksuriøs vin laget for lagring og spesielle anledninger.',
+    foodPairings: [
+      { dish: 'Entrecôte med béarnaisesaus', description: 'Fyldig vin til saftig biff' },
+      { dish: 'Viltstek med sjampinjong', description: 'Eikens vanilje matcher soppsmakene' },
+      { dish: 'Lam confiterert i timian', description: 'Provencalske urter i harmoni' },
+      { dish: 'Modne harde oster', description: 'Comté eller gammel Manchego' }
+    ],
+    purchaseLocations: [purchaseLocations['chateau-val-joanis']],
+    vintages: [
+      {
+        year: 2019,
+        alcoholContent: 14.5,
+        tastingNotes: ['Smørpoppkorn', 'Sedertre', 'Vanilje', 'Sjokolade', 'Sort kirsebær'],
+        storageRecommendation: 'medium-term',
+        optimalDrinkingWindow: { start: 3, end: 10 },
+        price: 30,
+        criticReviews: [
+          {
+            source: 'Wine Enthusiast',
+            score: 88,
+            review: 'Duft av smørpoppkorn leder an, etterfulgt av bølger av eikeavledede smaker: sedertre, vanilje og sjokolade, støttet opp av noen sorte kirsebærnoter. Munnfølelsen er supel og kremaktig, avslutningen moderat tanninrik. Drikk denne rikt eikede vinen fra nå til 2029, når eiken har integrert seg bedre med fruktsubstratet.'
+          }
+        ]
+      }
+    ]
+  },
+  {
     id: 'val-joanis-tradition-blanc',
     name: 'Tradition Blanc',
     producer: 'Château Val Joanis',
@@ -1093,6 +1126,105 @@ export const wines: Wine[] = [
             source: 'Wine Enthusiast',
             score: 87,
             review: 'Denne blandingen av Grenache Blanc og Vermentino byr på lett blomsteraktige aromaer som antyder aprikos eller fersken, deretter følger den opp med lignende smaker og bare et snev av krydder på avslutningen. Marrenon fremstår som en pålitelig kilde for verdiviner fra Luberon.'
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'marrenon-petula',
+    name: 'Petula Sélection Parcellaire',
+    producer: 'Vignobles Marrenon',
+    color: 'rosé',
+    appellation: 'Luberon AOP',
+    grapes: ['Syrah', 'Grenache'],
+    description: 'Prisbelønnet rosé fra Marrenon (Gull i Concours Mondial de Bruxelles). En terroir-rosé med drastisk utvalg av vinstokker basert på plantens fysiologiske funksjon. Kombinerer kraft og friskhet, perfekt til måltider.',
+    foodPairings: [
+      { dish: 'Grillet laks', description: 'Kraftig rosé med nok fylde til fet fisk' },
+      { dish: 'Spansk paella', description: 'Friskhet balanserer safran og sjømat' },
+      { dish: 'Provencalsk bouillabaisse', description: 'Klassisk match til fiskesuppe' },
+      { dish: 'Grillede grønnsaker', description: 'Røkte aromaer matcher grillsmak perfekt' }
+    ],
+    purchaseLocations: [purchaseLocations['vignobles-marrenon']],
+    vintages: [
+      {
+        year: 2023,
+        alcoholContent: 13,
+        tastingNotes: ['Mandarin', 'Fersken', 'Våte steiner', 'Tørr avslutning'],
+        storageRecommendation: 'drink-now',
+        optimalDrinkingWindow: { start: 0, end: 2 },
+        price: 16,
+        criticReviews: [
+          {
+            source: 'Wine Enthusiast',
+            score: 88,
+            review: 'Denne blandingen av Syrah og Grenache gir et velutviklet, stort sett nøytralt lerret for å skylle ned et bredt spekter av mat. Hint av mandarin og fersken tilfører nyanse og interesse til de våte steinelementene som dominerer, deretter en tørr og munnvannsfremmende avslutning.'
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'marrenon-grand-cuvee',
+    name: 'Grand Marrenon Blanc',
+    producer: 'Vignobles Marrenon',
+    color: 'white',
+    appellation: 'Luberon AOP',
+    grapes: ['Vermentino', 'Grenache Blanc', 'Roussanne'],
+    description: 'Premium hvitvin fra Marrenon med kompleks fatlagring. 40% av vinen lagres på fat (nye eller brukte) i 6 måneder, noe som gir vin dybde og karakter. En elegant blanding med mineralitet, friske blomsterduft og subtile smøraktige undertoner.',
+    foodPairings: [
+      { dish: 'Grillet kveite', description: 'Fyldig nok til hvit fisk med grillsmak' },
+      { dish: 'Kremet pasta med sjampinjong', description: 'Smøraktige toner matcher kremsaus' },
+      { dish: 'Kylling med sitron og timian', description: 'Sitrusnoter fremhever sitronsmaken' },
+      { dish: 'Moderat lagret geiteost', description: 'Mineralitet balanserer ostens syre' }
+    ],
+    purchaseLocations: [purchaseLocations['vignobles-marrenon']],
+    vintages: [
+      {
+        year: 2023,
+        alcoholContent: 13,
+        tastingNotes: ['Hvit grapefrukt', 'Pære', 'Ananas', 'Søte krydder', 'Sandeltre'],
+        storageRecommendation: 'short-term',
+        optimalDrinkingWindow: { start: 0, end: 4 },
+        price: 18,
+        criticReviews: [
+          {
+            source: 'Wine Enthusiast',
+            score: 88,
+            review: 'Denne fatgjærede blandingen av Grenache Blanc, Vermentino og Roussanne byr på hint av ristede hasselnøtter, men også rikelig med modne pæresmake og snev av krydder og akasiablomst. Teksturen er fyldig, smakene dristige, bare avtagende litt i intensitet på avslutningen.'
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'marrenon-classique-rose',
+    name: 'Classique Rosé',
+    producer: 'Vignobles Marrenon',
+    color: 'rosé',
+    appellation: 'Luberon AOP',
+    grapes: ['Syrah', 'Grenache'],
+    description: 'Ren og forfriskende rosé fra de høyere høydene i Luberon. Laget i moderne, kaldgjæret stil som gir en lett og elegant vin perfekt for sommerlige anledninger. En dagligdags rosé med god verdi.',
+    foodPairings: [
+      { dish: 'Sommerlig salat', description: 'Lett rosé til friske grønnsaker' },
+      { dish: 'Grillet kyllingspyd', description: 'Forfriskende til enkle grillretter' },
+      { dish: 'Tapas og snacks', description: 'Perfekt aperitiff-vin' },
+      { dish: 'Pizza Margherita', description: 'Enkel hverdagsmat' }
+    ],
+    purchaseLocations: [purchaseLocations['vignobles-marrenon']],
+    vintages: [
+      {
+        year: 2023,
+        alcoholContent: 12.5,
+        tastingNotes: ['Røde bær', 'Sitrus', 'Lett konfekt', 'Tørr avslutning'],
+        storageRecommendation: 'drink-now',
+        optimalDrinkingWindow: { start: 0, end: 1 },
+        price: 11,
+        criticReviews: [
+          {
+            source: 'Wine Enthusiast',
+            score: 86,
+            review: 'Dette er en ren, forfriskende rosé fra de generelt høyere høydene i Luberon. I den moderne, kaldgjærede stilen er den litt konfektaktig i fruktestere - noe som minner om tyggegummi eller sukkerspinn - men likevel tørr på avslutningen.'
           }
         ]
       }
@@ -2359,6 +2491,38 @@ export const wines: Wine[] = [
         storageRecommendation: 'short-term',
         optimalDrinkingWindow: { start: 0, end: 3 },
         price: 14
+      }
+    ]
+  },
+  {
+    id: 'louis-bernard-luberon-blanc',
+    name: 'Côtes du Luberon Blanc',
+    producer: 'Louis Bernard',
+    color: 'white',
+    appellation: 'Côtes du Luberon AOP',
+    grapes: ['Grenache Blanc', 'Bourboulenc', 'Ugni Blanc', 'Roussanne'],
+    description: 'Klassisk hvitvin fra Luberon fra det respekterte huset Louis Bernard (nå en del av Boisset Collection). En ren og elegant dagligvin med god friskhet og mineralitet. Litt mager sammenlignet med de fyldigste Rhône-vinene, men det er også dens styrke - friskhet og livlighet.',
+    foodPairings: [
+      { dish: 'Grillet hvit fisk', description: 'Torsk eller kveite med sitron' },
+      { dish: 'Salater med sitrusdressing', description: 'Frisk vin til friske grønnsaker' },
+      { dish: 'Hvite skjell', description: 'Kamskjell eller blåskjell i hvitvin' },
+      { dish: 'Geiteost', description: 'Frisk chèvre' }
+    ],
+    vintages: [
+      {
+        year: 2023,
+        alcoholContent: 13,
+        tastingNotes: ['Pære', 'Krydder', 'Ren', 'Sprø avslutning'],
+        storageRecommendation: 'drink-now',
+        optimalDrinkingWindow: { start: 0, end: 2 },
+        price: 11,
+        criticReviews: [
+          {
+            source: 'Wine Enthusiast',
+            score: 86,
+            review: 'Denne vinen er litt på den magre siden sammenlignet med de fleste sørlige Rhône-hvitvinene, men plussiden til det er dens friskhet og livlighet. Pærefrukt er understreket med hint av krydder, avslutter ren og sprø. Drikk nå.'
+          }
+        ]
       }
     ]
   },
