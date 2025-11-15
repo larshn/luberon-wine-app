@@ -70,10 +70,16 @@ export default function Auth({ onAuthChange }: AuthProps) {
 
   const handleSignOut = async () => {
     try {
+      setLoading(true);
       await supabase!.auth.signOut();
+      setUser(null);
       setMessage('Logget ut');
+      onAuthChange?.(null);
     } catch (error: any) {
       setMessage(error.message);
+      console.error('Logout error:', error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -123,32 +129,38 @@ export default function Auth({ onAuthChange }: AuthProps) {
         </div>
         <button
           onClick={handleSignOut}
+          disabled={loading}
           style={{
             padding: '0.5rem 1rem',
             fontSize: '14px',
-            background: 'white',
+            background: loading ? '#f5f5f4' : 'white',
             border: '1px solid #e7e5e4',
             borderRadius: '10px',
-            color: '#57534e',
+            color: loading ? '#a8a29e' : '#57534e',
             fontWeight: '600',
-            cursor: 'pointer',
+            cursor: loading ? 'not-allowed' : 'pointer',
             transition: 'all 0.2s',
-            boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)'
+            boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
+            opacity: loading ? 0.6 : 1
           }}
           onMouseOver={(e) => {
-            e.currentTarget.style.background = '#fafaf9';
-            e.currentTarget.style.borderColor = '#a8a29e';
-            e.currentTarget.style.transform = 'translateY(-1px)';
-            e.currentTarget.style.boxShadow = '0 2px 6px rgba(0, 0, 0, 0.15)';
+            if (!loading) {
+              e.currentTarget.style.background = '#fafaf9';
+              e.currentTarget.style.borderColor = '#a8a29e';
+              e.currentTarget.style.transform = 'translateY(-1px)';
+              e.currentTarget.style.boxShadow = '0 2px 6px rgba(0, 0, 0, 0.15)';
+            }
           }}
           onMouseOut={(e) => {
-            e.currentTarget.style.background = 'white';
-            e.currentTarget.style.borderColor = '#e7e5e4';
-            e.currentTarget.style.transform = 'translateY(0)';
-            e.currentTarget.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.1)';
+            if (!loading) {
+              e.currentTarget.style.background = 'white';
+              e.currentTarget.style.borderColor = '#e7e5e4';
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.1)';
+            }
           }}
         >
-          Logg ut
+          {loading ? 'Logger ut...' : 'Logg ut'}
         </button>
       </div>
     );
