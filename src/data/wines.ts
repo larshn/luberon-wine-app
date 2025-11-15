@@ -66,7 +66,7 @@ export const wines: Wine[] = [
           {
             source: 'Wine Enthusiast',
             score: 83,
-            review: 'Nice clean nose, with scents of cherries and white pepper. But what are the green, stemmy flavors doing on the palate? Modest cherry fruit, but this medium-bodied wine finishes herbal and astringent.'
+            review: 'Fin ren nese, med dufter av kirsebær og hvit pepper. Beskjedne kirsebærfrukter, men denne middels fyldig vinen avslutter urtete og astringerende.'
           }
         ]
       },
@@ -81,7 +81,7 @@ export const wines: Wine[] = [
           {
             source: 'Wine Enthusiast',
             score: 83,
-            review: 'Nice clean nose, with scents of cherries and white pepper. Modest cherry fruit, but this medium-bodied wine finishes herbal and astringent.'
+            review: 'Fin ren nese, med dufter av kirsebær og hvit pepper. Beskjedne kirsebærfrukter, men denne middels fyldig vinen avslutter urtete og astringerende.'
           }
         ]
       }
@@ -199,7 +199,7 @@ export const wines: Wine[] = [
           {
             source: 'Wine Enthusiast',
             score: 87,
-            review: 'With its bold, jammy blackberries and a hint of black pepper on the nose, this wine is all about delivering a flavor punch. Straightforward berry fruit is tinged with licorice in a bulky but satisfying package.'
+            review: 'Med dristige, syltetøyaktige bjørnebær og et hint av sort pepper på nesen, handler denne vinen om å levere en smakseksplosjon. Rett frem bærfrukt er farget med lakrits i en fyldig men tilfredsstillende pakke.'
           }
         ]
       },
@@ -248,7 +248,7 @@ export const wines: Wine[] = [
           {
             source: 'Wine Enthusiast',
             score: 87,
-            review: 'This reliable Luberon producer has quietly turned out another good value. An understated, medium-bodied white from the Luberon, this Roussanne offers modest pear elements intertwined with attractive musky-spicy notes. Drink it over the next year or so.'
+            review: 'Denne pålitelige Luberon-produsenten har stillegående levert enda en god verdi. En nedtonet, middels fyldig hvitvin fra Luberon, denne Roussanne byr på beskjedne pæreelementer sammenvevd med attraktive moskusete og krydrete noter. Drikk den i løpet av det neste året eller så.'
           }
         ]
       }
@@ -306,12 +306,12 @@ export const wines: Wine[] = [
           {
             source: 'Wine Enthusiast',
             score: 85,
-            review: 'Hints of cinnamon and clove reflect a small amount of new oak aging, but the dominant flavors are of plum and dusty earth. Not a powerhouse, it\'s a balanced, food-friendly wine at a reasonable price—the kind of wine that wins friends, not ratings competitions.'
+            review: 'Hint av kanel og nellik gjenspeiler en liten mengde ny eikelagring, men de dominerende smakene er av plomme og støvete jord. Ikke en kraftpakke, men en balansert, matvennlig vin til en fornuftig pris - den typen vin som vinner venner, ikke rangeringer.'
           },
           {
             source: 'Wine Enthusiast',
             score: 83,
-            review: 'Herbal, foresty aromas are followed by a palate that delivers strawberry fruit and some light oak. Not a prime-time wine due to a biting lean finish and thin mouthfeel. Lots of red fruit throughout, but also drying tannins.'
+            review: 'Urtete, skogsartige aromaer følges av en gane som leverer jordbærfrukt og lett eik. Ikke en førsteklasses vin på grunn av en bitende mager avslutning og tynn munnfølelse. Mye rød frukt gjennom hele, men også tørrende tanniner.'
           }
         ]
       }
@@ -455,7 +455,7 @@ export const wines: Wine[] = [
           {
             source: 'Wine Enthusiast',
             score: 90,
-            review: 'Fontenille is almost always a great value, boasting concentrated raspberry aromas that leap from the glass. The intense fruit is nicely balanced by structure, and made complex by the addition of leather and dark chocolate notes on the lengthy finish.'
+            review: 'Fontenille er nesten alltid en god verdi, med konsentrerte bringebæraromaer som springer ut av glasset. Den intense frukten er fint balansert av struktur, og gjort kompleks ved tilføyelsen av lær- og mørk sjokoladenoter på den lange avslutningen.'
           }
         ]
       }
@@ -1092,7 +1092,7 @@ export const wines: Wine[] = [
           {
             source: 'Wine Enthusiast',
             score: 87,
-            review: 'This blend of Grenache Blanc and Vermentino offers slightly floral aromas that hint at apricot or peach, then follows those up with similar flavors and just a touch of spice on the finish. Marrenon is emerging as a dependable source for value wines from the Luberon.'
+            review: 'Denne blandingen av Grenache Blanc og Vermentino byr på lett blomsteraktige aromaer som antyder aprikos eller fersken, deretter følger den opp med lignende smaker og bare et snev av krydder på avslutningen. Marrenon fremstår som en pålitelig kilde for verdiviner fra Luberon.'
           }
         ]
       }
@@ -1884,7 +1884,7 @@ export const wines: Wine[] = [
           {
             source: 'Wine Enthusiast',
             score: 84,
-            review: 'A medium-bodied blend of Grenache Blanc, Bourboulenc, Ugni Blanc and Roussanne, this simple white from the Perrin family of Beaucastel offers fruity notes of melon and citrus that finish crisp and clean.'
+            review: 'En middels fyldig blanding av Grenache Blanc, Bourboulenc, Ugni Blanc og Roussanne, denne enkle hvite fra Perrin-familien av Beaucastel byr på fruktige noter av melon og sitrus som avslutter sprø og ren.'
           }
         ]
       }
