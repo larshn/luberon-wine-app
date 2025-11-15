@@ -21,10 +21,7 @@ export default function Header({ onSearch }: HeaderProps) {
           <div className="logo">Luberon på Glass</div>
           <div className="logo-subtitle">Oppdag viner fra Luberon</div>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-          <Auth />
-          <div className="header-icon">📚</div>
-        </div>
+        <Auth />
       </div>
       <div className="search-bar">
         <span className="search-icon">🔍</span>
