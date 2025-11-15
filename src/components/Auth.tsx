@@ -103,51 +103,49 @@ export default function Auth({ onAuthChange }: AuthProps) {
       <div style={{
         display: 'flex',
         alignItems: 'center',
-        gap: '0.75rem',
-        padding: '0.5rem 1rem',
-        background: 'linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)',
-        borderRadius: '12px',
-        border: '1px solid #fbbf24'
+        gap: '0.75rem'
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          <div style={{
-            width: '32px',
-            height: '32px',
-            background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
-            borderRadius: '50%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            color: 'white',
-            fontWeight: '600',
-            fontSize: '14px'
-          }}>
-            {user.email?.charAt(0).toUpperCase()}
-          </div>
-          <span style={{ fontSize: '14px', color: '#78716c', fontWeight: '500' }}>
-            {user.email}
-          </span>
+        <div style={{
+          width: '40px',
+          height: '40px',
+          background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
+          borderRadius: '50%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          color: 'white',
+          fontWeight: '700',
+          fontSize: '16px',
+          boxShadow: '0 2px 8px rgba(217, 119, 6, 0.3)',
+          border: '2px solid white'
+        }}>
+          {user.email?.charAt(0).toUpperCase()}
         </div>
         <button
           onClick={handleSignOut}
           style={{
-            padding: '0.375rem 0.75rem',
-            fontSize: '13px',
+            padding: '0.5rem 1rem',
+            fontSize: '14px',
             background: 'white',
-            border: '1px solid #d6d3d1',
-            borderRadius: '8px',
+            border: '1px solid #e7e5e4',
+            borderRadius: '10px',
             color: '#57534e',
-            fontWeight: '500',
+            fontWeight: '600',
             cursor: 'pointer',
-            transition: 'all 0.2s'
+            transition: 'all 0.2s',
+            boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)'
           }}
           onMouseOver={(e) => {
             e.currentTarget.style.background = '#fafaf9';
             e.currentTarget.style.borderColor = '#a8a29e';
+            e.currentTarget.style.transform = 'translateY(-1px)';
+            e.currentTarget.style.boxShadow = '0 2px 6px rgba(0, 0, 0, 0.15)';
           }}
           onMouseOut={(e) => {
             e.currentTarget.style.background = 'white';
-            e.currentTarget.style.borderColor = '#d6d3d1';
+            e.currentTarget.style.borderColor = '#e7e5e4';
+            e.currentTarget.style.transform = 'translateY(0)';
+            e.currentTarget.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.1)';
           }}
         >
           Logg ut
