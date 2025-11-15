@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Auth from './Auth';
 
 interface HeaderProps {
   onSearch?: (query: string) => void;
@@ -20,7 +21,10 @@ export default function Header({ onSearch }: HeaderProps) {
           <div className="logo">Luberon på Glass</div>
           <div className="logo-subtitle">Oppdag viner fra Luberon</div>
         </div>
-        <div className="header-icon">📚</div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <Auth />
+          <div className="header-icon">📚</div>
+        </div>
       </div>
       <div className="search-bar">
         <span className="search-icon">🔍</span>
