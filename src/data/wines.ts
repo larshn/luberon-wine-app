@@ -1871,7 +1871,14 @@ export const wines: Wine[] = [
         tastingNotes: ['Sitrus', 'Mineralsk', 'Frisk', 'Elegant'],
         storageRecommendation: 'drink-now',
         optimalDrinkingWindow: { start: 0, end: 3 },
-        price: 15
+        price: 15,
+        criticReviews: [
+          {
+            source: 'Wine Enthusiast',
+            score: 84,
+            review: 'Denne rene, nøytrale hvitvinen byr på beskjedne aromaer av epler og lime, en fyldig munnfølelse og en steinete, sitrusaktig avslutning. Prøv den til fiskesuppe, en gang i løpet av de neste månedene.'
+          }
+        ]
       },
       {
         year: 2022,
