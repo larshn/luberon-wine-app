@@ -561,7 +561,7 @@ body {
   background: transparent;
   border: none;
   font-size: 1rem;
-  padding: var(--spacing-xs) 0;
+  padding: var(--spacing-xs) 0 var(--spacing-xs) 20px;
   transition: color 0.2s ease;
 }
 
