@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import type { Wine, Vintage } from '../types/wine';
 import AISommelier from './AISommelier';
+import { loadCustomWines, customWineToWineFormat } from '../utils/customWineStorage';
 
 type CellarWineWithDetails = {
   wine: Wine;
@@ -8,6 +9,7 @@ type CellarWineWithDetails = {
   quantity: number;
   location?: string;
   notes?: string;
+  isCustom?: boolean;
 };
 
 interface WineCellarProps {
@@ -26,12 +28,39 @@ export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarPr
   const loadCellarWines = async () => {
     const { loadCellar } = await import('../utils/storageSupabase');
     const cellar = await loadCellar();
+    const customWines = loadCustomWines();
+
     const winesWithDetails: CellarWineWithDetails[] = cellar.wines
       .map(cellarWine => {
-        const wineDetails = wines.find(w => w.id === cellarWine.wineId);
+        // First check catalog wines
+        let wineDetails = wines.find(w => w.id === cellarWine.wineId);
+        let isCustom = false;
+
+        // If not found in catalog, check custom wines
+        if (!wineDetails) {
+          const customWine = customWines.find(cw => cw.id === cellarWine.wineId);
+          if (customWine) {
+            wineDetails = customWineToWineFormat(customWine) as Wine;
+            isCustom = true;
+          }
+        }
+
         if (!wineDetails) return null;
 
-        const vintage = wineDetails.vintages.find(v => v.year === cellarWine.year);
+        // For custom wines, create a vintage object for the cellar year
+        let vintage = wineDetails.vintages.find(v => v.year === cellarWine.year);
+        if (!vintage && isCustom) {
+          // Get alcohol content from the first vintage (which is set from custom wine data)
+          const defaultAlcohol = wineDetails.vintages[0]?.alcoholContent || 13;
+          vintage = {
+            year: cellarWine.year,
+            alcoholContent: defaultAlcohol,
+            tastingNotes: [],
+            storageRecommendation: 'drink-soon' as const,
+            optimalDrinkingWindow: { start: 0, end: 3 },
+          };
+        }
+
         if (!vintage) return null;
 
         const result: CellarWineWithDetails = {
@@ -40,6 +69,7 @@ export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarPr
           quantity: cellarWine.quantity,
           ...(cellarWine.location && { location: cellarWine.location }),
           ...(cellarWine.notes && { notes: cellarWine.notes }),
+          isCustom,
         };
         return result;
       })
@@ -135,15 +165,20 @@ export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarPr
         </div>
       ) : (
         <div className="wine-grid">
-          {cellarWines.map(({ wine, vintage, quantity, location, notes }) => {
+          {cellarWines.map(({ wine, vintage, quantity, location, notes, isCustom }) => {
             const colorLabel = wine.color === 'red' ? 'Rødvin' : wine.color === 'white' ? 'Hvitvin' : 'Rosévin';
 
             return (
               <div key={`${wine.id}-${vintage.year}`} className="wine-card cellar-wine-card">
-                <div className="wine-image-wrapper" onClick={() => onViewWine(wine)} style={{cursor: 'pointer'}}>
+                <div className="wine-image-wrapper" onClick={() => !isCustom && onViewWine(wine)} style={{cursor: isCustom ? 'default' : 'pointer'}}>
                   <span className="wine-badge" style={{background: '#722f37', color: 'white'}}>
                     {quantity} stk
                   </span>
+                  {isCustom && (
+                    <span className="wine-badge" style={{background: '#4a5568', color: 'white', right: 'auto', left: '0.5rem'}}>
+                      Skannet
+                    </span>
+                  )}
 
                   {wine.imageUrl ? (
                     <img
@@ -159,7 +194,7 @@ export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarPr
 
                 <div className="wine-info">
                   <span className="wine-type">{colorLabel}</span>
-                  <h3 className="wine-name" onClick={() => onViewWine(wine)} style={{cursor: 'pointer'}}>
+                  <h3 className="wine-name" onClick={() => !isCustom && onViewWine(wine)} style={{cursor: isCustom ? 'default' : 'pointer'}}>
                     {wine.name}
                   </h3>
                   <div className="wine-details">
@@ -238,17 +273,19 @@ export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarPr
                         + 1
                       </button>
                     </div>
-                    <button
-                      onClick={() => onViewWine(wine)}
-                      className="btn btn-primary"
-                      style={{
-                        width: '100%',
-                        padding: '0.5rem',
-                        fontSize: '0.85rem'
-                      }}
-                    >
-                      Detaljer
-                    </button>
+                    {!isCustom && (
+                      <button
+                        onClick={() => onViewWine(wine)}
+                        className="btn btn-primary"
+                        style={{
+                          width: '100%',
+                          padding: '0.5rem',
+                          fontSize: '0.85rem'
+                        }}
+                      >
+                        Detaljer
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>

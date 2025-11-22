@@ -11,12 +11,14 @@ import WineDetail from './components/WineDetail';
 import FoodPairing from './components/FoodPairing';
 import WineMap from './components/WineMap';
 import VintageChart from './components/VintageChart';
+import WineScanner from './components/WineScanner';
 
 function App() {
   const [currentView, setCurrentView] = useState<View>('catalog');
   const [selectedWine, setSelectedWine] = useState<Wine | null>(null);
   const [selectedProducer, setSelectedProducer] = useState<string | null>(null);
   const [, setCellarCount] = useState(0);
+  const [showScanner, setShowScanner] = useState(false);
 
   useEffect(() => {
     const updateCellarCount = async () => {
@@ -160,6 +162,51 @@ function App() {
       )}
 
       <BottomNav activeView={currentView} onViewChange={handleViewChange} />
+
+      {/* Floating scan button */}
+      <button
+        onClick={() => setShowScanner(true)}
+        style={{
+          position: 'fixed',
+          bottom: '90px',
+          right: '20px',
+          width: '56px',
+          height: '56px',
+          backgroundColor: 'var(--primary)',
+          color: 'white',
+          borderRadius: '50%',
+          border: 'none',
+          boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
+          cursor: 'pointer',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 99,
+          transition: 'transform 0.2s, box-shadow 0.2s',
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.transform = 'scale(1.05)';
+          e.currentTarget.style.boxShadow = '0 6px 16px rgba(0,0,0,0.4)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform = 'scale(1)';
+          e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.3)';
+        }}
+        aria-label="Skann strekkode"
+        title="Skann strekkode"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" />
+        </svg>
+      </button>
+
+      {/* Wine scanner modal */}
+      {showScanner && (
+        <WineScanner
+          onClose={() => setShowScanner(false)}
+          onWineSaved={handleCellarUpdate}
+        />
+      )}
     </div>
   );
 }
