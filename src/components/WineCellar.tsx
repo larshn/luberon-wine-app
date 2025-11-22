@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import type { Wine, Vintage } from '../types/wine';
+import type { CustomWine } from '../types/scannedWine';
 import AISommelier from './AISommelier';
-import { loadCustomWines, customWineToWineFormat } from '../utils/customWineStorage';
+import CustomWineDetail from './CustomWineDetail';
+import { loadCustomWines, customWineToWineFormat, getCustomWineById } from '../utils/customWineStorage';
 
 type CellarWineWithDetails = {
   wine: Wine;
@@ -10,6 +12,7 @@ type CellarWineWithDetails = {
   location?: string;
   notes?: string;
   isCustom?: boolean;
+  customWineId?: string;
 };
 
 interface WineCellarProps {
@@ -24,6 +27,12 @@ export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarPr
   const [showImportModal, setShowImportModal] = useState(false);
   const [importData, setImportData] = useState('');
   const [importError, setImportError] = useState('');
+  const [selectedCustomWine, setSelectedCustomWine] = useState<{
+    wine: CustomWine;
+    vintage: number;
+    quantity: number;
+    notes?: string;
+  } | null>(null);
 
   const loadCellarWines = async () => {
     const { loadCellar } = await import('../utils/storageSupabase');
@@ -70,6 +79,7 @@ export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarPr
           ...(cellarWine.location && { location: cellarWine.location }),
           ...(cellarWine.notes && { notes: cellarWine.notes }),
           isCustom,
+          customWineId: isCustom ? cellarWine.wineId : undefined,
         };
         return result;
       })
@@ -165,7 +175,7 @@ export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarPr
         </div>
       ) : (
         <div className="wine-grid">
-          {cellarWines.map(({ wine, vintage, quantity, location, notes, isCustom }) => {
+          {cellarWines.map(({ wine, vintage, quantity, location, notes, isCustom, customWineId }) => {
             const colorLabel = wine.color === 'red' ? 'Rødvin' : wine.color === 'white' ? 'Hvitvin' : 'Rosévin';
 
             return (
@@ -273,19 +283,31 @@ export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarPr
                         + 1
                       </button>
                     </div>
-                    {!isCustom && (
-                      <button
-                        onClick={() => onViewWine(wine)}
-                        className="btn btn-primary"
-                        style={{
-                          width: '100%',
-                          padding: '0.5rem',
-                          fontSize: '0.85rem'
-                        }}
-                      >
-                        Detaljer
-                      </button>
-                    )}
+                    <button
+                      onClick={() => {
+                        if (isCustom && customWineId) {
+                          const customWine = getCustomWineById(customWineId);
+                          if (customWine) {
+                            setSelectedCustomWine({
+                              wine: customWine,
+                              vintage: vintage.year,
+                              quantity,
+                              notes,
+                            });
+                          }
+                        } else {
+                          onViewWine(wine);
+                        }
+                      }}
+                      className="btn btn-primary"
+                      style={{
+                        width: '100%',
+                        padding: '0.5rem',
+                        fontSize: '0.85rem'
+                      }}
+                    >
+                      Detaljer
+                    </button>
                   </div>
                 </div>
               </div>
@@ -355,6 +377,40 @@ export default function WineCellar({ wines, onViewWine, onUpdate }: WineCellarPr
             </div>
           </div>
         </div>
+      )}
+
+      {selectedCustomWine && (
+        <CustomWineDetail
+          wine={selectedCustomWine.wine}
+          vintage={selectedCustomWine.vintage}
+          quantity={selectedCustomWine.quantity}
+          notes={selectedCustomWine.notes}
+          onClose={() => setSelectedCustomWine(null)}
+          onRemove={async () => {
+            const { removeFromCellar } = await import('../utils/storageSupabase');
+            await removeFromCellar(selectedCustomWine.wine.id, selectedCustomWine.vintage, 1);
+            await loadCellarWines();
+            onUpdate();
+            if (selectedCustomWine.quantity <= 1) {
+              setSelectedCustomWine(null);
+            } else {
+              setSelectedCustomWine({
+                ...selectedCustomWine,
+                quantity: selectedCustomWine.quantity - 1,
+              });
+            }
+          }}
+          onAdd={async () => {
+            const { addToCellar } = await import('../utils/storageSupabase');
+            await addToCellar(selectedCustomWine.wine.id, selectedCustomWine.vintage, 1);
+            await loadCellarWines();
+            onUpdate();
+            setSelectedCustomWine({
+              ...selectedCustomWine,
+              quantity: selectedCustomWine.quantity + 1,
+            });
+          }}
+        />
       )}
     </div>
   );
