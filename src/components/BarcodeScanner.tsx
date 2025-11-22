@@ -12,6 +12,19 @@ export default function BarcodeScanner({ onScanSuccess, onClose, onDemoScan }: B
   const [isStarting, setIsStarting] = useState(true);
   const [scannerReady, setScannerReady] = useState(false);
   const scannerRef = useRef<Html5Qrcode | null>(null);
+  const isRunningRef = useRef(false);
+
+  const stopScanner = async () => {
+    if (scannerRef.current && isRunningRef.current) {
+      try {
+        await scannerRef.current.stop();
+        isRunningRef.current = false;
+      } catch (e) {
+        // Ignore stop errors
+        console.log('Scanner stop error (ignored):', e);
+      }
+    }
+  };
 
   useEffect(() => {
     let mounted = true;
@@ -28,18 +41,24 @@ export default function BarcodeScanner({ onScanSuccess, onClose, onDemoScan }: B
             qrbox: { width: 250, height: 150 },
             aspectRatio: 1.5,
           },
-          (decodedText) => {
-            scanner.stop().then(() => {
-              if (mounted) {
-                onScanSuccess(decodedText);
+          async (decodedText) => {
+            if (mounted && isRunningRef.current) {
+              isRunningRef.current = false;
+              try {
+                await scanner.stop();
+              } catch (e) {
+                // Ignore
               }
-            });
+              onScanSuccess(decodedText);
+            }
           },
           () => {
             // Ignore QR code not found errors
           }
         );
+
         if (mounted) {
+          isRunningRef.current = true;
           setIsStarting(false);
           setScannerReady(true);
         }
@@ -56,26 +75,20 @@ export default function BarcodeScanner({ onScanSuccess, onClose, onDemoScan }: B
 
     return () => {
       mounted = false;
-      if (scannerRef.current) {
-        scannerRef.current.stop().catch(() => {});
-      }
+      stopScanner();
     };
   }, [onScanSuccess]);
 
-  const handleManualEntry = () => {
+  const handleManualEntry = async () => {
     const barcode = prompt('Skriv inn strekkode manuelt:');
     if (barcode && barcode.trim()) {
-      if (scannerRef.current) {
-        scannerRef.current.stop().catch(() => {});
-      }
+      await stopScanner();
       onScanSuccess(barcode.trim());
     }
   };
 
-  const handleDemoClick = () => {
-    if (scannerRef.current) {
-      scannerRef.current.stop().catch(() => {});
-    }
+  const handleDemoClick = async () => {
+    await stopScanner();
     if (onDemoScan) {
       onDemoScan();
     }
@@ -103,7 +116,10 @@ export default function BarcodeScanner({ onScanSuccess, onClose, onDemoScan }: B
         flexShrink: 0,
       }}>
         <button
-          onClick={onClose}
+          onClick={async () => {
+            await stopScanner();
+            onClose();
+          }}
           style={{
             color: 'white',
             fontSize: '18px',
