@@ -75,7 +75,22 @@ export default function WineScanner({ onClose, onWineSaved }: WineScannerProps) 
         body: JSON.stringify({ barcode }),
       });
 
-      const result: WineLookupResult = await response.json();
+      if (!response.ok) {
+        console.error('API error:', response.status, response.statusText);
+        setErrorMessage(`Serverfeil (${response.status}). Prøv igjen senere.`);
+        setState('error');
+        return;
+      }
+
+      let result: WineLookupResult;
+      try {
+        result = await response.json();
+      } catch (parseError) {
+        console.error('Failed to parse response:', parseError);
+        setErrorMessage('Ugyldig svar fra server.');
+        setState('error');
+        return;
+      }
 
       if (result.found && result.wine) {
         setFoundWine(result.wine);
